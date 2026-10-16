@@ -1,0 +1,3513 @@
+[
+ {
+  "id": "kita-abz-hochhaus-geplant",
+  "name": "Kita im ABZ-Hochhaus (geplant)",
+  "cat": "kita",
+  "lat": 47.382572,
+  "lon": 8.493407,
+  "address": "Flurstrasse 71, 8048 Zürich (ABZ-Hochhaus, Koch-Quartier)",
+  "walk_min": 1,
+  "desc_de": "Laut ABZ wird es im Hochhaus selbst eine Kita geben; Betreiber, Plätze, Tarife und Eröffnungsdatum sind noch nicht publiziert (Bezug Hochhaus ab Juni 2027) – früh bei der ABZ nachfragen.",
+  "desc_en": "ABZ states there will be a Kita inside the tower itself; operator, places, fees and opening date are not yet published (tower move-in from June 2027) — ask ABZ early.",
+  "url": "https://www.abz-koch.ch/zusammenleben/",
+  "tags": [
+   "family",
+   "kita",
+   "on-site",
+   "planned"
+  ],
+  "details": {
+   "status": "geplant / planned",
+   "operator": null,
+   "note": "Quote: 'Ebenfalls wird es im Hochhaus eine Kita geben.' Exact position in the building unknown (pin = tower).",
+   "hochhaus_move_in": "ab Juni 2027 (abz.ch)",
+   "walk_m": 0,
+   "crow_m": 0,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.abz-koch.ch/zusammenleben/",
+  "approx": true
+ },
+ {
+  "id": "kita-chinderstern-zuerich-altstetten",
+  "name": "Kita Chinderstern Zürich Altstetten",
+  "cat": "kita",
+  "lat": 47.384213,
+  "lon": 8.494849,
+  "address": "Flurstrasse 55, 8048 Zürich",
+  "walk_min": 3,
+  "desc_de": "Im Medienpark an derselben Flurstrasse; sehr lange Öffnungszeiten (07:00–20:00), 2026 freie Plätze gemeldet und tiefster publizierter Vollkostentarif in der Nähe. Vollkosten ca. CHF 120/Tag (Baby CHF 138).",
+  "desc_en": "In the Medienpark on the same Flurstrasse; very long hours (07:00–20:00), places reported available in 2026 and the lowest published full-cost rate nearby. Full-cost rate approx. CHF 120/day (baby CHF 138).",
+  "url": "https://www.chinderstern.ch/altstetten/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "long-hours",
+   "places-available"
+  ],
+  "details": {
+   "city_poi_id": "kk5163",
+   "subsidised": true,
+   "phone": "+41 79 809 01 35",
+   "email": "altstetten@chinderstern.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website: subsidised places for City of Zürich residents (Beitragsfaktorbestätigung + SBU). For subsidised children closed last week of July + first week of August (normal-tariff care possible if requested by end of January). Number of subsidised places not stated.",
+   "operator": "kidéal ag (Chinderstern Kita group; named as copyright holder on website, operating legal entity not explicitly stated)",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 07:00–20:00 (full-day modules 07:00–18:30 or 08:30–20:00); open all year except public holidays and Christmas–New Year",
+   "labels": [
+    "Ausbildungsbetrieb (training company) logo; no QualiKita/Purzelbaum mentioned"
+   ],
+   "languages": "Not stated. Website has an English 'Key Facts at a Glance' page, English enrolment page and informative English translation of the AGB; no bilingual care concept mentioned.",
+   "groups": "Max. 3 groups with 12.5 places each",
+   "waitlist": "Website (2026): places currently available; promotion 'register by 31.07.2026 = one month free care' (now expired). Online enquiry/enrolment form (DE and EN).",
+   "status": "open (places reported available in 2026)",
+   "notes": "Located in the Medienpark building, Flurstrasse 55 (~212 m from Koch-Areal, same street). Own outdoor area (being redesigned with the children); regular forest days in spring/summer, gym visits in autumn/winter; Bachwiesenpark nearby. Flexible care for shift work/annualised hours. Tram 2 Kappeli ~50 m; underground parking (30 min free).",
+   "price_day": 120.0,
+   "price_day_baby": 138.0,
+   "price_note": "Published on website (no explicit validity year; page © 2026): Modul 1 07:00–18:30 CHF 138/Tag Säuglingstarif (bis und mit 18 Monate), CHF 120/Tag Kindertarif (ab 19 Monate); same for Modul 2 08:30–20:00. Monthly = daily x days/week x 4.2 with discounts (2.5% for 3 days, 6.5% for 4–5 days), e.g. 5 days CHF 2'710 baby / CHF 2'356 child. Meals and programme costs included. Registration fee CHF 50, change fee CHF 20, extra hours CHF 15/h.",
+   "sources": [
+    "https://www.chinderstern.ch/altstetten/",
+    "https://www.chinderstern.ch/altstetten/tarife/",
+    "https://www.chinderstern.ch/altstetten/kontakt/"
+   ],
+   "walk_m": 217,
+   "crow_m": 212,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-bethanien-altstetten",
+  "name": "Kita Bethanien Altstetten",
+  "cat": "kita",
+  "lat": 47.383855,
+  "lon": 8.492749,
+  "address": "Buckhauserstrasse 34, 8048 Zürich",
+  "walk_min": 4,
+  "desc_de": "Gemeinnützige Kita der Stiftung Diakonie Bethanien (4 Gruppen, 48 Plätze) mit wöchentlichem Naturtag und unbeschränkt vielen subventionierten Plätzen. Vollkosten ca. CHF 125/Tag (Baby CHF 150).",
+  "desc_en": "Non-profit Kita of the Diakonie Bethanien foundation (4 groups, 48 places) with a weekly nature day and an unlimited number of subsidised places. Full-cost rate approx. CHF 125/day (baby CHF 150).",
+  "url": "https://kitas-bethanien.ch/altstetten/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "nature-day",
+   "nonprofit"
+  ],
+  "details": {
+   "city_poi_id": "kk5162",
+   "subsidised": true,
+   "phone": "+41 58 204 83 60",
+   "email": "kita.altstetten@bethanien.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website: 'unbegrenzte Anzahl subventionierter Plätze'; requires Beitragsfaktorbestätigung + SBU confirmation (renewed yearly). Summer closure for subsidised families: calendar weeks 30 & 31.",
+   "operator": "Stiftung Diakonie Bethanien",
+   "ages": "ca. 3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 06:30–18:30",
+   "labels": [
+    "Member of Netzwerk Bildungsort Kita",
+    "Partners/memberships: kibesuisse, Curaviva, kitadialog, Marie Meierhofer Institut"
+   ],
+   "languages": "Not stated. Fees sheet and registration form are also available in English (Fees PDF, English registration form); no English-language care concept mentioned.",
+   "groups": "48 places in 4 groups (Glitzerwolke, Sternenhimmel, Wunderbogen, Zaubersonne): 2 infant groups (~3 months–2.5 years), 2 groups (2 years–Kindergarten)",
+   "waitlist": "Viewing appointment / place request via website contact form, e-mail or phone; registration form PDF (DE + EN). No waitlist info published.",
+   "status": "open (website current, tariffs 2026, closing days 2027 published)",
+   "notes": "Non-denominational, child-centred; one full day in nature per week, neighbourhood walks/excursions/playground (no own garden mentioned). Lunch freshly delivered daily from in-house Convita kitchen. Closed 2 weeks in summer + Christmas/New Year. Inclusion of children with special needs where possible. Closest Kita in this batch to Flurstrasse 71 (~151 m).",
+   "price_day": 125.0,
+   "price_day_baby": 150.0,
+   "price_note": "Tarife gültig ab 01.01.2026: CHF 150/Tag für Kinder 3–18 Monate, CHF 125/Tag ab 19 Monaten (Mindestbetreuung 1 ganzer Tag). Monatspreis = Tagespreis x 4.2 x Tage/Woche (z.B. 5 Tage: CHF 3'150 Baby / CHF 2'625 Kleinkind). Windeln, Pflegeprodukte, Zahnbürsten inklusive. 15% Rabatt für das 3. Kind. Verlängerte Betreuungszeit CHF 40/h; Samstagsbetreuung (Kids' Club) CHF 40/h.",
+   "sources": [
+    "https://kitas-bethanien.ch/altstetten/",
+    "https://kitas-bethanien.ch/wp-content/uploads/sites/4/2026/06/Tarife-KiTa-Bethanien-Altstetten-2026.pdf"
+   ],
+   "walk_m": 297,
+   "crow_m": 151,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kibiz-altstetten",
+  "name": "KiTa KiBiZ Altstetten",
+  "cat": "kita",
+  "lat": 47.381913,
+  "lon": 8.488685,
+  "address": "Rautistrasse 75, 8048 Zürich",
+  "walk_min": 6,
+  "desc_de": "Fünf Gruppen von Baby bis Vorkindergarten im Freilager, Montessori-inspiriert und Purzelbaum-Konzept; Draussenzeit im Dunkelhölzli-Wald und Bachwiesenpark. Vollkosten ca. CHF 125/Tag.",
+  "desc_en": "Five groups from babies to pre-kindergarten in the Freilager, Montessori-inspired with a Purzelbaum movement concept; outdoor time in Dunkelhölzli forest and Bachwiesenpark. Full-cost rate approx. CHF 125/day.",
+  "url": "https://zuerich.kitakibiz.ch",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "purzelbaum",
+   "montessori"
+  ],
+  "details": {
+   "city_poi_id": "kk117",
+   "subsidised": true,
+   "phone": "+41 44 400 22 33 (website); city data lists +41 44 400 12 86",
+   "email": "info.altstetten@kitakibiz.ch",
+   "city_note": "Bietet subventionierte Plätze an.; Purzelbaum",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website does not detail subsidised places.",
+   "operator": "KiBiZ AG (Kinderbildungszentrum; further sites in Geroldswil and Affoltern am Albis)",
+   "ages": "Baby group to Vorkindergarten group (exact ages not stated)",
+   "hours": "Mo–Fr 07:00–18:30",
+   "labels": [
+    "Purzelbaum (city geodata; 'Konzept Purzelbaum' page on website)",
+    "Bildungskonzept elmar (multi-week projects)",
+    "Montessori-inspired principle ('Hilf mir, es selbst zu tun')",
+    "kibesuisse member"
+   ],
+   "languages": "Not stated.",
+   "groups": "5 groups: Baby-Gruppe Pingus; Kita-Gruppen Eisbären, Maulwürfe, Fledermäuse (age-mixed); Vorkindergarten-Gruppe Füchse. Total places not stated.",
+   "waitlist": "Registration online via Kidesia; 'Kontakt / freie Plätze' page.",
+   "status": "open (website current; old URL kibiz-zuerich.ch has a broken SSL certificate)",
+   "notes": "Located in Freilager Zürich (Rautistrasse 75). No own garden mentioned; outdoor play in Dunkelhölzli forest, Bachwiesenpark and neighbourhood playgrounds. Recommends more than one day/week.",
+   "price_day": 125.0,
+   "price_day_baby": null,
+   "price_note": "Website (no validity year): full day 07:00–18:30 CHF 125/day, CHF 525/month per weekly day; morning 07:00–14:00 CHF 90; afternoon 14:00–18:30 CHF 60. Children under 18 months: surcharge CHF 20 (page does not say per day or per month). Monthly flat rate charged during holidays/illness.",
+   "sources": [
+    "https://zuerich.kitakibiz.ch",
+    "https://zuerich.kitakibiz.ch/kita-tarife-kosten/",
+    "https://zuerich.kitakibiz.ch/kita-gruppen/",
+    "https://zuerich.kitakibiz.ch/kita-traegerschaft/",
+    "https://www.kitakibiz.ch"
+   ],
+   "walk_m": 450,
+   "crow_m": 363,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kinderkrippe-schluempfli",
+  "name": "Kinderkrippe Schlümpfli",
+  "cat": "kita",
+  "lat": 47.384609,
+  "lon": 8.49275,
+  "address": "Buckhauserstrasse 28, 8047 Zürich",
+  "walk_min": 6,
+  "desc_de": "In den Stadtdaten gelistet, aber ohne Kontaktangaben und ohne Webpräsenz – Betrieb nicht bestätigt, vor Ort prüfen. Vollkostentarif nicht publiziert.",
+  "desc_en": "Listed in city data but without contact details or any web presence — operation not confirmed; check on site. Full-cost rate not published.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette",
+  "tags": [
+   "family",
+   "kita",
+   "unverified"
+  ],
+  "details": {
+   "city_poi_id": "kk2886",
+   "subsidised": false,
+   "phone": null,
+   "email": null,
+   "subsidised_note": "City geodata has no subsidised-places flag.",
+   "status": "unverified: no website, phone or e-mail in city data and no web presence found",
+   "notes": "Several web searches (name + Buckhauserstrasse 28, kinderkrippen-online.ch) returned no listing. Cannot confirm it is operating; would need to be checked on site or via the city's Kita office.",
+   "price_day": null,
+   "price_day_baby": null,
+   "sources": [],
+   "walk_m": 408,
+   "crow_m": 232,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kiddi-2",
+  "name": "Kita Kiddi 2",
+  "cat": "kita",
+  "lat": 47.379116,
+  "lon": 8.491543,
+  "address": "Freilagerstrasse 32, 8047 Zürich",
+  "walk_min": 7,
+  "desc_de": "'Kiddi nature' mit Naturgruppe und Waldbesuchen bei fast jedem Wetter, eigener Spielplatz mit Sandkasten und Koch im Haus; günstiger Tarif. Vollkosten ca. CHF 110/Tag (Baby CHF 130).",
+  "desc_en": "'Kiddi nature' with a nature group and forest visits in almost any weather, own playground with sandpit and in-house cook; low published rate. Full-cost rate approx. CHF 110/day (baby CHF 130).",
+  "url": "https://kitakiddi.ch/kita-kiddi-2-freilagerstrasse/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "forest",
+   "nonprofit"
+  ],
+  "details": {
+   "city_poi_id": "kk1974",
+   "subsidised": true,
+   "phone": "+41 43 931 78 14",
+   "email": "kita.kiddi2@gmail.com",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website: subsidised places in City of Zürich; parents apply themselves at Schul- und Sportdepartement.",
+   "operator": "Verein Kita Kiddi (non-profit association, several Kitas in Canton Zürich)",
+   "ages": "3 Monate – 4 Jahre (Kindergarteneintritt)",
+   "hours": "Mo–Fr 07:00–18:30 (drop-off 07:00–08:45, pick-up 16:00–18:15)",
+   "labels": [
+    "Nature concept 'Kiddi nature' (Naturgruppe, regular forest days)",
+    "kibesuisse logo"
+   ],
+   "languages": "Not stated.",
+   "groups": "3 groups: Kleinkindgruppe (Naturgruppe), altersgemischte Gruppe (partly nature group), Säuglingsgruppe",
+   "waitlist": "Online form for viewing or non-binding place request; 'Anmeldung/Warteliste'.",
+   "status": "open; now branded 'Kita Kiddi nature Freilagerstrasse'. Old jimdo URL fails (SSL error); city e-mail (helene.moser@hispeed.ch) appears outdated",
+   "notes": "Kitaleitung Tamara Bruderer. Forest visited in almost all weather (sites change monthly). Own playground provided by Siemens, sandpit; daily outdoor time. In-house cook, fresh meals daily. Full and half days possible.",
+   "price_day": 110.0,
+   "price_day_baby": 130.0,
+   "price_note": "Website (no validity year): CHF 130 baby / CHF 110 toddler is the published 'Zusatztag' (extra day) rate. Regular contracts are monthly flat rates (12 payments): 1 day/week CHF 590 baby / 510 toddler per month; 2 days 1'130/1'010; 3 days 1'670/1'420; 4 days 2'180/1'880; 5 days 2'650/2'330. Baby rate up to and including 18 months. 10% sibling discount.",
+   "sources": [
+    "https://www.kitakiddi.ch",
+    "https://kitakiddi.ch/kita-kiddi-2-freilagerstrasse/"
+   ],
+   "walk_m": 525,
+   "crow_m": 409,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-fugu-kinderkrippe-zuerich-freilager",
+  "name": "Fugu Kinderkrippe Zürich Freilager",
+  "cat": "kita",
+  "lat": 47.379674,
+  "lon": 8.488575,
+  "address": "Freilagerstrasse 77, 8047 Zürich",
+  "walk_min": 8,
+  "desc_de": "Grosse Krippe (7 Gruppen, ~74 Kinder) ebenerdig in der autofreien Freilager-Siedlung, Bachwiesenpark gleich nebenan; Tarifblatt 05.2026. Vollkosten ca. CHF 128.1/Tag (Baby CHF 151.16).",
+  "desc_en": "Large nursery (7 groups, ~74 children) on one level in the car-free Freilager estate, right next to Bachwiesenpark; tariff sheet 05.2026. Full-cost rate approx. CHF 128.1/day (baby CHF 151.16).",
+  "url": "https://www.kitafugu.ch/fugu-kinderkrippe-zuerich-freilager/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "large"
+  ],
+  "details": {
+   "city_poi_id": "kk4579",
+   "subsidised": true,
+   "phone": "+41 43 311 66 16 (Kundendienst)",
+   "email": "freilager.zuerich@kitafugu.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website: subsidised places for City residents (BF + SBU confirmations, renewed yearly); number not stated.",
+   "operator": "«Fugu» Kinderkrippen (private chain since 2009, 18 sites; office Hertistrasse 2, 8304 Wallisellen; legal entity not stated on page)",
+   "ages": "3 Monate – 2. Kindergartenjahr",
+   "hours": "Mo–Fr 07:30–18:30",
+   "languages": "Not stated; some documents (AGB, Betriebsreglement, FAQ) available in English.",
+   "groups": "7 groups, ~74 children, ~850 m² on one ground floor level",
+   "waitlist": "'Platzanfrage' online form; viewing appointments via same page. Minimum booking 2 half-days or 1 full day/week.",
+   "status": "open (website current, tariff sheet 05.2026)",
+   "notes": "Car-free Freilager estate with playgrounds/green areas; Bachwiesenpark directly nearby; daily 'Entdeckungsreisen'; fresh cooking on site; Berlin settling-in model; 2 weeks summer closure.",
+   "price_day": 128.1,
+   "price_day_baby": 151.16,
+   "price_note": "Tariff sheet 05.2026: CHF 128.10/day for 2–5 days/week (CHF 134.65 for 1 day/week); monthly flat rate 5 days CHF 2'775.50. Children up to 18 months billed with factor 1.18 (baby value 151.16 computed from 128.10 x 1.18, not published as such). Half day with lunch CHF 89.35. One-off: CHF 100 entry fee + CHF 500 deposit. Includes all meals, nappies, care products, baby food, crafts, excursions.",
+   "sources": [
+    "https://www.kitafugu.ch/",
+    "https://www.kitafugu.ch/fugu-kinderkrippe-zuerich-freilager/"
+   ],
+   "walk_m": 555,
+   "crow_m": 486,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kinderkrippe-gummibaerli-im-james",
+  "name": "Kinderkrippe Gummibärli im James",
+  "cat": "kita",
+  "lat": 47.381112,
+  "lon": 8.495582,
+  "address": "Anemonenstrasse 40, 8047 Zürich",
+  "walk_min": 8,
+  "desc_de": "Kleine altersgemischte Krippe im 'James' mit vegetarisch-veganer Bio-Vollwertküche; laut Stadtdaten keine subventionierten Plätze. Vollkostentarif nicht publiziert.",
+  "desc_en": "Small mixed-age nursery in the 'James' building with vegetarian/vegan organic whole-food meals; no subsidised places according to city data. Full-cost rate not published.",
+  "url": "https://www.kk-gummibaerli.ch",
+  "tags": [
+   "family",
+   "kita",
+   "organic",
+   "private-only"
+  ],
+  "details": {
+   "city_poi_id": "kk206",
+   "subsidised": false,
+   "phone": "+41 43 311 61 03 (also 079 760 78 65, Catarina Caboz Simões)",
+   "email": "james-cc@kk-gummibaerli.ch",
+   "subsidised_note": "City geodata has no subsidised-places flag for this Kita; website does not mention subsidies.",
+   "operator": "Kinderkrippe Gummibärli GmbH (owner Catarina Caboz Simões since July 2022; founded 1998)",
+   "ages": "3 Monate – Kindergarteneintritt (altersgemischte Gruppe)",
+   "hours": "Mo–Fr 07:00–18:00",
+   "languages": "Not stated.",
+   "groups": "Mixed-age group; number of places not stated",
+   "waitlist": "Contact via phone/e-mail to register; visits arranged by phone. No waitlist info.",
+   "status": "open (website current)",
+   "notes": "Vegan/vegetarian wholefood meals, organic, seasonal and regional; ecological cleaning products; eco nappies on request; 'Diversicum' individual development support; nature-based outdoor learning. Closed 4th and 5th week of city summer holidays and 25 Dec–2 Jan. 'James' appears only in the e-mail address; website lists a single site at Anemonenstrasse 40.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "No prices published on website.",
+   "sources": [
+    "https://www.kk-gummibaerli.ch",
+    "https://www.kk-gummibaerli.ch/kontakt",
+    "https://www.kk-gummibaerli.ch/ueber-uns"
+   ],
+   "walk_m": 549,
+   "crow_m": 231,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-fuchsia",
+  "name": "Kita Fuchsia",
+  "cat": "kita",
+  "lat": 47.383273,
+  "lon": 8.49736,
+  "address": "Fuchsiastrasse 14, 8047 Zürich",
+  "walk_min": 8,
+  "desc_de": "Inhabergeführte Kita mit eigener Küche (auch Babybrei), Babygruppe plus 2 Gruppen 18 Mt.–4 J., Purzelbaum-Kita; lange Öffnungszeiten 06:45–19:00. Vollkostentarif nicht publiziert.",
+  "desc_en": "Owner-run Kita with its own kitchen (incl. home-made baby food), a baby group plus 2 groups 18 months–4 years, Purzelbaum label; long hours 06:45–19:00. Full-cost rate not published.",
+  "url": "https://www.kita-fuchsia.ch",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "long-hours",
+   "purzelbaum"
+  ],
+  "details": {
+   "city_poi_id": "kk5318",
+   "subsidised": true,
+   "phone": "+41 43 541 84 84",
+   "email": "info@kita-fuchsia.ch",
+   "city_note": "Bietet subventionierte Plätze an.; Purzelbaum ",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website: offers private and subsidised places; number not stated.",
+   "operator": "Kita Fuchsia, owner-operated (founder/owner Caroline Petrone; legal entity not stated)",
+   "ages": "3 Monate – Kindergartenalter",
+   "hours": "Mo–Fr 06:45–19:00",
+   "labels": [
+    "Purzelbaum (per city geodata; not mentioned on website)"
+   ],
+   "languages": "Not stated.",
+   "groups": "Fuchsiastrasse: 2 groups (18 months–4 years) + 1 baby group",
+   "waitlist": "Non-binding viewing appointment via contact form, e-mail or phone. No waitlist info.",
+   "status": "open (website current)",
+   "notes": "In Altstetten since 2017; second site Baslerstrasse 125 since Oct 2024. In-house cook, all meals incl. homemade baby food included; excursions included; above-average staff-to-child ratio stated.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "Tariffs not published ('auf Anfrage'). CHF 500 deposit on enrolment, refunded after leaving.",
+   "sources": [
+    "https://www.kita-fuchsia.ch",
+    "https://www.kita-fuchsia.ch/angebot",
+    "https://www.kita-fuchsia.ch/raeumlichkeiten"
+   ],
+   "walk_m": 616,
+   "crow_m": 308,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-little-green-house",
+  "name": "Little Green House",
+  "cat": "kita",
+  "lat": 47.386905,
+  "lon": 8.495578,
+  "address": "Baslerstrasse 60/62 (Baslerpark), 8048 Zürich",
+  "walk_min": 8,
+  "desc_de": "Mehrsprachige Kita Deutsch/Englisch/Französisch ('Living Languages': jede Betreuungsperson spricht eine Sprache), Purzelbaum-zertifiziert, Naturkonzept 'Woods & Wellbeing'. Vollkosten ca. CHF 155/Tag (Baby CHF 165).",
+  "desc_en": "Multilingual Kita in German/English/French ('Living Languages': each caregiver speaks one language), Purzelbaum-certified, 'Woods & Wellbeing' nature concept. Full-cost rate approx. CHF 155/day (baby CHF 165).",
+  "url": "https://www.littlegreenhouse.ch/de/kinderkrippe-in-zurich-altstetten/",
+  "tags": [
+   "family",
+   "kita",
+   "english",
+   "subsidised",
+   "bilingual",
+   "purzelbaum",
+   "forest"
+  ],
+  "details": {
+   "city_poi_id": "kk6778",
+   "subsidised": true,
+   "phone": "+41 41 748 30 60 (central number, 041 area code)",
+   "email": "altstetten@littlegreenhouse.ch",
+   "city_note": "Bietet subventionierte Plätze an.; Purzelbaum",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website confirms City-subsidised places (two confirmations required).",
+   "operator": "Little Green House (childcare centre and school group; legal entity not stated on website)",
+   "ages": "3 Monate – Schuleintritt",
+   "hours": "Mo–Fr 07:00–18:30 (extended care 06:00–07:00 and 18:30–21:00 at CHF 15 per 30 min); open year-round except 2 weeks at year-end + 2 pedagogical days",
+   "labels": [
+    "Purzelbaum KiTa (Radix) certified",
+    "Nature concept 'Woods & Wellbeing' (outdoors daily in all weather, forests/meadows)",
+    "Multilingual concept 'Living Languages'"
+   ],
+   "languages": "MULTILINGUAL German / English / French: each caregiver speaks one of these languages ('Living Languages' concept). Website available in DE/EN/FR.",
+   "groups": "Not stated (a parent review mentions groups 'Path Finders' and 'Adventurers')",
+   "waitlist": "Online 'Platzanfrage' admission form (nemborn portal); non-binding visit possible.",
+   "status": "open (website current; site lists address as Baslerpark, Baslerstrasse 60)",
+   "notes": "Outdoor area where children dig/plant; healthy regional food; mobile parent app; ground floor, underground parking. Also offers holiday care for school-age children.",
+   "price_day": 155.0,
+   "price_day_baby": 165.0,
+   "price_note": "Website (no explicit validity year, page © 2026): CHF 165/day up to 24 months, CHF 155/day from 25 months. Registration fee CHF 400 (free from 2nd child); 7.5% sibling discount.",
+   "sources": [
+    "https://www.littlegreenhouse.ch/de/",
+    "https://www.littlegreenhouse.ch/de/kinderkrippe-in-zurich-altstetten/"
+   ],
+   "walk_m": 596,
+   "crow_m": 509,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-yara",
+  "name": "Kita Yara",
+  "cat": "kita",
+  "lat": 47.378224,
+  "lon": 8.493764,
+  "address": "Albisriederstrasse 253, 8047 Zürich",
+  "walk_min": 9,
+  "desc_de": "Spezial-Kita der Stiftung Yara für Kinder mit chronischer Krankheit oder Pflegebedarf (Pflegefachpersonen vor Ort) – für ein gesundes Kind nicht die passende Wahl. Vollkosten ca. CHF 138.25/Tag (Baby CHF 188.25).",
+  "desc_en": "Specialised Kita (Stiftung Yara) for children with chronic illness or nursing needs, with nurses on site — not the right fit for a typically developing child. Full-cost rate approx. CHF 138.25/day (baby CHF 188.25).",
+  "url": "https://www.kitayara.ch/kita",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "specialised"
+  ],
+  "details": {
+   "city_poi_id": "kk16094",
+   "subsidised": true,
+   "phone": "+41 43 234 50 80",
+   "email": "info@kitayara.ch",
+   "city_note": "bietet Subventionierte Plätze an",
+   "subsidised_note": "City: 'bietet Subventionierte Plätze an'. Website: places subsidised by City of Zürich so fees follow municipal rates.",
+   "operator": "Stiftung Yara (foundation, founded 2024)",
+   "ages": "Vorschulalter (infants included; exact range not stated)",
+   "labels": [
+    "Specialised Kita for children needing increased care and medical/nursing support"
+   ],
+   "languages": "Not stated.",
+   "groups": "Staffing ratio 1:1 or 1:2; half- and full-day places",
+   "waitlist": "Online 'Kind anmelden'; first meeting with nursing staff, management, parents (optionally paediatrician) to assess needs; placement not guaranteed.",
+   "status": "specialised Kita; website said opening planned mid-March 2026 (now listed in city geodata, so presumably open; not confirmed)",
+   "notes": "Target group: preschool children with chronic/serious illness or higher care needs; diploma nurses from kispex Kinder-Spitex on site at all opening hours plus early-childhood special educators. Not a general-purpose Kita for a typically developing child. Located in former tadah co-working premises, Albisriederstrasse 253, 8047 Zürich.",
+   "price_day": 138.25,
+   "price_day_baby": 188.25,
+   "price_note": "Website: daily rate CHF 188.25 (infants up to 18 months), CHF 138.25 (from 18 months); parent fees income-based as places are City-subsidised.",
+   "sources": [
+    "https://www.kitayara.ch/kita",
+    "https://www.kitayara.ch/kita/unser-angebot",
+    "https://www.kitayara.ch/kita/kontakt",
+    "https://www.fundraiso.ch/en/organisations/stiftung-yara"
+   ],
+   "walk_m": 683,
+   "crow_m": 484,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kinderkrippe-sonnenschein",
+  "name": "Kinderkrippe Sonnenschein",
+  "cat": "kita",
+  "lat": 47.3806,
+  "lon": 8.497559,
+  "address": "Dennlerstrasse 37, 8047 Zürich",
+  "walk_min": 10,
+  "desc_de": "Vereins-Krippe, QualiKita-zertifiziert seit 2016, zwei Gruppen (3 Mt.–2 J. / 2 J.–KG); Warteliste über Onlineformular. Vollkosten ca. CHF 130/Tag (Baby CHF 155).",
+  "desc_en": "Association-run nursery, QualiKita-certified since 2016, two groups (3 months–2 years / 2 years–kindergarten); waitlist via online form. Full-cost rate approx. CHF 130/day (baby CHF 155).",
+  "url": "https://kinderkrippe-sonnenschein.ch/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "qualikita",
+   "nonprofit"
+  ],
+  "details": {
+   "city_poi_id": "kk166",
+   "subsidised": true,
+   "phone": "+41 43 321 95 37",
+   "email": "info@kinderkrippe-sonnenschein.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Co-financing via Sozialdepartement for City of Zürich residents; registration form asks if co-financing is needed. Number of places not stated.",
+   "operator": "Verein Sonnenschein",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 06:45–18:15 (full-day care only)",
+   "labels": [
+    "QualiKita (certified since June 2016)",
+    "kibesuisse member"
+   ],
+   "languages": "Not stated.",
+   "groups": "2 groups: Gruppe Mond (3 months–2 years), Gruppe Stern (2 years–Kindergarten)",
+   "waitlist": "Online registration form puts child on the 'Betreuungsplatz-Warteliste'; not a reservation; interview when a place becomes free.",
+   "status": "open (website current)",
+   "notes": "Closed weeks 31 & 32 (last week July/first week August) and 4–6 days over Christmas/New Year. Notice period 2 months. Online parent portal.",
+   "price_day": 130.0,
+   "price_day_baby": 155.0,
+   "price_note": "Website: per care day without City co-financing CHF 130 (children from 19 months), CHF 155 (infants). Monthly flat rates 'valid until 31 December of the current year' are mentioned but not listed; no explicit year on the page.",
+   "sources": [
+    "https://kinderkrippe-sonnenschein.ch/",
+    "https://kinderkrippe-sonnenschein.ch/informationen/",
+    "https://kinderkrippe-sonnenschein.ch/kontakt/anmeldung/"
+   ],
+   "walk_m": 730,
+   "crow_m": 382,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kinderkrippe-schildchroetli",
+  "name": "Kinderkrippe Schildchrötli",
+  "cat": "kita",
+  "lat": 47.388214,
+  "lon": 8.494081,
+  "address": "Albulastrasse 40, 8048 Zürich",
+  "walk_min": 11,
+  "desc_de": "Krippe der Gruppe 'Gemeinsam wachsen' ohne Sommerschliessung, Notfallbetreuung bis 21:00 nach Absprache; Platzierung oft innert Wochen. Vollkosten ca. CHF 125/Tag (Baby CHF 150).",
+  "desc_en": "Nursery of the 'Gemeinsam wachsen' group with no summer closure and emergency care until 21:00 by arrangement; placement often within weeks. Full-cost rate approx. CHF 125/day (baby CHF 150).",
+  "url": "http://www.grow2gether.ch/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "no-summer-closure"
+  ],
+  "details": {
+   "city_poi_id": "kk7382",
+   "subsidised": true,
+   "phone": "+41 44 536 75 61",
+   "email": "info@grow2gether.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website mentions support from Sozialdepartement der Stadt Zürich.",
+   "operator": "Gemeinsam wachsen AG (grow2gether; also runs Schnappi, Dino, Dinolina, Harmonie, Fröschlihuus)",
+   "hours": "Mo–Fr 06:45–18:15 (emergency care until 18:30, or 21:00 if notified by 17:30)",
+   "languages": "Not stated; parts of the website (e.g. opening hours) have an English version.",
+   "waitlist": "6-step process: check capacity with administration (044 536 75 61), contact Krippenleitung (043 536 77 44), visit, paper registration form, care contract. Placement within ~1 week or 2 weeks–3 months.",
+   "status": "open (website current but dated design)",
+   "notes": "Closed public holidays and 24 Dec (from 12:30)–1 Jan; otherwise open all year (no summer closure stated).",
+   "price_day": 125.0,
+   "price_day_baby": 150.0,
+   "price_note": "Website 'Preise' (no validity year; full-day not explicitly stated): single extra day CHF 125 (children from 19th month) / CHF 150 (babies up to 18th month). Monthly flat rates: 2 days CHF 1'050 / 1'250; 3 days 1'550 / 1'850; 4 days 2'000 / 2'400; 5 days 2'490 / 3'000.",
+   "sources": [
+    "http://www.grow2gether.ch/",
+    "http://www.grow2gether.ch/Preise.htm",
+    "http://www.grow2gether.ch/KK/DE/Schildkroetli_DE/Oeffnungszeiten_Sk_DE.html",
+    "http://www.grow2gether.ch/KK/DE/Schildkroetli_DE/Anmeldeprozess_Sk_DE.html"
+   ],
+   "walk_m": 824,
+   "crow_m": 629,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-villa-kunterbunt-am-letzigraben-kita-3-albisriederstrasse",
+  "name": "Villa Kunterbunt am Letzigraben Kita 3 - Albisriederstrasse",
+  "cat": "kita",
+  "lat": 47.37783,
+  "lon": 8.498444,
+  "address": "Albisriederstrasse 180, 8047 Zürich",
+  "walk_min": 11,
+  "desc_de": "Kita mit wöchentlichen Waldausflügen und deutschsprachigem Vorkindergarten-Programm ('Pre-School' ist nur der Name). Vollkosten ca. CHF 125/Tag (Baby CHF 150).",
+  "desc_en": "Kita with weekly forest outings and a German-language pre-kindergarten programme ('Pre-School' is only the name). Full-cost rate approx. CHF 125/day (baby CHF 150).",
+  "url": "https://www.villa-kunterbunt-zh.ch",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "forest"
+  ],
+  "details": {
+   "city_poi_id": "kk4558",
+   "subsidised": true,
+   "phone": "+41 43 311 01 02",
+   "email": "postmaster@villa-kunterbunt-zh.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website: subsidised places for City residents per Sozialdepartement rules.",
+   "operator": "Kita am Letzigraben GmbH",
+   "ages": "Säuglinge – Vorkindergarten (exact range not stated)",
+   "hours": "Mo–Fr 07:00–18:30",
+   "labels": [
+    "'Wald und Natur' (weekly forest outings)",
+    "Vorkindergarten 'Pre-School' programme (German-language, small groups of 6–9, Lehrplan 21 learning areas)"
+   ],
+   "languages": "German. 'Pre-School' is only a label; no English programme stated.",
+   "waitlist": "Placement at least 2 days after the chosen date; prepayment by the 23rd of the previous month reserves the place. No waitlist info.",
+   "status": "open (website current)",
+   "notes": "Two sites: Kita 1 Langgrütstrasse 112, Kita 3 Albisriederstrasse 180 (8047). Closed public holidays, Sechseläuten, Knabenschiessen Monday, Christmas/New Year.",
+   "price_day": 125.0,
+   "price_day_baby": 150.0,
+   "price_note": "Website 'Bedingungen' (no year): only extra-day rates published: CHF 150/day infants, CHF 125/day children from 19 months. Monthly flat rates not published. 10% sibling discount (not for subsidised places).",
+   "sources": [
+    "https://www.villa-kunterbunt-zh.ch/standorte",
+    "https://www.villa-kunterbunt-zh.ch/bedingungen",
+    "https://www.villa-kunterbunt-zh.ch/oeffnungszeiten",
+    "https://www.villa-kunterbunt-zh.ch/vorkindergarten-pree-school",
+    "https://www.villa-kunterbunt-zh.ch/kontakt"
+   ],
+   "walk_m": 802,
+   "crow_m": 649,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kids-und-co-letzibach",
+  "name": "Kids & Co Letzibach",
+  "cat": "kita",
+  "lat": 47.389075,
+  "lon": 8.495369,
+  "address": "Hohlstrasse 480, 8048 Zürich",
+  "walk_min": 12,
+  "desc_de": "profawo-Kita 5 Min. vom Bahnhof Altstetten (praktisch für Pendeln nach Oerlikon), 07:00–19:00, freie Plätze gemeldet, keine Anmeldegebühr; Purzelbaum. Vollkosten ca. CHF 147/Tag (Baby CHF 162).",
+  "desc_en": "profawo Kita 5 min from Altstetten station (handy for commuting to Oerlikon), 07:00–19:00, places reported free, no registration fee; Purzelbaum label. Full-cost rate approx. CHF 147/day (baby CHF 162).",
+  "url": "https://kidsco.profawo.ch/en/daycare-center/letzibach",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "near-station",
+   "long-hours",
+   "purzelbaum",
+   "places-available",
+   "nonprofit"
+  ],
+  "details": {
+   "city_poi_id": "kk3516",
+   "subsidised": true,
+   "phone": "+41 43 811 80 22 (input '+44' is a typo); zh.leitung.letzibach@kidsco.ch (manager Laura Fazzari)",
+   "email": "zh.letzibach@kidsco.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Takes part in City of Zürich subsidy programme for city residents; profawo bills parents their fee and bills the city the difference.",
+   "operator": "profawo (non-profit association; kids & co is profawo's Kita brand)",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 07:00–19:00; closed Christmas–New Year, public holidays, Friday after Ascension and 1 training day; half days possible (07–12/07–14 or 12–19/14–19)",
+   "labels": [
+    "Purzelbaum (Bewegung und gesunde Ernährung)",
+    "Bildungs- und Lerngeschichten (BULG)",
+    "KiD (Kita-integrierte Deutschförderung)",
+    "KmbB concept (children with special needs)",
+    "'Quality of Interaction' (PH Thurgau)",
+    "'Zertifikat Modul C'",
+    "Lehrbetrieb"
+   ],
+   "languages": "Not stated as bilingual; German with KiD German support. Website available in EN/DE/FR.",
+   "groups": "2 mixed-age groups; total places not stated",
+   "waitlist": "Registration free and non-binding, no registration fee or deposit; page states free places currently available.",
+   "status": "operating",
+   "notes": "Closest-to-station option; no garden mentioned, uses nearby playgrounds/green spaces and a weekly forest/outdoor outing; children help choose and prepare meals; ~2-week settling-in.",
+   "price_day": 147,
+   "price_day_baby": 162,
+   "price_note": "kids & co Zürich region page: per day under 24 months CHF 152 (members of profawo partner companies) / 162 (non-members); from 24 months CHF 137 / 147. Monthly = daily rate x days/week x 4. Baby rate applies up to 24 months. Year not stated (page live Oct 2026).",
+   "sources": [
+    "https://kidsco.profawo.ch/en/daycare-center/letzibach",
+    "https://kidsco.profawo.ch/de/kita/kitas-region-zuerich"
+   ],
+   "walk_m": 928,
+   "crow_m": 738,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-chinderhuus-kribbel-krabbel-freihofstrasse",
+  "name": "Chinderhuus Kribbel Krabbel (Freihofstrasse)",
+  "cat": "kita",
+  "lat": 47.385517,
+  "lon": 8.501815,
+  "address": "Freihofstrasse 21, 8048 Zürich",
+  "walk_min": 13,
+  "desc_de": "Neu im globegarden-Netz ('globegarden Freihofstrasse'): grosser Abenteuergarten, Purzelbaum-Kita, 3 altersgemischte Gruppen plus Babygruppe; an diesem Standort kein Englischangebot. Vollkostentarif nicht publiziert.",
+  "desc_en": "Now part of globegarden ('globegarden Freihofstrasse'): big adventure garden, Purzelbaum label, 3 mixed-age groups plus a baby group; no English offer at this site. Full-cost rate not published.",
+  "url": "https://www.globegarden.ch/locations/freihofstrasse",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "purzelbaum",
+   "garden"
+  ],
+  "details": {
+   "city_poi_id": "kk019",
+   "subsidised": true,
+   "phone": "+41 43 817 02 82 (facility); globegarden Familienservice +41 58 776 78 78",
+   "email": "info@kribbelkrabbel.ch",
+   "city_note": "Bietet subventionierte Plätze an.; Purzelbaum",
+   "subsidised_note": "Subsidised places per City of Zürich rules (city_note + own site). Number not stated.",
+   "operator": "Chinderhuus Kribbel Krabbel GmbH (owner named: Jeannine Wiser); site says it has joined the globegarden network (footer 'globegarden childcare')",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 07:00–18:30 (drop-off 07:00–08:45, pick-up 16:00–18:15)",
+   "labels": [
+    "Purzelbaum-KiTa (Bewegung und Ernährung)"
+   ],
+   "languages": "German; no bilingual/English offering stated on either the Kribbel Krabbel site or the globegarden Freihofstrasse page (other globegarden sites explicitly list 'Zweisprachige Betreuung (Deutsch/Englisch)' - this one does not)",
+   "groups": "Own site: 47 daily places in 3 mixed-age groups + 1 infant group; group list shows Sonne 12, Mond 12, Schnuppe 7, Sterne 12 (=43) - figures inconsistent",
+   "waitlist": "Place request via online 'Platzanfrage' / globegarden 'Jetzt unverbindlich anfragen'. No waitlist info. Notice period 2 months.",
+   "status": "operating; now part of the globegarden network and listed by globegarden as 'globegarden Freihofstrasse' (same address Freihofstrasse 21 and same phone 043 817 02 82)",
+   "notes": "Own large adventure garden; lots of outdoor time; forest, farm and playgrounds nearby; meals cooked daily from fresh seasonal ingredients, fresh purées for babies. Bus 31 'SBB Werkstätte'. Late pick-up CHF 10 per started 5 min. Kribbel Krabbel site links to outdated (2018) city subsidy pages.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "No private tariff published on kribbelkrabbel.ch or the globegarden Freihofstrasse page.",
+   "sources": [
+    "https://www.kribbelkrabbel.ch",
+    "https://www.globegarden.ch/locations/freihofstrasse"
+   ],
+   "walk_m": 937,
+   "crow_m": 713,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kinderkrippe-grimselzwerge",
+  "name": "Kinderkrippe GrimselZwerge",
+  "cat": "kita",
+  "lat": 47.38583,
+  "lon": 8.488246,
+  "address": "Saumackerstrasse 69, 8048 Zürich",
+  "walk_min": 13,
+  "desc_de": "Zwei Gruppen (24 Kinder) im Grimselhof mit privatem Innenhof-Spielplatz, Waldtagen sowie Musik- und Bewegungsschwerpunkt. Vollkostentarif nicht publiziert.",
+  "desc_en": "Two groups (24 children) in the Grimselhof with a private courtyard playground, forest days and a music-and-movement focus. Full-cost rate not published.",
+  "url": "https://www.grimselzwerge.ch",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "forest",
+   "small"
+  ],
+  "details": {
+   "city_poi_id": "kk12961",
+   "subsidised": true,
+   "phone": "+41 44 501 01 01",
+   "email": "info@grimselzwerge.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Not mentioned on website.",
+   "operator": "Minibambini GmbH (also runs ÜetliZwerge, Uitikon Waldegg)",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 07:00–18:30",
+   "labels": [
+    "Forest 'Explorer Days' (Waldtag) per group"
+   ],
+   "languages": "Not stated (multicultural exposure mentioned, no English/bilingual claim).",
+   "groups": "24 children in 2 groups (Mug, Sunny)",
+   "waitlist": "Online 'Platz anfragen' form (desired start date, weekdays, flexible option); viewings via same form or phone +41 44 590 00 00.",
+   "status": "open (website current)",
+   "notes": "Saumackerstrasse 69 (Grimselhof). Private green space with playground in inner courtyard. Fresh seasonal/local food, monthly menu plan online. Focus on music, movement, nature and seasons.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "No prices published on website.",
+   "sources": [
+    "https://www.grimselzwerge.ch",
+    "https://www.grimselzwerge.ch/anfragen_new",
+    "https://www.grimselzwerge.ch/waldtag"
+   ],
+   "walk_m": 956,
+   "crow_m": 531,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-fuchsia-baslerstrasse",
+  "name": "Kita Fuchsia Baslerstrasse",
+  "cat": "kita",
+  "lat": 47.388476,
+  "lon": 8.490046,
+  "address": "Baslerstrasse 125, 8048 Zürich",
+  "walk_min": 13,
+  "desc_de": "Zweiter Fuchsia-Standort (seit Okt. 2024) mit Babygruppe und Gruppe 2–4 J., eigene Küche, 06:45–19:00. Vollkostentarif nicht publiziert.",
+  "desc_en": "Second Fuchsia site (since Oct 2024) with a baby group and a 2–4-year group, own kitchen, 06:45–19:00. Full-cost rate not published.",
+  "url": "https://www.kita-fuchsia.ch",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "long-hours"
+  ],
+  "details": {
+   "city_poi_id": "kk14022",
+   "subsidised": true,
+   "phone": "+41 43 558 74 74",
+   "email": "info@kita-fuchsia.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website: private and subsidised places.",
+   "operator": "Kita Fuchsia, owner-operated (founder/owner Caroline Petrone; legal entity not stated)",
+   "ages": "3 Monate – Kindergartenalter",
+   "hours": "Mo–Fr 06:45–19:00",
+   "languages": "Not stated.",
+   "groups": "2 groups: 1 baby group + 1 group (2–4 years)",
+   "waitlist": "Non-binding viewing appointment via contact form, e-mail or phone. No waitlist info.",
+   "status": "open (second Fuchsia site, opened October 2024)",
+   "notes": "In-house cook, all meals incl. homemade baby food included; excursions included. City geodata has no Purzelbaum flag for this site (unlike Fuchsiastrasse).",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "Tariffs not published ('auf Anfrage'). CHF 500 deposit on enrolment, refunded after leaving.",
+   "sources": [
+    "https://www.kita-fuchsia.ch",
+    "https://www.kita-fuchsia.ch/angebot",
+    "https://www.kita-fuchsia.ch/raeumlichkeiten"
+   ],
+   "walk_m": 962,
+   "crow_m": 704,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kinderkrippe-little-einsteins",
+  "name": "Kinderkrippe Little Einsteins",
+  "cat": "kita",
+  "lat": 47.384853,
+  "lon": 8.485005,
+  "address": "Altstetterstrasse 187, 8048 Zürich (Website; Stadtdaten: Grundstrasse 28)",
+  "walk_min": 14,
+  "desc_de": "Krippe ab 06:00 mit 12 subventionierten Plätzen; die Website nennt neu die Altstetterstrasse 187 (Stadtdaten: Grundstrasse 28) – Standort vorab klären. Vollkosten ca. CHF 125/Tag (Baby CHF 145).",
+  "desc_en": "Nursery open from 06:00 with 12 subsidised places; its website now gives Altstetterstrasse 187 (city data: Grundstrasse 28) — confirm the location first. Full-cost rate approx. CHF 125/day (baby CHF 145).",
+  "url": "https://kinderkrippe-littleeinsteins.ch/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "long-hours"
+  ],
+  "details": {
+   "city_poi_id": "kk044",
+   "subsidised": true,
+   "phone": "+41 76 366 02 73 (Krippenleitung, website); city data lists +41 44 492 24 88",
+   "email": "info@kinderkrippe-littleeinsteins.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "City: 'Bietet subventionierte Plätze an.' Website: contract with Sozialdepartement, 12 subsidised places.",
+   "operator": "Kinderkrippe Little Einsteins (Krippenleitung Lucia Garcia; legal entity not stated)",
+   "ages": "Säuglinge – Kindergarten (minimum age not stated; Kindergarten children also cared for)",
+   "hours": "Mo–Fr 06:00–18:30",
+   "labels": [
+    "'Ernährungsbewusste und bewegungsfreundliche Kindertagesstätte' (Prävention & Gesundheitsförderung Kanton Zürich, 2026)",
+    "kibesuisse member",
+    "Lehrbetrieb (training company)"
+   ],
+   "languages": "Not stated; a parent review quoted on the website says staff speak several foreign languages.",
+   "waitlist": "Online registration form only (Kidesia); oral/phone registrations not accepted. Binding once contract signed and deposit paid. No waitlist info.",
+   "status": "open; ADDRESS DISCREPANCY: website lists Altstetterstrasse 187, 8048 Zürich, city geodata lists Grundstrasse 28 (not mentioned on website)",
+   "notes": "Meals follow Swiss food pyramid, seasonal/sustainable; daily movement. Closed 2 weeks Christmas–New Year. Notice 2 months.",
+   "price_day": 125.0,
+   "price_day_baby": 145.0,
+   "price_note": "Website tariff table 'Krippentarife' (no validity year; column header only 'Kosten (CHF)'): Ganzer Tag 100% 06:00–18:30 CHF 145 (Säuglinge bis 18 Monate) / CHF 125 (Kleinkinder ab 18 Monate), incl. all meals. Half days CHF 65–105. Deposit = one monthly fee.",
+   "sources": [
+    "https://kinderkrippe-littleeinsteins.ch/",
+    "https://kinderkrippe-littleeinsteins.ch/tarife-und-anmeldung",
+    "https://kinderkrippe-littleeinsteins.ch/little-einsteins-altstetten"
+   ],
+   "walk_m": 994,
+   "crow_m": 682,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register for the address on the Kita website"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kicher-erbsen",
+  "name": "Kita Kicher-Erbsen",
+  "cat": "kita",
+  "lat": 47.375829,
+  "lon": 8.487056,
+  "address": "Albisriederstrasse 334, 8047 Zürich",
+  "walk_min": 14,
+  "desc_de": "Kleine Kita ohne Website; nur Handynummer und E-Mail in den Stadtdaten – direkt anfragen. Vollkostentarif nicht publiziert.",
+  "desc_en": "Small Kita without a website; only a mobile number and e-mail in city data — contact directly. Full-cost rate not published.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "unverified"
+  ],
+  "details": {
+   "city_poi_id": "kk14021",
+   "subsidised": true,
+   "phone": "+41 79 634 04 40; kicher-erbsen@gmx.ch",
+   "email": "kicher-erbsen@gmx.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Per city_note only.",
+   "status": "unverified - no website and no web presence found (searches returned nothing); only city geodata entry with gmx e-mail and mobile number",
+   "notes": "Must be contacted directly by phone/e-mail; likely a small private Kita.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "Not published online.",
+   "sources": [],
+   "walk_m": 999,
+   "crow_m": 889,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-schmetterling-bachwiesen",
+  "name": "Kita Schmetterling Bachwiesen",
+  "cat": "kita",
+  "lat": 47.376898,
+  "lon": 8.485223,
+  "address": "Bachwiesenstrasse 117a, 8047 Zürich",
+  "walk_min": 14,
+  "desc_de": "Schmetterling-Standort direkt beim GZ Bachwiesen und Bachwiesenpark, Purzelbaum-Kita. Vollkosten ca. CHF 130/Tag (Baby CHF 150).",
+  "desc_en": "Schmetterling site right next to GZ Bachwiesen and Bachwiesenpark, Purzelbaum label. Full-cost rate approx. CHF 130/day (baby CHF 150).",
+  "url": "https://www.krippe-schmetterling.ch/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "purzelbaum"
+  ],
+  "details": {
+   "city_poi_id": "kk214",
+   "subsidised": true,
+   "phone": "+41 44 492 60 01 (Bachwiesen); admin +41 44 492 60 02",
+   "email": "info@krippe-schmetterling.ch",
+   "city_note": "Bietet subventionierte Plätze an.; Purzelbaum",
+   "subsidised_note": "Subsidised places offered (city_note). Number not stated.",
+   "operator": "Kita Schmetterling (Impressum gives only 'Kita Schmetterling', Spirgartenstrasse 8, 8048 Zürich; legal form not stated); founded 1997",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 07:00–18:30",
+   "labels": [
+    "Purzelbaum (per city data; not mentioned on own site)",
+    "Elmar concept (movement and senses)",
+    "Lehrbetrieb"
+   ],
+   "languages": "Not stated (German); English registration form available",
+   "groups": "Not stated per site (organisation: 102 places, 7 mixed-age + 1 baby group)",
+   "waitlist": "Place request via /platzanfrage.",
+   "status": "operating",
+   "notes": "Near GZ Bachwiese / Bachwiesenpark.",
+   "price_day": 130,
+   "price_day_baby": 150,
+   "price_note": "Same price list as all Schmetterling sites: extra day CHF 150 baby / CHF 130 from 19 months; monthly full day 1 day/wk CHF 650 / 550, 5 days/wk CHF 2'850 / 2'390. Meals incl. Year not stated.",
+   "sources": [
+    "https://www.krippe-schmetterling.ch/",
+    "https://www.krippe-schmetterling.ch/preise",
+    "https://www.krippe-schmetterling.ch/kontakt"
+   ],
+   "walk_m": 1066,
+   "crow_m": 882,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-schmetterling-fellenberg-1",
+  "name": "Kita Schmetterling Fellenberg 1",
+  "cat": "kita",
+  "lat": 47.37513,
+  "lon": 8.490763,
+  "address": "Fellenbergstrasse 289, 8047 Zürich",
+  "walk_min": 14,
+  "desc_de": "Albisrieder Kita-Verbund seit 1997 mit Elmar-Bewegungskonzept, ab 06:30 geöffnet; englisches Anmeldeformular. Vollkosten ca. CHF 130/Tag (Baby CHF 150).",
+  "desc_en": "Albisrieden Kita group (since 1997) with the Elmar movement concept, open from 06:30; English registration form available. Full-cost rate approx. CHF 130/day (baby CHF 150).",
+  "url": "https://www.krippe-schmetterling.ch/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "early-opening"
+  ],
+  "details": {
+   "city_poi_id": "kk229",
+   "subsidised": true,
+   "phone": "+41 44 492 60 06 (Fellenberg); admin +41 44 492 60 02",
+   "email": "info@krippe-schmetterling.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Subsidised places offered (city_note); private price list does not apply to them. Sibling discount 10% only on private places.",
+   "operator": "Kita Schmetterling (Impressum gives only 'Kita Schmetterling', Spirgartenstrasse 8, 8048 Zürich; legal form not stated); founded 1997, several sites in Albisrieden",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 06:30–18:30",
+   "labels": [
+    "Elmar concept 'Bildung durch Bewegung und über die Sinne'",
+    "Lehrbetrieb"
+   ],
+   "languages": "Not stated (German); an English-language registration form PDF is offered",
+   "groups": "Organisation-wide: 102 places in 7 mixed-age groups + 1 baby group across its Albisrieden Kitas; no per-site breakdown",
+   "waitlist": "Place request via /platzanfrage (PDF forms incl. English registration form). No waitlist info.",
+   "status": "operating",
+   "notes": "Third site Wydäckerring 138 opened Sept 2025. Absences not refunded.",
+   "price_day": 130,
+   "price_day_baby": 150,
+   "price_note": "Only per-day figures are for extra days (Zusatztage): CHF 150 baby / CHF 130 from 19 months. Regular private places are monthly flat rates: full day 1 day/wk CHF 650 (<=18 months) / 550 (from 19 months); 5 days/wk CHF 2'850 / 2'390. Half days also offered. Meals incl. Year not stated; operator may change prices unilaterally. Baby tariff until 18th month completed.",
+   "sources": [
+    "https://www.krippe-schmetterling.ch/",
+    "https://www.krippe-schmetterling.ch/preise",
+    "https://www.krippe-schmetterling.ch/dienstleistungen",
+    "https://www.krippe-schmetterling.ch/kontakt",
+    "https://www.krippe-schmetterling.ch/impressum"
+   ],
+   "walk_m": 1056,
+   "crow_m": 851,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-guexi-lindenplatz",
+  "name": "Güxi Lindenplatz",
+  "cat": "kita",
+  "lat": 47.388199,
+  "lon": 8.485199,
+  "address": "Badenerstrasse 682, 8048 Zürich (Güxi; Stadtdaten: 697)",
+  "walk_min": 16,
+  "desc_de": "'Güxi Altstetten' mit Waldgruppen ab 30 Monaten, Musikpädagogik und eigenem Garten, 06:30–18:00 (Abend auf Anfrage); laut Güxi meist rasch Plätze. Vollkostentarif nicht publiziert.",
+  "desc_en": "'Güxi Altstetten' with forest groups from 30 months, music education and an enclosed garden, 06:30–18:00 (evenings on request); Güxi says places are usually found quickly. Full-cost rate not published.",
+  "url": "https://www.guexi.ch/standorte/altstetten/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "forest",
+   "garden"
+  ],
+  "details": {
+   "city_poi_id": "kk036",
+   "subsidised": true,
+   "phone": "+41 43 818 70 00; admin +41 43 266 62 62",
+   "email": "info@guexi.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Subsidised places for City of Zürich residents (FAQ).",
+   "operator": "Güxi AG, Räffelstrasse 25, 8045 Zürich",
+   "ages": "Säuglinge ab 3 Monaten (FAQ also says 6 months) – Kindergarteneintritt; Wald-Kita from 30 months",
+   "hours": "Mo–Fr 06:30–18:00; evening care 18:00–20:00 on request; open year-round except public holidays",
+   "labels": [
+    "Wald-Kita (forest groups)",
+    "music education / Kita choir",
+    "Lehrbetrieb"
+   ],
+   "languages": "Not stated (German)",
+   "waitlist": "FAQ: waiting times vary but they 'generally have space or quickly find a solution'. Non-binding visit via guexi.ch/kontakt/besichtigung.",
+   "status": "operating as 'Güxi Altstetten'; Güxi's page gives Badenerstrasse 682 (city data: 697), near tram stop Lindenplatz",
+   "notes": "Private enclosed garden; forest outings; customer parking; overnight 'Krippenschlafen' Fri–Sat at some sites.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "No private tariff published; full-day places only.",
+   "sources": [
+    "https://www.guexi.ch/standorte/altstetten/",
+    "https://www.guexi.ch/faq/",
+    "https://www.guexi.ch/impressum"
+   ],
+   "walk_m": 1168,
+   "crow_m": 879,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register for the address on guexi.ch"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-letzi-kinderkrippe-bambi",
+  "name": "Letzi Kinderkrippe Bambi",
+  "cat": "kita",
+  "lat": 47.380068,
+  "lon": 8.502594,
+  "address": "Letzigraben 25, 8003 Zürich",
+  "walk_min": 16,
+  "desc_de": "Bambi-Kita ohne Sommerschliessung mit eigenem Garten und KiD-Deutschförderung; mindestens 2 Tage pro Woche. Vollkosten ca. CHF 133/Tag (Baby CHF 147).",
+  "desc_en": "Bambi Kita with no summer closure, its own garden and KiD German-language support; minimum 2 days a week. Full-cost rate approx. CHF 133/day (baby CHF 147).",
+  "url": "https://www.kinderkrippe-bambi.ch/de/kinderkrippen/standorte/kinderkrippe-letzi",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "garden",
+   "no-summer-closure"
+  ],
+  "details": {
+   "city_poi_id": "kk7802",
+   "subsidised": true,
+   "phone": "+41 44 401 25 22 (new registrations); Kita +41 44 557 35 03; Kita management +41 76 530 60 76",
+   "email": "info@kinderkrippe-bambi.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Every Bambi Kita offers private and subsidised places; reduced rates per City of Zürich Beitragsrechner. No registration/waitlist fee or deposit.",
+   "operator": "Kinderkrippen Bambi (network of 12 Kitas; central office Badenerstrasse 760, 8048 Zürich); legal entity not stated",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 07:00–18:30; no summer closure, closed only on official public holidays",
+   "labels": [
+    "Projekt-Kita KiD (Kita-integrierte Deutschförderung)"
+   ],
+   "languages": "Not stated; KiD German-language support",
+   "groups": "2 mixed-age groups of 11 children (max 3 infants each) + 1 group for the youngest",
+   "waitlist": "Minimum 2 days/week. New registrations +41 44 401 25 22; online waitlist and 'Freie Plätze' pages; viewings suggested 9:30–10:30 or 14:30–16:00.",
+   "status": "operating",
+   "notes": "Own garden (children sometimes eat outdoors). Allergy meals attempted but not guaranteed.",
+   "price_day": 133,
+   "price_day_baby": 147,
+   "price_note": "Private tariff: under 18 months CHF 147/day (2 days/wk = CHF 1'234.80/month ... 5 days = CHF 3'087.00); from 18 months CHF 133/day (5 days = CHF 2'793.00/month). Monthly = day rate x days x 4.2. Toddler rate from the month after the child turns 18 months. Extra hourly care CHF 14/h. Meals included except breast milk/formula/baby porridge. Year not stated.",
+   "sources": [
+    "https://www.kinderkrippe-bambi.ch/index.php/de/",
+    "https://www.kinderkrippe-bambi.ch/de/kinderkrippen/standorte/kinderkrippe-letzi",
+    "https://www.kinderkrippe-bambi.ch/de/fuer-eltern/kosten"
+   ],
+   "walk_m": 1207,
+   "crow_m": 746,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-gfz-kita-9",
+  "name": "GFZ Kita 9",
+  "cat": "kita",
+  "lat": 47.385801,
+  "lon": 8.481517,
+  "address": "Zwischenbächen 2, 8048 Zürich",
+  "walk_min": 17,
+  "desc_de": "Kita der Stiftung GFZ mit QualiKita und Purzelbaum, 3 Gruppen in eigenen Wohnungen, grosser Garten, Tiere der nahen GZ. Vollkosten ca. CHF 155/Tag (Baby CHF 175).",
+  "desc_en": "GFZ foundation Kita with QualiKita and Purzelbaum labels, 3 groups in their own apartments, large garden, visits to nearby community-centre animals. Full-cost rate approx. CHF 155/day (baby CHF 175).",
+  "url": "https://www.gfz-zh.ch/kita-9",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "qualikita",
+   "purzelbaum",
+   "garden",
+   "nonprofit"
+  ],
+  "details": {
+   "city_poi_id": "kk034",
+   "subsidised": true,
+   "phone": "+41 44 431 01 00; kita9@gfz-zh.ch",
+   "email": "kita9@gfz-zh.ch",
+   "city_note": "Bietet subventionierte Plätze an.; Purzelbaum",
+   "subsidised_note": "Subsidised places per City of Zürich (links to city subsidy application).",
+   "operator": "Stiftung GFZ (Gemeinnützige Frauen Zürich), Zeltweg 21, 8032 Zürich",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 06:30–18:00",
+   "labels": [
+    "QualiKita (all GFZ Kitas)",
+    "Purzelbaum (per city data)",
+    "Netzwerk Bildungsort Kita"
+   ],
+   "languages": "Not stated (German)",
+   "groups": "37.5 places in 3 mixed-age groups, each in its own apartment",
+   "waitlist": "Online place request any time (gfz.kipro.ch); if no place is free you go onto the waitlist automatically.",
+   "status": "operating",
+   "notes": "Large enclosed garden; close to forest and two community centres with animals (visited regularly). Opening-hours PDFs for 2026 and 2027 on the page.",
+   "price_day": 155,
+   "price_day_baby": 175,
+   "price_note": "GFZ 'Tarife Kita gültig ab 1. Januar 2025' (still the tariff linked in Oct 2026): up to 24 months CHF 700/month for 1 day/wk (=175/day), 5 days CHF 3'300/month (=165/day); from 25 months CHF 620/month for 1 day/wk (=155/day), 5 days CHF 2'900. Additional day CHF 175 / 155. Baby rate applies through the month the child turns 24 months. 10% sibling discount (private places, min. 4 days).",
+   "sources": [
+    "https://www.gfz-zh.ch/kita-9",
+    "https://gfz-zh.ch/app/uploads/2024/09/Kita_Tarife_2025.pdf"
+   ],
+   "walk_m": 1276,
+   "crow_m": 965,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kinderkrippe-albisrieden",
+  "name": "Kinderkrippe Albisrieden",
+  "cat": "kita",
+  "lat": 47.373996,
+  "lon": 8.49274,
+  "address": "Langgrütstrasse 134, 8047 Zürich",
+  "walk_min": 17,
+  "desc_de": "Traditionsverein seit 1952 mit 750 m² Garten, Waldtag und eigener Küche; Baby- und Kleinkindgruppen im Okt. 2026 ausgebucht. Vollkostentarif nicht publiziert.",
+  "desc_en": "Long-standing association (since 1952) with a 750 m² garden, forest day and own kitchen; baby and toddler groups fully booked as of Oct 2026. Full-cost rate not published.",
+  "url": "https://kka.ch/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "garden",
+   "forest",
+   "nonprofit",
+   "full"
+  ],
+  "details": {
+   "city_poi_id": "kk066",
+   "subsidised": true,
+   "phone": "+41 44 406 87 87; info@kka.ch",
+   "email": "info@kka.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Subsidised places calculated per City of Zürich rules; number not stated.",
+   "operator": "Krippeverein Albisrieden (non-profit association, founded 13.11.1952)",
+   "ages": "ab 3 Monaten (must drink from a bottle) – Kindergarteneintritt",
+   "hours": "Mo–Fr 06:45–18:15 (drop-off until 09:00, pick-up from 16:15); closed Christmas–New Year, one summer week and some extra days",
+   "labels": [
+    "Wald-Tag (forest day)",
+    "in-house cook"
+   ],
+   "languages": "Not stated (German)",
+   "groups": "5 age-homogeneous groups: Kleinstkind 'Sunne' & 'Elefante' (3–~24 months), Kleinkind 'Müüs' & 'Goldfisch' (18 months–~1 yr before KG), Vorkindergarten 'Panda'",
+   "waitlist": "As of Oct 2026: baby and toddler groups FULLY BOOKED; Vorkindergarten from summer 2027. Non-binding waitlist form. Info visits (email info@kka.ch): 28.10.2026 and 19.11.2026 full; 14.01.2027, 16.02.2027, 17.03.2027 open.",
+   "status": "operating (old domain redirects to kka.ch)",
+   "notes": "750 m2 garden; external gym; fresh meals from in-house kitchen.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "Full-cost tariff only shown as an image on kka.ch/fakten#kosten (not machine-readable). Deposit CHF 500 per child.",
+   "sources": [
+    "https://kka.ch/",
+    "https://kka.ch/fakten",
+    "https://kka.ch/raeume",
+    "https://kka.ch/krippenplatz",
+    "https://kka.ch/verein"
+   ],
+   "walk_m": 1289,
+   "crow_m": 955,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-globegarden-albisriederstrasse",
+  "name": "globegarden Albisriederstrasse",
+  "cat": "kita",
+  "lat": 47.378321,
+  "lon": 8.503777,
+  "address": "Albisriederstrasse 96, 8003 Zürich",
+  "walk_min": 17,
+  "desc_de": "globegarden-Standort mit Garten und eigener Küche, 07:00–19:00; Zweisprachigkeit (DE/EN) ist hier nicht ausgewiesen – nachfragen. Vollkostentarif nicht publiziert.",
+  "desc_en": "globegarden site with garden and own kitchen, 07:00–19:00; bilingual German/English care is not listed here — ask. Full-cost rate not published.",
+  "url": "https://www.globegarden.ch/locations/albisriederstrasse",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "garden",
+   "ask-english"
+  ],
+  "details": {
+   "city_poi_id": "kk16105",
+   "subsidised": true,
+   "phone": "+41 44 554 81 30 (facility per globegarden page; city data lists +41 44 536 55 32); albisriederstrasse@globegarden.org",
+   "email": "albisriederstrasse@globegarden.org",
+   "city_note": "bietet Subventionierte Plätze an ",
+   "subsidised_note": "Per city_note; location page links to the City of Zürich subsidy video. Number not stated.",
+   "operator": "globegarden (globegarden GmbH per job ads; group of legally independent companies, ISO 9001 certified group-wide)",
+   "hours": "07:00–19:00 (weekdays); extra days and emergency care offered",
+   "labels": [
+    "ISO 9001 (TÜV) group certification"
+   ],
+   "languages": "Location page does NOT list bilingual care (other globegarden sites explicitly list 'Zweisprachige Betreuung (Deutsch/Englisch)'; globegarden says 58 of its 90+ sites are bilingual). Ask directly.",
+   "waitlist": "Non-binding place request via website; globegarden Familienservice +41 58 776 78 78.",
+   "status": "operating per globegarden location page; 2026 job ads for this site appeared in search results (opening date not stated)",
+   "notes": "Own garden; fresh food cooked on site; monthly excursions. Context: SRF 17.09.2020 reported City of Zürich unannounced checks of all 37 globegarden sites (2020) found places/staff-ratio requirements not met at all sites; no systematic list falsification.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "No prices on the location page.",
+   "sources": [
+    "https://www.globegarden.ch/locations/albisriederstrasse",
+    "https://www.globegarden.ch/presse/media-info",
+    "https://www.srf.ch/news/schweiz/stadt-zuerich-kita-kette-globegarden-kommt-mit-blauem-auge-davon"
+   ],
+   "walk_m": 1261,
+   "crow_m": 913,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-guexi-badenerstrasse-414",
+  "name": "Güxi Badenerstrasse 414",
+  "cat": "kita",
+  "lat": 47.379919,
+  "lon": 8.506987,
+  "address": "Badenerstrasse 414, 8004 Zürich",
+  "walk_min": 18,
+  "desc_de": "Teil von 'Güxi Albisriederplatz' mit offenem Baby-/Kleinkindsystem und Waldgruppe ab 30 Monaten. Vollkostentarif nicht publiziert.",
+  "desc_en": "Part of 'Güxi Albisriederplatz' with an open baby/toddler system and a forest group from 30 months. Full-cost rate not published.",
+  "url": "https://www.guexi.ch/standorte/albisriederplatz/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "forest"
+  ],
+  "details": {
+   "city_poi_id": "kk5539",
+   "subsidised": true,
+   "phone": "+41 43 266 62 62",
+   "email": "info@guexi.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Subsidised places for City of Zürich residents.",
+   "operator": "Güxi AG, Räffelstrasse 25, 8045 Zürich",
+   "ages": "3 Monate – Kindergarteneintritt (open baby/toddler system 3–30 months; mixed-age indoor group from 24 months; forest group from 30 months)",
+   "hours": "Mo–Fr 06:30–18:00; evening care 18:00–20:00 on request (FAQ)",
+   "labels": [
+    "Wald-Kita (forest group)",
+    "music education / Kita choir",
+    "Lehrbetrieb"
+   ],
+   "languages": "Not stated (German)",
+   "groups": "Albisriederplatz cluster: 4 group systems (open baby/toddler, mixed-age indoor, forest, indoor+forest mix)",
+   "waitlist": "FAQ: generally have space or find a solution quickly; non-binding visit.",
+   "status": "operating; listed by Güxi under 'Güxi Albisriederplatz' (addresses Norastrasse 7, Zypressenstrasse 53, Badenerstrasse 288, Badenerstrasse 414)",
+   "notes": "Kinderspielparadies (Hardstrasse 2) usable by customers outside care hours/weekends.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "No private tariff published; full-day places only.",
+   "sources": [
+    "https://www.guexi.ch/standorte/albisriederplatz/",
+    "https://www.guexi.ch/faq/",
+    "https://www.guexi.ch/impressum"
+   ],
+   "walk_m": 1372,
+   "crow_m": 1064,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-abrakadabra",
+  "name": "Kita Abrakadabra",
+  "cat": "kita",
+  "lat": 47.388308,
+  "lon": 8.482784,
+  "address": "Im Struppen 1, 8048 Zürich",
+  "walk_min": 18,
+  "desc_de": "Kita des Vereins Kinderwelt Abrakadabra an ruhiger Sackgasse mit privatem Spielplatz, Waldtagen und Purzelbaum. Vollkosten ca. CHF 125/Tag (Baby CHF 140).",
+  "desc_en": "Kita run by the Kinderwelt Abrakadabra association on a quiet cul-de-sac with a private playground, forest days and Purzelbaum label. Full-cost rate approx. CHF 125/day (baby CHF 140).",
+  "url": "https://www.aaaaa.ch/zuerich/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "purzelbaum",
+   "forest",
+   "nonprofit"
+  ],
+  "details": {
+   "city_poi_id": "kk065",
+   "subsidised": true,
+   "phone": "+41 43 311 98 10; imstruppen@aaaaa.ch (city data: info@kita-abrakadabra.ch)",
+   "email": "info@kita-abrakadabra.ch",
+   "city_note": "Bietet subventionierte Plätze an.; Purzelbaum",
+   "subsidised_note": "Per city_note.",
+   "operator": "Verein Kinderwelt Abrakadabra (runs 5 Kitas in Zürich, Baden, Schneisingen, Döttingen)",
+   "ages": "3 Monate – Kindergarten (plus Hort group for KG children)",
+   "hours": "Mo–Fr 06:45–18:30 (current site); 2019 regulation said 06:45–18:15",
+   "labels": [
+    "Purzelbaum (per city data)",
+    "regular forest days (Waldtage)",
+    "project-based work"
+   ],
+   "languages": "Not stated",
+   "groups": "2019 regulation: 1 baby group + 2 toddler groups + Hort group; 300 m2 ground floor",
+   "waitlist": "Site says places are free from time to time. 2019 regulation: waitlist fee CHF 100 (refunded only on entry); minimum 1 day or 2 half days/week.",
+   "status": "operating (aaaaa.ch pages could not be fetched directly; details from search-engine extracts of aaaaa.ch/zuerich/ and the 2019 Elternreglement PDF)",
+   "notes": "Private playground behind the house on a cul-de-sac; weekly use of a local gym; book room and role-play room.",
+   "price_day": 125,
+   "price_day_baby": 140,
+   "price_note": "aaaaa.ch/zuerich/ (via search extract): 3–18 months CHF 140/day; 18 months–KG CHF 125/day. 2019 Elternreglement had CHF 130 / 120. Not directly verified; confirm with Kita.",
+   "sources": [
+    "https://www.aaaaa.ch/zuerich/",
+    "https://www.aaaaa.ch/wp-content/uploads/elternregelement_im_struppen.pdf"
+   ],
+   "walk_m": 1366,
+   "crow_m": 1023,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-pop-e-poppa-chinderburg",
+  "name": "pop e poppa Chinderburg",
+  "cat": "kita",
+  "lat": 47.389217,
+  "lon": 8.483081,
+  "address": "Badenerstrasse 710, 8048 Zürich (Provisorium 09/2026–02/2028; sonst Altstetterstrasse 218)",
+  "walk_min": 18,
+  "desc_de": "Montessori-inspirierte Kita mit 2 Gruppen; wegen Umbau vom 09/2026 bis 02/2028 provisorisch an der Badenerstrasse 710, danach zurück an der Altstetterstrasse 218. Vollkostentarif nicht publiziert.",
+  "desc_en": "Montessori-inspired Kita with 2 groups; because of renovation temporarily at Badenerstrasse 710 from 09/2026 to 02/2028, then back at Altstetterstrasse 218. Full-cost rate not published.",
+  "url": "https://www.popepoppa.ch/daycare-center/chinderburg/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "montessori",
+   "temporary-site"
+  ],
+  "details": {
+   "city_poi_id": "kk086",
+   "subsidised": true,
+   "phone": "+41 44 552 09 00 (input phone 044 431 79 77 appears outdated); chinderburg@popepoppa.ch",
+   "email": "krippe@chinderburg.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Subsidised places offered (city_note + location page); city residents submit SBU and BF confirmations. Number not stated.",
+   "operator": "pop e poppa (Swiss Kita network; legal entity not stated on the page)",
+   "ages": "3 Monate – Kindergarteneintritt",
+   "hours": "Mo–Fr 07:00–18:30; care on request 18:30–21:00; open year-round except short Christmas/New Year break",
+   "labels": [
+    "Montessori-inspired pedagogy",
+    "eco label (pop e poppa 'eco-friendly')",
+    "QualiKita (per 2023–2025 job ads, not on own page)",
+    "City programmes 'Gut vorbereitet in den Kindergarten' and KiD (Kita-integrierte Deutschförderung)"
+   ],
+   "languages": "Not stated for this site (German); pop e poppa's bilingual sites are the separate 'Allegra' brand, not Chinderburg",
+   "groups": "About 23–24 places in 2 mixed-age groups (job ads 2023–2025; not on own page)",
+   "waitlist": "Non-binding place enquiry form and online visit booking; pop e poppa says waitlist registration is non-binding and can be done well in advance.",
+   "status": "operating, but TEMPORARILY RELOCATED for renovation: Badenerstrasse 710, 8048 Zürich from 01.09.2026 until end of Feb 2028; back at Altstetterstrasse 218 from March 2028. Old domain chinderburg.ch is dead (DNS not found).",
+   "notes": "Over 25 years in Altstetten; near forest; daily outings/nature experiences; 'all inclusive' option (nappies, milk, baby food); breakfast, lunch and two snacks (catering partner menuandmore); breastfeeding corner; parent app. Job ads mention own garden at the permanent site.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "No tariff published on the location page.",
+   "sources": [
+    "https://www.popepoppa.ch/daycare-center/chinderburg/",
+    "https://www.popepoppa.ch/daycare-centres-zurich/",
+    "https://jobup.ch/en/jobs/detail/27c7e73f-5510-4f27-9046-5aa420051a5e",
+    "https://www.jobup.ch/en/jobs/detail/2d6a772a-9a3c-4d1e-adfc-2df90c1a88ad"
+   ],
+   "walk_m": 1372,
+   "crow_m": 1073,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (temporary site)"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kindertagesstaette-pilgerbrunnen",
+  "name": "Kindertagesstätte Pilgerbrunnen",
+  "cat": "kita",
+  "lat": 47.378838,
+  "lon": 8.506224,
+  "address": "Brahmsstrasse 44, 8003 Zürich",
+  "walk_min": 19,
+  "desc_de": "Kita des Evangelischen Frauenbunds im neuen Kinderhaus Pilgerbrunnen (2026), 4 Gruppen, grosser Garten, 07:00–19:00; zurzeit keine freien Plätze. Vollkosten ca. CHF 138/Tag (Baby CHF 160).",
+  "desc_en": "Kita of the Evangelical Women's Association in the new Pilgerbrunnen children's house (2026), 4 groups, large garden, 07:00–19:00; currently no free places. Full-cost rate approx. CHF 138/day (baby CHF 160).",
+  "url": "https://www.vefz.ch/kindertagesstaette",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "garden",
+   "long-hours",
+   "nonprofit",
+   "full"
+  ],
+  "details": {
+   "city_poi_id": "kk150",
+   "subsidised": true,
+   "phone": "+41 44 405 73 48; kita@pilgerbrunnen.ch (city data: +41 44 405 73 50, sekretariat@pilgerbrunnen.ch)",
+   "email": "sekretariat@pilgerbrunnen.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Subsidised places for City of Zürich residents via Schul- und Sportdepartement; fees per city parental-fee rules.",
+   "operator": "Evangelischer Frauenbund Zürich (efz), Brahmsstrasse 32, 8003 Zürich",
+   "ages": "3 Monate – Kindergartenalter",
+   "hours": "Mo–Fr 07:00–19:00, year-round",
+   "labels": [
+    "Bildungs- und Lerngeschichten (BULG)",
+    "label logo 'Qualis Label Eltern 2024 Kita' shown",
+    "kibesuisse member logo",
+    "ZEWO (operator)"
+   ],
+   "languages": "Not stated",
+   "groups": "4 mixed-age groups of 10–11 children (~40–44 places); 2 trained staff + 1 trainee per group",
+   "waitlist": "No vacancies currently. Waitlist form; families must reconfirm interest every 4 months.",
+   "status": "operating; moved into the new Pilgerbrunnen building (new Kinderhaus) in 2026; old URL vefz.ch/pilgerbrunnen/ is 404",
+   "notes": "Large garden shared with neighbouring groups and the efz children's home.",
+   "price_day": 138,
+   "price_day_baby": 160,
+   "price_note": "Private places CHF 138–160 per day depending on age (page does not give the age split or year; assumed higher rate for youngest). Minimum 2 days.",
+   "sources": [
+    "https://www.vefz.ch/kindertagesstaette"
+   ],
+   "walk_m": 1406,
+   "crow_m": 1051,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-villa-kunterbunt-am-letzigraben-kita-1-langgruetstrasse-112",
+  "name": "Villa Kunterbunt am Letzigraben Kita 1 - Langgrütstrasse 112",
+  "cat": "kita",
+  "lat": 47.373434,
+  "lon": 8.494238,
+  "address": "Langgrütstrasse 112, 8047 Zürich",
+  "walk_min": 19,
+  "desc_de": "Mehrsprachiges Team (IT/EN/FR/DE) mit 'English play' im Alltag (kein formales Bilingualkonzept), Teilnahme am städtischen Q-Kita-Pilot, Waldausflüge. Vollkosten ca. CHF 125/Tag (Baby CHF 150).",
+  "desc_en": "Multilingual team (Italian/English/French/German) with 'English play' activities (not a formal bilingual concept), part of the city's Q-Kita pilot, forest outings. Full-cost rate approx. CHF 125/day (baby CHF 150).",
+  "url": "https://www.villa-kunterbunt-zh.ch/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "english-some",
+   "forest"
+  ],
+  "details": {
+   "city_poi_id": "kk6148",
+   "subsidised": true,
+   "phone": "+41 43 311 01 02",
+   "email": "postmaster@villa-kunterbunt-zh.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "subsidised_note": "Subsidised places for families resident in the City of Zürich, per city rules.",
+   "operator": "Villa Kunterbunt Kita am Letzigraben GmbH (founded 2003 in Albisrieden)",
+   "ages": "Säuglinge (infant pedagogy) bis Vorkindergarten; exact range not stated",
+   "hours": "Mo–Fr 07:00–18:30; closed public holidays, Sechseläuten, Knabenschiessen Monday, Christmas–New Year",
+   "labels": [
+    "City of Zürich 'Q-Kita' quality pilot participant",
+    "Wald und Natur (weekly forest trips in Vorkindergarten)"
+   ],
+   "languages": "Staff languages: Italian, English, French, German; activities include 'English play'. Not a formal bilingual concept.",
+   "groups": "Vorkindergarten/Pre-School group of about 6–9 children per day; other group sizes not stated",
+   "waitlist": "Minimum 2 days/week. No waitlist rules published.",
+   "status": "operating",
+   "notes": "Outings to zoo, Uetliberg, lake; German early-literacy support; dance, music, theatre.",
+   "price_day": 125,
+   "price_day_baby": 150,
+   "price_note": "Only per-day figures published are for extra days (Zusatztage): CHF 150 infants / CHF 125 from 19 months. Monthly fees not published. 10% sibling discount (private places). Year not stated.",
+   "sources": [
+    "http://www.villa-kunterbunt-zh.ch/",
+    "http://www.villa-kunterbunt-zh.ch/standorte",
+    "http://www.villa-kunterbunt-zh.ch/bedingungen",
+    "https://www.villa-kunterbunt-zh.ch/oeffnungszeiten",
+    "http://www.villa-kunterbunt-zh.ch/ueber-uns",
+    "http://www.villa-kunterbunt-zh.ch/vorkindergarten-pree-school"
+   ],
+   "walk_m": 1429,
+   "crow_m": 1018,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-guexi-norastrasse-7",
+  "name": "Güxi Norastrasse 7",
+  "cat": "kita",
+  "lat": 47.380453,
+  "lon": 8.507621,
+  "address": "Norastrasse 7, 8004 Zürich",
+  "walk_min": 20,
+  "desc_de": "Teil von 'Güxi Albisriederplatz', Purzelbaum-Kita mit Bewegungsräumen und Waldgruppe. Vollkostentarif nicht publiziert.",
+  "desc_en": "Part of 'Güxi Albisriederplatz', Purzelbaum Kita with movement rooms and a forest group. Full-cost rate not published.",
+  "url": "https://www.guexi.ch/standorte/albisriederplatz/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised",
+   "purzelbaum",
+   "forest"
+  ],
+  "details": {
+   "city_poi_id": "kk2180",
+   "subsidised": true,
+   "phone": "+41 44 401 20 20; admin +41 43 266 62 62",
+   "email": "info@guexi.ch",
+   "city_note": "Bietet subventionierte Plätze an.; Purzelbaum",
+   "subsidised_note": "Subsidised places for City of Zürich residents.",
+   "operator": "Güxi AG, Räffelstrasse 25, 8045 Zürich",
+   "ages": "3 Monate – Kindergarteneintritt (open baby/toddler system 3–30 months; forest group from 30 months)",
+   "hours": "Mo–Fr 06:30–18:00; evening care 18:00–20:00 on request (FAQ)",
+   "labels": [
+    "Purzelbaum (per city data)",
+    "Wald-Kita (forest group)",
+    "music education / Kita choir",
+    "Lehrbetrieb"
+   ],
+   "languages": "Not stated (German)",
+   "groups": "Albisriederplatz cluster: 4 group systems (see Badenerstrasse 414)",
+   "waitlist": "FAQ: generally have space or find a solution quickly; non-binding visit.",
+   "status": "operating; part of 'Güxi Albisriederplatz' (old URL /standorte/guexi-albisriederplatz now /standorte/albisriederplatz/)",
+   "notes": "Daily outdoor time, movement rooms.",
+   "price_day": null,
+   "price_day_baby": null,
+   "price_note": "No private tariff published; full-day places only.",
+   "sources": [
+    "https://www.guexi.ch/standorte/albisriederplatz/",
+    "https://www.guexi.ch/faq/"
+   ],
+   "walk_m": 1461,
+   "crow_m": 1096,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-zum-farbhof",
+  "name": "Kita zum Farbhof",
+  "cat": "kita",
+  "lat": 47.389911,
+  "lon": 8.480551,
+  "address": "Badenerstrasse 735, 8048 Zürich",
+  "walk_min": 21,
+  "desc_de": "Kita mit subventionierten Plätzen laut städtischer Kita-Liste; Details nicht vertieft recherchiert (weiter als ~1,4 km).",
+  "desc_en": "Kita offering subsidised places according to the city's Kita list; details not researched in depth (beyond ~1.4 km).",
+  "url": "https://www.kitazumfarbhof.ch/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised"
+  ],
+  "details": {
+   "city_poi_id": "kk11441",
+   "subsidised": true,
+   "phone": "+41 44 544 08 44",
+   "email": null,
+   "city_note": "bietet subventionierte Plätze an",
+   "walk_m": 1573,
+   "crow_m": 1266,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-guexi-hardstrasse",
+  "name": "Güxi Hardstrasse",
+  "cat": "kita",
+  "lat": 47.378445,
+  "lon": 8.510798,
+  "address": "Hardstrasse 2, 8004 Zürich",
+  "walk_min": 23,
+  "desc_de": "Kita mit subventionierten Plätzen laut städtischer Kita-Liste; Details nicht vertieft recherchiert (weiter als ~1,4 km).",
+  "desc_en": "Kita offering subsidised places according to the city's Kita list; details not researched in depth (beyond ~1.4 km).",
+  "url": "https://www.guexi.ch/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised"
+  ],
+  "details": {
+   "city_poi_id": "kk8261",
+   "subsidised": true,
+   "phone": "+41 43 266 62 62",
+   "email": "info@guexi.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "walk_m": 1711,
+   "crow_m": 1387,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kinderkrippe-luna",
+  "name": "Kinderkrippe Luna",
+  "cat": "kita",
+  "lat": 47.387341,
+  "lon": 8.476275,
+  "address": "Eugen-Huber-Strasse 97, 8048 Zürich",
+  "walk_min": 23,
+  "desc_de": "Kita mit subventionierten Plätzen laut städtischer Kita-Liste; Details nicht vertieft recherchiert (weiter als ~1,4 km).",
+  "desc_en": "Kita offering subsidised places according to the city's Kita list; details not researched in depth (beyond ~1.4 km).",
+  "url": "https://www.stadt-zuerich.ch/kinderbetreuung",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised"
+  ],
+  "details": {
+   "city_poi_id": "kk139",
+   "subsidised": true,
+   "phone": "+41 44 431 40 30",
+   "email": "luna-kids@bluewin.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "walk_m": 1715,
+   "crow_m": 1395,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kids-und-co-hardau",
+  "name": "Kids & Co Hardau",
+  "cat": "kita",
+  "lat": 47.382784,
+  "lon": 8.511402,
+  "address": "Hohlstrasse 301, 8004 Zürich",
+  "walk_min": 25,
+  "desc_de": "Kita mit subventionierten Plätzen laut städtischer Kita-Liste; Details nicht vertieft recherchiert (weiter als ~1,4 km).",
+  "desc_en": "Kita offering subsidised places according to the city's Kita list; details not researched in depth (beyond ~1.4 km).",
+  "url": "https://www.profawo.ch/angebot/kids-co-kitas/zuerich/hardau/",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised"
+  ],
+  "details": {
+   "city_poi_id": "kk119",
+   "subsidised": true,
+   "phone": "+41 44 401 04 46",
+   "email": "zh.hardau@kidsco.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "walk_m": 1894,
+   "crow_m": 1355,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-schmetterling-wydaeckerring",
+  "name": "Kita Schmetterling Wydäckerring",
+  "cat": "kita",
+  "lat": 47.369958,
+  "lon": 8.493666,
+  "address": "Wydäckerring 138, 8047 Zürich",
+  "walk_min": 25,
+  "desc_de": "Kita mit subventionierten Plätzen laut städtischer Kita-Liste; Details nicht vertieft recherchiert (weiter als ~1,4 km).",
+  "desc_en": "Kita offering subsidised places according to the city's Kita list; details not researched in depth (beyond ~1.4 km).",
+  "url": "http://www.krippe-schmetterling.ch",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised"
+  ],
+  "details": {
+   "city_poi_id": "kk15664",
+   "subsidised": true,
+   "phone": "+41 44 492 60 02",
+   "email": "info@krippe-schmetterling.ch",
+   "city_note": "bietet subventionierte Plätze an.",
+   "walk_m": 1877,
+   "crow_m": 1403,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-little-frogs-vulkanstrasse",
+  "name": "KITA Little Frogs (Vulkanstrasse)",
+  "cat": "kita",
+  "lat": 47.393494,
+  "lon": 8.485191,
+  "address": "Vulkanstrasse 110a, 8048 Zürich",
+  "walk_min": 26,
+  "desc_de": "Kita mit subventionierten Plätzen laut städtischer Kita-Liste; Details nicht vertieft recherchiert (weiter als ~1,4 km).",
+  "desc_en": "Kita offering subsidised places according to the city's Kita list; details not researched in depth (beyond ~1.4 km).",
+  "url": "https://www.littlefrogs.ch/kopie-von-home",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised"
+  ],
+  "details": {
+   "city_poi_id": "kk7901",
+   "subsidised": true,
+   "phone": "+41 43 344 83 35",
+   "email": "kitaleitung@littlefrogs.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "walk_m": 1945,
+   "crow_m": 1363,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-little-angels-altstetten",
+  "name": "KiTa Little Angels Altstetten",
+  "cat": "kita",
+  "lat": 47.394165,
+  "lon": 8.487549,
+  "address": "Herostrasse 7, 8048 Zürich",
+  "walk_min": 26,
+  "desc_de": "Kita mit subventionierten Plätzen laut städtischer Kita-Liste; Details nicht vertieft recherchiert (weiter als ~1,4 km).",
+  "desc_en": "Kita offering subsidised places according to the city's Kita list; details not researched in depth (beyond ~1.4 km).",
+  "url": "http://www.kitalittleangels.ch",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised"
+  ],
+  "details": {
+   "city_poi_id": "kk12542",
+   "subsidised": true,
+   "phone": "+41 43 539 69 12",
+   "email": "kita.littleangels@hotmail.com",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "walk_m": 1907,
+   "crow_m": 1362,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-albisrieden-kinderkrippe-bambi",
+  "name": "Albisrieden Kinderkrippe Bambi",
+  "cat": "kita",
+  "lat": 47.369653,
+  "lon": 8.496586,
+  "address": "Wydäckerring 63, 8047 Zürich",
+  "walk_min": 27,
+  "desc_de": "Kita mit subventionierten Plätzen laut städtischer Kita-Liste; Details nicht vertieft recherchiert (weiter als ~1,4 km).",
+  "desc_en": "Kita offering subsidised places according to the city's Kita list; details not researched in depth (beyond ~1.4 km).",
+  "url": "https://www.kinderkrippe-bambi.ch/de/kinderkrippen/standorte/kinderkrippe-albisrieden",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised"
+  ],
+  "details": {
+   "city_poi_id": "kk2175",
+   "subsidised": true,
+   "phone": "+41 43 931 76 68",
+   "email": "info@kinderkrippe-bambi.ch",
+   "city_note": "Bietet subventionierte Plätze an.; Purzelbaum",
+   "walk_m": 2023,
+   "crow_m": 1456,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kita-kinderkrippe-wirbelschloss",
+  "name": "Kinderkrippe Wirbelschloss",
+  "cat": "kita",
+  "lat": 47.390289,
+  "lon": 8.509036,
+  "address": "Pfingstweidstrasse 101, 8005 Zürich",
+  "walk_min": 31,
+  "desc_de": "Kita mit subventionierten Plätzen laut städtischer Kita-Liste; Details nicht vertieft recherchiert (weiter als ~1,4 km).",
+  "desc_en": "Kita offering subsidised places according to the city's Kita list; details not researched in depth (beyond ~1.4 km).",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette",
+  "tags": [
+   "family",
+   "kita",
+   "subsidised"
+  ],
+  "details": {
+   "city_poi_id": "kk008",
+   "subsidised": true,
+   "phone": "+41 44 278 54 66",
+   "email": "cornelia.keller@gmx.migros.ch",
+   "city_note": "Bietet subventionierte Plätze an.",
+   "walk_m": 2405,
+   "crow_m": 1456,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_kindertagesstaette"
+ },
+ {
+  "id": "kindergarten-koch-areal-baufeld-c",
+  "name": "Dreifachkindergarten Koch-Areal (Baufeld C, Kraftwerk1-Bau)",
+  "cat": "kindergarten",
+  "lat": 47.381111,
+  "lon": 8.493945,
+  "address": "Koch-Areal Baufeld C (Kraftwerk1, Flüelastrasse 50–56), 8048 Zürich",
+  "walk_min": 6,
+  "desc_de": "Die Stadt mietet im Erdgeschoss/1. OG des Kraftwerk1-Baus Räume für einen Dreifachkindergarten mit Betreuung und Aussenspielbereich für das Einzugsgebiet der Schule Utogrund (Betrieb ab 2027) – sehr wahrscheinlich der Kindergarten des Kindes.",
+  "desc_en": "The city is renting ground/first-floor space in the Kraftwerk1 building for a three-class kindergarten with day care and an outdoor play area for the Schule Utogrund catchment (operating from 2027) — very likely this child's kindergarten.",
+  "url": "https://www.stadt-zuerich.ch/de/aktuell/medienmitteilungen/2025/09/dreifachkindergarten-mit-betreuung-auf-dem-koch-areal-ab-2027.html",
+  "tags": [
+   "family",
+   "public",
+   "free",
+   "kindergarten",
+   "on-site",
+   "planned",
+   "likely-catchment",
+   "hort"
+  ],
+  "details": {
+   "schuleinheit": "Utogrund",
+   "classes": 3,
+   "betreuung": "Räume für Betreuung und Verpflegung",
+   "timeline": "Ausbau bis Nov. 2026 / Schuljahr 2027/28",
+   "note": "Pin = Kraftwerk1 building (GWR Flüelastrasse 52); exact entrance unknown.",
+   "walk_m": 401,
+   "crow_m": 167,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch GWR (Flüelastrasse 52, under construction)"
+  },
+  "source": "https://www.stadt-zuerich.ch/de/aktuell/medienmitteilungen/2025/09/dreifachkindergarten-mit-betreuung-auf-dem-koch-areal-ab-2027.html",
+  "approx": true
+ },
+ {
+  "id": "kg-kappeli-3",
+  "name": "Kindergarten Kappeli 3",
+  "cat": "kindergarten",
+  "lat": 47.386376,
+  "lon": 8.49614,
+  "address": "Flurstrasse 30, 8048 Zürich",
+  "walk_min": 7,
+  "desc_de": "Kindergarten der Schule Kappeli weiter nördlich an derselben Flurstrasse, Richtung Badenerstrasse.",
+  "desc_en": "Kindergarten of Schule Kappeli further north on the same Flurstrasse, towards Badenerstrasse.",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/kappeli_primar.html",
+  "tags": [
+   "family",
+   "public",
+   "free",
+   "kindergarten"
+  ],
+  "details": {
+   "schuleinheit": "Kappeli Primar",
+   "phone": "+41 44 413 75 30",
+   "walk_m": 517,
+   "crow_m": 470,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_schulanlagen"
+ },
+ {
+  "id": "kg-untermoos-5-6",
+  "name": "Kindergarten Untermoos 5+6",
+  "cat": "kindergarten",
+  "lat": 47.379695,
+  "lon": 8.489257,
+  "address": "Freilagerstrasse 55, 8047 Zürich",
+  "walk_min": 7,
+  "desc_de": "Zwei Kindergartenklassen der Schule Untermoos im Freilager-Areal.",
+  "desc_en": "Two kindergarten classes of Schule Untermoos in the Freilager area.",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/untermoos/ueberuns/standorte/kindergaerten.html",
+  "tags": [
+   "family",
+   "public",
+   "free",
+   "kindergarten"
+  ],
+  "details": {
+   "schuleinheit": "Untermoos",
+   "phone": "+41 44 419 00 65",
+   "walk_m": 525,
+   "crow_m": 447,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_schulanlagen"
+ },
+ {
+  "id": "kg-untermoos-3",
+  "name": "Kindergarten Untermoos 3",
+  "cat": "kindergarten",
+  "lat": 47.382391,
+  "lon": 8.486646,
+  "address": "Rautistrasse 99, 8048 Zürich",
+  "walk_min": 8,
+  "desc_de": "Eingeschossiger städtischer Kindergarten an der Rautistrasse (Schuleinheit Untermoos).",
+  "desc_en": "Single-storey public kindergarten on Rautistrasse (Untermoos school unit).",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/untermoos/ueberuns/standorte/kindergaerten.html",
+  "tags": [
+   "family",
+   "public",
+   "free",
+   "kindergarten"
+  ],
+  "details": {
+   "schuleinheit": "Untermoos",
+   "phone": "+41 44 413 75 61",
+   "walk_m": 613,
+   "crow_m": 509,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_schulanlagen"
+ },
+ {
+  "id": "kg-kappeli-schulhaus",
+  "name": "Kindergärten Kappeli 4/6/7/8 (Schulhaus Kappeli)",
+  "cat": "kindergarten",
+  "lat": 47.386203,
+  "lon": 8.492935,
+  "address": "Badenerstrasse 618, 8048 Zürich",
+  "walk_min": 8,
+  "desc_de": "Vier Kindergartenklassen direkt im Schulhaus Kappeli, mit Mittag-/Abendhorten im selben Areal.",
+  "desc_en": "Four kindergarten classes inside the Kappeli school building, with lunch/after-school clubs on the same site.",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/kappeli_primar.html",
+  "tags": [
+   "family",
+   "public",
+   "free",
+   "kindergarten",
+   "hort"
+  ],
+  "details": {
+   "schuleinheit": "Kappeli Primar",
+   "walk_m": 572,
+   "crow_m": 405,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_schulanlagen"
+ },
+ {
+  "id": "kg-flueelastrasse",
+  "name": "Kindergarten Flüelastrasse (Schule Utogrund)",
+  "cat": "kindergarten",
+  "lat": 47.382888,
+  "lon": 8.49633,
+  "address": "Flüelastrasse 13, 8048 Zürich",
+  "walk_min": 9,
+  "desc_de": "Städtischer Kindergarten der Schuleinheit Utogrund, Luftlinie nur ~220 m vom Hochhaus – neben dem neuen Koch-Kindergarten die naheliegendste Utogrund-Alternative (Zuteilung durch die Kreisschulbehörde).",
+  "desc_en": "Public kindergarten of the Utogrund school unit, only ~220 m as the crow flies — next to the new on-site Koch kindergarten the most obvious Utogrund alternative (assignment by the district school board).",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/utogrund/ueberuns/standorte/kindergaerten.html",
+  "tags": [
+   "family",
+   "public",
+   "free",
+   "kindergarten"
+  ],
+  "details": {
+   "schuleinheit": "Utogrund",
+   "phone": "+41 44 413 74 76",
+   "walk_m": 632,
+   "crow_m": 223,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_schulanlagen"
+ },
+ {
+  "id": "kg-freilager-1-2",
+  "name": "Kindergarten Freilager 1+2",
+  "cat": "kindergarten",
+  "lat": 47.379462,
+  "lon": 8.488975,
+  "address": "Freilagerstrasse 57, 8047 Zürich",
+  "walk_min": 9,
+  "desc_de": "Kindergärten der Tagesschule Freilager in der autofreien Freilager-Siedlung, mit Morgentisch und Hort im Haus.",
+  "desc_en": "Kindergartens of the Freilager all-day school in the car-free Freilager estate, with breakfast club and after-school care in the building.",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/freilager/ueberuns/portrait.html",
+  "tags": [
+   "family",
+   "public",
+   "free",
+   "kindergarten",
+   "tagesschule"
+  ],
+  "details": {
+   "schuleinheit": "Freilager",
+   "phone": "+41 44 413 74 81",
+   "walk_m": 652,
+   "crow_m": 481,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_schulanlagen"
+ },
+ {
+  "id": "kg-utogrund-1-2",
+  "name": "Kindergarten Utogrund 1+2",
+  "cat": "kindergarten",
+  "lat": 47.380254,
+  "lon": 8.497027,
+  "address": "Dennlerstrasse 27, 8047 Zürich",
+  "walk_min": 9,
+  "desc_de": "Zwei Kindergartenklassen der Schule Utogrund, im selben Haus der Hort Utogrund 3.",
+  "desc_en": "Two kindergarten classes of Schule Utogrund; Hort Utogrund 3 in the same building.",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/utogrund/ueberuns/standorte/kindergaerten.html",
+  "tags": [
+   "family",
+   "public",
+   "free",
+   "kindergarten"
+  ],
+  "details": {
+   "schuleinheit": "Utogrund",
+   "phone": "+41 44 413 76 50 / 76 51",
+   "walk_m": 673,
+   "crow_m": 375,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_schulanlagen"
+ },
+ {
+  "id": "kinder-campus",
+  "name": "Kinder Campus (Privatschule, zweisprachig)",
+  "cat": "school",
+  "lat": 47.384342,
+  "lon": 8.493886,
+  "address": "Buckhauserstrasse 45, 8048 Zürich",
+  "walk_min": 4,
+  "desc_de": "Private zweisprachige Schule (Deutsch/Englisch) mit Vorkindergarten (mind. 3 Vormittage, ab CHF 774/Monat) und Kindergarten (3–6 J.) – eine Option ab ca. 3 Jahren, keine Kita.",
+  "desc_en": "Private bilingual German/English school with pre-kindergarten (min. 3 mornings, from CHF 774/month) and kindergarten (ages 3–6) — an option from about age 3, not a daycare.",
+  "url": "https://www.kinder-campus.ch",
+  "tags": [
+   "family",
+   "private",
+   "english",
+   "bilingual",
+   "paid"
+  ],
+  "details": {
+   "ages": "Vorkindergarten/Kindergarten 3–6 J.; Primar bis 12 J.",
+   "price": "Vorkindergarten ab CHF 774/Monat; 1. KG ab CHF 1'376/Monat; Betreuungsmodule 07:30–17:30",
+   "languages": "Deutsch/Englisch bilingual",
+   "walk_m": 309,
+   "crow_m": 200,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://www.kinder-campus.ch/preise"
+ },
+ {
+  "id": "schule-kappeli-primar",
+  "name": "Schule Kappeli Primar",
+  "cat": "school",
+  "lat": 47.386203,
+  "lon": 8.492935,
+  "address": "Badenerstrasse 618, 8048 Zürich",
+  "walk_min": 8,
+  "desc_de": "Primarschule im Altstetter Teil des Quartiers (Schulkreis Letzi), mit mehreren Kindergärten und Horten rund um Badener-, Flur- und Hohlstrasse; mögliche Alternative je nach Zuteilung.",
+  "desc_en": "Primary school on the Altstetten side (Schulkreis Letzi) with several kindergartens and after-school clubs around Badener-, Flur- and Hohlstrasse; a possible alternative depending on assignment.",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/kappeli_primar.html",
+  "tags": [
+   "family",
+   "public",
+   "primary",
+   "hort"
+  ],
+  "details": {
+   "schulkreis": "Letzi",
+   "phone": "+41 44 413 29 00",
+   "walk_m": 572,
+   "crow_m": 405,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_schulanlagen"
+ },
+ {
+  "id": "schule-utogrund",
+  "name": "Schule Utogrund (Primarschule)",
+  "cat": "school",
+  "lat": 47.379689,
+  "lon": 8.495921,
+  "address": "Dennlerstrasse 55, 8047 Zürich",
+  "walk_min": 8,
+  "desc_de": "Wahrscheinliche Primarschule (Schulkreis Letzi): Der neue Koch-Kindergarten ist für ihr Einzugsgebiet geplant, und die Stadt nennt das Koch-Areal als Grund für den Ersatzneubau als Tagesschule für 18 Klassen (fertig ca. 2030, Provisorien ab 2027). Hort mit rund 200 Plätzen, Morgentisch ab 07:00.",
+  "desc_en": "Likely primary school (Schulkreis Letzi): the new Koch-Areal kindergarten is planned for its catchment, and the city cites the Koch-Areal as a reason to rebuild it as an 18-class all-day school (ready ~2030, temporary pavilions from 2027). After-school care with ~200 places, breakfast club from 07:00.",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/utogrund.html",
+  "tags": [
+   "family",
+   "public",
+   "primary",
+   "likely-catchment",
+   "hort"
+  ],
+  "details": {
+   "schulkreis": "Letzi",
+   "phone": "+41 44 413 30 00",
+   "hort": "Morgentisch 07:00–08:30; Mittag/Abend 11:55–18:00; Ferienbetreuung 07:00–18:00",
+   "tagesschule": "Neubau als Tagesschule geplant (Fertigstellung ca. 2030)",
+   "catchment_note": "likely, not confirmed — assignment by Kreisschulbehörde Letzi",
+   "walk_m": 546,
+   "crow_m": 372,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.stadt-zuerich.ch/de/aktuell/medienmitteilungen/2025/09/ersatzneubau-schulanlage-utogrund-und-instandsetzung-sportanlage-utogrund-per-2031.html"
+ },
+ {
+  "id": "tagesschule-freilager",
+  "name": "Tagesschule Freilager",
+  "cat": "school",
+  "lat": 47.378978,
+  "lon": 8.487551,
+  "address": "Flurstrasse 120, 8047 Zürich",
+  "walk_min": 10,
+  "desc_de": "Öffentliche Tagesschule (eröffnet Sommer 2022) mit 4 Kindergärten und 15 Primarklassen sowie inklusiver HPS-Abteilung; gleiche Flurstrasse, Richtung Albisrieden.",
+  "desc_en": "Public all-day school (opened summer 2022) with 4 kindergarten and 15 primary classes plus an inclusive special-needs branch; same Flurstrasse, towards Albisrieden.",
+  "url": "https://www.stadt-zuerich.ch/schulen/de/freilager/ueberuns/portrait.html",
+  "tags": [
+   "family",
+   "public",
+   "primary",
+   "tagesschule"
+  ],
+  "details": {
+   "schulkreis": "Letzi",
+   "phone": "+41 44 413 36 62",
+   "tagesschule": "ja, seit 2022",
+   "walk_m": 697,
+   "crow_m": 595,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.stadt-zuerich.ch/schulen/de/freilager/ueberuns/portrait.html"
+ },
+ {
+  "id": "dachgarten-spielplatz-abz",
+  "name": "ABZ-Dachgarten mit Spielplatz (für Bewohnende)",
+  "cat": "playground",
+  "lat": 47.382434,
+  "lon": 8.493779,
+  "address": "Sockelbau Flurstrasse 71a (1. OG), 8048 Zürich",
+  "walk_min": 1,
+  "desc_de": "1'700 m² grosser Dachgarten auf dem Sockelbau zwischen Hochhaus und Zeilenbau mit Spielplatz und Gemeinschaftspavillon – privater Treffpunkt der ABZ-Bewohnenden.",
+  "desc_en": "1,700 m² roof garden on the podium between the tower and the slab building, with a playground and community pavilion — a private meeting place for ABZ residents.",
+  "url": "https://www.abz-koch.ch/zusammenleben/",
+  "tags": [
+   "family",
+   "residents-only",
+   "on-site",
+   "toddler",
+   "planned"
+  ],
+  "details": {
+   "size_m2": 1700,
+   "access": "nur Bewohnende / residents only",
+   "walk_m": 25,
+   "crow_m": 32,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch GWR (Flurstrasse 71a, podium building)"
+  },
+  "source": "https://www.abz-koch.ch/zusammenleben/",
+  "approx": true
+ },
+ {
+  "id": "spielplatz-koch-park",
+  "name": "Spielplatz Koch-Park",
+  "cat": "playground",
+  "lat": 47.381697,
+  "lon": 8.493244,
+  "address": "Koch-Park, 8047/8048 Zürich",
+  "walk_min": 2,
+  "desc_de": "Kleinkinderspielplatz (0–5 J.) mit Sand- und Kiesbereich direkt vor der Haustür, dazu Wasserrinne im 'Jardin sauvage' und langer Trinkbrunnen.",
+  "desc_en": "Toddler playground (ages 0–5) with sand and gravel areas right at the doorstep, plus a water channel in the 'jardin sauvage' and a long drinking fountain.",
+  "url": "https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/park-und-gruenanlagen/koch-park.html",
+  "tags": [
+   "family",
+   "free",
+   "toddler",
+   "sand",
+   "outdoor"
+  ],
+  "details": {
+   "ages": "0–5",
+   "equipment": "Sandbereich, Kiesanlage",
+   "wc": "barrierefreies WC im Park",
+   "walk_m": 149,
+   "crow_m": 98,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-gz-bachwiesen",
+  "name": "Spielplatz GZ Bachwiesen (mit Tieren)",
+  "cat": "playground",
+  "lat": 47.380357,
+  "lon": 8.48651,
+  "address": "Bachwiesenstrasse/Mathysweg, 8047 Zürich",
+  "walk_min": 11,
+  "desc_de": "Grosszügige GZ-Anlage (0–16 J.) mit Bachspielbereich, Sand, Spielhaus, Riesenschaukel, Tiergehege und Volière – der vielseitigste Spielplatz in Gehdistanz.",
+  "desc_en": "Large community-centre playground (0–16) with stream play area, sand, playhouse, giant swing, animal enclosures and aviary — the most varied playground within walking distance.",
+  "url": "https://gz-zh.ch/gz-bachwiesen/",
+  "tags": [
+   "family",
+   "free",
+   "toddler",
+   "animals",
+   "water",
+   "sand"
+  ],
+  "details": {
+   "ages": "0–16",
+   "equipment": "Hamsterrad, Riesenschaukel, Kletteranlage mit Rutsche, Brettschaukel, Sandbereich, Federwippe, Bockrutsche, Pumpe, Spielhaus",
+   "features": "Bachspielbereich, Tiergehege, Volière, Brunnen, Pergola",
+   "walk_m": 743,
+   "crow_m": 575,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-saumackerstrasse",
+  "name": "Spielplatz Saumackerstrasse",
+  "cat": "playground",
+  "lat": 47.384274,
+  "lon": 8.48784,
+  "address": "Saumackerstrasse (bei kath. Kirche Heilig Kreuz), 8048 Zürich",
+  "walk_min": 11,
+  "desc_de": "Kleine, ruhige Spielanlage für 0–5-Jährige mit Brettschaukel, Federwippe, Wasserpumpe und Sand.",
+  "desc_en": "Small, quiet play area for ages 0–5 with swing, spring rocker, water pump and sand.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze",
+  "tags": [
+   "family",
+   "free",
+   "toddler",
+   "sand"
+  ],
+  "details": {
+   "ages": "0–5",
+   "equipment": "Brettschaukel, Federwippe, Pumpen, Sandbereich, Tischtennistisch",
+   "walk_m": 772,
+   "crow_m": 460,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-suessleren",
+  "name": "Spielplatz Süsslerenanlage",
+  "cat": "playground",
+  "lat": 47.376204,
+  "lon": 8.493763,
+  "address": "Süsslerenstrasse, 8047 Zürich",
+  "walk_min": 15,
+  "desc_de": "Kleinkindspielplatz (0–5 J.) in einer Parkanlage mit altem Baumbestand: Bachspielplatz, Sandkasten, Hangrutsche, Hüpfteller und Schlittelhügel im Winter.",
+  "desc_en": "Toddler playground (0–5) in a park with mature trees: stream play area, sandpit, slope slide, bouncing plates and a sledging hill in winter.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze",
+  "tags": [
+   "family",
+   "free",
+   "toddler",
+   "water",
+   "sand",
+   "shade"
+  ],
+  "details": {
+   "ages": "0–5",
+   "equipment": "Hüpfteller, Federwippe, Kletteranlage, Sandkasten, Brettschaukel, Hangrutsche, Balanciergerät",
+   "features": "Bachspielplatz, Spiel- und Liegewiese, Schlittelhügel",
+   "walk_m": 1087,
+   "crow_m": 709,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-heiligfeld",
+  "name": "Spielplatz Heiligfeld (Letzigraben)",
+  "cat": "playground",
+  "lat": 47.379632,
+  "lon": 8.505062,
+  "address": "Letzigraben/Badener-/Brahmsstrasse, 8003 Zürich",
+  "walk_min": 17,
+  "desc_de": "Grosszügige Spielanlage (0–5 J.) mit Wasserspiel, Sand, Kletterfelsen und schönem Baumbestand neben den Heiligfeld-Hochhäusern.",
+  "desc_en": "Generous play area (0–5) with water play, sand, climbing rock and fine old trees next to the Heiligfeld towers.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze",
+  "tags": [
+   "family",
+   "free",
+   "toddler",
+   "water",
+   "sand",
+   "shade"
+  ],
+  "details": {
+   "ages": "0–5",
+   "equipment": "Kletteranlage mit Rutsche, Kletterelement, Sandbereich, Wasserspiel, Brettschaukel",
+   "walk_m": 1295,
+   "crow_m": 936,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-buchlern",
+  "name": "Spielplatz Buchlern (am Bach)",
+  "cat": "playground",
+  "lat": 47.379841,
+  "lon": 8.479813,
+  "address": "Algierstrasse, 8048 Zürich",
+  "walk_min": 19,
+  "desc_de": "Grosszügige Anlage am Bach (0–9 J.) mit Seilbahn, Sand, Bockrutsche und Kletteranlage – gut kombinierbar mit dem Bachwiesenpark.",
+  "desc_en": "Large playground by a stream (0–9) with zip line, sand, slide and climbing frame — easy to combine with Bachwiesenpark.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze",
+  "tags": [
+   "family",
+   "free",
+   "water",
+   "sand"
+  ],
+  "details": {
+   "ages": "0–9",
+   "equipment": "Bockrutsche, Federwippe, Seilbahn, Brettschaukel, Sandbereich, Balanciergerät, Kletteranlage mit Rutsche",
+   "walk_m": 1380,
+   "crow_m": 1068,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-hardau",
+  "name": "Spielplatz Hardau (Weidendschungel)",
+  "cat": "playground",
+  "lat": 47.38299,
+  "lon": 8.509363,
+  "address": "Bullingerstrasse/Hardauweg, 8004 Zürich",
+  "walk_min": 22,
+  "desc_de": "Quartierspielplatz (0–9 J.) mit Wasserförderanlage, Stangenlabyrinth, Sand und Weidendschungel.",
+  "desc_en": "Neighbourhood playground (0–9) with water-pumping play, pole maze, sand and a willow jungle.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze",
+  "tags": [
+   "family",
+   "free",
+   "water",
+   "sand"
+  ],
+  "details": {
+   "ages": "0–9",
+   "walk_m": 1664,
+   "crow_m": 1202,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-hardaupark",
+  "name": "Spielplatz Hardaupark",
+  "cat": "playground",
+  "lat": 47.379541,
+  "lon": 8.50963,
+  "address": "Hardaupark, 8004 Zürich",
+  "walk_min": 22,
+  "desc_de": "Moderne Parkanlage (0–9 J.) mit Matschtisch, Sand, Drehteller und Holz-Liegerost.",
+  "desc_en": "Modern park playground (0–9) with mud table, sand, turntable and a wooden lounging deck.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze",
+  "tags": [
+   "family",
+   "free",
+   "sand",
+   "water"
+  ],
+  "details": {
+   "ages": "0–9",
+   "equipment": "Balanciergerät, Matschtisch, Rotationsgerät, Brettschaukel, Sandbereich, Pumpe, Drehteller",
+   "walk_m": 1634,
+   "crow_m": 1267,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "waldspielplatz-hasenrain",
+  "name": "Waldspielplatz Hasenrain",
+  "cat": "playground",
+  "lat": 47.375365,
+  "lon": 8.478592,
+  "address": "Im Schaber, 8047 Zürich (Albisrieder Wald)",
+  "walk_min": 24,
+  "desc_de": "Waldspielplatz in einer Lichtung am Fuss des Uetlibergs mit Aussicht – der nächste Waldzugang für Familienausflüge.",
+  "desc_en": "Forest playground in a clearing at the foot of the Uetliberg with a view — the nearest forest access for family outings.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze",
+  "tags": [
+   "family",
+   "free",
+   "forest",
+   "nature",
+   "outdoor"
+  ],
+  "details": {
+   "ages": "0–9",
+   "equipment": "Klettergerät, Brettschaukel",
+   "walk_m": 1826,
+   "crow_m": 1373,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-fritschiwiese",
+  "name": "Fritschiwiese (Spielplatz + Planschbecken)",
+  "cat": "playground",
+  "lat": 47.376049,
+  "lon": 8.51204,
+  "address": "Fritschi-/Badener-/Zypressenstrasse, 8003 Zürich",
+  "walk_min": 26,
+  "desc_de": "Beliebte grosse Parkanlage (0–16 J.) mit Planschbecken, Karussell, Seilbahn, Spielhaus und Spielhügel.",
+  "desc_en": "Popular large park playground (0–16) with paddling pool, carousel, zip line, playhouse and play hill.",
+  "url": "https://www.stadt-zuerich.ch/fritschiwiese",
+  "tags": [
+   "family",
+   "free",
+   "water",
+   "summer",
+   "sand"
+  ],
+  "details": {
+   "ages": "0–16",
+   "walk_m": 1952,
+   "crow_m": 1579,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-gz-loogarten",
+  "name": "Spielplatz GZ Loogarten",
+  "cat": "playground",
+  "lat": 47.388139,
+  "lon": 8.472148,
+  "address": "Eugen-Huber-/Loogartenstrasse, 8048 Zürich",
+  "walk_min": 27,
+  "desc_de": "Vielseitige GZ-Anlage (0–16 J.) mit Bach, Sandanlage, Hängebrücke, Wasserförderanlage und Spielhaus.",
+  "desc_en": "Varied community-centre playground (0–16) with stream, sand area, rope bridge, water play and playhouse.",
+  "url": "https://gz-zh.ch/gz-loogarten/",
+  "tags": [
+   "family",
+   "free",
+   "water",
+   "sand"
+  ],
+  "details": {
+   "ages": "0–16",
+   "walk_m": 2006,
+   "crow_m": 1716,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "spielplatz-gz-heuried",
+  "name": "Erlebnisgarten GZ Heuried (mit Tieren)",
+  "cat": "playground",
+  "lat": 47.36728,
+  "lon": 8.503065,
+  "address": "Döltschiweg 130, 8055 Zürich",
+  "walk_min": 32,
+  "desc_de": "Grosszügiger GZ-Erlebnisgarten mit Tiergehege, Kletterturm, Seilanlage und Wasserförderanlage; Freibad und Eisbahn Heuried nebenan.",
+  "desc_en": "Large community-centre adventure garden with animal enclosures, climbing tower, rope course and water play; Heuried pool and ice rink next door.",
+  "url": "https://gz-zh.ch/gz-heuried/",
+  "tags": [
+   "family",
+   "free",
+   "animals",
+   "water"
+  ],
+  "details": {
+   "ages": "0–16",
+   "walk_m": 2412,
+   "crow_m": 1849,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "wasserspielplatz-hardhof",
+  "name": "Wasserspielplatz Hardhof",
+  "cat": "playground",
+  "lat": 47.396355,
+  "lon": 8.498113,
+  "address": "Sportanlage Hardhof, 8064 Zürich",
+  "walk_min": 32,
+  "desc_de": "Grosser gepflästerter Wasserspielbereich mit Pumpen und Wasserförderanlagen (0–9 J.) – Sommerziel nahe der Limmat.",
+  "desc_en": "Large paved water-play area with pumps and water channels (ages 0–9) — a summer favourite near the Limmat.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze",
+  "tags": [
+   "family",
+   "free",
+   "water",
+   "summer"
+  ],
+  "details": {
+   "ages": "0–9",
+   "walk_m": 2426,
+   "crow_m": 1573,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "koch-park",
+  "name": "Koch-Park",
+  "cat": "park",
+  "lat": 47.381289,
+  "lon": 8.493689,
+  "address": "Koch-Areal (zwischen Flur- und Rautistrasse), 8048 Zürich",
+  "walk_min": 2,
+  "desc_de": "Neuer 12'000 m²-Quartierpark (eröffnet Juni 2025) im Zentrum des Koch-Quartiers: Kochwiese unter Schattenbäumen, überdachte Kohlenlagerhalle für Regentage, 'Jardin sauvage' mit Wasserrinne, Kleinkinderspielplatz und WC.",
+  "desc_en": "New 12,000 m² neighbourhood park (opened June 2025) at the heart of the Koch quarter: shaded lawn, a covered historic coal hall for rainy days, a 'jardin sauvage' with water channel, toddler playground and toilet.",
+  "url": "https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/park-und-gruenanlagen/koch-park.html",
+  "tags": [
+   "family",
+   "free",
+   "toddler",
+   "shade",
+   "covered",
+   "on-site"
+  ],
+  "details": {
+   "size_m2": 12000,
+   "opened": "2025-06-27",
+   "features": "Kochwiese ~3'400 m² (ganz offen erst nach Fertigstellung der Bauten), Kohlenlagerhalle, Jardin sauvage, Brunnen, Spielplatz, barrierefreies WC",
+   "walk_m": 160,
+   "crow_m": 144,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.stadt-zuerich.ch/de/aktuell/medienmitteilungen/2025/06/koch-park-altstetten-eroeffnet.html"
+ },
+ {
+  "id": "bachwiesenpark",
+  "name": "Bachwiesenpark",
+  "cat": "park",
+  "lat": 47.381125,
+  "lon": 8.486259,
+  "address": "Bachwiesenpark, 8047/8048 Zürich",
+  "walk_min": 11,
+  "desc_de": "Familienpark mit offen gelegtem Albisrieder Dorfbach, Spiel- und Liegewiese, Planschbecken, Grillstellen und den Tiergehegen des GZ Bachwiesen.",
+  "desc_en": "Family park with the re-opened Albisrieden village stream, play lawn, paddling pool, barbecue spots and the GZ Bachwiesen animal enclosures.",
+  "url": "https://www.stadt-zuerich.ch/bachwiesenpark",
+  "tags": [
+   "family",
+   "free",
+   "water",
+   "bbq",
+   "animals",
+   "summer"
+  ],
+  "details": {
+   "features": "Barrierefreies WC, Spielplatz, Liegewiese, Planschbecken, Grillstelle",
+   "walk_m": 778,
+   "crow_m": 562,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_park"
+ },
+ {
+  "id": "albisrieden-dorfkern",
+  "name": "Albisrieden Dorfkern (Alte Kirche & Ortsmuseum)",
+  "cat": "park",
+  "lat": 47.374434,
+  "lon": 8.483702,
+  "address": "Albisriederstrasse 391 / Triemlistrasse 2, 8047 Zürich",
+  "walk_min": 17,
+  "desc_de": "Historischer Dorfkern mit Alter Kirche, Ortsmuseum und Riegelhäusern; Ausgangspunkt für Spaziergänge Richtung Waldrand und Uetliberg.",
+  "desc_en": "Historic village core with old church, local museum and half-timbered houses; starting point for walks to the forest edge and the Uetliberg.",
+  "url": "https://www.openstreetmap.org/way/45508824",
+  "tags": [
+   "free",
+   "village-core",
+   "stroller"
+  ],
+  "details": {
+   "walk_m": 1276,
+   "crow_m": 1163,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.openstreetmap.org/way/45508824"
+ },
+ {
+  "id": "langgruetweg-gruenzug",
+  "name": "Grünzug Langgrütweg",
+  "cat": "park",
+  "lat": 47.373369,
+  "lon": 8.491389,
+  "address": "Langgrütweg (zw. In der Ey und Langgrütstrasse), 8047 Zürich",
+  "walk_min": 18,
+  "desc_de": "Ruhiger Grünzug in Albisrieden mit Kleinkinderspielplatz (0–5 J.), Sand und Wiese.",
+  "desc_en": "Quiet green corridor in Albisrieden with a toddler playground (0–5), sand and lawn.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_park",
+  "tags": [
+   "family",
+   "free",
+   "toddler",
+   "sand",
+   "quiet"
+  ],
+  "details": {
+   "ages": "0–5",
+   "walk_m": 1348,
+   "crow_m": 1035,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_poi_oeffentliche_spielplaetze"
+ },
+ {
+  "id": "herdernwiese",
+  "name": "Herdernwiese",
+  "cat": "park",
+  "lat": 47.384761,
+  "lon": 8.507591,
+  "address": "Herdernstrasse, 8004 Zürich",
+  "walk_min": 21,
+  "desc_de": "Kleine Quartier-Oase (Verein Hard-West) mit Sandkasten samt Wasserspiel, Holzlok, Grillstelle und Donnerstags-Buvette; täglich 9–22 Uhr.",
+  "desc_en": "Small neighbourhood oasis (Hard-West residents' association) with sandpit and water play, a wooden play locomotive, barbecue spot and Thursday buvette; open daily 9:00–22:00.",
+  "url": "https://herdernwiese.ch",
+  "tags": [
+   "family",
+   "free",
+   "sand",
+   "water",
+   "bbq"
+  ],
+  "details": {
+   "hours": "täglich 09:00–22:00",
+   "operator": "Anwohner:innen Verein Zürich Hard-West",
+   "walk_m": 1575,
+   "crow_m": 1095,
+   "walk_method": "osrm"
+  },
+  "source": "https://herdernwiese.ch"
+ },
+ {
+  "id": "hardaupark",
+  "name": "Hardaupark",
+  "cat": "park",
+  "lat": 47.379573,
+  "lon": 8.509391,
+  "address": "Hardaupark, 8004 Zürich",
+  "walk_min": 22,
+  "desc_de": "Moderne Parkanlage zwischen den Hardau-Hochhäusern mit Spielplatz, Wiese und barrierefreiem WC; nahe PBZ Hardau.",
+  "desc_en": "Modern park between the Hardau towers with playground, lawn and accessible toilet; close to PBZ Hardau library.",
+  "url": "https://data.stadt-zuerich.ch/dataset/geo_park",
+  "tags": [
+   "family",
+   "free"
+  ],
+  "details": {
+   "features": "Barrierefreies WC, Spielplatz",
+   "walk_m": 1627,
+   "crow_m": 1249,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_park"
+ },
+ {
+  "id": "friedhof-sihlfeld",
+  "name": "Friedhof Sihlfeld (Grünanlage)",
+  "cat": "park",
+  "lat": 47.374849,
+  "lon": 8.506035,
+  "address": "Aemtlerstrasse 149/151, 8003 Zürich",
+  "walk_min": 23,
+  "desc_de": "Grösster Friedhof Zürichs und eine der grössten zusammenhängenden Grünflächen mit altem Baumbestand – ruhige Kinderwagen-Spaziergänge auf Alleen (Rücksicht, kein Spielplatz).",
+  "desc_en": "Zürich's largest cemetery and one of its biggest continuous green spaces with mature trees — calm stroller walks along avenues (be respectful; no playground).",
+  "url": "https://www.zuerich.com/de/besuchen/sehenswuerdigkeiten/friedhof-sihlfeld",
+  "tags": [
+   "free",
+   "quiet",
+   "stroller",
+   "shade"
+  ],
+  "details": {
+   "hours": "Nov–Feb 08:00–17:00; Mär–Apr 07:00–19:00; Mai–Aug 07:00–20:00; Sep–Okt 07:00–19:00 (OSM)",
+   "walk_m": 1702,
+   "crow_m": 1281,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.openstreetmap.org/way/10634343"
+ },
+ {
+  "id": "pfingstweidpark",
+  "name": "Pfingstweidpark",
+  "cat": "park",
+  "lat": 47.388194,
+  "lon": 8.512822,
+  "address": "Pfingstweidpark, 8005 Zürich",
+  "walk_min": 32,
+  "desc_de": "Moderner Park in Zürich-West mit Kleinkinderspielplatz (0–5 J.), offener Hangrutsche, Planschbecken und Grillstelle.",
+  "desc_en": "Modern Zürich-West park with toddler playground (0–5), open slope slide, paddling pool and barbecue spot.",
+  "url": "https://www.stadt-zuerich.ch/park-pfingstweid",
+  "tags": [
+   "family",
+   "free",
+   "water",
+   "summer",
+   "toddler"
+  ],
+  "details": {
+   "features": "Barrierefreies WC, Spielplatz, Grillstelle, Planschbecken",
+   "walk_m": 2436,
+   "crow_m": 1590,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_park"
+ },
+ {
+  "id": "baeckeranlage",
+  "name": "Bäckeranlage",
+  "cat": "park",
+  "lat": 47.377697,
+  "lon": 8.52347,
+  "address": "Stauffacher-/Feldstrasse, 8004 Zürich",
+  "walk_min": 38,
+  "desc_de": "Klassischer Quartierpark in Aussersihl mit Planschbecken, Sandkasten, Kletternetzpyramide, Spielinsel (Familienangebot) und Restaurant – weiter weg, aber ein Familienmagnet.",
+  "desc_en": "Classic Aussersihl neighbourhood park with paddling pool, sandpit, climbing-net pyramid, the 'Spielinsel' family drop-in and a restaurant — farther away but a family magnet.",
+  "url": "https://www.stadt-zuerich.ch/baeckeranlage",
+  "tags": [
+   "family",
+   "free",
+   "water",
+   "summer",
+   "sand"
+  ],
+  "details": {
+   "features": "Barrierefreies WC, Spielplatz, Planschbecken",
+   "walk_m": 2835,
+   "crow_m": 2327,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_park"
+ },
+ {
+  "id": "gruenau-limmat",
+  "name": "Grünau – GZ-Park und Limmatufer",
+  "cat": "nature",
+  "lat": 47.395999,
+  "lon": 8.490565,
+  "address": "Grünauring 18, 8064 Zürich",
+  "walk_min": 27,
+  "desc_de": "Grünraum um das GZ Grünau am Rand von Altstetten, wenige Minuten vom Limmatuferweg und Wasserspielplatz Hardhof.",
+  "desc_en": "Green space around GZ Grünau on the edge of Altstetten, a few minutes from the Limmat riverside path and the Hardhof water playground.",
+  "url": "https://gz-zh.ch/gz-gruenau/",
+  "tags": [
+   "family",
+   "nature",
+   "water"
+  ],
+  "details": {
+   "walk_m": 2001,
+   "crow_m": 1508,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_park"
+ },
+ {
+  "id": "triemli-uetliberg-zugang",
+  "name": "Triemli – Zugang Uetliberg (Tram 14 / S10)",
+  "cat": "nature",
+  "lat": 47.367749,
+  "lon": 8.495368,
+  "address": "Triemli, Birmensdorferstrasse, 8055 Zürich",
+  "walk_min": 29,
+  "desc_de": "Endstation Tram 14 und S10-Haltestelle Triemli: Ausgangspunkt für Waldwege und die Uetlibergbahn – der praktischste Weg in den Wald mit Kinderwagen oder Kraxe.",
+  "desc_en": "Tram 14 terminus and S10 Triemli stop: trailhead for forest paths and the Uetliberg railway — the practical way into the woods with a stroller or carrier.",
+  "url": "https://www.openstreetmap.org/node/5105515039",
+  "tags": [
+   "nature",
+   "forest",
+   "transit"
+  ],
+  "details": {
+   "walk_m": 2183,
+   "crow_m": 1655,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.openstreetmap.org/node/5105515039"
+ },
+ {
+  "id": "werdinsel",
+  "name": "Werdinsel (Limmat)",
+  "cat": "nature",
+  "lat": 47.400173,
+  "lon": 8.487667,
+  "address": "Werdinsel, 8049 Zürich",
+  "walk_min": 37,
+  "desc_de": "8 ha Naherholungsgebiet an der Limmat mit Spielplatz, Flussbad Au-Höngg (Spielplatz im Bad, nur Sommer), Grillstellen und Restaurant; Schwimmen nur für Geübte, FKK an der Inselspitze.",
+  "desc_en": "8-ha recreation island on the Limmat with playground, the Au-Höngg river baths (playground inside, summer only), barbecue spots and restaurant; swimming for experienced swimmers only, nudist area at the tip.",
+  "url": "https://www.stadt-zuerich.ch/werdinsel",
+  "tags": [
+   "family",
+   "nature",
+   "water",
+   "bbq",
+   "summer"
+  ],
+  "details": {
+   "features": "Barrierefreies WC, Spielplatz, Flussbadeanlage, Grillstellen",
+   "walk_m": 2791,
+   "crow_m": 2004,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.stadt-zuerich.ch/werdinsel"
+ },
+ {
+  "id": "uetliberg",
+  "name": "Uetliberg (Uto Kulm)",
+  "cat": "nature",
+  "lat": 47.349446,
+  "lon": 8.491965,
+  "address": "Uetliberg, 8143 Stallikon",
+  "walk_min": 76,
+  "desc_de": "Zürcher Hausberg (Gipfel ~3,7 km Luftlinie südlich); mit der S10 (Uetlibergbahn) ab Haltestelle Triemli erreichbar, Planetenweg und Gratweg Richtung Felsenegg/Albis.",
+  "desc_en": "Zürich's home mountain (summit ~3.7 km south as the crow flies); reachable by S10 from Triemli, with the Planet Trail and ridge path towards Felsenegg/Albis.",
+  "url": "https://www.openstreetmap.org/node/29971007",
+  "tags": [
+   "nature",
+   "forest",
+   "views",
+   "day-trip"
+  ],
+  "details": {
+   "note": "walk time is the full hike from the Hochhaus; families normally take S10 from Triemli",
+   "walk_m": 5671,
+   "crow_m": 3685,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.openstreetmap.org/node/29971007"
+ },
+ {
+  "id": "planschbecken-bachwiesen",
+  "name": "Planschbecken Bachwiesen",
+  "cat": "pool",
+  "lat": 47.38083,
+  "lon": 8.486068,
+  "address": "Bachwiesenpark, 8047 Zürich",
+  "walk_min": 12,
+  "desc_de": "Gratis-Planschbecken im Bachwiesenpark mit Spielplatz und Wiese, Mai–September bei gutem Wetter.",
+  "desc_en": "Free paddling pool in Bachwiesenpark with playground and lawn, May–September in good weather.",
+  "url": "https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/sport-und-badeanlagen/sommerbaeder/planschbecken.html",
+  "tags": [
+   "family",
+   "free",
+   "water",
+   "summer",
+   "toddler"
+  ],
+  "details": {
+   "season": "Mai–Sept., wetterabhängig",
+   "walk_m": 829,
+   "crow_m": 586,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_sport"
+ },
+ {
+  "id": "freibad-letzigraben",
+  "name": "Freibad Letzigraben (Max-Frisch-Bad)",
+  "cat": "pool",
+  "lat": 47.38025,
+  "lon": 8.501339,
+  "address": "Edelweissstrasse 5, 8048 Zürich",
+  "walk_min": 15,
+  "desc_de": "Max-Frischs denkmalgeschütztes Familienbad mit Planschbecken, grossem Nichtschwimmerbecken und Spielplatz (0–9 J.); im Winter (3.10.2026–4.4.2027) gratis als Park geöffnet.",
+  "desc_en": "Max Frisch's listed family lido with paddling pool, large non-swimmer pool and playground (0–9); in winter (3 Oct 2026–4 Apr 2027) open free of charge as a park.",
+  "url": "https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/sport-und-badeanlagen/sommerbaeder/letzigraben.html",
+  "tags": [
+   "family",
+   "water",
+   "summer",
+   "playground",
+   "winter-park-free"
+  ],
+  "details": {
+   "winter_park": "täglich ca. 09–17/18 Uhr, gratis",
+   "season": "Sommersaison ca. Mai–Sept.",
+   "walk_m": 1139,
+   "crow_m": 651,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_sport"
+ },
+ {
+  "id": "hallenbad-altstetten",
+  "name": "Hallenbad Altstetten",
+  "cat": "pool",
+  "lat": 47.38864,
+  "lon": 8.479864,
+  "address": "Dachslernstrasse 35, 8048 Zürich",
+  "walk_min": 22,
+  "desc_de": "Familien-Hallenbad mit 30 °C warmem Nichtschwimmerbecken, 110-m-Rutschbahn und Aussen-Planschbecken; Kinder unter 6 gratis, Eltern-Kind-Schwimmkurse (Schwimmschule Delphin).",
+  "desc_en": "Family indoor pool with a 30 °C non-swimmer pool, 110 m slide and outdoor paddling pool; under-6s free, parent-and-child swimming courses (Schwimmschule Delphin).",
+  "url": "https://www.bad-altstetten.ch/",
+  "tags": [
+   "family",
+   "indoor",
+   "water",
+   "rainy-day",
+   "paid"
+  ],
+  "details": {
+   "phone": "+41 44 431 77 44",
+   "hours": "Mo/Mi/Fr 06–21; Di/Do 08–21; Sa/So 08–18",
+   "price": "Erwachsene CHF 8; Kinder ab 6 CHF 4; unter 6 gratis",
+   "walk_m": 1640,
+   "crow_m": 1223,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_sport"
+ },
+ {
+  "id": "pbz-altstetten",
+  "name": "PBZ Bibliothek Altstetten",
+  "cat": "library",
+  "lat": 47.38728,
+  "lon": 8.485907,
+  "address": "Lindenplatz 4, 8048 Zürich",
+  "walk_min": 15,
+  "desc_de": "Nächste Bibliothek (Kinder-CDs, Tonies, fremdsprachige Medien); wegen Umbau vom 24.8. bis voraussichtlich 11.12.2026 geschlossen, danach mit Open-Library-Zugang.",
+  "desc_en": "Nearest library (children's CDs, Tonies, foreign-language media); closed for renovation from 24 Aug until about 11 Dec 2026, reopening with self-service Open Library access.",
+  "url": "https://www.pbz.ch/location/altstetten/",
+  "tags": [
+   "family",
+   "library",
+   "indoor",
+   "free-for-kids",
+   "temporarily-closed"
+  ],
+  "details": {
+   "phone": "+41 44 204 98 35",
+   "card": "Kinder bis 18 gratis; Erwachsene ab CHF 60/Jahr",
+   "status": "geschlossen bis ca. 11.12.2026",
+   "walk_m": 1136,
+   "crow_m": 770,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://www.pbz.ch/location/altstetten/"
+ },
+ {
+  "id": "pbz-hardau",
+  "name": "PBZ Bibliothek Hardau",
+  "cat": "library",
+  "lat": 47.380311,
+  "lon": 8.508775,
+  "address": "Norastrasse 20 (Schulhaus Albisriederplatz), 8004 Zürich",
+  "walk_min": 21,
+  "desc_de": "Bibliothek mit Medien in 13 Sprachen und 'Ryte, ryte Rössli' (Kniereiter-Verse für 9–24 Monate); nach einem Brand voraussichtlich ab 20.10.2026 wieder offen.",
+  "desc_en": "Library with media in 13 languages and 'Ryte, ryte Rössli' rhyme time for 9–24-month-olds; expected to reopen on 20 Oct 2026 after a fire.",
+  "url": "https://www.pbz.ch/location/hardau/",
+  "tags": [
+   "family",
+   "library",
+   "indoor",
+   "free-for-kids",
+   "rhyme-time"
+  ],
+  "details": {
+   "phone": "+41 44 204 98 40",
+   "hours": "Di–Fr 14–19, Sa 10–16",
+   "walk_m": 1567,
+   "crow_m": 1184,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.openstreetmap.org/node/4472488146"
+ },
+ {
+  "id": "pbz-aussersihl",
+  "name": "PBZ Bibliothek Aussersihl (English Family Literacy)",
+  "cat": "library",
+  "lat": 47.372635,
+  "lon": 8.524417,
+  "address": "Zweierstrasse 50, 8004 Zürich",
+  "walk_min": 40,
+  "desc_de": "Kleine Quartierbibliothek mit Toniebox und Wickeltisch; nächster Ort der Gratis-Reihe 'Family Literacy' auf Englisch für Eltern mit Kindern 2–5 J. (z. B. Do 29.10.2026 14:30).",
+  "desc_en": "Small neighbourhood library with a Toniebox and changing table; nearest venue of the free English 'Family Literacy' sessions for parents with children aged 2–5 (e.g. Thu 29 Oct 2026, 14:30).",
+  "url": "https://www.pbz.ch/family-literacy/",
+  "tags": [
+   "family",
+   "library",
+   "english",
+   "free",
+   "indoor"
+  ],
+  "details": {
+   "phone": "+41 44 204 98 55",
+   "hours": "Di–Fr 12–19, Sa 10–14; Open Library täglich 06–22 (Abo)",
+   "english": "Family Literacy English, 90 Min., gratis; weitere Termine Sihlcity/Altstadt/Unterstrass",
+   "walk_m": 3018,
+   "crow_m": 2583,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://www.pbz.ch/event-kalender/?series=family-literacy&language=englisch-english"
+ },
+ {
+  "id": "gz-bachwiesen",
+  "name": "GZ Bachwiesen (Gemeinschaftszentrum)",
+  "cat": "community",
+  "lat": 47.379948,
+  "lon": 8.486143,
+  "address": "Bachwiesenstrasse 40, 8047 Zürich",
+  "walk_min": 11,
+  "desc_de": "Nächstes GZ: Mini-Bauernhof (Esel, Ponys, Ziegen, Kaninchen), Cafeteria, Kleinkindermalen ab 2 J., Musigzwergli (18 Mt.–4 J.), fitdankbaby, Spielgruppe ab 3 – und ein Gratis-Sprachcafé Englisch (Fr 10:15) für Mütter mit Kindern.",
+  "desc_en": "Nearest community centre: mini-farm (donkeys, ponies, goats, rabbits), café, toddler painting from age 2, Musigzwergli music (18 months–4), fitdankbaby parent fitness, playgroup from 3 — plus a free English conversation café (Fri 10:15) that welcomes mothers with children.",
+  "url": "https://gz-zh.ch/gz-bachwiesen/",
+  "tags": [
+   "family",
+   "free",
+   "animals",
+   "english",
+   "indoor",
+   "cafe",
+   "spielgruppe"
+  ],
+  "details": {
+   "phone": "+41 44 436 86 36",
+   "cafe_hours": "Di–Fr 10:00–17:30, So 14:00–17:30 (Mo/Sa zu)",
+   "toddler_offers": "Kleinkindermalen Fr 15:15–16:45 (ab CHF 2); Musigzwergli Mo 09:30/10:30; fitdankbaby KIDS Di 10:35; Kleintierbesuche Mi/Fr (CHF 6); Tierpatenschaft Kleinkind CHF 50/6 Besuche; Spielgruppe Dussädinä ab 3 J. (Mo/Di/Do 09:00–13:30); Tramuki Di 09:30",
+   "english": "Sprachcafé Englisch Fr 10:15–11:15 (gratis); Postnatal-Pilates mit Baby auf Englisch Mi 10:30",
+   "programme": "Programm Aug–Okt 2026",
+   "sources": [
+    "https://gz-zh.ch/gz-bachwiesen/programm/",
+    "https://gz-zh.ch/gz-bachwiesen/angebote/sprachcafe-englisch/",
+    "https://gz-zh.ch/gz-bachwiesen/unsere-tiere/"
+   ],
+   "walk_m": 798,
+   "crow_m": 620,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_gemeinschaftszentrum"
+ },
+ {
+  "id": "zentrum-elch-altstetten",
+  "name": "Zentrum ELCH Altstetten (Kinderhüeti)",
+  "cat": "community",
+  "lat": 47.39003,
+  "lon": 8.486804,
+  "address": "Altstetterstrasse 118, 8048 Zürich",
+  "walk_min": 18,
+  "desc_de": "Familienzentrum mit spontaner Kinderhüeti für Kinder ab 6 Monaten bis Kindergartenalter (Mi–Fr 08:30–11:30, Mittagessen bis 13:30) – ideal für einzelne freie Vormittage.",
+  "desc_en": "Family centre with drop-in childcare for children from 6 months to kindergarten age (Wed–Fri 08:30–11:30, lunch until 13:30) — handy for occasional free mornings.",
+  "url": "https://www.zentrumelch.ch/familienzentren-zuerich-elch/altstetten/uebersicht",
+  "tags": [
+   "family",
+   "indoor",
+   "drop-in-care",
+   "paid"
+  ],
+  "details": {
+   "phone": "+41 78 601 63 71",
+   "price": "Halbtag CHF 16 (Mitglieder) / CHF 20; 10er-Karte CHF 160",
+   "note": "ELCH-Homepage nennt teils Mo/Mi/Fr – telefonisch prüfen",
+   "sources": [
+    "https://www.zentrumelch.ch/kinderhueti-altstetten"
+   ],
+   "walk_m": 1304,
+   "crow_m": 967,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_familienzentrum"
+ },
+ {
+  "id": "gz-gruenau",
+  "name": "GZ Grünau (Eltern-Kind-Treffs)",
+  "cat": "community",
+  "lat": 47.395978,
+  "lon": 8.489995,
+  "address": "Grünauring 18, 8064 Zürich",
+  "walk_min": 27,
+  "desc_de": "Dichtestes Kleinkindprogramm: Krabbelgruppe ab 4 Mt. (Di 10–11, gratis), Malen & Werken für Minis, Begleiteter Bewegungsraum 5–20 Mt. (Fr) und Bewegen–Spielen–Sprechen ab 20 Mt. (Do) mit der Familienberatung.",
+  "desc_en": "Densest toddler programme: crawling group from 4 months (Tue 10–11, free), arts & crafts for minis, supervised movement room for 5–20 months (Fri) and 'Bewegen–Spielen–Sprechen' from 20 months (Thu) run with the city's family counselling.",
+  "url": "https://gz-zh.ch/gz-gruenau/",
+  "tags": [
+   "family",
+   "free",
+   "indoor",
+   "eltern-kind",
+   "cafe"
+  ],
+  "details": {
+   "phone": "+41 44 431 86 00",
+   "cafe_hours": "Di, Mi, Fr 09–12 & 14–18; Do 09–18; Mo zu",
+   "krabbelgruppe": "Di 10:00–11:00, gratis, ohne Anmeldung",
+   "bewegungsraum": "Fr 10:30–11:45, 5–20 Mt., gratis, Anmeldung Familienberatung 044 412 76 00",
+   "bewegen_spielen_sprechen": "Do 09:00–10:15 / 10:30–11:45, ab 20 Mt., gratis, Anmeldung",
+   "sources": [
+    "https://gz-zh.ch/gz-gruenau/angebote/krabbelgruppe/",
+    "https://gz-zh.ch/gz-gruenau/angebote/begleiteter-bewegungsraum/",
+    "https://gz-zh.ch/gz-gruenau/angebote/bewegen-spielen-sprechen/"
+   ],
+   "walk_m": 1985,
+   "crow_m": 1513,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_gemeinschaftszentrum"
+ },
+ {
+  "id": "gz-loogarten",
+  "name": "GZ Loogarten (mit Indoor-Spielraum)",
+  "cat": "community",
+  "lat": 47.388517,
+  "lon": 8.472484,
+  "address": "Salzweg 1, 8048 Zürich",
+  "walk_min": 28,
+  "desc_de": "Bestes Schlechtwetter-Ziel: Indoor-Spielraum für Kinder bis 7 J. mit Begleitung (freiwilliger Beitrag), Café mit Spielecke, Kaninchen/Meerschweinchen und Purzelbaum-Spielgruppen ab 3 J.",
+  "desc_en": "Best rainy-day option: indoor play room for children up to 7 with an adult (voluntary contribution), café with play corner, rabbits/guinea pigs and Purzelbaum-certified playgroups from age 3.",
+  "url": "https://gz-zh.ch/gz-loogarten/spielen/",
+  "tags": [
+   "family",
+   "indoor",
+   "rainy-day",
+   "animals",
+   "cafe",
+   "spielgruppe"
+  ],
+  "details": {
+   "phone": "+41 44 437 90 20",
+   "spielraum_hours": "Mo 14–17; Di–Fr 09–12 & 14–17",
+   "cafe_hours": "Mo–Fr 09–12 (Selbstbedienung), 14–17:30",
+   "spielgruppen": "Märlitrucke / Entdeckerbande 3–5 J., CHF 135/Monat pro Halbtag",
+   "second_site": "Badenerstrasse 658 = nur Mietraum",
+   "sources": [
+    "https://gz-zh.ch/gz-loogarten/spielen/",
+    "https://gz-zh.ch/gz-loogarten/angebote/spielgruppen-26-27/"
+   ],
+   "walk_m": 2053,
+   "crow_m": 1708,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_gemeinschaftszentrum"
+ },
+ {
+  "id": "gz-heuried",
+  "name": "GZ Heuried (Erlebnisgarten & Tiere)",
+  "cat": "community",
+  "lat": 47.367175,
+  "lon": 8.503912,
+  "address": "Döltschiweg 130, 8055 Zürich",
+  "walk_min": 32,
+  "desc_de": "Erlebnisgarten mit Lamas, Alpakas, Ziegen und Zwergschafen (täglich 9–18 Uhr), 'Rollender Montag' mit Rutschautos 0–6 J., Tüftelatelier 2,5–4 J. und eigene Kinderbibliothek.",
+  "desc_en": "Adventure garden with llamas, alpacas, goats and dwarf sheep (daily 9–18), 'Rolling Monday' ride-on toys for 0–6, a tinkering workshop for 2.5–4-year-olds and its own children's library.",
+  "url": "https://gz-zh.ch/gz-heuried/",
+  "tags": [
+   "family",
+   "free",
+   "animals",
+   "indoor",
+   "cafe"
+  ],
+  "details": {
+   "phone": "+41 43 268 60 80",
+   "rollender_montag": "Mo 14:30–17:00, gratis",
+   "tueftelatelier": "Mo 09:30–11:30, CHF 5",
+   "cafe_hours": "täglich 14–18; Mo & Fr 09:30–12 Selbstbedienung",
+   "sources": [
+    "https://gz-zh.ch/gz-heuried/",
+    "https://gz-zh.ch/gz-heuried/unsere-tiere/",
+    "https://gz-zh.ch/gz-heuried/angebote/rollender-montag/"
+   ],
+   "walk_m": 2347,
+   "crow_m": 1886,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_gemeinschaftszentrum"
+ },
+ {
+  "id": "spielgruppe-tierli",
+  "name": "Tierli Spielgruppe (Ponyhof)",
+  "cat": "community",
+  "lat": 47.392251,
+  "lon": 8.468424,
+  "address": "Am Suteracher (Ponystall beim Herrenbergli), 8048 Zürich",
+  "walk_min": 35,
+  "desc_de": "Draussen-Spielgruppe auf einem kleinen Ponyhof für Kinder von 2,5–5 Jahren (Di–Do 08:30–11:30, CHF 40 pro Mal).",
+  "desc_en": "Outdoor playgroup on a small pony farm for children aged 2.5–5 (Tue–Thu 08:30–11:30, CHF 40 per session).",
+  "url": "https://spielgruppezuerich.ch/",
+  "tags": [
+   "family",
+   "spielgruppe",
+   "animals",
+   "outdoor",
+   "paid"
+  ],
+  "details": {
+   "ages": "2,5–5 J.",
+   "phone": "+41 79 565 73 42",
+   "price": "CHF 40/Morgen",
+   "walk_m": 2638,
+   "crow_m": 2167,
+   "walk_method": "osrm"
+  },
+  "source": "https://www.openstreetmap.org/way/318298142"
+ },
+ {
+  "id": "kinder-jugendpraxis-albisrieden",
+  "name": "Kinder- & Jugendpraxis Albisrieden",
+  "cat": "health",
+  "lat": 47.380253,
+  "lon": 8.489287,
+  "address": "Freilagerstrasse 71, 8047 Zürich",
+  "walk_min": 7,
+  "desc_de": "Nächste Kinderarztpraxis (Dr. med. Angelina Cascione-Larocca); keine eigene Website, laut OneDoc werden neue Patient:innen aufgenommen.",
+  "desc_en": "Nearest paediatric practice (Dr Angelina Cascione-Larocca); no own website, OneDoc lists it as accepting new patients.",
+  "url": "https://www.onedoc.ch/de/kinderarztin/zurich/pbkms/dr-angelina-cascione-larocca",
+  "tags": [
+   "health",
+   "paediatrician"
+  ],
+  "details": {
+   "phone": "+41 44 341 47 66",
+   "languages": "Deutsch (OneDoc)",
+   "walk_m": 490,
+   "crow_m": 403,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://www.openstreetmap.org/node/5501982328"
+ },
+ {
+  "id": "kinderpraxis-letzi",
+  "name": "Kinderpraxis Letzi",
+  "cat": "health",
+  "lat": 47.388298,
+  "lon": 8.496604,
+  "address": "Hohlstrasse 473, 8048 Zürich",
+  "walk_min": 11,
+  "desc_de": "Kinderarztpraxis (Dr. Bernhard Egg) nimmt ausdrücklich neue Patient:innen auf; Arzt spricht Deutsch, Französisch, Englisch, Spanisch.",
+  "desc_en": "Paediatric practice (Dr Bernhard Egg) explicitly welcomes new patients; doctor speaks German, French, English and Spanish.",
+  "url": "https://www.kinderpraxis-letzi.ch/",
+  "tags": [
+   "health",
+   "paediatrician",
+   "english",
+   "new-patients"
+  ],
+  "details": {
+   "phone": "+41 44 430 33 11",
+   "hours": "Mo, Mi, Fr 08–12 & 13:30–17:30; Di bis 17; Do 08–12",
+   "booking": "nur telefonisch",
+   "walk_m": 793,
+   "crow_m": 681,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://www.kinderpraxis-letzi.ch/"
+ },
+ {
+  "id": "kinderarzt-remensberger",
+  "name": "Kinderarzt Zürich – Dr. Stefan Remensberger & Team",
+  "cat": "health",
+  "lat": 47.387386,
+  "lon": 8.488575,
+  "address": "Saumackerstrasse 37, 8048 Zürich",
+  "walk_min": 12,
+  "desc_de": "Kinderarztpraxis mit vier Ärzt:innen, Sprachen Deutsch, Englisch, Italienisch, Französisch, Spanisch; Termine telefonisch.",
+  "desc_en": "Paediatric practice with four doctors; languages German, English, Italian, French, Spanish; appointments by phone.",
+  "url": "https://www.kinderarzt-zuerich.ch/",
+  "tags": [
+   "health",
+   "paediatrician",
+   "english"
+  ],
+  "details": {
+   "phone": "+41 44 775 44 44",
+   "hours": "Mo–Fr 08–12 & 13:30–18 (nach Vereinbarung)",
+   "walk_m": 902,
+   "crow_m": 647,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://www.kinderarzt-zuerich.ch/"
+ },
+ {
+  "id": "familienpraxis-albisriederdoerfli",
+  "name": "Familienpraxis Albisriederdörfli – Kinder- und Jugendmedizin",
+  "cat": "health",
+  "lat": 47.37661,
+  "lon": 8.486025,
+  "address": "Wydlerweg 21, 8047 Zürich",
+  "walk_min": 14,
+  "desc_de": "Kinderarztpraxis mit Online-Terminbuchung; Dr. Jana Brázdová spricht u. a. Englisch.",
+  "desc_en": "Paediatric practice with online booking; Dr Jana Brázdová speaks English among other languages.",
+  "url": "https://www.kinderarztpraxis-albisriederdoerfli.ch/",
+  "tags": [
+   "health",
+   "paediatrician",
+   "english",
+   "online-booking"
+  ],
+  "details": {
+   "phone": "+41 44 491 56 57",
+   "hours": "Mo–Fr 08–12 & 13–17",
+   "walk_m": 1024,
+   "crow_m": 865,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://www.kinderarztpraxis-albisriederdoerfli.ch/"
+ },
+ {
+  "id": "familienberatung-albisrieden",
+  "name": "Treffpunkt Familienberatung Albisrieden (Mütter-/Väterberatung)",
+  "cat": "health",
+  "lat": 47.375948,
+  "lon": 8.487799,
+  "address": "Albisriederstrasse 330, 8047 Zürich",
+  "walk_min": 14,
+  "desc_de": "Städtische Mütter-/Väterberatung: kostenlose Beratung zu Schlaf, Ernährung, Erziehung und Kita-Suche, mit oder ohne Termin, Kaffee und Spielecke; für Familien mit Kindern bis 5.",
+  "desc_en": "City parent counselling: free advice on sleep, feeding, parenting and finding a Kita, with or without appointment, coffee and play corner; for families with children up to 5.",
+  "url": "https://www.stadt-zuerich.ch/de/lebenslagen/jugend-und-familie/fruehe-kindheit/familienberatung/baby-kleinkind/angebote.html",
+  "tags": [
+   "family",
+   "free",
+   "advice",
+   "indoor"
+  ],
+  "details": {
+   "phone": "+41 44 412 76 00",
+   "note": "Treffpunkt-Zeiten nur im Flyer der Stadt – telefonisch prüfen",
+   "walk_m": 1001,
+   "crow_m": 849,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_treffpunkt_familienberatung"
+ },
+ {
+  "id": "familienberatung-altstetten",
+  "name": "Treffpunkt Familienberatung Altstetten",
+  "cat": "health",
+  "lat": 47.390026,
+  "lon": 8.486779,
+  "address": "Altstetterstrasse 118, 8048 Zürich",
+  "walk_min": 18,
+  "desc_de": "Zweiter Treffpunkt der städtischen Familienberatung im selben Haus wie das Zentrum ELCH; kostenlos, mit oder ohne Termin.",
+  "desc_en": "Second meeting point of the city's family counselling, in the same building as Zentrum ELCH; free, with or without appointment.",
+  "url": "https://www.stadt-zuerich.ch/de/lebenslagen/jugend-und-familie/fruehe-kindheit/familienberatung/baby-kleinkind/angebote.html",
+  "tags": [
+   "family",
+   "free",
+   "advice",
+   "indoor"
+  ],
+  "details": {
+   "phone": "+41 44 412 76 00",
+   "walk_m": 1303,
+   "crow_m": 967,
+   "walk_method": "osrm"
+  },
+  "source": "https://data.stadt-zuerich.ch/dataset/geo_treffpunkt_familienberatung"
+ },
+ {
+  "id": "kidshealth-altstetten",
+  "name": "kidshealth – Kinderarzt am Bahnhof Altstetten",
+  "cat": "health",
+  "lat": 47.390953,
+  "lon": 8.489017,
+  "address": "Hohlstrasse 560, 8048 Zürich",
+  "walk_min": 18,
+  "desc_de": "Kinderarztpraxis direkt am Bahnhof Altstetten mit Telemedizin- und Neupatienten-Bereich (Details nur per JavaScript-Website).",
+  "desc_en": "Paediatric practice right at Altstetten station with telemedicine and new-patient sections (details only on a JavaScript website).",
+  "url": "https://kidshealth.ch/",
+  "tags": [
+   "health",
+   "paediatrician",
+   "near-station"
+  ],
+  "details": {
+   "hours": "Mo–Fr 08–12, 13–18 (OSM)",
+   "walk_m": 1322,
+   "crow_m": 989,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://www.openstreetmap.org/node/12441635155"
+ },
+ {
+  "id": "triemli-kindernotfall",
+  "name": "Stadtspital Triemli – Kindernotfall (24/7)",
+  "cat": "health",
+  "lat": 47.365971,
+  "lon": 8.497568,
+  "address": "Birmensdorferstrasse 497, 8063 Zürich (Kinderklinik, Haus 3)",
+  "walk_min": 33,
+  "desc_de": "Nächster Kindernotfall, rund um die Uhr für Kinder bis 16 J., ohne Zuweisung; Medgate Kids Line 058 387 78 66.",
+  "desc_en": "Nearest paediatric emergency, 24/7 for children up to 16, no referral needed; Medgate Kids Line 058 387 78 66.",
+  "url": "https://www.stadt-zuerich.ch/stadtspital/de/leistungsangebot/kindermedizin/kindernotfall.html",
+  "tags": [
+   "health",
+   "emergency",
+   "24-7"
+  ],
+  "details": {
+   "phone": "+41 44 416 11 11",
+   "hotline": "Medgate Kids Line +41 58 387 78 66; Notruf 144; Tox 145",
+   "walk_m": 2450,
+   "crow_m": 1872,
+   "walk_method": "osrm",
+   "coord_source": "geo.admin.ch address register (GWR)"
+  },
+  "source": "https://www.stadt-zuerich.ch/stadtspital/de/leistungsangebot/kindermedizin/kindernotfall.html"
+ },
+ {
+  "id": "tv-altstetten-kinderturnen",
+  "name": "TV Altstetten – Kinderturnen (4–6 J.)",
+  "cat": "sport",
+  "lat": 47.385958,
+  "lon": 8.486398,
+  "address": "Turnhalle Altstetterstrasse 171, 8048 Zürich",
+  "walk_min": 15,
+  "desc_de": "Kinderturnen des Turnvereins Altstetten für 4–6-Jährige (Do 16:30 und 17:30) – ein Eltern-Kind-Turnen in Kreis 9 war nicht auffindbar.",
+  "desc_en": "Children's gymnastics of TV Altstetten for ages 4–6 (Thu 16:30 and 17:30) — no parent-and-child gymnastics in Kreis 9 could be verified.",
+  "url": "https://www.tvaltstetten.ch/riegen/kinderturnen/",
+  "tags": [
+   "family",
+   "sport",
+   "indoor",
+   "age-4-plus"
+  ],
+  "details": {
+   "ages": "4–6 J.",
+   "hours": "Do 16:30–17:30 / 17:30–18:30",
+   "walk_m": 1101,
+   "crow_m": 648,
+   "walk_method": "osrm",
+   "coord_source": "School site Altstetterstrasse (official Schulanlagen geodata); gym hall location within the site not exact"
+  },
+  "source": "https://www.tvaltstetten.ch/riegen/kinderturnen/",
+  "approx": true
+ }
+]

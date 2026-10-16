@@ -1,0 +1,1232 @@
+[
+ {
+  "id": "koch-quartier",
+  "name": "Koch-Quartier (ABZ, Kraftwerk1, Senn)",
+  "cat": "landmark",
+  "lat": 47.38166,
+  "lon": 8.49412,
+  "address": "Rautistrasse / Flurstrasse / Flüelastrasse, 8047/8048 Zürich",
+  "walk_min": 0,
+  "desc_de": "Neues Quartier auf dem ehemaligen Kohlenlager der Koch Wärme AG: rund 330 gemeinnützige Wohnungen für 900 Menschen – ABZ (204, inkl. 85-m-Hochhaus) und Kraftwerk1 (123) – plus Senns Gewerbehaus «Mach». Bezug gestaffelt ab Ende Oktober 2026 (Kraftwerk1), ab 1. März 2027 (ABZ-Zeilenbau) und ab Juni 2027 (Hochhaus); offizielle Eröffnung am 4. September 2027; autoarm.",
+  "desc_en": "New quarter on the former coal yard of Koch Wärme AG: about 330 non-profit flats for 900 people – ABZ (204, incl. an 85 m tower) and Kraftwerk1 (123) – plus Senn's commercial building 'Mach'. Staggered move-in from late October 2026 (Kraftwerk1), from 1 March 2027 (ABZ row building) and from June 2027 (tower); official opening on 4 September 2027; low-car by design.",
+  "url": "https://www.kochquartier.ch",
+  "tags": [
+   "sustainability",
+   "cooperative",
+   "car-free",
+   "new"
+  ],
+  "source": "https://kraftwerk1.ch/files/20260929_Koch-Quartier_Medienmitteilung_Fertigstellung-Vermietung-und-Bezug.pdf"
+ },
+ {
+  "id": "koch-park",
+  "name": "Koch-Park",
+  "cat": "park",
+  "lat": 47.381574,
+  "lon": 8.493362,
+  "address": "Rautistrasse 26, 8047 Zürich",
+  "walk_min": 3,
+  "desc_de": "12'000 m² Quartierpark, eröffnet am 27. Juni 2025: rund 200 Bäume, «jardin sauvage», Wasserrinne zum Spielen, Spielplatz und barrierefreies WC; das Regenwasser bleibt vollständig vor Ort. Die 3'400 m² grosse Kochwiese öffnet ganz, sobald die Bauten fertig sind.",
+  "desc_en": "12,000 m² neighbourhood park opened on 27 June 2025: about 200 trees, a 'jardin sauvage', a water channel for play, playground and accessible toilet; all rainwater stays on site. The 3,400 m² Kochwiese lawn opens fully once the buildings are finished.",
+  "url": "https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/park-und-gruenanlagen/koch-park.html",
+  "tags": [
+   "family",
+   "free",
+   "nature",
+   "sustainability",
+   "outdoor"
+  ],
+  "source": "https://www.stadt-zuerich.ch/de/aktuell/medienmitteilungen/2025/06/koch-park-altstetten-eroeffnet.html"
+ },
+ {
+  "id": "kohlenlagerhalle",
+  "name": "Kohlenlagerhalle «Kohlen Koch Heizoel»",
+  "cat": "history",
+  "lat": 47.381305,
+  "lon": 8.493203,
+  "address": "Rautistrasse 26, 8047 Zürich",
+  "walk_min": 2,
+  "desc_de": "Denkmalgeschützte Lagerhalle der Firma Koch (seit 1926 auf dem Areal) mit Dachschriftzug «Kohlen Koch Heizoel» – heute rund um die Uhr zugänglicher, überdachter Treffpunkt; 2026 u.a. Bouldermeisterschaften, Open-Air-Kino «Cinéma Solaire», Markt «Koch & Kohle» und Zirkusproduktionen. Von 2013 bis Februar 2023 war das Areal besetzt.",
+  "desc_en": "Listed storage hall of the Koch company (on the site since 1926) with the rooftop lettering 'Kohlen Koch Heizoel' – now a covered meeting space open 24/7; 2026 events included the Swiss bouldering championships, the solar open-air cinema 'Cinéma Solaire', the Koch & Kohle market and circus shows. The site was squatted from 2013 to February 2023.",
+  "url": "https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/park-und-gruenanlagen/koch-park.html",
+  "tags": [
+   "history",
+   "free",
+   "family",
+   "events"
+  ],
+  "source": "https://www.baublatt.ch/file/2337/BB_2515_Koch-Park.pdf"
+ },
+ {
+  "id": "gz-bachwiesen",
+  "name": "GZ Bachwiesen",
+  "cat": "community",
+  "lat": 47.380104,
+  "lon": 8.486131,
+  "address": "Bachwiesenstrasse 40, 8047 Zürich",
+  "walk_min": 10,
+  "desc_de": "Nächstes Gemeinschaftszentrum: Reparaturwerkstatt (Di 19–21), Velowerkstatt (Mo 17–20, Do 19–21), Englisch-Sprachcafé (Fr 10:15), Madame-Frigo-Kühlschrank, Kinderflohmi und monatliche «Rakete»-Bar; Park mit Bach, Spielplatz und Tiergehege.",
+  "desc_en": "Nearest community centre: repair workshop (Tue 7–9pm), bike workshop (Mon 5–8pm, Thu 7–9pm), English language café (Fri 10:15), Madame Frigo community fridge, kids' flea market and the monthly 'Rakete' bar; park with stream, playground and animal enclosure.",
+  "url": "https://gz-zh.ch/gz-bachwiesen/",
+  "tags": [
+   "family",
+   "free",
+   "sustainability",
+   "repair",
+   "english",
+   "volunteer"
+  ],
+  "source": "https://gz-zh.ch/gz-bachwiesen/"
+ },
+ {
+  "id": "gz-loogarten",
+  "name": "GZ Loogarten",
+  "cat": "community",
+  "lat": 47.388478,
+  "lon": 8.472577,
+  "address": "Salzweg 1, 8048 Zürich",
+  "walk_min": 27,
+  "desc_de": "GZ mit offener Holzwerkstatt, CNC-Atelier, Werkzeugverleih über Sharely, Büchertausch, Madame Frigo und E-Lastenrad-Verleih; sucht laufend Freiwillige, u.a. für Sprach-Café, Garten, Eltern-Kind-Treff und eigene Projektideen.",
+  "desc_en": "Community centre with an open wood workshop, CNC studio, tool lending via Sharely, book swap, Madame Frigo fridge and e-cargo-bike loans; recruits volunteers for its language café, garden, parent-toddler group and your own project ideas.",
+  "url": "https://gz-zh.ch/gz-loogarten/",
+  "tags": [
+   "family",
+   "free",
+   "sustainability",
+   "volunteer",
+   "workshop"
+  ],
+  "source": "https://gz-zh.ch/gz-loogarten/mitmachen/"
+ },
+ {
+  "id": "repair-cafe-gz-loogarten",
+  "name": "Repair Café GZ Loogarten (Standort Badenerstrasse)",
+  "cat": "community",
+  "lat": 47.387503,
+  "lon": 8.487926,
+  "address": "Badenerstrasse 658, 8048 Zürich",
+  "walk_min": 12,
+  "desc_de": "Zweiter GZ-Loogarten-Standort; hier findet jeden 4. Mittwoch das Repair Café statt (mit der Stiftung für Konsumentenschutz, Kollekte) – nächste Daten 25.11. und 23.12.2026, 27.1. und 24.2.2027.",
+  "desc_en": "GZ Loogarten's second site, home of the Repair Café on the 4th Wednesday of each month (with the Swiss consumer foundation, donation basis) – next dates 25 Nov and 23 Dec 2026, 27 Jan and 24 Feb 2027.",
+  "url": "https://gz-zh.ch/gz-loogarten/angebote/repair-cafe",
+  "tags": [
+   "sustainability",
+   "repair",
+   "volunteer",
+   "free"
+  ],
+  "source": "https://www.repair-cafe.ch/repaircafe/repair-cafe-gz-loogarten/"
+ },
+ {
+  "id": "gz-gruenau",
+  "name": "GZ Grünau",
+  "cat": "community",
+  "lat": 47.395923,
+  "lon": 8.489721,
+  "address": "Grünauring 18, 8064 Zürich",
+  "walk_min": 26,
+  "desc_de": "Gemeinschaftszentrum im Grünau-Quartier nahe der Limmat; Räbenschnitzen und Räbeliechtli-Umzug Anfang November, Kerzenziehen im Chilehuus Grünau, Kreativangebote für Kleinkinder.",
+  "desc_en": "Community centre in the Grünau estate near the Limmat; turnip carving and lantern parade in early November, candle dipping at the Chilehuus Grünau, creative sessions for toddlers.",
+  "url": "https://gz-zh.ch/gz-gruenau/",
+  "tags": [
+   "family",
+   "free"
+  ],
+  "source": "https://gz-zh.ch/gz-gruenau/programm/"
+ },
+ {
+  "id": "gz-heuried",
+  "name": "GZ Heuried",
+  "cat": "community",
+  "lat": 47.36733,
+  "lon": 8.503805,
+  "address": "Döltschiweg 130, 8055 Zürich",
+  "walk_min": 30,
+  "desc_de": "GZ am Fuss des Uetlibergs mit Erlebnisgarten, Kafi und Repair Café (meist 3. Samstag, 10–14 Uhr); Info-Anlässe teils auf Englisch. Gleich daneben das Sportzentrum Heuried mit Eisfeld.",
+  "desc_en": "Community centre at the foot of the Uetliberg with an adventure garden, café and Repair Café (usually 3rd Saturday, 10am–2pm); some info sessions in English. Next door: Heuried sports centre with ice rink.",
+  "url": "https://gz-zh.ch/gz-heuried/",
+  "tags": [
+   "family",
+   "repair",
+   "sustainability",
+   "english"
+  ],
+  "source": "https://gz-zh.ch/gz-heuried/angebote/repair-cafe/"
+ },
+ {
+  "id": "schopf-hochneun",
+  "name": "Schopf – Verein Hochneun",
+  "cat": "community",
+  "lat": 47.375716,
+  "lon": 8.484172,
+  "address": "Altstetterstrasse 334, 8047 Zürich",
+  "walk_min": 15,
+  "desc_de": "Quartierraum des Vereins Hochneun («Das Quartier bist du»): Kleidertausch, Food-Save-Zmittag, Generationenkafi; der Verein betreibt auch einen Quartiergarten mit Hühnern und die Rakete-Bar. Mitmachen als Mitglied oder «Macher:in».",
+  "desc_en": "Neighbourhood space of Verein Hochneun ('the neighbourhood is you'): clothes swap, food-save lunches, intergenerational café; the association also runs a community garden with hens and the Rakete bar. Join as member or 'maker'.",
+  "url": "https://www.hochneun.ch/schopf/",
+  "tags": [
+   "sustainability",
+   "volunteer",
+   "food-saving",
+   "family"
+  ],
+  "source": "http://www.hochneun.ch"
+ },
+ {
+  "id": "nachbarschaftshilfe-kreis9",
+  "name": "Nachbarschaftshilfe Kreis 9",
+  "cat": "community",
+  "lat": 47.38787,
+  "lon": 8.482319,
+  "address": "Dachslernstrasse 2, 8048 Zürich",
+  "walk_min": 19,
+  "desc_de": "Vermittelt Freiwillige für Einkäufe, Besuche, Hausaufgabenhilfe, digitale Unterstützung, kleine Reparaturen und Gartenarbeit; Einstieg über ein Erstgespräch (Büro Di 14–17, Fr 9–12).",
+  "desc_en": "Matches volunteers with neighbours needing help with shopping, visits, homework, digital support, small repairs or gardening; starts with an intro talk (office Tue 2–5pm, Fri 9am–12).",
+  "url": "https://www.nachbarschaftshilfe.ch/hilfe-finden/kreis-9",
+  "tags": [
+   "volunteer",
+   "free"
+  ],
+  "source": "https://www.nachbarschaftshilfe.ch/hilfe-finden/kreis-9"
+ },
+ {
+  "id": "bluemliquartier-big",
+  "name": "Blüemliquartier-Interessen-Gemeinschaft (BIG)",
+  "cat": "community",
+  "lat": 47.380867,
+  "lon": 8.500939,
+  "address": "Blüemliquartier (Schneeglöggliweg/Cyklamenweg), 8048 Zürich",
+  "walk_min": 8,
+  "desc_de": "Nachbarschaftsverein (aktiv seit 1994) im Blumenstrassen-Quartier gleich östlich des Areals: Sommerfest, Movie Night, Halloween, Samichlaus und Adventsfenster-Rundgang; Mitgliedschaft für Bewohnende des Blüemliquartiers.",
+  "desc_en": "Neighbourhood association (active since 1994) in the 'flower streets' just east of the site: summer party, movie night, Halloween, Samichlaus and an Advent-window walk; membership is for Blüemliquartier residents.",
+  "url": "https://www.xn--blemliquartier-hsb.ch/",
+  "tags": [
+   "family",
+   "neighbours"
+  ],
+  "source": "https://www.xn--blemliquartier-hsb.ch/",
+  "approx": true
+ },
+ {
+  "id": "kirche-altstetten-chilehuegel",
+  "name": "Reformierte Kirche Altstetten & Alte Kirche («Chilehügel»)",
+  "cat": "landmark",
+  "lat": 47.386607,
+  "lon": 8.484556,
+  "address": "Pfarrhausstrasse 21, 8048 Zürich",
+  "walk_min": 16,
+  "desc_de": "Werner M. Mosers Kirche (1939–41), ein Schlüsselwerk des modernen Schweizer Kirchenbaus, bildet mit der mittelalterlichen Alten Kirche das Ensemble auf dem Chilehügel; Bistro «ufem chilehügel», Schauplatz des Lindenplatzfests.",
+  "desc_en": "Werner M. Moser's church (1939–41), a key work of modern Swiss church architecture, forms a hilltop ensemble with the medieval old church; bistro 'ufem chilehügel', venue of the Lindenplatzfest.",
+  "url": "https://www.reformiert-zuerich.ch",
+  "tags": [
+   "architecture",
+   "free",
+   "community"
+  ],
+  "source": "https://www.theol.unibe.ch/dep_evth/micro_sakraltopo/content/inventare/zuerich/sakralbauten_zuerich/88_zuerich_kirche_altstetten"
+ },
+ {
+  "id": "kirche-heilig-kreuz",
+  "name": "Katholische Kirche Heilig Kreuz",
+  "cat": "community",
+  "lat": 47.384271,
+  "lon": 8.488331,
+  "address": "Saumackerstrasse 83, 8048 Zürich",
+  "walk_min": 10,
+  "desc_de": "Katholische Pfarrei in Altstetten; Start des Altstetter Chlauseinzugs Ende November mit Feier in der Kirche und Umzug zum Lindenplatz.",
+  "desc_en": "Catholic parish in Altstetten; starting point of the Altstetten Samichlaus arrival in late November, with a celebration in the church and a procession to Lindenplatz.",
+  "url": "https://www.heiligkreuz-zuerich.ch/",
+  "tags": [
+   "family",
+   "tradition"
+  ],
+  "source": "https://quartierverein-altstetten.ch/quartierverein/veranstaltungen"
+ },
+ {
+  "id": "kirche-st-konrad",
+  "name": "Kirche St. Konrad",
+  "cat": "community",
+  "lat": 47.374048,
+  "lon": 8.496332,
+  "address": "Fellenbergstrasse 231, 8047 Zürich",
+  "walk_min": 16,
+  "desc_de": "Katholische Pfarrkirche Albisriedens (1955); vor der Kirche steigt Ende Mai das Quartier-Musikfestival Vorstadt Sounds, im Dezember die Chlausaktion.",
+  "desc_en": "Albisrieden's Catholic parish church (1955); the neighbourhood music festival Vorstadt Sounds takes place in front of it in late May, the Samichlaus campaign in December.",
+  "url": "https://www.st-konrad.ch",
+  "tags": [
+   "family",
+   "music",
+   "tradition"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/2252ef28-2edb-45b8-a514-5c1bc77f3227/download"
+ },
+ {
+  "id": "alte-kirche-albisrieden",
+  "name": "Alte Kirche & Dorfkern Albisrieden",
+  "cat": "history",
+  "lat": 47.374441,
+  "lon": 8.483713,
+  "address": "Albisriederstrasse 391, 8047 Zürich",
+  "walk_min": 16,
+  "desc_de": "Klassizistische Querkirche von 1816–18 (Hans Conrad Stadler) im gut erhaltenen Bauerndorf-Kern; hier finden die Viehschau mit «Miss Albisrieden» (September) und der Adventsmarkt statt.",
+  "desc_en": "Classicist church of 1816–18 (Hans Conrad Stadler) in the well-preserved farming-village core; venue of the cattle show with 'Miss Albisrieden' (September) and the Advent market.",
+  "url": "https://zuerich-albisrieden.ch",
+  "tags": [
+   "history",
+   "free",
+   "tradition"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/2252ef28-2edb-45b8-a514-5c1bc77f3227/download"
+ },
+ {
+  "id": "ortsmuseum-albisrieden",
+  "name": "Ortsmuseum Albisrieden",
+  "cat": "history",
+  "lat": 47.374303,
+  "lon": 8.483144,
+  "address": "Triemlistrasse 2, 8047 Zürich",
+  "walk_min": 17,
+  "desc_de": "Vom Quartierverein ehrenamtlich geführtes Ortsmuseum im Bauernhaus «zum oberen Haller» am Dorfplatz; Moschtete im Herbst, Adventsausstellung, einmal monatlich sonntags offen. Eintritt frei, Freiwillige willkommen.",
+  "desc_en": "Volunteer-run local museum of the Quartierverein in the 'zum oberen Haller' farmhouse on the village square; cider pressing in autumn, Advent exhibition, open one Sunday a month. Free; volunteers welcome.",
+  "url": "https://zuerich-albisrieden.ch/de/Quartier/Ortsmuseum-und-Muehle",
+  "tags": [
+   "history",
+   "family",
+   "free",
+   "volunteer"
+  ],
+  "source": "https://zuerich-albisrieden.ch/de/Quartier/Ortsmuseum-und-Muehle"
+ },
+ {
+  "id": "alte-muehle-albisrieden",
+  "name": "Alte Mühle Albisrieden",
+  "cat": "history",
+  "lat": 47.37689,
+  "lon": 8.486443,
+  "address": "Wydlerweg 19, 8047 Zürich",
+  "walk_min": 11,
+  "desc_de": "Mühle am 1991 wieder offengelegten Dorfbach mit 6,6 m grossem Wasserrad; an eidgenössischen Abstimmungssonntagen 10–12:30 Uhr geöffnet.",
+  "desc_en": "Mill on the village stream (re-opened to daylight in 1991) with a 6.6 m water wheel; open on federal voting Sundays 10am–12:30.",
+  "url": "https://zuerich-albisrieden.ch/de/Quartier/Ortsmuseum-und-Muehle",
+  "tags": [
+   "history",
+   "family",
+   "free"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/2252ef28-2edb-45b8-a514-5c1bc77f3227/download"
+ },
+ {
+  "id": "ortsmuseum-altstetten",
+  "name": "Ortsmuseum Altstetten",
+  "cat": "history",
+  "lat": 47.388622,
+  "lon": 8.480677,
+  "address": "Dachslernstrasse 20, 8048 Zürich",
+  "walk_min": 21,
+  "desc_de": "Ortsmuseum im Studerhaus, einem der wenigen erhaltenen Bauernhäuser Altstettens; betreut von der Gruppe Ortsgeschichte des Quartiervereins Altstetten.",
+  "desc_en": "Local museum in the Studerhaus, one of Altstetten's few surviving farmhouses; run by the local-history group of the Quartierverein Altstetten.",
+  "url": "http://www.ortsmuseum-altstetten.ch/",
+  "tags": [
+   "history",
+   "free"
+  ],
+  "source": "https://www.quartierverein-altstetten.ch/ortsgeschichte"
+ },
+ {
+  "id": "albisriederhaus",
+  "name": "Albisriederhaus & Quartiertanne",
+  "cat": "history",
+  "lat": 47.376039,
+  "lon": 8.487732,
+  "address": "Albisriederstrasse 330, 8047 Zürich",
+  "walk_min": 13,
+  "desc_de": "1934/35 als Gemeindehaus gebaut, wegen der Eingemeindung aber nie als solches genutzt; davor steht die Quartiertanne (Adventsumtrunk des Quartiervereins), im Haus findet die jährliche Quartiervernetzung statt.",
+  "desc_en": "Built in 1934/35 as Albisrieden's town hall but never used as one because of the merger with Zürich; the neighbourhood Christmas tree stands in front (Advent drinks), and the annual networking evening of local clubs takes place inside.",
+  "url": "https://zuerich-albisrieden.ch/de/Agenda/Quartierfeste",
+  "tags": [
+   "history",
+   "community",
+   "free"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/2252ef28-2edb-45b8-a514-5c1bc77f3227/download"
+ },
+ {
+  "id": "lindenplatz-wochenmarkt",
+  "name": "Lindenplatz & Wochenmarkt Altstetten",
+  "cat": "market",
+  "lat": 47.387514,
+  "lon": 8.485774,
+  "address": "Lindenplatz, 8048 Zürich",
+  "walk_min": 16,
+  "desc_de": "Altstetter Dorfplatz mit Quartierzentrum von 1952; Samstagsmarkt 6–12 Uhr (Gemüse, Obst, Brot, Fisch, Käse, Blumen). Ziel des Räbeliechtli-Umzugs und Schauplatz des Lindenplatzfests.",
+  "desc_en": "Altstetten's village square with its 1952 centre; Saturday market 6am–noon (vegetables, fruit, bread, fish, cheese, flowers). Destination of the lantern parade and venue of the Lindenplatzfest.",
+  "url": "https://www.zuercher-maerkte.ch/altstetten.html",
+  "tags": [
+   "market",
+   "local",
+   "family"
+  ],
+  "source": "https://www.zuerich.com/de/besuchen/shopping/wochenmarkt-altstetten"
+ },
+ {
+  "id": "pbz-altstetten",
+  "name": "PBZ Bibliothek Altstetten",
+  "cat": "culture",
+  "lat": 47.387247,
+  "lon": 8.485951,
+  "address": "Lindenplatz 4, 8048 Zürich",
+  "walk_min": 15,
+  "desc_de": "Quartierbibliothek mit Saatgutbibliothek und fremdsprachigen Medien; wegen Umbau bis ca. 11.12.2026 geschlossen, danach als «Open Library» mit mehr Platz.",
+  "desc_en": "Neighbourhood library with a seed library and foreign-language media; closed for renovation until about 11 Dec 2026, then reopening as an 'Open Library' with more space.",
+  "url": "https://www.pbz.ch/location/altstetten/",
+  "tags": [
+   "family",
+   "free",
+   "english",
+   "indoor",
+   "sustainability"
+  ],
+  "source": "https://www.pbz.ch/location/altstetten/"
+ },
+ {
+  "id": "pbz-hardau",
+  "name": "PBZ Bibliothek Hardau",
+  "cat": "culture",
+  "lat": 47.380311,
+  "lon": 8.508775,
+  "address": "Norastrasse 20, 8004 Zürich",
+  "walk_min": 18,
+  "desc_de": "Nächste offene Bibliothek während des Altstetter Umbaus: Medien in 13 Sprachen und Lesecafé.",
+  "desc_en": "Nearest open library while Altstetten is closed: media in 13 languages and a reading café.",
+  "url": "https://www.pbz.ch/location/hardau/",
+  "tags": [
+   "family",
+   "free",
+   "english",
+   "indoor"
+  ],
+  "source": "https://www.pbz.ch/location/hardau/"
+ },
+ {
+  "id": "gruenhoelzli",
+  "name": "Gemeinschaftsgarten Grünhölzli",
+  "cat": "community",
+  "lat": 47.387161,
+  "lon": 8.467969,
+  "address": "Salzweg 50, 8048 Zürich",
+  "walk_min": 30,
+  "desc_de": "Gemeinschaftsgärten, Saatgut- und Lehrgarten, Waldgarten, Pflanzenrecycling/Terra Preta und HEKS-Garten-Tandem mit Geflüchteten; Mitgärtnern ist jederzeit möglich.",
+  "desc_en": "Community gardens, seed and teaching garden, forest garden, plant recycling/terra preta and the HEKS garden tandem with refugees; you can join the gardening at any time.",
+  "url": "http://gruenhoelzli.ch/",
+  "tags": [
+   "sustainability",
+   "gardening",
+   "volunteer",
+   "family",
+   "outdoor"
+  ],
+  "source": "http://gruenhoelzli.ch/"
+ },
+ {
+  "id": "areal-dunkelhoelzli",
+  "name": "Areal Dunkelhölzli (Stadtlandwirtschaft)",
+  "cat": "nature",
+  "lat": 47.388598,
+  "lon": 8.470342,
+  "address": "Dunkelhölzlistrasse / Salzweg, 8048 Zürich",
+  "walk_min": 27,
+  "desc_de": "Neues Stadtlandwirtschafts-Areal von Grün Stadt Zürich: sechs Gartenfelder (38'000 m²), Bachrevitalisierung, Gewächshaus als Gemeinschaftsraum; gestaffelte Öffnung 2026, Betriebskonzept wird 2025–2027 partizipativ entwickelt.",
+  "desc_en": "New urban-agriculture area by Grün Stadt Zürich: six garden fields (38,000 m²), stream restoration, a greenhouse becoming a shared space; phased opening in 2026, operating concept co-developed with residents 2025–2027.",
+  "url": "https://www.stadt-zuerich.ch/de/planen-und-bauen/projekte-und-ausschreibungen/strassen-freiraum/baustellen/areal-dunkelhoelzli.html",
+  "tags": [
+   "sustainability",
+   "gardening",
+   "participation",
+   "family",
+   "outdoor"
+  ],
+  "source": "https://www.stadt-zuerich.ch/de/planen-und-bauen/projekte-und-ausschreibungen/strassen-freiraum/baustellen/areal-dunkelhoelzli.html",
+  "approx": true
+ },
+ {
+  "id": "stadtgut-juchhof",
+  "name": "Stadtgut Juchhof (Hofladen)",
+  "cat": "market",
+  "lat": 47.39822,
+  "lon": 8.471076,
+  "address": "Bernerstrasse 301, 8048 Zürich",
+  "walk_min": 42,
+  "desc_de": "Städtischer Gutsbetrieb, Bio-Suisse-zertifiziert, mit Hofladen (Mo–Do 9–11:30 und 13:30–16:30, Fr vormittags); organisiert die Albisrieder Viehschau mit.",
+  "desc_en": "City-owned farm, Bio Suisse certified, with a farm shop (Mon–Thu 9–11:30 and 1:30–4:30pm, Fri mornings); co-organises the Albisrieden cattle show.",
+  "url": "https://www.stadt-zuerich.ch/juchhof",
+  "tags": [
+   "sustainability",
+   "organic",
+   "local",
+   "family"
+  ],
+  "source": "https://www.zuerich.com/en/visit/restaurants/juchhof-municipal-farm"
+ },
+ {
+  "id": "offcut-zuerich",
+  "name": "OFFCUT Zürich",
+  "cat": "shop",
+  "lat": 47.39147,
+  "lon": 8.47793,
+  "address": "Badenerstrasse 757, 8048 Zürich",
+  "walk_min": 24,
+  "desc_de": "Materialmarkt für Wiederverwendung (Reststoffe aus Handwerk, Industrie und Kultur) mit Workshops für Schulen und Familien; Di–Fr 10–18:30, Sa 11–17.",
+  "desc_en": "Re-use materials market (leftovers from crafts, industry and culture) with workshops for schools and families; Tue–Fri 10am–6:30pm, Sat 11am–5pm.",
+  "url": "https://www.offcut.ch/zh/de.html",
+  "tags": [
+   "sustainability",
+   "circular",
+   "family",
+   "workshop"
+  ],
+  "source": "https://www.offcut.ch/zh/de.html"
+ },
+ {
+  "id": "arche-brockenhaus",
+  "name": "Arche Brockenhaus & Bistro",
+  "cat": "shop",
+  "lat": 47.38871,
+  "lon": 8.49431,
+  "address": "Hohlstrasse 489, 8048 Zürich",
+  "walk_min": 12,
+  "desc_de": "Brockenhaus eines Sozialunternehmens (Möbel, Bücher, Velos, Elektronik, Vinyl) mit Reparaturwerkstatt und Bistro; Mo–Fr 10–18:30, Sa 10–17.",
+  "desc_en": "Social-enterprise second-hand store (furniture, books, bikes, electronics, vinyl) with a repair workshop and bistro; Mon–Fri 10am–6:30pm, Sat 10am–5pm.",
+  "url": "https://www.archezuerich.ch/brockenhaus",
+  "tags": [
+   "sustainability",
+   "second-hand",
+   "circular",
+   "family"
+  ],
+  "source": "https://zuri.net/de/zurich/second-hand/arche-brockenhaus-bistro-6026.htm"
+ },
+ {
+  "id": "foodsavemarkt",
+  "name": "foodsaveMARKT",
+  "cat": "market",
+  "lat": 47.39265,
+  "lon": 8.4922,
+  "address": "Geerenweg 23a, 8048 Zürich",
+  "walk_min": 24,
+  "desc_de": "Verkauft überschüssiges Gemüse und Obst günstig (SocialCuisine) beim FOGO-Areal am Bahnhof Altstetten; laut Stadt mittwochs während der Marktsaison.",
+  "desc_en": "Sells surplus vegetables and fruit cheaply (SocialCuisine) at the FOGO site by Bahnhof Altstetten; according to the city on Wednesdays during market season.",
+  "url": "https://www.foodsavemarkt.ch/",
+  "tags": [
+   "sustainability",
+   "food-saving",
+   "market"
+  ],
+  "source": "https://www.stadt-zuerich.ch/de/umwelt-und-energie/klima/klimaschutz/handlungsbereiche/konsum/ernaehrung/tipps/engagement.html"
+ },
+ {
+  "id": "bachsermaert-albisrieden",
+  "name": "BachserMärt Albisrieden",
+  "cat": "shop",
+  "lat": 47.376044,
+  "lon": 8.494913,
+  "address": "Ginsterstrasse 1, 8047 Zürich",
+  "walk_min": 12,
+  "desc_de": "Kleiner Bio-Laden im Wohnquartier mit Frischprodukten, Bio-Fleisch, Alltagssortiment und grosser Käsetheke (hausgemachte Fondue-Mischung).",
+  "desc_en": "Small organic grocer in a residential street with fresh produce, organic meat, everyday groceries and a large cheese counter (house fondue mix).",
+  "url": "https://www.bachsermaert.ch/albisrieden/",
+  "tags": [
+   "organic",
+   "sustainability",
+   "local"
+  ],
+  "source": "https://www.bachsermaert.ch/albisrieden/"
+ },
+ {
+  "id": "recyclinghof-werdhoelzli",
+  "name": "Recyclinghof Werdhölzli (ERZ)",
+  "cat": "community",
+  "lat": 47.39784,
+  "lon": 8.48134,
+  "address": "Bändlistrasse 94, 8064 Zürich",
+  "walk_min": 35,
+  "desc_de": "Einer von zwei städtischen Recyclinghöfen für Haushaltsmengen; Mo–Fr 13–19, Sa 7.30–14 Uhr, nur bargeldlos. Ein neues Recyclingzentrum mit Fokus Weitergeben/Reparieren entsteht bis ca. Ende 2027 auf dem Juch-Areal.",
+  "desc_en": "One of the city's two recycling yards for household quantities; Mon–Fri 1–7pm, Sat 7:30am–2pm, cashless only. A new recycling centre focused on re-use and repair is due on the Juch site around end-2027.",
+  "url": "https://www.stadt-zuerich.ch/de/umwelt-und-energie/entsorgung/wo-und-wann-entsorgen/recyclinghof.html",
+  "tags": [
+   "recycling",
+   "sustainability"
+  ],
+  "source": "https://www.hellozurich.ch/en/news/werdhoelzli.html"
+ },
+ {
+  "id": "theater-spirgarten",
+  "name": "Neues Theater Spirgarten",
+  "cat": "culture",
+  "lat": 47.387623,
+  "lon": 8.485307,
+  "address": "Lindenplatz 5, 8048 Zürich",
+  "walk_min": 16,
+  "desc_de": "Mittelgrosser Saal am Lindenplatz für Gastspiele, Musicals, Tanz und Konzerte (Tickets via Ticketcorner).",
+  "desc_en": "Mid-sized hall on Lindenplatz for touring theatre, musicals, dance and concerts (tickets via Ticketcorner).",
+  "url": "https://www.spirgarten.ch",
+  "tags": [
+   "indoor",
+   "culture"
+  ],
+  "source": "https://inyourpocket.com/switzerland/zurich/venues/Neues-Theater-Spirgarten"
+ },
+ {
+  "id": "schauspielhaus-schiffbau",
+  "name": "Schauspielhaus Schiffbau / Junges Schauspielhaus",
+  "cat": "culture",
+  "lat": 47.38881,
+  "lon": 8.51913,
+  "address": "Schiffbaustrasse 4, 8005 Zürich",
+  "walk_min": 37,
+  "desc_de": "Industriehalle des Schauspielhauses in Zürich-West; auf der Bühne «Matchbox» spielt das Junge Schauspielhaus für Kinder und Familien.",
+  "desc_en": "The Schauspielhaus' industrial venue in Zürich West; the Junges Schauspielhaus plays for children and families on its 'Matchbox' stage.",
+  "url": "https://www.schauspielhaus.ch",
+  "tags": [
+   "family",
+   "indoor",
+   "culture"
+  ],
+  "source": "https://www.zuerich.com/en/visit/culture/schauspielhaus-schiffbau"
+ },
+ {
+  "id": "zentralwaescherei",
+  "name": "Zentralwäscherei (ZW)",
+  "cat": "culture",
+  "lat": 47.38692,
+  "lon": 8.52037,
+  "address": "Neue Hard 12, 8005 Zürich",
+  "walk_min": 35,
+  "desc_de": "Nichtkommerzieller Kultur- und Begegnungsort in einer ehemaligen Wäscherei: Konzerte, Talks, Flohmärkte, Workshops und Restaurant, Preise nach eigenem Ermessen; 5-Jahre-Fest 17.–22.11.2026.",
+  "desc_en": "Non-commercial culture and community venue in a former laundry: concerts, talks, flea markets, workshops and a restaurant, pay-what-you-can; 5th-anniversary festival 17–22 Nov 2026.",
+  "url": "https://zentralwaescherei.space/",
+  "tags": [
+   "culture",
+   "sustainability",
+   "community"
+  ],
+  "source": "https://zuri.net/en/zurich/cultural-centers/zentralwascherei-18038.htm"
+ },
+ {
+  "id": "kino-houdini",
+  "name": "Kino Houdini / Kinderkino Houdinli",
+  "cat": "culture",
+  "lat": 47.37462,
+  "lon": 8.52017,
+  "address": "Badenerstrasse 173, 8004 Zürich",
+  "walk_min": 31,
+  "desc_de": "Arthouse-Kino im Genossenschaftsbau Kalkbreite; das «Houdinli» zeigt täglich nachmittags Kinder- und Familienfilme.",
+  "desc_en": "Arthouse cinema in the Kalkbreite cooperative building; the 'Houdinli' shows children's and family films every afternoon.",
+  "url": "https://www.kinohoudini.ch/",
+  "tags": [
+   "family",
+   "indoor",
+   "culture"
+  ],
+  "source": "https://famigros.migros.ch/de/ausfluege-und-freizeit/ausflugsziele/kinderkino-houdinli-zuerich"
+ },
+ {
+  "id": "freilager-albisrieden",
+  "name": "Freilager Albisrieden",
+  "cat": "landmark",
+  "lat": 47.3803196,
+  "lon": 8.4891757,
+  "address": "Freilagerstrasse / Rautistrasse, 8047 Zürich",
+  "walk_min": 6,
+  "desc_de": "Ehemaliges Zollfreilager, bis 2016 zum Wohnquartier mit über 800 Mietwohnungen umgebaut; der über 100 m lange Gründerbau von 1927 mit Pilzstützen blieb erhalten.",
+  "desc_en": "Former customs-free warehouse, converted by 2016 into a residential quarter with over 800 rental flats; the 100 m-long 1927 founding building with mushroom columns was preserved.",
+  "url": "https://freilager-zuerich.ch",
+  "tags": [
+   "architecture",
+   "history"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/2252ef28-2edb-45b8-a514-5c1bc77f3227/download"
+ },
+ {
+  "id": "restaurant-buckhuser",
+  "name": "Restaurant Buckhuser",
+  "cat": "food",
+  "lat": 47.383739,
+  "lon": 8.492581,
+  "address": "Buckhauserstrasse 34, 8048 Zürich",
+  "walk_min": 5,
+  "desc_de": "Restaurant, Bistro und Bar im Placid Hotel, rund 300 m vom Areal: Frühstück, Mittag- und Abendessen mit regionalen Zutaten; Feierabendtreff im Kreis 9. Wochenende nur Frühstück.",
+  "desc_en": "Restaurant, bistro and bar in the Placid Hotel, about 300 m from the site: breakfast, lunch and dinner with regional produce; an after-work spot in Kreis 9. Weekends breakfast only.",
+  "url": "https://www.buckhuser.ch/de",
+  "tags": [
+   "breakfast",
+   "local"
+  ],
+  "source": "https://www.buckhuser.ch/de"
+ },
+ {
+  "id": "trattoria-freilager",
+  "name": "La Trattoria / Restaurant Freilager",
+  "cat": "food",
+  "lat": 47.379663,
+  "lon": 8.489496,
+  "address": "Freilagerstrasse 53, 8047 Zürich",
+  "walk_min": 6,
+  "desc_de": "Quartierrestaurant in den ehemaligen Zollfreilager-Räumen mit italienischer Küche und Kinderecke.",
+  "desc_en": "Neighbourhood restaurant in the former bonded-warehouse rooms, Italian cuisine and a kids' corner.",
+  "url": "https://restaurant-freilager.ch/",
+  "tags": [
+   "family",
+   "local"
+  ],
+  "source": "https://www.zuerich.com/de/besuchen/restaurants/restaurant-freilager"
+ },
+ {
+  "id": "roessli-albisrieden",
+  "name": "Zum Weissen Rössli",
+  "cat": "food",
+  "lat": 47.375036,
+  "lon": 8.484182,
+  "address": "Albisriederstrasse 379, 8047 Zürich",
+  "walk_min": 15,
+  "desc_de": "Traditionsrestaurant im Albisrieder Dorfkern mit modernen Schweizer Klassikern und ruhigem Innenhof.",
+  "desc_en": "Traditional restaurant in the Albisrieden village core serving modern Swiss classics, with a quiet courtyard.",
+  "url": "https://roessli-albisrieden.ch/",
+  "tags": [
+   "swiss",
+   "local"
+  ],
+  "source": "https://www.myswitzerland.com/de-ch/erlebnisse/essen-trinken/restaurant/roessli-albisrieden/"
+ },
+ {
+  "id": "krone-altstetten",
+  "name": "Restaurant Krone Altstetten",
+  "cat": "food",
+  "lat": 47.388341,
+  "lon": 8.483769,
+  "address": "Badenerstrasse 705, 8048 Zürich",
+  "walk_min": 17,
+  "desc_de": "Historisches Restaurant mit begehbarem Weinkeller und Terrasse, Schweizer Klassiker.",
+  "desc_en": "Historic restaurant with a walk-in wine cellar and terrace, serving Swiss classics.",
+  "url": "https://www.krone-altstetten.ch/",
+  "tags": [
+   "swiss",
+   "local"
+  ],
+  "source": "https://www.zuerich.com/en/visit/restaurants/krone-altstetten"
+ },
+ {
+  "id": "brasserie-spirgarten",
+  "name": "Brasserie Spirgarten",
+  "cat": "food",
+  "lat": 47.387399,
+  "lon": 8.485459,
+  "address": "Lindenplatz 5, 8048 Zürich",
+  "walk_min": 16,
+  "desc_de": "Brasserie am Lindenplatz: Frühstück, Mittagessen, Schweizer Küche und Bier.",
+  "desc_en": "Brasserie on Lindenplatz: breakfast, lunch, Swiss food and beer.",
+  "url": "https://www.spirgarten.ch",
+  "tags": [
+   "family",
+   "breakfast"
+  ],
+  "source": "https://www.zuerich.com/de/besuchen/restaurants/brasserie-spirgarten"
+ },
+ {
+  "id": "nueni",
+  "name": "Nüni",
+  "cat": "food",
+  "lat": 47.387893,
+  "lon": 8.499702,
+  "address": "Hohlstrasse 430, 8048 Zürich",
+  "walk_min": 11,
+  "desc_de": "Griechisch-mediterranes Bistro auf dem ehemaligen SBB-Industriegelände mit grosser Terrasse; So/Mo geschlossen.",
+  "desc_en": "Greek-Mediterranean bistro on the former SBB industrial site with a big terrace; closed Sun/Mon.",
+  "url": "https://www.xn--nni-hoa.ch/",
+  "tags": [
+   "terrace"
+  ],
+  "source": "https://www.zuerich.com/de/besuchen/restaurants/restaurant-nueni"
+ },
+ {
+  "id": "frau-gerolds-garten",
+  "name": "Frau Gerolds Garten",
+  "cat": "food",
+  "lat": 47.385169,
+  "lon": 8.519063,
+  "address": "Geroldstrasse 23, 8005 Zürich",
+  "walk_min": 34,
+  "desc_de": "Saisonaler Stadtgarten mit Gastronomie neben dem Freitag-Tower in Zürich-West (ca. 2 km).",
+  "desc_en": "Seasonal urban garden with food and drinks next to the Freitag Tower in Zürich West (about 2 km).",
+  "url": "https://www.zuerich.com/it/visitare/ristoranti/frau-gerolds-garten",
+  "tags": [
+   "family",
+   "outdoor",
+   "signature"
+  ],
+  "source": "https://www.zuerich.com/it/visitare/ristoranti/frau-gerolds-garten"
+ },
+ {
+  "id": "schuetzenhaus-albisguetli",
+  "name": "Schützenhaus Albisgüetli",
+  "cat": "food",
+  "lat": 47.3522158,
+  "lon": 8.5083108,
+  "address": "Uetlibergstrasse 341, 8045 Zürich",
+  "walk_min": 54,
+  "desc_de": "Restaurant mit Terrasse beim Albisgüetli – Ausgangspunkt des beleuchteten Laternenwegs auf den Uetliberg und Schauplatz des Knabenschiessens.",
+  "desc_en": "Restaurant with terrace at the Albisgüetli – trailhead of the lit lantern path up the Uetliberg and home of the Knabenschiessen fair.",
+  "url": "https://www.albisguetli.ch/",
+  "tags": [
+   "family",
+   "outdoor",
+   "signature"
+  ],
+  "source": "https://zuri.net/en/zurich/concerts/schutzenhaus-albisgutli-3552.htm"
+ },
+ {
+  "id": "minimum-boulder-flueela",
+  "name": "Minimum Boulder Flüela",
+  "cat": "sport",
+  "lat": 47.381637,
+  "lon": 8.49532,
+  "address": "Flüelastrasse 31, 8048 Zürich",
+  "walk_min": 1,
+  "desc_de": "Boulderhalle (800 m², über 200 Boulder) mit Restaurant/Bar direkt neben dem Areal; Mo–Fr 8–23, Sa/So 10–20 Uhr.",
+  "desc_en": "Bouldering gym (800 m², 200+ problems) with restaurant/bar right next to the site; Mon–Fri 8am–11pm, Sat/Sun 10am–8pm.",
+  "url": "https://minimum.ch/",
+  "tags": [
+   "family",
+   "indoor",
+   "sport"
+  ],
+  "source": "https://www.zuerich.com/en/visit/sport/minimum-bouldering-gym"
+ },
+ {
+  "id": "freibad-letzigraben",
+  "name": "Freibad Letzigraben («Letzibad»)",
+  "cat": "sport",
+  "lat": 47.379405,
+  "lon": 8.499701,
+  "address": "Edelweissstrasse 5, 8048 Zürich",
+  "walk_min": 11,
+  "desc_de": "Max Frischs einziges grosses Bauwerk (1949): 50-m-Becken, Wellenbad, Kinderbecken, Grillstellen und grosse Liegewiesen; Saison ca. Ende Mai bis September.",
+  "desc_en": "Max Frisch's only major building (1949): 50 m pool, wave pool, children's pools, barbecue spots and large lawns; season roughly late May to September.",
+  "url": "https://www.zuerich.com/en/visit/nature/freibad-letzigraben",
+  "tags": [
+   "family",
+   "outdoor",
+   "architecture",
+   "summer"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/2252ef28-2edb-45b8-a514-5c1bc77f3227/download"
+ },
+ {
+  "id": "hallenbad-altstetten",
+  "name": "Hallenbad Altstetten",
+  "cat": "sport",
+  "lat": 47.388517,
+  "lon": 8.479656,
+  "address": "Dachslernstrasse 35, 8048 Zürich",
+  "walk_min": 22,
+  "desc_de": "Hallenbad mit 25-m-Becken, Kinder- und Sprungbecken, 110-m-Rutschbahn «Black Hole» und Sauna; ab 1.1.2027 von der Stadt betrieben, Sanierung verzögert.",
+  "desc_en": "Indoor pool with 25 m pool, children's and diving pools, 110 m 'Black Hole' slide and sauna; city-run from 1 Jan 2027, renovation delayed.",
+  "url": "https://www.bad-altstetten.ch/",
+  "tags": [
+   "family",
+   "indoor",
+   "winter"
+  ],
+  "source": "https://www.badi-info.ch/zh/altstetten-hallenbad.html"
+ },
+ {
+  "id": "stadion-letzigrund",
+  "name": "Stadion Letzigrund",
+  "cat": "sport",
+  "lat": 47.38279,
+  "lon": 8.503683,
+  "address": "Badenerstrasse 500, 8048 Zürich",
+  "walk_min": 13,
+  "desc_de": "Stadion von FCZ und GC, Austragungsort von Weltklasse Zürich und Stadionkonzerten (bis ca. 50'000 Personen) – an Event-Abenden Menschenmengen, Lärm und Tram-Umleitungen.",
+  "desc_en": "Home of FC Zürich and GC, venue of Weltklasse Zürich and stadium concerts (up to about 50,000 people) – crowds, noise and tram diversions on event nights.",
+  "url": "https://stadionletzigrund.com/en/",
+  "tags": [
+   "sport",
+   "events",
+   "noise"
+  ],
+  "source": "https://www.zuerich.com/en/visit/place/letzigrund-stadium"
+ },
+ {
+  "id": "sportanlage-utogrund",
+  "name": "Sportanlage Utogrund",
+  "cat": "sport",
+  "lat": 47.379069,
+  "lon": 8.49681,
+  "address": "Dennlerstrasse 43a, 8047 Zürich",
+  "walk_min": 6,
+  "desc_de": "400-m-Bahn und Rasenfeld gleich südöstlich des Areals, ausserhalb der Schulzeiten fürs Quartier offen; Schulhaus-Neubau und Sanierung der Anlage 2026–2031 (CHF 138 Mio.).",
+  "desc_en": "400 m track and grass pitch just south-east of the site, open to the neighbourhood outside school hours; new school building and sports-ground renovation 2026–2031 (CHF 138 m).",
+  "url": "https://www.stadt-zuerich.ch/de/planen-und-bauen/projekte-und-ausschreibungen/hochbauvorhaben/planung-ausfuehrung/schulanlage-utogrund.html",
+  "tags": [
+   "family",
+   "free",
+   "outdoor",
+   "construction"
+  ],
+  "source": "https://www.stadt-zuerich.ch/de/planen-und-bauen/projekte-und-ausschreibungen/hochbauvorhaben/planung-ausfuehrung/schulanlage-utogrund.html"
+ },
+ {
+  "id": "sportzentrum-heuried",
+  "name": "Sportzentrum Heuried (Eisfeld & Sommerbad)",
+  "cat": "sport",
+  "lat": 47.368045,
+  "lon": 8.505603,
+  "address": "Wasserschöpfi 71, 8055 Zürich",
+  "walk_min": 28,
+  "desc_de": "Offenes Eisfeld mit Schlittschuhmiete und Eishalle (Oktober bis März), im Sommer Freibad.",
+  "desc_en": "Open-air ice rink with skate rental and an ice hall (October to March), outdoor pool in summer.",
+  "url": "https://www.zuerich.com/de/besuchen/sport/sportzentrum-heuried",
+  "tags": [
+   "family",
+   "winter",
+   "outdoor"
+  ],
+  "source": "https://www.zuerich.com/de/besuchen/sport/sportzentrum-heuried"
+ },
+ {
+  "id": "rasensportanlage-juchhof",
+  "name": "Rasensportanlage Juchhof",
+  "cat": "sport",
+  "lat": 47.39705,
+  "lon": 8.471952,
+  "address": "Vulkanstrasse 200, 8048 Zürich",
+  "walk_min": 40,
+  "desc_de": "Grösste Rasensportanlage der Stadt mit 14 Fussballfeldern und 24 Vereinen; neues Garderobengebäude im Bau (2026–27).",
+  "desc_en": "The city's largest football complex with 14 pitches and 24 clubs; new changing-room building under construction (2026–27).",
+  "url": "https://www.stadt-zuerich.ch/de/planen-und-bauen/projekte-und-ausschreibungen/hochbauvorhaben/planung-ausfuehrung/garderobengebaeude-juchhof.html",
+  "tags": [
+   "family",
+   "football",
+   "outdoor"
+  ],
+  "source": "https://www.stadt-zuerich.ch/de/planen-und-bauen/projekte-und-ausschreibungen/hochbauvorhaben/planung-ausfuehrung/garderobengebaeude-juchhof.html"
+ },
+ {
+  "id": "uetliberg-uto-kulm",
+  "name": "Uetliberg (Uto Kulm)",
+  "cat": "nature",
+  "lat": 47.349862,
+  "lon": 8.490706,
+  "address": "Uto Kulm, 8143 Uetliberg",
+  "walk_min": 74,
+  "desc_de": "Zürichs Hausberg (871 m): Aufstieg via Triemli/Hohenstein, Mammutbaum-Allee/Ringlikon oder den beleuchteten Laternenweg ab Albisgüetli; im Winter Schlittelwege. Gut 40 % Albisriedens sind bewaldet.",
+  "desc_en": "Zürich's home mountain (871 m): hike up via Triemli/Hohenstein, the redwood avenue to Ringlikon or the lit lantern path from Albisgüetli; sledging paths in winter. Over 40% of Albisrieden is forest.",
+  "url": "https://www.zuerich.com/besuchen/sehenswuerdigkeiten/uetliberg",
+  "tags": [
+   "family",
+   "free",
+   "outdoor",
+   "hiking",
+   "signature"
+  ],
+  "source": "https://www.zuerich.com/besuchen/sehenswuerdigkeiten/uetliberg"
+ },
+ {
+  "id": "werdinsel",
+  "name": "Werdinsel & Flussbad Au-Höngg",
+  "cat": "nature",
+  "lat": 47.400492,
+  "lon": 8.486753,
+  "address": "Werdinsel, 8064 Zürich",
+  "walk_min": 39,
+  "desc_de": "Limmatinsel mit Gratis-Flussbad, Planschbecken, Spielplatz und Grillstellen im Schutzgebiet am Limmat-Uferweg; ganz in der Nähe plant der Kanton die Revitalisierung «Lebendige Limmat».",
+  "desc_en": "Limmat river island with a free river pool, paddling pools, playground and barbecue spots in a protected area on the Limmat riverside path; the canton's 'Lebendige Limmat' river restoration is planned nearby.",
+  "url": "https://www.zuerich.com/de/besuchen/natur/flussbad-au-hoengg",
+  "tags": [
+   "family",
+   "free",
+   "outdoor",
+   "river",
+   "signature"
+  ],
+  "source": "https://www.zuerich.com/de/besuchen/natur/flussbad-au-hoengg"
+ },
+ {
+  "id": "stadtgaertnerei-palmenhaus",
+  "name": "Stadtgärtnerei & Palmenhaus",
+  "cat": "park",
+  "lat": 47.3753201,
+  "lon": 8.4998427,
+  "address": "Sackzelg 25, 8047 Zürich",
+  "walk_min": 14,
+  "desc_de": "Städtische Gärtnerei mit 7'000 m² Schaugarten und Palmenhaus (Affenbrotbaum, Kokospalme, Koi, Schildkröten, Vögel).",
+  "desc_en": "Municipal nursery with a 7,000 m² show garden and palm house (baobab, coconut palm, koi, turtles, birds).",
+  "url": "https://www.stadt-zuerich.ch/stadtgaertnerei",
+  "tags": [
+   "family",
+   "free",
+   "indoor",
+   "nature"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/2252ef28-2edb-45b8-a514-5c1bc77f3227/download"
+ },
+ {
+  "id": "hasenrain",
+  "name": "Hasenrain (Aussicht, Grillplatz)",
+  "cat": "nature",
+  "lat": 47.375321,
+  "lon": 8.478544,
+  "address": "Hasenrain / Sonnenweg, 8047 Zürich",
+  "walk_min": 23,
+  "desc_de": "Aussichtsplateau am Waldrand über Albisrieden: Hasenrainfest am 31. Juli und Bundesfeier am 1. August mit Höhenfeuer und Feuerwerk.",
+  "desc_en": "Viewpoint plateau at the forest edge above Albisrieden: Hasenrain festival on 31 July and the 1 August national-day celebration with bonfire and fireworks.",
+  "url": "https://zuerich-albisrieden.ch/de/Agenda/Quartierfeste",
+  "tags": [
+   "family",
+   "free",
+   "outdoor",
+   "view"
+  ],
+  "source": "https://zuerich-albisrieden.ch/images/content/Aktuell_2026/BroschuereQuartierAlbisrieden2026V1.pdf",
+  "approx": true
+ },
+ {
+  "id": "bus-flurstrasse",
+  "name": "Bus Flurstrasse (83, 89)",
+  "cat": "transport",
+  "lat": 47.3815117,
+  "lon": 8.4920279,
+  "address": "Rautistrasse, 8047 Zürich",
+  "walk_min": 2,
+  "desc_de": "Nächste Haltestelle: Buslinien 83 und 89.",
+  "desc_en": "Nearest stop: bus lines 83 and 89.",
+  "url": "https://www.zvv.ch",
+  "tags": [
+   "public-transport"
+  ],
+  "source": "https://www.openstreetmap.org/node/5128707597"
+ },
+ {
+  "id": "bus-albisrank",
+  "name": "Bus Albisrank (83, 89)",
+  "cat": "transport",
+  "lat": 47.379816,
+  "lon": 8.4947295,
+  "address": "Albisriederstrasse / Dennlerstrasse, 8047 Zürich",
+  "walk_min": 4,
+  "desc_de": "Bus 83/89 an der Albisrank-Kurve – 1972 sprang hier ein führerloses Tram aus den Schienen und fuhr ins Schulhaus Utogrund.",
+  "desc_en": "Bus 83/89 at the Albisrank curve – in 1972 a driverless tram derailed here and crashed into the Utogrund schoolhouse.",
+  "url": "https://www.zvv.ch",
+  "tags": [
+   "public-transport",
+   "history"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/2252ef28-2edb-45b8-a514-5c1bc77f3227/download"
+ },
+ {
+  "id": "tram-siemens",
+  "name": "Tram Siemens (3)",
+  "cat": "transport",
+  "lat": 47.3784524,
+  "lon": 8.4940243,
+  "address": "Albisriederstrasse, 8047 Zürich",
+  "walk_min": 7,
+  "desc_de": "Tram 3 (Albisrieden ↔ Klusplatz) auf der Albisriederstrasse; das 3er-Tram fährt seit 1939 nach Albisrieden.",
+  "desc_en": "Tram 3 (Albisrieden ↔ Klusplatz) on Albisriederstrasse; line 3 has served Albisrieden since 1939.",
+  "url": "https://www.zvv.ch",
+  "tags": [
+   "public-transport"
+  ],
+  "source": "https://www.openstreetmap.org/node/4883669512"
+ },
+ {
+  "id": "tram-kappeli",
+  "name": "Tram/Bus Kappeli (2; 83, 89)",
+  "cat": "transport",
+  "lat": 47.3850905,
+  "lon": 8.4950678,
+  "address": "Badenerstrasse, 8048 Zürich",
+  "walk_min": 4,
+  "desc_de": "Tram 2 (Klusplatz ↔ Schlieren Geissweid) auf der Badenerstrasse, dazu Bus 83/89.",
+  "desc_en": "Tram 2 (Klusplatz ↔ Schlieren Geissweid) on Badenerstrasse, plus bus 83/89.",
+  "url": "https://www.zvv.ch",
+  "tags": [
+   "public-transport"
+  ],
+  "source": "https://www.openstreetmap.org/node/2277081581"
+ },
+ {
+  "id": "tram-freihofstrasse",
+  "name": "Tram Freihofstrasse (2)",
+  "cat": "transport",
+  "lat": 47.3832482,
+  "lon": 8.4994656,
+  "address": "Badenerstrasse, 8048 Zürich",
+  "walk_min": 7,
+  "desc_de": "Tram 2 auf der Badenerstrasse, Richtung Letzigrund/Stadtzentrum bzw. Schlieren.",
+  "desc_en": "Tram 2 on Badenerstrasse towards Letzigrund/city centre or Schlieren.",
+  "url": "https://www.zvv.ch",
+  "tags": [
+   "public-transport"
+  ],
+  "source": "https://www.openstreetmap.org/node/2277081527"
+ },
+ {
+  "id": "bahnhof-altstetten",
+  "name": "Bahnhof Zürich Altstetten",
+  "cat": "transport",
+  "lat": 47.3913167,
+  "lon": 8.4893332,
+  "address": "Altstetterstrasse / Vulkanplatz, 8048 Zürich",
+  "walk_min": 18,
+  "desc_de": "S-Bahn-, Tram- (4, Limmattalbahn 20) und Busknoten (u.a. 31); hier hielt 1847 die Spanisch-Brötli-Bahn, die erste Bahn der Schweiz.",
+  "desc_en": "S-Bahn, tram (4, Limmattalbahn 20) and bus hub (incl. 31); the 1847 'Spanisch-Brötli-Bahn', Switzerland's first railway, stopped here.",
+  "url": "https://www.sbb.ch",
+  "tags": [
+   "public-transport",
+   "rail"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/5f5d18ba-6366-4812-9ba8-1293e7e0cbbe/download"
+ },
+ {
+  "id": "bahnhof-hardbruecke",
+  "name": "Bahnhof Zürich Hardbrücke",
+  "cat": "transport",
+  "lat": 47.3851609,
+  "lon": 8.5173926,
+  "address": "Hardbrücke, 8005 Zürich",
+  "walk_min": 31,
+  "desc_de": "S-Bahn-Station in Zürich-West, nahe Schiffbau, Freitag-Tower und Frau Gerolds Garten.",
+  "desc_en": "S-Bahn station in Zürich West, near Schiffbau, Freitag Tower and Frau Gerolds Garten.",
+  "url": "https://www.sbb.ch",
+  "tags": [
+   "public-transport",
+   "rail"
+  ],
+  "source": "https://www.openstreetmap.org/node/1231420538"
+ },
+ {
+  "id": "velovorzugsroute-altstetten-hb",
+  "name": "Velovorzugsroute Altstetten–Hauptbahnhof",
+  "cat": "transport",
+  "lat": 47.3890018,
+  "lon": 8.4889761,
+  "address": "Saumackerstrasse / Baslerstrasse, 8048 Zürich",
+  "walk_min": 14,
+  "desc_de": "Erste Velovorzugsroute der Stadt (seit 9.3.2023): von der Saumackerstrasse über Basler- und Bullingerstrasse bis zur Feldstrasse Richtung Kreis 4/HB; grün markiert, Tempo 30, Vortritt.",
+  "desc_en": "The city's first priority bike route (since 9 Mar 2023): from Saumackerstrasse via Basler- and Bullingerstrasse to Feldstrasse towards Kreis 4/main station; green markings, 30 km/h, right of way.",
+  "url": "https://www.stadt-zuerich.ch/de/mobilitaet/velo/velovorzugsrouten.html",
+  "tags": [
+   "bike",
+   "sustainability",
+   "car-free"
+  ],
+  "source": "https://www.stadt-zuerich.ch/de/mobilitaet/velo/velovorzugsrouten.html"
+ },
+ {
+  "id": "bikesharing-freilager",
+  "name": "Bikesharing-Station Freilager (Züri Velo)",
+  "cat": "sharing",
+  "lat": 47.381577,
+  "lon": 8.4903362,
+  "address": "Rautistrasse / Freilager, 8047 Zürich",
+  "walk_min": 4,
+  "desc_de": "Nächste Station des städtischen Velo- und E-Bike-Verleihs (in OpenStreetMap als PubliBike erfasst), knapp 300 m vom Areal.",
+  "desc_en": "Nearest station of the city's bike and e-bike share (mapped in OpenStreetMap as PubliBike), under 300 m from the site.",
+  "url": "https://www.publibike.ch/",
+  "tags": [
+   "bike",
+   "car-free",
+   "sharing"
+  ],
+  "source": "https://www.openstreetmap.org/node/6800437588"
+ },
+ {
+  "id": "bikesharing-utogrund",
+  "name": "Bikesharing-Station Utogrund (Züri Velo)",
+  "cat": "sharing",
+  "lat": 47.378524,
+  "lon": 8.496735,
+  "address": "Dennlerstrasse, 8047 Zürich",
+  "walk_min": 7,
+  "desc_de": "Weitere Velo-/E-Bike-Verleihstation beim Utogrund (in OpenStreetMap als PubliBike erfasst).",
+  "desc_en": "Another bike/e-bike share station at Utogrund (mapped in OpenStreetMap as PubliBike).",
+  "url": "https://www.publibike.ch/",
+  "tags": [
+   "bike",
+   "car-free",
+   "sharing"
+  ],
+  "source": "https://www.openstreetmap.org/node/13326559451"
+ },
+ {
+  "id": "mobility-james",
+  "name": "Mobility Carsharing «Flüelastrasse / Überbauung James»",
+  "cat": "sharing",
+  "lat": 47.381691,
+  "lon": 8.495106,
+  "address": "Flüelastrasse, 8048 Zürich",
+  "walk_min": 1,
+  "desc_de": "Mobility-Standort rund 75 m vom Areal; Kraftwerk1-Bewohnende unterschreiben eine Autoverzichtserklärung und erhalten ein Mobility-Abo.",
+  "desc_en": "Mobility car-sharing station about 75 m from the site; Kraftwerk1 residents sign a no-car pledge and receive a Mobility subscription.",
+  "url": "https://www.mobility.ch/",
+  "tags": [
+   "car-free",
+   "sharing"
+  ],
+  "source": "https://kraftwerk1.ch/siedlungen/koch"
+ },
+ {
+  "id": "lastenrad-trike6",
+  "name": "E-Lastenrad «Trike 6» (Vélorution)",
+  "cat": "sharing",
+  "lat": 47.38844,
+  "lon": 8.472431,
+  "address": "GZ Loogarten, Salzweg 1, 8048 Zürich",
+  "walk_min": 27,
+  "desc_de": "Vereinseigenes E-Lastendreirad (bis 200 kg) des Lastenradkollektivs von Vélorution, stationiert beim GZ Loogarten; Ausleihe per E-Mail an trike6@velorution.ch, Ausweis nötig.",
+  "desc_en": "Volunteer-run e-cargo trike (up to 200 kg) of Vélorution's cargo-bike collective, based at GZ Loogarten; book by email to trike6@velorution.ch, ID required.",
+  "url": "https://velorution.ch/cargobike/trike-6",
+  "tags": [
+   "cargo-bike",
+   "car-free",
+   "sharing",
+   "sustainability"
+  ],
+  "source": "https://velorution.ch/cargobike/trike-6"
+ },
+ {
+  "id": "letzipark",
+  "name": "Letzipark",
+  "cat": "shop",
+  "lat": 47.386306,
+  "lon": 8.499247,
+  "address": "Baslerstrasse 50, 8048 Zürich",
+  "walk_min": 9,
+  "desc_de": "Einkaufszentrum (seit 1987) mit über 50 Läden auf rund 26'000 m² für den Alltagsbedarf, drittgrösstes der Stadt.",
+  "desc_en": "Shopping centre (since 1987) with 50+ shops on about 26,000 m² for everyday needs, the city's third largest.",
+  "url": "https://www.letzipark.ch/",
+  "tags": [
+   "indoor",
+   "everyday"
+  ],
+  "source": "https://zop.zb.uzh.ch/bitstreams/5f5d18ba-6366-4812-9ba8-1293e7e0cbbe/download"
+ },
+ {
+  "id": "cycle-lab",
+  "name": "Cycle Lab",
+  "cat": "shop",
+  "lat": 47.3831,
+  "lon": 8.49603,
+  "address": "Flüelastrasse 16, 8048 Zürich",
+  "walk_min": 2,
+  "desc_de": "Velogeschäft/-werkstatt rund 200 m vom Areal (gemäss OpenStreetMap).",
+  "desc_en": "Bike shop/workshop about 200 m from the site (per OpenStreetMap).",
+  "url": "https://www.cyclelab.cc",
+  "tags": [
+   "bike",
+   "car-free"
+  ],
+  "source": "https://www.openstreetmap.org/node/13075608375"
+ }
+]

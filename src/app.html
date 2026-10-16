@@ -1,0 +1,1714 @@
+<title>Koch-Quartier Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: a Swiss competition model of Albisrieden/Altstetten fills the screen (plaster city on a model board,
+   the Koch-Areal set in as birch wood). A left rail holds the masthead and a tabbed guide; a place card opens on
+   the right; on phones the guide becomes a bottom sheet. Pins and the UI share one category palette. */
+:root{
+  --table:#DCD8CF; --table-2:#ECE9E2; --paper:#FBFAF7; --paper-2:#F1EFE9; --ink:#1B1F1D; --muted:#5C6460; --line:#DDD9D0;
+  --birch:#B07C3F; --birch-soft:#F3E7D4; --accent:#2747A8; --accent-soft:#E3E9F9; --on-accent:#FFFFFF;
+  --c-kita:#D2456E; --c-school:#7E55C4; --c-play:#DB8E12; --c-green:#3C9257; --c-sport:#1F86C2; --c-culture:#C9452F;
+  --c-food:#A26E1C; --c-community:#13948B; --c-health:#A9479A; --c-mobility:#4D5866; --c-recycle:#5F8127; --c-water:#2D8FD1;
+  --shadow:0 12px 32px rgba(40,34,24,.14),0 1px 2px rgba(40,34,24,.10);
+  --f-display:"Bricolage Grotesque",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-ui:"Onest",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-num:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --r:16px; --gl:max(16px, env(safe-area-inset-left, 0px)); --gr:max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --table:#0C0F0E; --table-2:#161B19; --paper:#171C1A; --paper-2:#1F2523; --ink:#E7ECE8; --muted:#9AA59F; --line:#2B3330;
+  --birch:#DEA866; --birch-soft:#392B19; --accent:#9DB2F6; --accent-soft:#1D2849; --on-accent:#0B1430;
+  --c-kita:#F06E93; --c-school:#A98AE6; --c-play:#F2B54A; --c-green:#62B97C; --c-sport:#4FB0E8; --c-culture:#EE6B54;
+  --c-food:#D59E45; --c-community:#3CC2B8; --c-health:#D774C3; --c-mobility:#A6B2C2; --c-recycle:#93B655; --c-water:#62B6EE;
+  --shadow:0 12px 32px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.4); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --table:#0C0F0E; --table-2:#161B19; --paper:#171C1A; --paper-2:#1F2523; --ink:#E7ECE8; --muted:#9AA59F; --line:#2B3330;
+  --birch:#DEA866; --birch-soft:#392B19; --accent:#9DB2F6; --accent-soft:#1D2849; --on-accent:#0B1430;
+  --c-kita:#F06E93; --c-school:#A98AE6; --c-play:#F2B54A; --c-green:#62B97C; --c-sport:#4FB0E8; --c-culture:#EE6B54;
+  --c-food:#D59E45; --c-community:#3CC2B8; --c-health:#D774C3; --c-mobility:#A6B2C2; --c-recycle:#93B655; --c-water:#62B6EE;
+  --shadow:0 12px 32px rgba(0,0,0,.5),0 1px 2px rgba(0,0,0,.4); color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--table);color:var(--ink);font-family:var(--f-ui);font-size:14px;line-height:1.45;overflow:hidden;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+a{color:var(--accent)}
+#app{position:relative;height:100%;padding-left:var(--gl);padding-right:var(--gr);padding-block:0;
+  background:radial-gradient(120% 90% at 55% 45%,var(--table-2) 0%,var(--table) 70%)}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none}
+#gl.pick{cursor:crosshair}
+#labels{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.ov{position:absolute;z-index:3}
+
+/* ---------- 3D labels ---------- */
+.lb{position:absolute;left:0;top:0;transform:translate(-50%,-100%);white-space:nowrap;pointer-events:none;will-change:transform}
+.lb.poi{display:flex;align-items:center;gap:6px;padding:3px 9px 3px 6px;border-radius:999px;background:var(--paper);
+  border:1px solid var(--line);font:600 11.5px/1.2 var(--f-ui);color:var(--ink);box-shadow:0 2px 8px rgba(30,26,20,.14);pointer-events:auto;cursor:pointer;margin-top:-6px}
+.lb.poi i{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.lb.poi.sel{z-index:2;background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.lb.poi small{font:500 10px var(--f-num);color:var(--muted)}
+.lb.poi.sel small{color:inherit;opacity:.75}
+.lb.koch{z-index:3;padding:4px 10px;border-radius:8px;background:var(--birch);color:var(--paper);font:700 12px/1.15 var(--f-display);letter-spacing:.01em;pointer-events:auto;cursor:pointer;box-shadow:0 3px 10px rgba(80,50,10,.25);margin-top:-8px}
+.lb.koch small{display:block;font:500 10px var(--f-num);opacity:.85}
+.lb.kochs{padding:2px 7px;border-radius:6px;background:var(--birch-soft);color:var(--birch);border:1px solid color-mix(in srgb,var(--birch) 35%,transparent);font:600 10.5px var(--f-ui);pointer-events:auto;cursor:pointer}
+.lb.station{padding:3px 8px;border-radius:6px;background:var(--ink);color:var(--paper);font:600 11px var(--f-ui)}
+.lb.place{font:italic 500 11px/1.2 var(--f-display);color:var(--muted);text-shadow:0 0 3px var(--paper),0 0 6px var(--paper);transform:translate(-50%,-50%)}
+.lb.ring{font:600 10px var(--f-num);color:var(--muted);background:var(--paper);padding:1px 6px;border-radius:5px;border:1px solid var(--line);transform:translate(-50%,-50%)}
+.lb.stop{font:600 10px var(--f-ui);color:var(--ink);background:var(--paper-2);border:1px solid var(--line);padding:1px 6px;border-radius:5px}
+.lb.num{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--on-accent);font:700 11px var(--f-num);transform:translate(-50%,-50%);box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.lb.band{display:flex;align-items:center;gap:6px;font:600 10.5px var(--f-ui);padding:2px 8px 2px 5px;border-radius:5px;background:var(--paper);color:var(--ink);border:1px solid var(--line);transform:translate(0,-50%)}
+.lb.band i{width:9px;height:9px;border-radius:2px}
+
+/* ---------- left rail ---------- */
+.rail{position:absolute;z-index:4;top:calc(14px + env(safe-area-inset-top,0px));left:var(--gl);bottom:14px;width:384px;display:flex;flex-direction:column;gap:10px;pointer-events:none}
+.rail>*{pointer-events:auto}
+.mast{padding:16px 18px 14px;display:grid;gap:6px;flex:0 0 auto}
+.mast-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.eyebrow{font:600 10.5px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.mast h1{margin:2px 0 0;font:800 40px/0.95 var(--f-display);font-variation-settings:"opsz" 96;letter-spacing:-.03em;text-wrap:balance}
+.mast h1 b{color:var(--birch);font-weight:800}
+.lead{margin:2px 0 0;color:var(--muted);font-size:13.5px;line-height:1.45;max-width:46ch}
+.stats{margin:4px 0 0;font:500 11px var(--f-num);color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px}
+.stats b{color:var(--ink);font-weight:600}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;padding:2px;background:var(--paper-2)}
+.seg button{border:0;background:transparent;padding:3px 9px;border-radius:7px;font:600 11.5px var(--f-num);cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+.guide{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.tabs{display:flex;gap:2px;padding:6px 8px 0;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;flex:0 0 auto}
+.tabs button{border:0;background:transparent;padding:9px 7px 10px;font:600 12.5px var(--f-ui);color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;display:flex;gap:5px;align-items:baseline}
+.tabs button small{font:500 10px var(--f-num);color:var(--muted)}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.sheet-handle{display:none}
+.panel{overflow:auto;min-height:0;flex:1 1 auto;padding:14px 16px 18px;display:flex;flex-direction:column;gap:14px;overscroll-behavior:contain}
+.panel>*{flex-shrink:0}
+.panel h3{margin:0;font:700 16px/1.25 var(--f-display);letter-spacing:-.01em;text-wrap:balance}
+.panel p{margin:0}
+.sh{font:600 10.5px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.muted{color:var(--muted)}
+.note{font-size:12px;color:var(--muted);line-height:1.5}
+
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:var(--paper-2)}
+.search input{border:0;background:transparent;outline:none;flex:1;min-width:0;font-size:13.5px}
+.search svg{width:16px;height:16px;color:var(--muted);flex:0 0 auto}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:4px 10px 4px 8px;font:600 12px var(--f-ui);cursor:pointer;color:var(--ink)}
+.chip i{width:9px;height:9px;border-radius:50%}
+.chip small{font:500 10.5px var(--f-num);color:var(--muted)}
+.chip[aria-pressed="false"]{color:var(--muted);background:transparent;border-style:dashed}
+.chip[aria-pressed="false"] i{opacity:.35}
+.chip.solid[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.chip.solid[aria-pressed="true"] small{color:inherit;opacity:.7}
+.linkbtn{border:0;background:none;padding:0;color:var(--accent);font:600 12px var(--f-ui);cursor:pointer}
+
+.list{display:grid;margin:0 -6px}
+.row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 6px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;cursor:pointer;border-radius:8px}
+.row:hover{background:var(--paper-2)}
+.row:last-child{border-bottom:0}
+.row i.dot{width:10px;height:10px;border-radius:50%}
+.row b{display:block;font-weight:600;font-size:13px;line-height:1.3;overflow:hidden;text-overflow:ellipsis}
+.row span.sub{display:block;font-size:11.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row em{font:600 11.5px var(--f-num);font-style:normal;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.row.sel{background:var(--accent-soft)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 12px;font:600 12.5px var(--f-ui);cursor:pointer;text-decoration:none;color:var(--ink)}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.birch{background:var(--birch);border-color:var(--birch);color:var(--paper)}
+.btn svg{width:15px;height:15px}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px}
+
+/* walks */
+.tour{border:1px solid var(--line);border-radius:14px;padding:14px;display:grid;gap:8px;background:var(--paper)}
+.tour .top{display:flex;gap:10px;align-items:flex-start}
+.tour .ico{width:34px;height:34px;border-radius:10px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:0 0 auto}
+.tour .ico svg{width:18px;height:18px}
+.tour .meta{font:500 11px var(--f-num);color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 10px}
+.tour ol{margin:0;padding-left:20px;font-size:12.5px;color:var(--muted);display:grid;gap:2px}
+.tour ol li::marker{font:600 11px var(--f-num);color:var(--accent)}
+
+/* agenda */
+.months{display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;padding-bottom:4px;margin:0 -2px}
+.months button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);border-radius:9px;padding:5px 8px 4px;cursor:pointer;display:grid;justify-items:center;line-height:1.1;min-width:46px}
+.months button b{font:600 12px var(--f-ui)}
+.months button small{font:500 9.5px var(--f-num);color:var(--muted)}
+.months button span{font:600 9.5px var(--f-num);color:var(--accent);height:11px}
+.months button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.months button[aria-pressed="true"] small,.months button[aria-pressed="true"] span{color:inherit;opacity:.8}
+.ev{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-items:start;padding:10px 6px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;cursor:pointer;border-radius:8px;width:100%}
+.ev:hover{background:var(--paper-2)}
+.ev .date{border:1px solid var(--line);border-radius:9px;text-align:center;padding:4px 0 3px;background:var(--paper);line-height:1.05}
+.ev .date b{display:block;font:700 17px var(--f-display)}
+.ev .date small{font:600 9.5px var(--f-num);text-transform:uppercase;color:var(--muted)}
+.ev .date.rec b{font-size:12px;font-family:var(--f-num);padding:3px 0}
+.ev h4{margin:0;font-size:13px;font-weight:600;line-height:1.3}
+.ev p{margin:2px 0 0;font-size:11.5px;color:var(--muted)}
+.tag{display:inline-block;font:600 9.5px var(--f-ui);letter-spacing:.04em;text-transform:uppercase;padding:1px 6px;border-radius:5px;background:var(--birch-soft);color:var(--birch);margin-left:6px;vertical-align:1px}
+.tag.next{background:var(--accent-soft);color:var(--accent)}
+
+/* involve */
+.idea{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
+.idea .ico{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:var(--birch-soft);color:var(--birch)}
+.idea .ico svg{width:17px;height:17px}
+.idea h4{margin:0 0 3px;font-size:13.5px;font-weight:700;line-height:1.3}
+.idea p{font-size:12.5px;color:var(--muted)}
+.idea .linkbtn{margin-top:6px}
+.suggest{border:1px dashed var(--birch);border-radius:14px;padding:14px;display:grid;gap:10px;background:color-mix(in srgb,var(--birch-soft) 55%,transparent)}
+.field{display:grid;gap:4px}
+.field label{font:600 11px var(--f-ui);color:var(--muted)}
+.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:9px;padding:7px 9px;background:var(--paper);font-size:13px;width:100%}
+pre.snip{margin:0;padding:10px;border-radius:10px;background:var(--paper-2);border:1px solid var(--line);font:500 11px/1.5 var(--f-num);white-space:pre-wrap;word-break:break-word;max-height:160px;overflow:auto}
+
+/* about */
+.prose{display:grid;gap:10px;font-size:13px;line-height:1.55}
+.prose p{max-width:62ch}
+.kv{display:grid;margin:0}
+.kv div{display:grid;grid-template-columns:minmax(0,40%) minmax(0,1fr);gap:10px;padding:6px 0;border-bottom:1px solid var(--line);font-size:12.5px}
+.kv div:last-child{border-bottom:0}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+
+/* ---------- place card ---------- */
+.placecard{top:calc(14px + env(safe-area-inset-top,0px));right:calc(var(--gr) + 54px);width:364px;max-height:calc(100% - 96px);overflow:auto;padding:18px 18px 16px;display:grid;gap:12px;align-content:start;z-index:5}
+.placecard .close{position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:9px;border:0;background:transparent;color:var(--muted);cursor:pointer;display:grid;place-items:center}
+.placecard .close:hover{background:var(--paper-2);color:var(--ink)}
+.placecard .close svg{width:16px;height:16px}
+.kick{display:flex;align-items:center;gap:7px;font:600 10.5px var(--f-ui);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding-right:30px}
+.kick i{width:10px;height:10px;border-radius:50%}
+.placecard h2{margin:0;font:750 23px/1.12 var(--f-display);letter-spacing:-.02em;text-wrap:balance;padding-right:16px}
+.walk{display:flex;flex-wrap:wrap;gap:6px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border-radius:999px;background:var(--paper-2);border:1px solid var(--line);font:600 11.5px var(--f-num);font-variant-numeric:tabular-nums}
+.pill svg{width:13px;height:13px}
+.pill.accent{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.desc{font-size:13.5px;line-height:1.55}
+.addr{font-size:12px;color:var(--muted)}
+.lagen{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:stretch}
+.tower{width:44px;display:flex;flex-direction:column-reverse;border-radius:6px 6px 3px 3px;overflow:hidden;border:1px solid var(--line)}
+.tower div{flex:0 0 auto}
+.lagen table{width:100%;border-collapse:collapse;font-size:12px;font-variant-numeric:tabular-nums}
+.lagen th{font:600 10.5px var(--f-ui);color:var(--muted);text-align:left;padding:3px 4px;border-bottom:1px solid var(--line)}
+.lagen td{padding:5px 4px;border-bottom:1px solid var(--line)}
+.lagen td.n{text-align:right;font-family:var(--f-num)}
+.lagen tr:last-child td{border-bottom:0}
+.sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:0}
+
+/* ---------- tools ---------- */
+.tools{top:calc(14px + env(safe-area-inset-top,0px));right:var(--gr);display:grid;gap:2px;padding:4px}
+.tools button{width:36px;height:36px;border:0;background:transparent;border-radius:9px;cursor:pointer;display:grid;place-items:center;color:var(--ink)}
+.tools button:hover{background:var(--paper-2)}
+.tools button[aria-pressed="true"],.tools button[aria-expanded="true"]{background:var(--accent-soft);color:var(--accent)}
+.tools svg{width:18px;height:18px}
+.tools hr{border:0;border-top:1px solid var(--line);margin:2px 5px}
+#compass svg{transition:transform .1s linear}
+.layers{top:calc(14px + env(safe-area-inset-top,0px));right:calc(var(--gr) + 54px);width:250px;padding:12px;display:grid;gap:2px;z-index:6}
+.layers .lgrp{font:600 10.5px var(--f-ui);letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:6px 0 2px}
+.layers .lgrp:first-child{margin-top:0}
+.layers label{display:flex;align-items:center;gap:10px;padding:5px 4px;border-radius:7px;cursor:pointer;font-size:13px}
+.layers label:hover{background:var(--paper-2)}
+.layers label small{margin-left:auto;font:500 10.5px var(--f-num);color:var(--muted)}
+.layers input{appearance:none;-webkit-appearance:none;width:30px;height:18px;border-radius:99px;background:var(--line);position:relative;flex:0 0 auto;cursor:pointer;margin:0;transition:background .15s}
+.layers input::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:transform .15s}
+.layers input:checked{background:var(--accent)}
+.layers input:checked::after{transform:translateX(12px)}
+
+.foot{right:var(--gr);bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;font:500 10.5px var(--f-num);color:var(--muted);background:color-mix(in srgb,var(--paper) 82%,transparent);border-radius:8px;padding:4px 8px;z-index:2}
+.scale{display:flex;align-items:center;gap:6px}
+.scale i{display:block;height:6px;border:1.5px solid var(--ink);border-top:0;width:80px}
+
+.tourbar{left:50%;transform:translateX(-50%);bottom:calc(46px + env(safe-area-inset-bottom,0px));width:min(660px,calc(100% - 32px - 400px));padding:12px 14px;display:grid;gap:8px;z-index:6;margin-left:200px}
+.tourbar .tb-top{display:flex;align-items:center;gap:10px}
+.tourbar .tb-top b{font:700 14px var(--f-display);flex:1;min-width:0}
+.tourbar .play{width:36px;height:36px;border-radius:50%;border:0;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;cursor:pointer;flex:0 0 auto}
+.tourbar .play svg{width:15px;height:15px}
+.tourbar .x{width:30px;height:30px;border:0;background:transparent;border-radius:8px;cursor:pointer;color:var(--muted);display:grid;place-items:center}
+.tourbar .x svg{width:16px;height:16px}
+.tourbar .txt{font-size:13px;line-height:1.5;min-height:2.9em}
+.prog{height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--accent)}
+.legs{display:flex;gap:4px;flex-wrap:wrap}
+.legs span{font:600 10.5px var(--f-num);padding:2px 7px;border-radius:6px;background:var(--paper-2);color:var(--muted)}
+.legs span.on{background:var(--accent);color:var(--on-accent)}
+.legs span.done{background:var(--accent-soft);color:var(--accent)}
+
+.pickhint{left:50%;transform:translateX(-50%);top:calc(16px + env(safe-area-inset-top,0px));padding:9px 14px;font-weight:600;font-size:13px;display:flex;gap:10px;align-items:center;z-index:7;margin-left:200px}
+.toast{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(60px + env(safe-area-inset-bottom,0px));z-index:9;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:10px;font-weight:600;font-size:13px;box-shadow:var(--shadow)}
+.loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:8;padding:14px 18px;font:600 13px var(--f-ui);display:flex;gap:10px;align-items:center;margin-left:200px}
+.loading i{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--birch);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- phones and small tablets ---------- */
+@media (max-width:900px){
+  .rail{top:calc(10px + env(safe-area-inset-top,0px));bottom:auto;width:auto;right:calc(var(--gr) + 50px)}
+  .mast{padding:10px 12px;gap:2px}
+  .mast h1{font-size:25px}
+  .lead,.stats{display:none}
+  .eyebrow{font-size:9.5px}
+  .guide{position:fixed;left:0;right:0;bottom:0;height:var(--sheetH,46%);border-radius:18px 18px 0 0;border-bottom:0;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);padding-bottom:env(safe-area-inset-bottom,0px);transition:height .25s ease}
+  .guide.min{--sheetH:calc(52px + env(safe-area-inset-bottom,0px))}
+  .sheet-handle{display:block;position:absolute;top:4px;left:50%;transform:translateX(-50%);width:44px;height:16px;border:0;background:transparent;cursor:pointer;padding:0}
+  .sheet-handle::after{content:"";display:block;width:36px;height:4px;border-radius:2px;background:var(--line);margin:6px auto 0}
+  .tabs{padding-top:14px}
+  .tabs button{padding:6px 8px 9px;font-size:12.5px}
+  .panel{padding:12px max(14px, env(safe-area-inset-left,0px)) 18px}
+  .placecard{top:auto;left:0;right:0;bottom:0;width:auto;max-height:62%;border-radius:18px 18px 0 0;padding:18px max(16px, env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px, env(safe-area-inset-left,0px));z-index:7}
+  .tools{top:calc(10px + env(safe-area-inset-top,0px))}
+  .tools button{width:32px;height:32px}
+  .layers{right:calc(var(--gr) + 46px);top:calc(10px + env(safe-area-inset-top,0px));width:min(250px,calc(100% - 80px));max-height:60%;overflow:auto}
+  .foot{top:calc(94px + env(safe-area-inset-top,0px));bottom:auto;left:var(--gl);right:auto;font-size:9.5px;flex-wrap:wrap;gap:2px 10px;max-width:calc(100% - var(--gl) - var(--gr) - 54px)}   /* below the header card, clear of the tools */
+  .tourbar{width:auto;left:var(--gl);right:var(--gr);transform:none;margin-left:0;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  .pickhint,.loading{margin-left:0}
+  .pickhint{top:calc(96px + env(safe-area-inset-top,0px));width:max-content;max-width:calc(100% - 32px)}
+  .lb.place{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div id="app">
+  <canvas id="gl" tabindex="0" aria-label="3D-Modell von Albisrieden und Altstetten"></canvas>
+  <div id="labels" aria-hidden="true"></div>
+
+  <aside class="rail" id="rail">
+    <header class="mast card">
+      <div class="mast-top">
+        <span class="eyebrow" data-i="eyebrow"></span>
+        <div class="seg" role="group" aria-label="Sprache / Language">
+          <button type="button" data-lang="de" aria-pressed="true">DE</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+      </div>
+      <h1><b>Koch</b>-Quartier</h1>
+      <p class="lead" data-i="lead"></p>
+      <p class="stats" id="stats"></p>
+    </header>
+    <section class="guide card" id="guide">
+      <button type="button" class="sheet-handle" id="sheetToggle" aria-label="Guide ein- oder ausklappen"></button>
+      <nav class="tabs" role="tablist" id="tabs"></nav>
+      <div class="panel" id="panel" role="tabpanel"></div>
+    </section>
+  </aside>
+  <div class="ov foot" id="foot"><span class="scale"><i id="scaleBar"></i><b id="scaleTxt">200 m</b></span><a href="https://github.com/phideltaee/koch-atlas" target="_blank" rel="noopener" data-i="indie" style="color:inherit">Inoffiziell · Open Source</a><span>© OpenStreetMap</span></div>
+
+  <article class="ov placecard card" id="card" hidden aria-live="polite"></article>
+
+  <div class="ov tools card" id="tools">
+    <button type="button" id="zIn" data-t="zoomIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg></button>
+    <button type="button" id="zOut" data-t="zoomOut"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/></svg></button>
+    <hr>
+    <button type="button" id="compass" data-t="north"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l4 9h-8z" fill="currentColor" stroke="none"/><path d="M12 21l-4-9h8z" opacity=".35" fill="currentColor" stroke="none"/></svg></button>
+    <button type="button" id="home" data-t="homeView"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11l8-7 8 7"/><path d="M6 10v10h12V10"/></svg></button>
+    <button type="button" id="bLayers" data-t="layers" aria-expanded="false" aria-controls="layers"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></button>
+    <button type="button" id="bNight" data-t="night" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button>
+  </div>
+  <div class="ov layers card" id="layers" hidden></div>
+
+  <div class="ov tourbar card" id="tourbar" hidden></div>
+  <div class="ov pickhint card" id="pickhint" hidden></div>
+  <div class="toast" id="toast" hidden></div>
+  <div class="ov loading card" id="loading"><i></i><span data-i="loading">Modell wird aufgebaut</span></div>
+</div>
+
+<script id="scene-data" type="application/json">__SCENE__</script>
+<script id="content-data" type="application/json">__CONTENT__</script>
+<script id="routes-data" type="application/json">__ROUTES__</script>
+
+<script>
+// If the 3D module cannot load (WebGL off, CDN blocked), say so instead of leaving a blank board.
+window.__kqErr = [];
+addEventListener('error', e => window.__kqErr.push(e.message || 'load error'), true);
+addEventListener('unhandledrejection', e => window.__kqErr.push(String(e.reason)));
+setTimeout(() => {
+  if (window.__kqReady) return;
+  const el = document.getElementById('loading');
+  if (!el) return;
+  el.innerHTML = '<span><b>Das 3D-Modell ist nicht gestartet.</b><br>Seite neu laden. Bleibt sie leer, blockiert der Browser WebGL oder den Download von three.js (cdn.jsdelivr.net).<br><small style="color:var(--muted)"></small></span>';
+  el.querySelector('small').textContent = window.__kqErr.slice(0, 3).join(' · ');
+}, 15000);
+</script>
+
+<script type="module">
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/+esm';
+import { MapControls } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/controls/MapControls.js/+esm';
+
+const OVERLAY = __OVERLAY__;   // optional extra texts and links from assemble.py --overlay; empty by default
+const WALKTHROUGH = OVERLAY.walkthrough || '';
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('kq.' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('kq.' + k, JSON.stringify(v)); } catch {} },
+};
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// ---------------------------------------------------------------- data
+const SCENE = JSON.parse($('#scene-data').textContent);
+const CONTENT = JSON.parse($('#content-data').textContent);
+const ROUTES = JSON.parse($('#routes-data').textContent);
+const Q = SCENE.q, R = SCENE.R, BC = SCENE.bc;
+const [LAT0, LON0] = SCENE.origin;
+const KX = 111320 * Math.cos(LAT0 * Math.PI / 180), KY = 110574;
+const HOME = { x: CONTENT.home[0], y: CONTENT.home[1] };
+const POIS = CONTENT.pois, EVENTS = CONTENT.events, TOURS = CONTENT.tours;
+const POI = Object.fromEntries(POIS.map(p => [p.id, p]));
+const W = (x, y, h = 0) => new THREE.Vector3(x, h, -y);       // model metres -> three.js (north = -z)
+
+// ---------------------------------------------------------------- text
+const GROUPS = [
+  { id: 'kita', de: 'Kitas', en: 'Childcare', v: '--c-kita' },
+  { id: 'school', de: 'Kindergarten & Schule', en: 'Kindergarten & school', v: '--c-school' },
+  { id: 'play', de: 'Spielplätze', en: 'Playgrounds', v: '--c-play' },
+  { id: 'green', de: 'Parks & Natur', en: 'Parks & nature', v: '--c-green' },
+  { id: 'sport', de: 'Sport & Baden', en: 'Sport & swimming', v: '--c-sport' },
+  { id: 'culture', de: 'Kultur & Geschichte', en: 'Culture & history', v: '--c-culture' },
+  { id: 'food', de: 'Essen, Märkte & Läden', en: 'Food, markets & shops', v: '--c-food' },
+  { id: 'community', de: 'Gemeinschaft', en: 'Community', v: '--c-community' },
+  { id: 'health', de: 'Gesundheit & Familie', en: 'Health & family', v: '--c-health' },
+  { id: 'mobility', de: 'Mobilität', en: 'Getting around', v: '--c-mobility' },
+];
+const GROUP = Object.fromEntries(GROUPS.map(g => [g.id, g]));
+
+const T = {
+  de: {
+    eyebrow: 'Quartier-Atlas · Kreis 9', indie: 'Inoffiziell · Open Source', loading: 'Modell wird aufgebaut',
+    lead: 'Ein Stadtmodell von Albisrieden und Altstetten mit allem, was Familien und Nachbarn rund um das neue Koch-Quartier entdecken können.',
+    places: 'Orte', events: 'Anlässe', walks: 'Rundgänge', buildings: 'Gebäude',
+    tExplore: 'Entdecken', tWalks: 'Rundgänge', tAgenda: 'Agenda', tInvolve: 'Mitmachen', tAbout: 'Über',
+    search: 'Ort suchen', all: 'Alle', none: 'Keine', min: 'Min.', walkMin: 'Min. zu Fuss', fromHome: 'ab Flurstrasse 71',
+    noResults: 'Keine Orte für diese Auswahl.', outside: 'ausserhalb des Modells', toward: 'Richtung',
+    showWay: 'Weg ab Hochhaus zeigen', hideWay: 'Weg ausblenden', website: 'Website', source: 'Quelle', showOnMap: 'Auf der Karte',
+    close: 'Schliessen', zoomIn: 'Hineinzoomen', zoomOut: 'Herauszoomen', north: 'Norden oben', homeView: 'Zurück zum Koch-Quartier',
+    layers: 'Ebenen', night: 'Nachtmodell', lyTrees: 'Bäume', lyFountains: 'Trinkbrunnen', lyRecycling: 'Sammelstellen', lyStops: 'Haltestellen',
+    lyLines: 'Bus 83, 89 und Tram 2', lySharing: 'Velo- und Autoteilen', lyRings: 'Gehminuten-Ringe', lyNames: 'Namen von Parks und Plätzen',
+    lgMap: 'Karte', lgCity: 'Stadt',
+    ringLbl: m => `${m} Min.`, ringNote: 'Ringe: Luftlinie, ungefähr 5, 10 und 15 Minuten zu Fuss.',
+    walksIntro: 'Vier Wege durchs Quartier, auf echten Fusswegen berechnet. Starten Sie einen Rundgang, die Kamera folgt dem Weg.',
+    start: 'Rundgang starten', pause: 'Pause', play: 'Weiter', stop: 'Beenden', km: 'km', stops: 'Halte', plusTrain: '+ 5 Min. S-Bahn',
+    agendaIntro: 'Was im Quartier los ist, von November 2026 bis Oktober 2027. Daten aus Vereins- und Stadtseiten; wiederkehrende Anlässe mit üblichem Termin.',
+    upcoming: 'Demnächst', regular: 'Regelmässig', family: 'Familie', nextTag: 'bald', allMonths: 'Ganzes Jahr', noEvents: 'Für diesen Monat ist nichts erfasst.',
+    involveTitle: 'Ideen fürs Quartier',
+    involveIntro: 'Diese Ideen sind beim Bau der Karte entstanden. Organisiert ist davon noch nichts: Wer mitmachen will, kann hier anfangen, zusammen mit Nachbarinnen und Nachbarn, der Siedlungskommission und dem Quartiermanagement.',
+    suggestTitle: 'Fehlt ein Ort?', suggestIntro: 'Setzen Sie einen Punkt auf die Karte. Die Seite erstellt daraus einen Datensatz zum Kopieren, der in die offene Karte übernommen werden kann.',
+    suggestBtn: 'Ort auf der Karte setzen', pickHint: 'Tippen Sie auf die Stelle im Modell, wo der Ort liegt.', cancel: 'Abbrechen',
+    fName: 'Name des Orts', fCat: 'Kategorie', fNote: 'Warum ist er wichtig?', copy: 'Datensatz kopieren', copied: 'Kopiert', copyFail: 'Kopieren ging nicht. Text ist markiert.',
+    again: 'Neuen Punkt setzen',
+    aboutTitle: 'Warum es diese Karte gibt',
+    about1: 'Auf dem ehemaligen Kohlenlager zwischen Albisrieden und Altstetten entsteht das Koch-Quartier: Wohnungen von ABZ und Kraftwerk1, Gewerbe im MACH und ein neuer Park. Diese Karte hilft neuen und langjährigen Nachbarinnen und Nachbarn, das Quartier rundherum zu entdecken.',
+    about2: 'Das Modell zeigt jedes Gebäude, jeden Park, jede Kita und jeden Anlass, die sich finden liessen. Die Karte soll dem Quartier gehören: Code und Daten sind offen, damit alle sie erweitern können. Sie ist ein unabhängiges Nachbarschaftsprojekt und nicht offiziell mit den Bauträgern des Koch-Quartiers verbunden.',
+    dataTitle: 'Daten und Methode', dBuild: 'Gebäude, Strassen, Bäume, Brunnen, Sammelstellen', dBuildV: 'OpenStreetMap, © OpenStreetMap-Mitwirkende (ODbL), Stand 15.10.2026',
+    dPlaces: 'Orte und Anlässe', dPlacesV: 'Recherche bei Stadt Zürich, ABZ, Kraftwerk1, Gemeinschaftszentren und Vereinen. Jeder Eintrag hat eine Quelle.',
+    dWalk: 'Gehzeiten', dWalkV: 'Fussweg-Routing (OSRM) ab Flurstrasse 71. Wege über die Baustelle fehlen noch, einzelne Zeiten sind 2 bis 5 Minuten zu lang.',
+    dKoch: 'Koch-Gebäude', dKochV: 'Grundrisse aus OpenStreetMap, Höhen nach Angaben der Bauträger. Sockel und Dachgarten schematisch.',
+    dLicense: 'Lizenz', dLicenseV: 'Code MIT, Daten ODbL',
+    flatTour: '3D-Rundgang durch die 4,5-Zimmer-Wohnungen', flatTourSub: 'Grundrisse der 4,5-Zimmer-Typen im Hochhaus, möbliert.',
+    lageTitle: 'Lagen im Hochhaus', lageNote: 'Freie 4,5-Zimmer-Wohnungen in der öffentlichen Ausschreibung (19.10.–1.11.2026), Stand Wohnungsfinder 15.10.2026.',
+    lage: 'Lage', floors: 'Geschosse', free: 'freitragend', subv: 'subv.', showBands: 'Lagen am Turm zeigen', hideBands: 'Lagen ausblenden',
+    clusterNote: 'Ab dem 8. Stock bilden je drei Geschosse einen Cluster mit Gemeinschaftsraum und Waschsalon für rund 21 Haushalte.',
+    fountain: 'Trinkbrunnen', fountainTxt: 'Einer der über 1200 Brunnen der Stadt Zürich mit Trinkwasserqualität.',
+    recycle: 'Sammelstelle', recycleTxt: 'Öffentliche Sammelstelle.', stop: 'Haltestelle', bike: 'Veloverleih', car: 'Carsharing',
+    accepts: 'Nimmt an', station: 'Bahnhof', schematic: 'Form im Modell schematisch.',
+    event: 'Anlass', when: 'Wann', where: 'Wo', moreInfo: 'Mehr erfahren',
+    kids: 'Kinder', exitTour: 'Rundgang beenden', tail: 'Weiter mit der S-Bahn',
+    det: { ages: 'Alter', hours: 'Öffnungszeiten', opening_hours: 'Öffnungszeiten', price_day: 'Preis pro Tag', price: 'Preis', subsidised: 'Subventionierte Plätze', subsidized: 'Subventionierte Plätze', labels: 'Labels', languages: 'Sprachen', operator: 'Trägerschaft', phone: 'Telefon', status: 'Stand', waitlist: 'Warteliste', places: 'Plätze', note: 'Hinweis', when: 'Wann', lines: 'Linien' },
+  },
+  en: {
+    eyebrow: 'Neighbourhood atlas · District 9', indie: 'Unofficial · Open source', loading: 'Building the model',
+    lead: 'A city model of Albisrieden and Altstetten with everything families and neighbours can discover around the new Koch quarter.',
+    places: 'places', events: 'events', walks: 'walks', buildings: 'buildings',
+    tExplore: 'Explore', tWalks: 'Walks', tAgenda: 'Events', tInvolve: 'Get involved', tAbout: 'About',
+    search: 'Search places', all: 'All', none: 'None', min: 'min', walkMin: 'min walk', fromHome: 'from Flurstrasse 71',
+    noResults: 'No places match this selection.', outside: 'outside the model', toward: 'towards',
+    showWay: 'Show the way from the tower', hideWay: 'Hide the way', website: 'Website', source: 'Source', showOnMap: 'Show on the map',
+    close: 'Close', zoomIn: 'Zoom in', zoomOut: 'Zoom out', north: 'North up', homeView: 'Back to the Koch quarter',
+    layers: 'Layers', night: 'Night model', lyTrees: 'Trees', lyFountains: 'Drinking fountains', lyRecycling: 'Recycling points', lyStops: 'Bus and tram stops',
+    lyLines: 'Bus 83, 89 and tram 2', lySharing: 'Bike and car sharing', lyRings: 'Walking-time rings', lyNames: 'Names of parks and squares',
+    lgMap: 'Map', lgCity: 'City',
+    ringLbl: m => `${m} min`, ringNote: 'Rings: straight-line distance, roughly 5, 10 and 15 minutes on foot.',
+    walksIntro: 'Four routes through the quarter, calculated on real footpaths. Start a walk and the camera follows it.',
+    start: 'Start the walk', pause: 'Pause', play: 'Resume', stop: 'End', km: 'km', stops: 'stops', plusTrain: '+ 5 min S-Bahn',
+    agendaIntro: 'What is on in the quarter from November 2026 to October 2027. Dates from club and city pages; recurring events with their usual date.',
+    upcoming: 'Coming up', regular: 'Regular', family: 'Family', nextTag: 'soon', allMonths: 'Whole year', noEvents: 'Nothing listed for this month.',
+    involveTitle: 'Ideas for the quarter',
+    involveIntro: 'These ideas came up while building the map. None of them is organised yet: anyone who wants to join in can start here, with neighbours, the residents’ committee and the quarter management.',
+    suggestTitle: 'Missing a place?', suggestIntro: 'Drop a point on the model. The page turns it into a record you can copy, ready to add to the open map.',
+    suggestBtn: 'Place a point on the map', pickHint: 'Tap the spot in the model where the place is.', cancel: 'Cancel',
+    fName: 'Name of the place', fCat: 'Category', fNote: 'Why does it matter?', copy: 'Copy record', copied: 'Copied', copyFail: 'Copying did not work. The text is selected.',
+    again: 'Place a new point',
+    aboutTitle: 'Why this map exists',
+    about1: 'The Koch-Quartier is rising on the former coal yard between Albisrieden and Altstetten: flats by ABZ and Kraftwerk1, workspaces in the MACH building and a new park. This map helps new and long-time neighbours discover the quarter around it.',
+    about2: 'The model shows every building, park, Kita and event that could be found. The map should belong to the quarter: code and data are open so anyone can extend it. It is an independent neighbourhood project, not affiliated with the Koch-Quartier developers.',
+    dataTitle: 'Data and method', dBuild: 'Buildings, streets, trees, fountains, recycling', dBuildV: 'OpenStreetMap, © OpenStreetMap contributors (ODbL), as of 15 Oct 2026',
+    dPlaces: 'Places and events', dPlacesV: 'Research on City of Zürich, ABZ, Kraftwerk1, community centre and club pages. Every entry has a source.',
+    dWalk: 'Walking times', dWalkV: 'Footpath routing (OSRM) from Flurstrasse 71. Paths across the building site are missing, so some times are 2 to 5 minutes too long.',
+    dKoch: 'Koch buildings', dKochV: 'Footprints from OpenStreetMap, heights from the developers. Base and roof garden are schematic.',
+    dLicense: 'Licence', dLicenseV: 'Code MIT, data ODbL',
+    flatTour: '3D walkthrough of the 4.5-room flats', flatTourSub: 'Floor plans of the 4.5-room types in the tower, furnished.',
+    lageTitle: 'Floor bands in the tower', lageNote: 'Open 4.5-room flats in the public round (19 Oct – 1 Nov 2026), per the Wohnungsfinder on 15 Oct 2026.',
+    lage: 'Band', floors: 'Floors', free: 'cost rent', subv: 'subs.', showBands: 'Show bands on the tower', hideBands: 'Hide bands',
+    clusterNote: 'From the 8th floor up, every three floors form a cluster with a common room and laundry for about 21 households.',
+    fountain: 'Drinking fountain', fountainTxt: 'One of more than 1,200 fountains in Zürich with drinking-quality water.',
+    recycle: 'Recycling point', recycleTxt: 'Public collection point.', stop: 'Stop', bike: 'Bike rental', car: 'Car sharing',
+    accepts: 'Takes', station: 'Station', schematic: 'Shape in the model is schematic.',
+    event: 'Event', when: 'When', where: 'Where', moreInfo: 'Find out more',
+    kids: 'Kids', exitTour: 'End the walk', tail: 'On by S-Bahn',
+    det: { ages: 'Ages', hours: 'Hours', opening_hours: 'Hours', price_day: 'Price per day', price: 'Price', subsidised: 'Subsidised places', subsidized: 'Subsidised places', labels: 'Labels', languages: 'Languages', operator: 'Run by', phone: 'Phone', status: 'Status', waitlist: 'Waiting list', places: 'Places', note: 'Note', when: 'When', lines: 'Lines' },
+  },
+};
+let lang = store.get('lang', 'de') === 'en' ? 'en' : 'de';
+const t = k => (T[lang][k] ?? T.de[k] ?? k);
+const L = o => (lang === 'en' ? (o.en ?? o.de) : (o.de ?? o.en));
+const pick = (p, dk, ek) => (lang === 'en' ? (p[ek] || p[dk]) : (p[dk] || p[ek]));
+const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const groupColor = g => cssVar(GROUP[g]?.v || '--c-mobility');
+
+const KOCH = {
+  hochhaus: {
+    de: { t: 'Koch-Hochhaus', s: 'ABZ · Flurstrasse 71', b: 'Das erste Hochhaus der ABZ: 85 Meter, 26 Geschosse, 164 Wohnungen. Ein Drittel der Wohnfläche ist subventioniert. Der Eingang liegt auf dem Dachgarten über dem Sockel, ein zweiter auf der Parkseite. Bezug ab Juni 2027.' },
+    en: { t: 'Koch tower', s: 'ABZ · Flurstrasse 71', b: 'ABZ’s first high-rise: 85 metres, 26 floors, 164 flats. A third of the floor area is subsidised. The entrance is on the roof garden above the base, with a second one on the park side. Move-in from June 2027.' },
+    facts: [['Höhe|Height', '85 m'], ['Geschosse|Floors', '26 + EG'], ['Wohnungen|Flats', '164'], ['Architektur|Architects', 'Enzmann Fischer Partner'], ['Standard|Standard', 'Minergie-P · 2000 Watt'], ['Bezug|Move-in', '06.2027']],
+    url: 'https://www.abz-koch.ch/ueber-das-kochquartier/',
+  },
+  zeilenbau: {
+    de: { t: 'Zeilenbau', s: 'ABZ · Flurstrasse 81–83', b: '40 Wohnungen auf 8 Geschossen, zum Quartierpark ausgerichtet, mit einer durchgehenden Balkonschicht. Im Erdgeschoss zieht ein Coop ein. Bezug ab 1. März 2027.' },
+    en: { t: 'Row building', s: 'ABZ · Flurstrasse 81–83', b: '40 flats on 8 floors facing the park, with a continuous layer of balconies. A Coop opens on the ground floor. Move-in from 1 March 2027.' },
+    facts: [['Wohnungen|Flats', '40'], ['Geschosse|Floors', '8'], ['Bezug|Move-in', '03.2027']], url: 'https://www.abz-koch.ch/',
+  },
+  kraftwerk1: {
+    de: { t: 'Kraftwerk1', s: 'Rauti- und Flüelastrasse', b: '123 Wohnungen für rund 450 Menschen in einem 111 Meter langen Bau: Cluster, grosse Haushalte und Einheiten zum Selbstausbau. Im Erdgeschoss die erste feste Halle des Zirkusquartiers und ein städtischer Kindergarten mit Hort. Bezug ab Ende Oktober 2026.' },
+    en: { t: 'Kraftwerk1', s: 'Rautistrasse and Flüelastrasse', b: '123 flats for about 450 people in a 111-metre building: clusters, large households and shell units to finish yourself. On the ground floor, the Zirkusquartier’s first permanent hall and a city kindergarten with after-school care. Move-in from late October 2026.' },
+    facts: [['Wohnungen|Flats', '123'], ['Länge|Length', '111 m'], ['Bezug|Move-in', '10.2026']], url: 'https://kraftwerk1.ch/siedlungen/koch',
+  },
+  mach: {
+    de: { t: 'MACH Gewerbehaus', s: 'SENN', b: 'Gewerbehaus mit rund 17 Betrieben, darunter die Bäckerei Walter Buchmann. Rund 10 000 m² Fläche für Arbeit im Quartier.' },
+    en: { t: 'MACH commercial building', s: 'SENN', b: 'A commercial building with about 17 businesses, including the Walter Buchmann bakery. About 10,000 m² of workspace in the quarter.' },
+    facts: [['Betriebe|Businesses', '≈ 17'], ['Fläche|Floor area', '≈ 10 000 m²']], url: 'https://www.abz-koch.ch/ueber-das-kochquartier/',
+  },
+  halle: {
+    de: { t: 'Kohlenlagerhalle', s: 'Koch-Park · Rautistrasse', b: 'Ab 1926 lagerte die Firma Koch hier Kohle und Heizöl. Der Schriftzug «Kohlen Koch Heizoel» und rund 20 800 Glasziegel sind geschützt. Von 2013 bis 2023 war das Areal besetzt, mit Werkstätten, Kino und dem Zirkus, aus dem das Zirkusquartier wurde. Heute ist die Halle ein gedeckter Platz im Park, rund um die Uhr offen.' },
+    en: { t: 'Coal hall', s: 'Koch-Park · Rautistrasse', b: 'From 1926 the Koch company stored coal and heating oil here. The "Kohlen Koch Heizoel" lettering and about 20,800 glass roof tiles are listed. From 2013 to 2023 the site was squatted, with workshops, a cinema and the circus that became the Zirkusquartier. Today the hall is a covered square in the park, open around the clock.' },
+    facts: [['Seit|Since', '1926'], ['Glasziegel|Glass tiles', '≈ 20 800'], ['Offen|Open', '24/7']], url: 'https://www.stadt-zuerich.ch/de/stadtleben/sport-und-erholung/park-und-gruenanlagen/koch-park.html',
+  },
+  podium: {
+    de: { t: 'Dachgarten', s: 'ABZ · auf dem Sockel', b: '1700 m² Garten auf dem Sockel zwischen Hochhaus und Zeilenbau, mit Gemeinschaftspavillon und Spielplatz für die Bewohnenden.' },
+    en: { t: 'Roof garden', s: 'ABZ · on the base', b: 'A 1,700 m² garden on the base between the tower and the row building, with a shared pavilion and a playground for residents.' },
+    facts: [['Fläche|Area', '1700 m²']], url: 'https://www.abz-koch.ch/zusammenleben/',
+  },
+};
+const LAGEN = [
+  { id: 'unterste', de: 'Unterste', en: 'Lower', f: [2, 8], free: 4, sub: 3, c: '#E6C9A0' },
+  { id: 'mittlere', de: 'Mittlere', en: 'Middle', f: [9, 14], free: 8, sub: 5, c: '#D2A367' },
+  { id: 'obere', de: 'Obere', en: 'Upper', f: [15, 20], free: 1, sub: 1, c: '#B5813F' },
+  { id: 'oberste', de: 'Oberste', en: 'Top', f: [21, 26], free: 0, sub: 0, c: '#8A5E2A' },
+];
+const floorY = n => 5 + (n - 1) * 3.0;     // EG 5 m, then 3.0 m per floor (schematic)
+
+for (const l of ['de', 'en']) Object.assign(T[l], OVERLAY[l] || {});
+
+const IDEAS = [
+  { id: 'karte', icon: 'map', to: { koch: 'hochhaus' },
+    de: ['Diese Karte gehört dem Quartier', 'Die Karte soll weiter gepflegt und dem Quartiermanagement und der Siedlungskommission als offene Daten übergeben werden. Wer einen Ort vermisst, kann ihn unten vorschlagen.'],
+    en: ['This map belongs to the quarter', 'The map should stay up to date and go to the quarter management and the residents’ committee as open data. Missing a place? Suggest it below.'] },
+  { id: 'putzete', icon: 'leaf', to: { poi: 'koch-park' },
+    de: ['Koch-Putzete am Clean-Up-Day', 'Mitte September ist der nationale Clean-Up-Day: ein guter Anlass für eine Putzete rund um den Koch-Park, mit Kindern und Nachbarn.'],
+    en: ['A Koch clean-up on Clean-Up Day', 'Switzerland’s Clean-Up Day is in mid-September: a good occasion for a clean-up around Koch-Park with kids and neighbours.'] },
+  { id: 'repair', icon: 'wrench', to: { poi: 'repair-cafe-gz-loogarten' },
+    de: ['Reparieren statt wegwerfen', 'Im Repair Café GZ Loogarten mithelfen (jeden 4. Mittwoch) und eine Reparatur- und Velo-Ecke im Cluster-Gemeinschaftsraum anregen.'],
+    en: ['Repair instead of throwing away', 'Help out at the Repair Café at GZ Loogarten (every 4th Wednesday) and propose a repair and bike corner in the cluster common room.'] },
+  { id: 'recycling', icon: 'recycle', to: { layer: 'recycling' },
+    de: ['Recycling, das im Alltag klappt', 'Ein einfacher Wegweiser zu den Sammelstellen auf dieser Karte und eine Sammelecke beim Waschsalon.'],
+    en: ['Recycling that works day to day', 'A simple guide to the collection points on this map and a sorting corner by the laundry.'] },
+  { id: 'climathon', icon: 'spark', to: { koch: 'halle' },
+    de: ['Klima-Ideen fürs Quartier', 'Ein kleiner Ideen-Abend mit Nachbarn nach dem Vorbild des Climathon Zürich, etwa zusammen mit der Klimagruppe Kreis 9, gern unter dem Dach der Kohlenlagerhalle.'],
+    en: ['Climate ideas for the quarter', 'A small ideas evening with neighbours, modelled on Climathon Zürich, for example with the Klimagruppe Kreis 9, ideally under the roof of the coal hall.'] },
+  { id: 'english', icon: 'book', to: { poi: 'gz-loogarten' },
+    de: ['English Story Time', 'Geschichten auf Englisch für Kinder im Gemeinschaftsraum oder im Sprachcafé eines Gemeinschaftszentrums.'],
+    en: ['English story time', 'Stories in English for children in the common room or at a community centre’s language café.'] },
+  { id: 'raebe', icon: 'lantern', to: { event: 'raebeliechtli-albisrieden' },
+    de: ['Ein Räbeliechtli-Wagen der Koch-Kinder', 'Beim Räbeliechtli-Umzug Albisrieden laufen auch Wohnbaugenossenschaften mit. Zusammen mit den Kindern aus dem Koch-Quartier einen Wagen bauen.'],
+    en: ['A lantern float by the Koch kids', 'Housing cooperatives take part in the Albisrieden lantern parade. Build a float together with the children of the Koch quarter.'] },
+];
+for (const it of IDEAS) Object.assign(it, OVERLAY.ideas?.[it.id] || {});
+
+const ICONS = {
+  map: '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+  leaf: '<path d="M5 19c0-8 5-13 15-14-1 10-6 15-14 15"/><path d="M5 19c3-4 6-7 10-9"/>',
+  wrench: '<path d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3z"/><path d="M14.5 6.5 17 4"/>',
+  recycle: '<path d="M7 19H4l3-5M17 19h3l-3-5M12 4l-2 4h4z"/><path d="M8.5 8.5 6 13M15.5 8.5 18 13M8 19h8"/>',
+  spark: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>',
+  book: '<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/>',
+  lantern: '<path d="M9 3h6M10 3v2M14 3v2"/><rect x="7" y="5" width="10" height="13" rx="4"/><path d="M12 9v5"/>',
+  commute: '<rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l1.5-4M16 21l-1.5-4"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/>',
+  basket: '<path d="M4 9h16l-2 10H6z"/><path d="M8 9l3-5M16 9l-3-5"/>',
+  church: '<path d="M12 2v4M10 4h4"/><path d="M6 21V11l6-5 6 5v10"/><path d="M10 21v-5h4v5"/>',
+  walk: '<circle cx="13" cy="4" r="1.6"/><path d="M10 21l2-6 3 3v3M9 12l2-4 4 3 3 1M12 15l-1-4"/>',
+  ext: '<path d="M14 4h6v6M20 4l-9 9"/><path d="M18 14v6H4V6h6"/>',
+  x: '<path d="M6 6l12 12M18 6 6 18"/>',
+  pin: '<path d="M12 21s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',
+  route: '<circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h6a3 3 0 0 0 0-6h-4a3 3 0 0 1 0-6h6"/>',
+  play: '<path d="M7 4.5v15l13-7.5z" fill="currentColor" stroke="none"/>',
+  pause: '<path d="M7 4h4v16H7zM13 4h4v16h-4z" fill="currentColor" stroke="none"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  copy: '<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/>',
+};
+const ico = (k, cls = '') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ICONS[k] || ''}</svg>`;
+
+// ---------------------------------------------------------------- state
+const state = {
+  tab: store.get('tab', 'explore'),
+  groups: new Set(store.get('groups', GROUPS.map(g => g.id))),
+  query: '',
+  sel: null,            // {kind:'poi'|'koch'|'event'|'mark'|'idea', id, ...}
+  hover: null,
+  layers: Object.assign({ trees: true, fountains: false, recycling: false, stops: true, lines: false, sharing: false, rings: true, names: true }, store.get('layers', {})),
+  night: null,          // null = follow theme
+  month: null,
+  bands: false,
+  tour: null,
+  pick: null,
+};
+
+// ---------------------------------------------------------------- renderer, scene, camera
+const app = $('#app'), canvas = $('#gl');
+const isPhone = () => innerWidth <= 900;
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.NeutralToneMapping;
+renderer.toneMappingExposure = 1.0;
+renderer.setClearColor(0x000000, 0);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(30, 1, 8, 16000);
+const controls = new MapControls(camera, canvas);
+controls.enableDamping = true; controls.dampingFactor = 0.09;
+controls.screenSpacePanning = false;
+controls.minDistance = 70; controls.maxDistance = 5600;
+controls.maxPolarAngle = 1.22; controls.minPolarAngle = 0.0;
+controls.zoomSpeed = 1.1;
+controls.zoomToCursor = true;
+
+const hemi = new THREE.HemisphereLight(0xffffff, 0xd8d2c6, 1.15);
+scene.add(hemi);
+const sun = new THREE.DirectionalLight(0xfff3e2, 2.3);
+sun.castShadow = true;
+const SHADOW = isPhone() ? 2048 : 4096;
+sun.shadow.mapSize.set(SHADOW, SHADOW);
+Object.assign(sun.shadow.camera, { left: -1950, right: 1950, top: 1950, bottom: -1950, near: 100, far: 6000 });
+sun.shadow.bias = -0.0006; sun.shadow.normalBias = 0.6;
+const SUN_DIR = new THREE.Vector3(-0.62, 0.62, 0.48).normalize();
+sun.position.copy(W(BC[0], BC[1])).addScaledVector(SUN_DIR, 3200);
+sun.target.position.copy(W(BC[0], BC[1]));
+scene.add(sun, sun.target);
+const kochGlow = new THREE.PointLight(0xffb45c, 0, 900, 1.6);
+kochGlow.position.set(20, 60, 40);
+scene.add(kochGlow);
+
+// ---------------------------------------------------------------- palettes
+const PAL = {
+  day: {
+    board: '#E6E2D9', edge: '#C9A877', bld: ['#FAF8F4', '#ECE9E3', '#F4EEE5', '#E0DCD4', '#F6F3EE', '#EEEAE3'],
+    koch: '#FFF6EA', garden: '#B7CB98', glass: '#9FC3C9',
+    area: { farm: '#E4DEC6', grass: '#D3DDBF', rail: '#D9D2C4', constr: '#E3DBCB', cemetery: '#C9D6B8', allot: '#CCD8B2', forest: '#A9C196', scrub: '#BDCFA6', park: '#C3D5AA', garden: '#C9DAB3', sport: '#CFDDBD', pitch: '#B7D29C', play: '#E8DCB4', pool: '#A6CBE0', water: '#A9CADD' },
+    road: ['#FFFFFF', '#FFFFFF', '#FDFCFA', '#FBFAF7', '#F8F6F1', '#F6F3EE', '#F3F0EA', '#EFEBE3'],
+    rail: '#9F9686', tram: '#8E9BBE', river: '#9DC3DA', tree: '#9EBA8C', trunk: '#8C7C68', ring: '#7C756A', route: '#2747A8', bus: '#2747A8',
+    hemi: ['#FFFFFF', '#D8D2C6', 1.15], sun: ['#FFF3E2', 2.3], glow: 0, night: 0, exposure: 1.0,
+  },
+  night: {
+    board: '#171C1A', edge: '#4A3A27', bld: ['#434A47', '#3C4340', '#474D49', '#353B38', '#454B48', '#3F4643'],
+    koch: '#9C7446', garden: '#2E4231', glass: '#3C6A73',
+    area: { farm: '#262A22', grass: '#223026', rail: '#2A2A25', constr: '#2A2823', cemetery: '#223026', allot: '#243024', forest: '#1E2E21', scrub: '#212F23', park: '#233427', garden: '#243628', sport: '#233226', pitch: '#223725', play: '#34302A', pool: '#1D3644', water: '#1B3240' },
+    road: ['#5A5850', '#55534B', '#4F4D46', '#4A4842', '#45443E', '#403F3A', '#3B3A36', '#363632'],
+    rail: '#55544D', tram: '#4A5885', river: '#21394A', tree: '#33473A', trunk: '#2A2420', ring: '#9AA3B0', route: '#9DB2F6', bus: '#9DB2F6',
+    hemi: ['#8494C4', '#121514', 1.05], sun: ['#B8C6F0', 0.95], glow: 2.4, night: 1, exposure: 1.2,
+  },
+};
+const themeDark = () => {
+  const a = document.documentElement.getAttribute('data-theme');
+  if (a === 'dark') return true; if (a === 'light') return false;
+  return matchMedia('(prefers-color-scheme: dark)').matches;
+};
+const isNight = () => (state.night == null ? themeDark() : state.night);
+
+// ---------------------------------------------------------------- geometry helpers
+function dec(a, i, n) {
+  const pts = new Array(n); let x = 0, y = 0;
+  for (let k = 0; k < n; k++) { x += a[i + 2 * k]; y += a[i + 2 * k + 1]; pts[k] = [x / Q, y / Q]; }
+  return [pts, i + 2 * n];
+}
+const area2 = r => { let s = 0; for (let i = 0; i < r.length; i++) { const a = r[i], b = r[(i + 1) % r.length]; s += a[0] * b[1] - b[0] * a[1]; } return s / 2; };
+
+class Acc {
+  constructor(opts = {}) { this.p = []; this.n = []; this.c = opts.color ? [] : null; this.u = opts.uv3 ? [] : null; this.d = opts.delay ? [] : null; this.cat = opts.cat ? [] : null; this.uv = opts.uv ? [] : null; }
+  v(x, y, z, nx, ny, nz, col, uvw, del, cat, uv) {
+    this.p.push(x, y, z); this.n.push(nx, ny, nz);
+    if (this.c) this.c.push(col, col, col);
+    if (this.u) this.u.push(uvw[0], uvw[1], uvw[2]);
+    if (this.d) this.d.push(del);
+    if (this.cat) this.cat.push(cat);
+    if (this.uv) this.uv.push(uv[0], uv[1]);
+  }
+  geo() {
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(this.p, 3));
+    g.setAttribute('normal', new THREE.Float32BufferAttribute(this.n, 3));
+    if (this.c) g.setAttribute('color', new THREE.Float32BufferAttribute(this.c, 3));
+    if (this.u) g.setAttribute('aUV', new THREE.Float32BufferAttribute(this.u, 3));
+    if (this.d) g.setAttribute('aDelay', new THREE.Float32BufferAttribute(this.d, 1));
+    if (this.cat) g.setAttribute('aCat', new THREE.Float32BufferAttribute(this.cat, 1));
+    if (this.uv) g.setAttribute('uv', new THREE.Float32BufferAttribute(this.uv, 2));
+    g.computeBoundingSphere();
+    return g;
+  }
+}
+
+// flat polygon (with holes) at height y, facing up
+function addFlat(acc, outer, holes, y, extra = {}) {
+  let faces;
+  try { faces = THREE.ShapeUtils.triangulateShape(outer.map(p => new THREE.Vector2(p[0], p[1])), holes.map(h => h.map(p => new THREE.Vector2(p[0], p[1])))); }
+  catch { return; }
+  const all = outer.concat(...holes);
+  for (const f of faces) {
+    let [a, b, c] = f.map(i => all[i]);
+    if (!a || !b || !c) continue;
+    if ((b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0]) < 0) [b, c] = [c, b];
+    for (const q of [a, b, c]) acc.v(q[0], y, -q[1], 0, 1, 0, extra.col ?? 1, extra.uvw ?? [0, -100, 0], extra.del ?? 0, extra.cat ?? 0, extra.uvScale ? [q[0] / extra.uvScale, q[1] / extra.uvScale] : [0, 0]);
+  }
+}
+
+// extruded prism walls + roof
+function addPrism(acc, outer, holes, h, mh, o = {}) {
+  const win = o.windows !== false;
+  for (const ring of [outer, ...holes]) {
+    let u = 0;
+    for (let i = 0; i < ring.length; i++) {
+      const a = ring[i], b = ring[(i + 1) % ring.length];
+      const dx = b[0] - a[0], dy = b[1] - a[1], len = Math.hypot(dx, dy);
+      if (len < 0.05) continue;
+      const nx = dy / len, ny = -dx / len;            // outward (xy)
+      const N = [nx, 0, -ny];
+      const cb = mh < 0.5 ? (o.col ?? 1) * 0.8 : (o.col ?? 1), ct = o.col ?? 1;
+      const vb = win ? mh : -100, vt = win ? h : -100;
+      const sc = o.uvScale || 0;
+      const A0 = [a[0], mh, -a[1], cb, [u, vb, o.seed ?? 0], [u / (sc || 1), mh / (sc || 1)]];
+      const B0 = [b[0], mh, -b[1], cb, [u + len, vb, o.seed ?? 0], [(u + len) / (sc || 1), mh / (sc || 1)]];
+      const B1 = [b[0], h, -b[1], ct, [u + len, vt, o.seed ?? 0], [(u + len) / (sc || 1), h / (sc || 1)]];
+      const A1 = [a[0], h, -a[1], ct, [u, vt, o.seed ?? 0], [u / (sc || 1), h / (sc || 1)]];
+      for (const V of [A0, B0, B1, A0, B1, A1]) acc.v(V[0], V[1], V[2], N[0], N[1], N[2], V[3], V[4], o.del ?? 0, o.cat ?? 0, V[5]);
+      u += len;
+    }
+  }
+  addFlat(acc, outer, holes, h, { col: (o.col ?? 1) * 1.03, uvw: [0, -100, o.seed ?? 0], del: o.del ?? 0, cat: o.cat ?? 0, uvScale: o.uvScale });
+}
+
+// ribbons for streets, rails, routes
+function addRibbon(acc, pts, w, y) {
+  if (pts.length < 2) return;
+  const half = w / 2, L = [], Rr = [];
+  for (let i = 0; i < pts.length; i++) {
+    const p = pts[i], a = pts[Math.max(0, i - 1)], b = pts[Math.min(pts.length - 1, i + 1)];
+    let dx = b[0] - a[0], dy = b[1] - a[1]; const l = Math.hypot(dx, dy) || 1; dx /= l; dy /= l;
+    let nx = -dy, ny = dx, m = 1;
+    if (i > 0 && i < pts.length - 1) {
+      const d1x = p[0] - a[0], d1y = p[1] - a[1], l1 = Math.hypot(d1x, d1y) || 1;
+      const n1x = -d1y / l1, n1y = d1x / l1;
+      const dot = nx * n1x + ny * n1y; m = Math.min(2.2, 1 / Math.max(0.45, dot));
+    }
+    L.push([p[0] + nx * half * m, p[1] + ny * half * m]); Rr.push([p[0] - nx * half * m, p[1] - ny * half * m]);
+  }
+  for (let i = 0; i < pts.length - 1; i++) {
+    const q = [Rr[i], Rr[i + 1], L[i + 1], Rr[i], L[i + 1], L[i]];
+    for (const v of q) acc.v(v[0], y, -v[1], 0, 1, 0, 1, [0, -100, 0], 0, 0, [0, 0]);
+  }
+}
+
+function flatMat(color, order) {
+  const m = new THREE.MeshLambertMaterial({ color, depthWrite: false, depthTest: false });
+  m.userData.order = order;
+  return m;
+}
+function groundMesh(geo, mat, order) {
+  const me = new THREE.Mesh(geo, mat);
+  me.renderOrder = order; me.receiveShadow = true; me.frustumCulled = false;
+  return me;
+}
+
+// ---------------------------------------------------------------- the model board
+const P0 = PAL.day;
+const groups3 = { ground: new THREE.Group(), city: new THREE.Group(), koch: new THREE.Group(), marks: new THREE.Group(), fx: new THREE.Group() };
+Object.values(groups3).forEach(g => scene.add(g));
+
+function plyTexture() {
+  const c = document.createElement('canvas'); c.width = 8; c.height = 64; const x = c.getContext('2d');
+  const tones = ['#D9BC8D', '#C49E68', '#DCC197', '#BE9760', '#D5B683', '#C6A06A', '#DABE92'];
+  for (let i = 0; i < 7; i++) { x.fillStyle = tones[i]; x.fillRect(0, i * 64 / 7, 8, 64 / 7 + 1); }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = THREE.RepeatWrapping; t.repeat.set(200, 1); return t;
+}
+function woodTexture() {
+  const c = document.createElement('canvas'); c.width = 256; c.height = 256; const x = c.getContext('2d');
+  x.fillStyle = '#E2BF8A'; x.fillRect(0, 0, 256, 256);
+  let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let i = 0; i < 90; i++) {
+    const y0 = rnd() * 256, a = 1 + rnd() * 3, f = 0.01 + rnd() * 0.03;
+    x.strokeStyle = `rgba(${150 + rnd() * 30 | 0},${100 + rnd() * 25 | 0},${50 + rnd() * 20 | 0},${0.08 + rnd() * 0.16})`;
+    x.lineWidth = 0.6 + rnd() * 1.6; x.beginPath();
+    for (let px = 0; px <= 256; px += 4) x.lineTo(px, y0 + Math.sin(px * f + i) * a);
+    x.stroke();
+  }
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.wrapS = t.wrapT = THREE.RepeatWrapping; t.anisotropy = 4; return t;
+}
+function shadowTexture() {
+  const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d');
+  const g = x.createRadialGradient(128, 128, 80, 128, 128, 128);
+  g.addColorStop(0, 'rgba(30,24,16,.38)'); g.addColorStop(0.75, 'rgba(30,24,16,.12)'); g.addColorStop(1, 'rgba(30,24,16,0)');
+  x.fillStyle = g; x.fillRect(0, 0, 256, 256);
+  return new THREE.CanvasTexture(c);
+}
+
+const boardTop = new THREE.Mesh(new THREE.CircleGeometry(R, 180), new THREE.MeshLambertMaterial({ color: P0.board }));
+boardTop.rotation.x = -Math.PI / 2; boardTop.position.copy(W(BC[0], BC[1], 0)); boardTop.renderOrder = -20; boardTop.receiveShadow = true;
+const edgeMat = new THREE.MeshStandardMaterial({ map: plyTexture(), roughness: 0.85 });
+const boardEdge = new THREE.Mesh(new THREE.CylinderGeometry(R, R, 16, 180, 1, true), edgeMat);
+boardEdge.position.copy(W(BC[0], BC[1], -8));
+const contact = new THREE.Mesh(new THREE.PlaneGeometry(R * 2.5, R * 2.5), new THREE.MeshBasicMaterial({ map: shadowTexture(), transparent: true, depthWrite: false }));
+contact.rotation.x = -Math.PI / 2; contact.position.copy(W(BC[0] + 140, BC[1] - 140, -16.5)); contact.renderOrder = -30;
+groups3.ground.add(contact, boardTop, boardEdge);
+
+// land use
+const AREA_ORDER = ['farm', 'grass', 'rail', 'constr', 'cemetery', 'allot', 'forest', 'scrub', 'park', 'garden', 'sport', 'pitch', 'play', 'pool', 'water'];
+const areaMeshes = {};
+AREA_ORDER.forEach((k, idx) => {
+  const recs = SCENE.areas[k] || []; if (!recs.length) return;
+  const acc = new Acc();
+  for (const r of recs) {
+    const nh = r[0]; let [outer, i] = dec(r, 2, r[1]); const holes = [];
+    for (let h = 0; h < nh; h++) { const n = r[i]; const [hp, j] = dec(r, i + 1, n); holes.push(hp); i = j; }
+    addFlat(acc, outer, holes, 0.1);
+  }
+  const me = groundMesh(acc.geo(), flatMat(P0.area[k], -19 + idx * 0.01), -19 + idx * 0.01);
+  areaMeshes[k] = me; groups3.ground.add(me);
+});
+
+// rivers, streets, rails, tram
+const WIDTHS = [17, 13, 10.5, 9, 7, 5.5, 3.6, 2.1];
+const roadMeshes = [], bridgeAcc = new Acc();
+const roadAccs = WIDTHS.map(() => new Acc());
+for (const r of SCENE.roads) {
+  const cls = r[0], layer = r[1]; const [pts] = dec(r, 3, r[2]);
+  if (layer > 0) addRibbon(bridgeAcc, pts, WIDTHS[cls], 6 * layer);
+  else addRibbon(roadAccs[cls], pts, WIDTHS[cls], 0.2);
+}
+for (let c = WIDTHS.length - 1; c >= 0; c--) {
+  const me = groundMesh(roadAccs[c].geo(), flatMat(P0.road[c], -10 + (7 - c) * 0.01), -10 + (7 - c) * 0.01);
+  roadMeshes[c] = me; groups3.ground.add(me);
+}
+const riverAcc = new Acc(), railAcc = new Acc(), tramAcc = new Acc();
+for (const r of SCENE.rivers) { const [pts] = dec(r, 2, r[1]); addRibbon(riverAcc, pts, r[0] ? 34 : 3.2, 0.2); }
+for (const r of SCENE.rails) { const [pts] = dec(r, 2, r[1]); addRibbon(railAcc, pts, 1.7, 0.25 + r[0] * 6); }
+for (const r of SCENE.trams) { const [pts] = dec(r, 1, r[0]); addRibbon(tramAcc, pts, 1.3, 0.3); }
+const riverMesh = groundMesh(riverAcc.geo(), flatMat(P0.river, -11), -11);
+const railMesh = groundMesh(railAcc.geo(), flatMat(P0.rail, -2), -2);
+const tramMesh = groundMesh(tramAcc.geo(), flatMat(P0.tram, -1.9), -1.9);
+const bridgeMat = new THREE.MeshLambertMaterial({ color: P0.road[1], side: THREE.DoubleSide });
+const bridgeMesh = new THREE.Mesh(bridgeAcc.geo(), bridgeMat); bridgeMesh.castShadow = true; bridgeMesh.receiveShadow = true;
+groups3.ground.add(riverMesh, railMesh, tramMesh, bridgeMesh);
+
+// ---------------------------------------------------------------- buildings (one merged mesh, grows on load, lights up at night)
+const bUni = { uGrow: { value: reduced ? 9 : 0 }, uNight: { value: 0 }, uWin: { value: new THREE.Color('#FFC46B') }, uCat: { value: P0.bld.map(c => new THREE.Color(c)) } };
+const bAcc = new Acc({ color: true, uv3: true, delay: true, cat: true });
+let nBuildings = 0;
+{
+  let s = 12345; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (const b of SCENE.b) {
+    const h = b[0] / Q, mh = b[1] / Q, cat = b[2], nIn = b[3];
+    let [outer, i] = dec(b, 5, b[4]); const holes = [];
+    for (let k = 0; k < nIn; k++) { const n = b[i]; const [hp, j] = dec(b, i + 1, n); holes.push(hp); i = j; }
+    let cx = 0, cy = 0; for (const p of outer) { cx += p[0]; cy += p[1]; } cx /= outer.length; cy /= outer.length;
+    const d = Math.hypot(cx, cy);
+    const del = Math.min(1, d / 2100) * 0.85 + rnd() * 0.12;
+    addPrism(bAcc, outer, holes, h, mh, { col: 0.97 + rnd() * 0.05, seed: rnd() * 97, del, cat, windows: cat !== 3 && h > 5 });
+    nBuildings++;
+  }
+}
+const bMat = new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.92, metalness: 0 });
+bMat.onBeforeCompile = sh => {
+  Object.assign(sh.uniforms, bUni);
+  sh.vertexShader = sh.vertexShader
+    .replace('#include <common>', `#include <common>
+      attribute vec3 aUV; attribute float aDelay; attribute float aCat; uniform float uGrow; uniform vec3 uCat[6];
+      varying vec3 vUV; varying vec3 vCatCol;`)
+    .replace('#include <begin_vertex>', `#include <begin_vertex>
+      vUV = aUV; vCatCol = uCat[int(aCat + 0.5)];
+      float gk = clamp((uGrow - aDelay) * 2.6, 0.0, 1.0); gk = gk * gk * (3.0 - 2.0 * gk);
+      transformed.y *= max(gk, 0.002);`);
+  sh.fragmentShader = sh.fragmentShader
+    .replace('#include <common>', `#include <common>
+      uniform float uNight; uniform vec3 uWin; varying vec3 vUV; varying vec3 vCatCol;
+      float h21(vec2 p){ p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }`)
+    .replace('#include <color_fragment>', `#include <color_fragment>
+      diffuseColor.rgb *= vCatCol;`)
+    .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+      if (uNight > 0.0 && vUV.y > 0.0) {
+        vec2 q = vec2(vUV.x / 3.3, (vUV.y - 0.7) / 3.05);
+        vec2 cell = floor(q); vec2 f = fract(q);
+        float m = step(0.2, f.x) * step(f.x, 0.8) * step(0.28, f.y) * step(f.y, 0.8) * step(0.0, q.y);
+        float lit = step(0.7, h21(cell + vUV.z));
+        float warm = h21(cell.yx + vUV.z * 1.7);
+        float px = max(fwidth(q.x), fwidth(q.y));
+        float near = 1.0 - smoothstep(0.18, 0.45, px);
+        vec3 wc = mix(uWin, vec3(1.0, 0.9, 0.74), warm);
+        totalEmissiveRadiance += uNight * (near * m * lit * wc * (0.5 + 0.6 * warm) + (1.0 - near) * mix(uWin, vec3(1.0), 0.5) * 0.006 * step(0.0, q.y));
+      }`);
+};
+const bDepth = new THREE.MeshDepthMaterial({ depthPacking: THREE.RGBADepthPacking });
+bDepth.onBeforeCompile = sh => {
+  sh.uniforms.uGrow = bUni.uGrow;
+  sh.vertexShader = sh.vertexShader
+    .replace('#include <common>', '#include <common>\nattribute float aDelay; uniform float uGrow;')
+    .replace('#include <begin_vertex>', `#include <begin_vertex>
+      float gk = clamp((uGrow - aDelay) * 2.6, 0.0, 1.0); gk = gk * gk * (3.0 - 2.0 * gk); transformed.y *= max(gk, 0.002);`);
+};
+const bMesh = new THREE.Mesh(bAcc.geo(), bMat);
+bMesh.castShadow = true; bMesh.receiveShadow = true; bMesh.customDepthMaterial = bDepth; bMesh.frustumCulled = false;
+groups3.city.add(bMesh);
+
+// ---------------------------------------------------------------- the Koch-Areal in birch wood
+const woodTex = woodTexture();
+const kochMat = new THREE.MeshStandardMaterial({ map: woodTex, color: PAL.day.koch, roughness: 0.75, metalness: 0, emissive: new THREE.Color('#000000') });
+kochMat.onBeforeCompile = sh => {
+  Object.assign(sh.uniforms, { uNight: bUni.uNight, uWin: bUni.uWin });
+  sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nattribute vec3 aUV; varying vec3 vUV;')
+    .replace('#include <begin_vertex>', '#include <begin_vertex>\nvUV = aUV;');
+  sh.fragmentShader = sh.fragmentShader.replace('#include <common>', `#include <common>
+      uniform float uNight; uniform vec3 uWin; varying vec3 vUV;
+      float h21(vec2 p){ p = fract(p * vec2(123.34, 456.21)); p += dot(p, p + 45.32); return fract(p.x * p.y); }`)
+    .replace('#include <emissivemap_fragment>', `#include <emissivemap_fragment>
+      if (uNight > 0.0 && vUV.y > 4.9) {
+        vec2 q = vec2(vUV.x / 2.6, (vUV.y - 5.0) / 3.0);
+        vec2 cell = floor(q); vec2 f = fract(q);
+        float m = step(0.14, f.x) * step(f.x, 0.86) * step(0.2, f.y) * step(f.y, 0.86);
+        float lit = step(0.5, h21(cell + vUV.z));
+        totalEmissiveRadiance += uNight * m * lit * uWin * 1.15;
+      }`);
+};
+const KOCH_H = { hochhaus: 85, zeilenbau: 26, kraftwerk1: 27, mach: 21 };
+const kochMeshes = {}, kochRings = {};
+const kochCentroid = {};
+for (const k of SCENE.koch) {
+  const [ring] = dec(k.ring, 0, k.n);
+  let r = ring; if (area2(r) < 0) r = r.slice().reverse();
+  kochRings[k.role] = r;
+  let cx = 0, cy = 0; for (const p of r) { cx += p[0]; cy += p[1]; } kochCentroid[k.role] = [cx / r.length, cy / r.length];
+  const acc = new Acc({ uv3: true, uv: true });
+  if (k.role === 'halle') {
+    addPrism(acc, r, [], 8.2, 7.3, { uvScale: 7, seed: 3, windows: false });
+  } else {
+    addPrism(acc, r, [], KOCH_H[k.role] || 20, k.role === 'hochhaus' ? 0 : 0, { uvScale: 7, seed: k.role.length * 7.3, windows: true });
+  }
+  let mat = kochMat;
+  if (k.role === 'halle') mat = new THREE.MeshStandardMaterial({ color: P0.glass, roughness: 0.25, metalness: 0.1, transparent: true, opacity: 0.78 });
+  const me = new THREE.Mesh(acc.geo(), mat);
+  me.castShadow = true; me.receiveShadow = true; me.userData.koch = k.role;
+  kochMeshes[k.role] = me; groups3.koch.add(me);
+  if (k.role === 'halle') {   // posts under the hall roof
+    const postGeo = new THREE.BoxGeometry(0.6, 7.3, 0.6);
+    for (let i = 0; i < r.length; i++) {
+      const p = r[i]; const post = new THREE.Mesh(postGeo, kochMat); post.position.copy(W(p[0], p[1], 3.65)); post.castShadow = true;
+      post.userData.koch = 'halle'; groups3.koch.add(post);
+    }
+  }
+}
+// schematic base with roof garden between tower and row building (convex hull of both footprints)
+function hull(pts) {
+  const p = pts.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const cr = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+  const lo = [], up = [];
+  for (const q of p) { while (lo.length >= 2 && cr(lo[lo.length - 2], lo[lo.length - 1], q) <= 0) lo.pop(); lo.push(q); }
+  for (const q of p.reverse()) { while (up.length >= 2 && cr(up[up.length - 2], up[up.length - 1], q) <= 0) up.pop(); up.push(q); }
+  return lo.slice(0, -1).concat(up.slice(0, -1));
+}
+const podiumMat = new THREE.MeshStandardMaterial({ color: P0.garden, roughness: 0.95 });
+if (kochRings.hochhaus && kochRings.zeilenbau) {
+  const hr = hull(kochRings.hochhaus.concat(kochRings.zeilenbau));
+  kochRings.podium = hr;
+  const acc = new Acc({ uv3: true, uv: true });
+  addPrism(acc, hr, [], 5, 0, { uvScale: 7, windows: false });
+  const walls = new THREE.Mesh(acc.geo(), kochMat);
+  walls.castShadow = true; walls.receiveShadow = true; walls.userData.koch = 'podium';
+  groups3.koch.add(walls);
+  const top = new Acc(); addFlat(top, hr, [], 5.25);
+  const garden = new THREE.Mesh(top.geo(), podiumMat); garden.receiveShadow = true; garden.userData.koch = 'podium';
+  groups3.koch.add(garden);
+  let cx = 0, cy = 0; for (const p of hr) { cx += p[0]; cy += p[1]; } kochCentroid.podium = [cx / hr.length, cy / hr.length];
+}
+// floor lines on the tower
+const floorLineMat = new THREE.LineBasicMaterial({ color: '#8E6332', transparent: true, opacity: 0.55 });
+if (kochRings.hochhaus) {
+  const r = kochRings.hochhaus, [cx, cy] = kochCentroid.hochhaus, pts = [];
+  const grow = p => { const dx = p[0] - cx, dy = p[1] - cy, l = Math.hypot(dx, dy); return [p[0] + dx / l * 0.12, p[1] + dy / l * 0.12]; };
+  const rr = r.map(grow);
+  for (let f = 1; f <= 26; f++) {
+    const y = floorY(f);
+    for (let i = 0; i < rr.length; i++) { const a = rr[i], b = rr[(i + 1) % rr.length]; pts.push(W(a[0], a[1], y), W(b[0], b[1], y)); }
+  }
+  const ls = new THREE.LineSegments(new THREE.BufferGeometry().setFromPoints(pts), floorLineMat);
+  groups3.koch.add(ls);
+}
+// floor-band shells, shown on request
+const bandGroup = new THREE.Group(); bandGroup.visible = false; groups3.koch.add(bandGroup);
+if (kochRings.hochhaus) {
+  const r = kochRings.hochhaus, [cx, cy] = kochCentroid.hochhaus;
+  const rr = r.map(p => { const dx = p[0] - cx, dy = p[1] - cy, l = Math.hypot(dx, dy); return [p[0] + dx / l * 0.9, p[1] + dy / l * 0.9]; });
+  for (const lg of LAGEN) {
+    const acc = new Acc({ uv3: true, uv: true });
+    addPrism(acc, rr, [], floorY(lg.f[1] + 1) - 0.15, floorY(lg.f[0]) + 0.15, { windows: false });
+    const me = new THREE.Mesh(acc.geo(), new THREE.MeshBasicMaterial({ color: lg.c, transparent: true, opacity: 0.62, depthWrite: false }));
+    me.userData.koch = 'hochhaus'; bandGroup.add(me);
+  }
+}
+
+// ---------------------------------------------------------------- trees (instanced model trees)
+const treeGeo = new THREE.IcosahedronGeometry(1, 1);
+const treeMat = new THREE.MeshStandardMaterial({ color: P0.tree, roughness: 0.95, flatShading: true });
+const trunkMat = new THREE.MeshStandardMaterial({ color: P0.trunk, roughness: 1 });
+const nT = SCENE.trees.length;
+const trees = new THREE.InstancedMesh(treeGeo, treeMat, nT);
+const trunks = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.22, 0.3, 1, 5), trunkMat, nT);
+{
+  let s = 99; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  const m = new THREE.Matrix4(), qn = new THREE.Quaternion(), sc = new THREE.Vector3(), ps = new THREE.Vector3();
+  SCENE.trees.forEach((tr, i) => {
+    const x = tr[0] / Q, y = tr[1] / Q, r = 2.4 + rnd() * 2.2, th = 2.6 + rnd() * 1.6;
+    ps.copy(W(x, y, th + r * 0.85)); sc.set(r, r * 1.1, r); m.compose(ps, qn, sc); trees.setMatrixAt(i, m);
+    ps.copy(W(x, y, th / 2 + 0.2)); sc.set(1, th + 0.4, 1); m.compose(ps, qn, sc); trunks.setMatrixAt(i, m);
+  });
+}
+trees.castShadow = true; trees.receiveShadow = true; trunks.castShadow = false;
+groups3.city.add(trees, trunks);
+
+// ---------------------------------------------------------------- marks: POI pins and layer markers
+const pinStem = new THREE.CylinderGeometry(0.5, 0.5, 1, 6); pinStem.translate(0, 0.5, 0);
+const pinHead = new THREE.SphereGeometry(1, 18, 12);
+const visPois = POIS;
+const headMesh = new THREE.InstancedMesh(pinHead, new THREE.MeshStandardMaterial({ roughness: 0.45, metalness: 0.05 }), visPois.length);
+const stemMesh = new THREE.InstancedMesh(pinStem, new THREE.MeshStandardMaterial({ color: '#3B3F3C', roughness: 0.8 }), visPois.length);
+headMesh.castShadow = true; stemMesh.castShadow = true;
+headMesh.userData.kind = 'poi';
+groups3.marks.add(stemMesh, headMesh);
+function poiPos(p) {
+  if (!p.out) return [p.x, p.y];
+  const dx = p.x - BC[0], dy = p.y - BC[1], l = Math.hypot(dx, dy);
+  return [BC[0] + dx / l * (R - 45), BC[1] + dy / l * (R - 45)];
+}
+function layerMarks(list, geo, color, h, kind) {
+  const me = new THREE.InstancedMesh(geo, new THREE.MeshStandardMaterial({ color, roughness: 0.6 }), Math.max(1, list.length));
+  const m = new THREE.Matrix4();
+  list.forEach((it, i) => { m.makeTranslation(it[0] / Q, h, -it[1] / Q); me.setMatrixAt(i, m); });
+  me.count = list.length; me.castShadow = true; me.userData.kind = kind; me.userData.list = list;
+  me.computeBoundingSphere();
+  groups3.marks.add(me); return me;
+}
+const fountainMesh = layerMarks(SCENE.fountains, new THREE.CylinderGeometry(2.2, 2.6, 2.4, 10), '#2D8FD1', 1.2, 'fountain');
+const recycMesh = layerMarks(SCENE.recycling, new THREE.BoxGeometry(5, 3.4, 3), '#5F8127', 1.7, 'recycling');
+const stopMesh = layerMarks(SCENE.stops, new THREE.CylinderGeometry(2.8, 2.8, 1.2, 14), '#2747A8', 0.6, 'stop');
+const sharingList = SCENE.bikes.map(b => [...b, 'bike']).concat(SCENE.carshare.map(c => [...c, 'car']));
+const shareMesh = layerMarks(sharingList, new THREE.BoxGeometry(3.6, 2.4, 3.6), '#4D5866', 1.2, 'sharing');
+
+// transit lines (bus 83, 89, tram 2)
+const lineGroup = new THREE.Group(); groups3.marks.add(lineGroup);
+const LINE_COL = { '83': '#2747A8', '89': '#7E55C4', '2': '#D2456E' };
+for (const ln of CONTENT.lines) {
+  const acc = new Acc(); for (const s of ln.segs) addRibbon(acc, s, 3.2, 1.0);
+  const me = groundMesh(acc.geo(), flatMat(LINE_COL[ln.ref] || '#555', -1.5), -1.5);
+  lineGroup.add(me);
+}
+
+// walking-time rings (straight-line ~ 5 / 10 / 15 min)
+const RINGS = [[300, 5], [600, 10], [900, 15]];
+const ringGroup = new THREE.Group(); groups3.marks.add(ringGroup);
+const ringMat = new THREE.LineDashedMaterial({ color: P0.ring, dashSize: 14, gapSize: 10, transparent: true, opacity: 0.85, depthTest: false });
+for (const [rad] of RINGS) {
+  const pts = []; for (let i = 0; i <= 200; i++) { const a = i / 200 * Math.PI * 2; pts.push(W(HOME.x + Math.cos(a) * rad, HOME.y + Math.sin(a) * rad, 0.5)); }
+  const ln = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), ringMat); ln.computeLineDistances(); ln.renderOrder = -1;
+  ringGroup.add(ln);
+}
+
+// selection halo on the ground
+const halo = new THREE.Mesh(new THREE.RingGeometry(9, 13, 40), new THREE.MeshBasicMaterial({ color: '#2747A8', transparent: true, opacity: 0.85, depthTest: false }));
+halo.rotation.x = -Math.PI / 2; halo.renderOrder = 5; halo.visible = false; groups3.fx.add(halo);
+// route ribbon (POI way or tour)
+const routeMat = new THREE.MeshBasicMaterial({ color: '#2747A8', depthTest: false, transparent: true, opacity: 0.92 });
+const busMat = new THREE.MeshBasicMaterial({ color: '#2747A8', depthTest: false, transparent: true, opacity: 0.55 });
+let routeMesh = null;
+const tourGroup = new THREE.Group(); groups3.fx.add(tourGroup);
+const walker = new THREE.Mesh(new THREE.SphereGeometry(7, 20, 14), new THREE.MeshStandardMaterial({ color: '#B07C3F', roughness: 0.5, emissive: '#3a2410' }));
+walker.visible = false; walker.castShadow = true; groups3.fx.add(walker);
+
+// ---------------------------------------------------------------- palette application
+function applyPalette() {
+  const night = isNight();
+  const P = night ? PAL.night : PAL.day;
+  boardTop.material.color.set(P.board);
+  edgeMat.color.set(night ? '#5C4A33' : '#FFFFFF');
+  for (const k in areaMeshes) areaMeshes[k].material.color.set(P.area[k]);
+  roadMeshes.forEach((m, c) => m && m.material.color.set(P.road[c]));
+  bridgeMat.color.set(P.road[1]);
+  riverMesh.material.color.set(P.river); railMesh.material.color.set(P.rail); tramMesh.material.color.set(P.tram);
+  bUni.uCat.value.forEach((c, i) => c.set(P.bld[i]));
+  bUni.uNight.value = P.night;
+  kochMat.color.set(P.koch); kochMat.emissive.set(night ? '#2A1A08' : '#000000');
+  if (kochMeshes.halle) kochMeshes.halle.material.color.set(P.glass);
+  podiumMat.color.set(P.garden);
+  treeMat.color.set(P.tree); trunkMat.color.set(P.trunk);
+  ringMat.color.set(P.ring);
+  hemi.color.set(P.hemi[0]); hemi.groundColor.set(P.hemi[1]); hemi.intensity = P.hemi[2];
+  sun.color.set(P.sun[0]); sun.intensity = P.sun[1];
+  kochGlow.intensity = P.glow * 1200;
+  renderer.toneMappingExposure = P.exposure;
+  contact.material.opacity = night ? 0.9 : 1;
+  floorLineMat.color.set(night ? '#E7B06A' : '#8E6332');
+  const acc = cssVar('--accent') || '#2747A8';
+  routeMat.color.set(acc); busMat.color.set(acc); halo.material.color.set(acc);
+  colorPins();
+  $('#bNight').setAttribute('aria-pressed', String(night));
+  needsRender = true;
+}
+function colorPins() {
+  const c = new THREE.Color();
+  visPois.forEach((p, i) => { c.set(groupColor(p.g) || '#555'); headMesh.setColorAt(i, c); });
+  if (headMesh.instanceColor) headMesh.instanceColor.needsUpdate = true;
+  fountainMesh.material.color.set(cssVar('--c-water')); recycMesh.material.color.set(cssVar('--c-recycle'));
+  stopMesh.material.color.set(cssVar('--accent')); shareMesh.material.color.set(cssVar('--c-mobility'));
+}
+
+// ---------------------------------------------------------------- camera helpers
+const DEFAULT = () => {
+  const target = W(120, 120, 0), dist = isPhone() ? 2300 : 1850, polar = 0.96, az = 0.62;
+  return { target, pos: target.clone().add(new THREE.Vector3(Math.sin(polar) * Math.sin(az), Math.cos(polar), Math.sin(polar) * Math.cos(az)).multiplyScalar(dist)) };
+};
+let fly = null;
+function flyTo(target, dist, opts = {}) {
+  const off = camera.position.clone().sub(controls.target);
+  let sph = new THREE.Spherical().setFromVector3(off);
+  if (opts.polar != null) sph.phi = opts.polar; else sph.phi = Math.min(sph.phi, 1.08);
+  if (opts.az != null) sph.theta = opts.az;
+  sph.radius = dist ?? sph.radius;
+  const endPos = target.clone().add(new THREE.Vector3().setFromSpherical(sph));
+  if (isPhone() && !opts.exact) { // keep the target above the bottom sheet
+    const shift = sph.radius * 0.22; const dir = new THREE.Vector3(-Math.sin(sph.theta), 0, -Math.cos(sph.theta));
+    target = target.clone().addScaledVector(dir, -shift); endPos.addScaledVector(dir, -shift);
+  }
+  fly = { t0: performance.now(), dur: reduced ? 1 : (opts.dur ?? 1100), fromT: controls.target.clone(), fromP: camera.position.clone(), toT: target, toP: endPos };
+}
+const ease = x => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+
+// ---------------------------------------------------------------- labels (DOM, collision-avoided)
+const labelLayer = $('#labels');
+const labelPool = new Map();
+let labelsDirty = true;
+function labelEl(key, cls, html, onClick) {
+  let el = labelPool.get(key);
+  if (!el) {
+    el = document.createElement('div'); el.className = 'lb ' + cls; labelLayer.appendChild(el); labelPool.set(key, el);
+    if (onClick) el.addEventListener('click', ev => { ev.stopPropagation(); onClick(); });
+  }
+  if (el._html !== html) { el.innerHTML = html; el._html = html; el._w = 0; }
+  if (el.className !== 'lb ' + cls) el.className = 'lb ' + cls;
+  return el;
+}
+const vtmp = new THREE.Vector3();
+function layoutLabels() {
+  labelsDirty = false;
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  const dist = camera.position.distanceTo(controls.target);
+  const items = [];
+  const add = (key, cls, html, x, y, z, pri, onClick, est) => items.push({ key, cls, html, x, y, z, pri, onClick, est });
+  // the Koch tower is always labelled
+  if (kochCentroid.hochhaus) add('k:hochhaus', 'koch' + (state.sel?.kind === 'koch' && state.sel.id === 'hochhaus' ? ' sel' : ''), `${esc(L(KOCH.hochhaus).t)}<small>85 m · Flurstrasse 71</small>`, kochCentroid.hochhaus[0], kochCentroid.hochhaus[1], 93, 1000, () => selectKoch('hochhaus'), 130);
+  if (dist < 1400) for (const k of ['zeilenbau', 'kraftwerk1', 'mach', 'halle']) if (kochCentroid[k]) add('k:' + k, 'kochs', esc(L(KOCH[k]).t), kochCentroid[k][0], kochCentroid[k][1], (KOCH_H[k] || 9) + 6, 300, () => selectKoch(k), 90);
+  for (const s of SCENE.stations) add('st:' + s[2], 'station', esc(s[2].replace('Zürich ', '')), s[0] / Q, s[1] / Q, 14, 600, null, 90);
+  // tour stop numbers
+  if (state.tour) state.tour.stops.forEach((s, i) => add('ts:' + i, 'num', String(i + 1), s[0], s[1], 4, 900, null, 24));
+  // pois
+  const selId = state.sel?.kind === 'poi' ? state.sel.id : null, hovId = state.hover?.kind === 'poi' ? state.hover.id : null;
+  for (const p of visPois) {
+    if (!state.groups.has(p.g) && p.id !== selId) continue;
+    const isSel = p.id === selId, isHov = p.id === hovId;
+    const show = isSel || isHov || p.f || dist < 1250 || (dist < 2100 && (p.w ?? 99) <= 6);
+    if (!show) continue;
+    const pri = isSel ? 950 : isHov ? 940 : p.f ? 400 - (p.w ?? 30) : 200 - (p.w ?? 60);
+    const [px, py] = poiPos(p);
+    const wtxt = p.out ? '↗' : (p.w != null ? `${p.w}′` : '');
+    add('p:' + p.id, 'poi' + (isSel ? ' sel' : ''), `<i style="background:${groupColor(p.g)}"></i>${esc(p.n)}${wtxt ? `<small>${wtxt}</small>` : ''}`, px, py, pinH(p) + 2, pri, () => selectPoi(p.id), p.n.length * 6.3 + 44);
+  }
+  // events selected
+  if (state.sel?.kind === 'event') { const e = EVENTS.find(x => x.id === state.sel.id); if (e && e.x != null) add('ev', 'poi sel', `<i style="background:var(--birch)"></i>${esc(e.n)}`, e.x, e.y, 30, 960, null, e.n.length * 6.3 + 30); }
+  if (state.sel?.kind === 'mark') add('mk', 'poi sel', `<i style="background:var(--accent)"></i>${esc(state.sel.title)}`, state.sel.x, state.sel.y, 16, 960, null, state.sel.title.length * 6.3 + 30);
+  if (state.pick?.point) add('pk', 'poi sel', `<i style="background:var(--birch)"></i>${esc(state.pick.name || '…')}`, state.pick.point[0], state.pick.point[1], 30, 970, null, 80);
+  // names of parks etc.
+  if (state.layers.names && dist < 2600) for (const n of SCENE.names) add('n:' + n[0], 'place', esc(n[0]), n[2], n[3], 2, 60, null, n[0].length * 5.8 + 6);
+  if (state.layers.rings) RINGS.forEach(([rad, m]) => add('r:' + m, 'ring', T[lang].ringLbl(m), HOME.x + rad * 0.7071, HOME.y - rad * 0.7071, 1, 120, null, 40));
+  if (state.layers.stops && dist < 900) for (const s of SCENE.stops) add('s:' + s[2], 'stop', esc(s[2]), s[0] / Q, s[1] / Q, 4, 80, null, s[2].length * 5.6 + 14);
+  if (state.bands && kochCentroid.hochhaus) LAGEN.forEach(lg => { const yy = (floorY(lg.f[0]) + floorY(lg.f[1] + 1)) / 2; add('b:' + lg.id, 'band', `<i style="background:${lg.c}"></i>${L(lg)} · ${lg.f[0]}.–${lg.f[1]}.`, kochCentroid.hochhaus[0] + 16, kochCentroid.hochhaus[1], yy, 980, null, 110); });
+
+  items.sort((a, b) => b.pri - a.pri);
+  const placed = [], used = new Set();
+  const maxN = isPhone() ? 26 : 60;
+  for (const it of items) {
+    if (placed.length >= maxN && it.pri < 900) break;
+    vtmp.copy(W(it.x, it.y, it.z)).project(camera);
+    if (vtmp.z > 1 || vtmp.x < -1.1 || vtmp.x > 1.1 || vtmp.y < -1.1 || vtmp.y > 1.1) continue;
+    const sx = (vtmp.x + 1) / 2 * w, sy = (1 - vtmp.y) / 2 * h;
+    const bw = it.est, bh = it.cls.startsWith('koch') && it.cls !== 'kochs' ? 40 : 22;
+    const centred = it.cls === 'place' || it.cls === 'ring' || it.cls === 'num';
+    const rect = centred ? [sx - bw / 2, sy - bh / 2, sx + bw / 2, sy + bh / 2] : it.cls === 'band' ? [sx, sy - bh / 2, sx + bw, sy + bh / 2] : [sx - bw / 2, sy - bh - 6, sx + bw / 2, sy - 6];
+    if (it.pri < 900 && placed.some(r => !(rect[2] < r[0] || rect[0] > r[2] || rect[3] < r[1] || rect[1] > r[3]))) continue;
+    placed.push(rect);
+    const el = labelEl(it.key, it.cls, it.html, it.onClick);
+    el.style.transform = `translate(${sx.toFixed(1)}px, ${sy.toFixed(1)}px) ${centred ? 'translate(-50%,-50%)' : it.cls === 'band' ? 'translate(0,-50%)' : 'translate(-50%,-100%)'}`;
+    el.style.display = '';
+    used.add(it.key);
+  }
+  for (const [k, el] of labelPool) if (!used.has(k)) el.style.display = 'none';
+}
+
+// pin sizes follow the zoom so pins stay readable
+const pinH = p => (p.out ? 18 : 30);
+const mtmp = new THREE.Matrix4(), qtmp = new THREE.Quaternion(), stmp = new THREE.Vector3(), ptmp = new THREE.Vector3();
+let lastPinScale = -1;
+function updatePins(force) {
+  const dist = camera.position.distanceTo(controls.target);
+  const s = THREE.MathUtils.clamp(dist / 560, 0.55, 3.6);
+  if (!force && Math.abs(s - lastPinScale) < 0.02) return;
+  lastPinScale = s;
+  visPois.forEach((p, i) => {
+    const on = state.groups.has(p.g) || (state.sel?.kind === 'poi' && state.sel.id === p.id);
+    const big = (state.sel?.kind === 'poi' && state.sel.id === p.id) || (state.hover?.kind === 'poi' && state.hover.id === p.id) ? 1.45 : 1;
+    const [x, y] = poiPos(p);
+    const hh = pinH(p) * Math.min(s, 2.2);
+    const r = (on ? 2.9 * s * big : 0.0001);
+    ptmp.copy(W(x, y, hh)); stmp.set(r, r, r); mtmp.compose(ptmp, qtmp, stmp); headMesh.setMatrixAt(i, mtmp);
+    ptmp.copy(W(x, y, 0)); stmp.set(on ? Math.max(1, s * 0.9) : 0.0001, on ? hh : 0.0001, on ? Math.max(1, s * 0.9) : 0.0001); mtmp.compose(ptmp, qtmp, stmp); stemMesh.setMatrixAt(i, mtmp);
+  });
+  headMesh.instanceMatrix.needsUpdate = true; stemMesh.instanceMatrix.needsUpdate = true;
+  headMesh.computeBoundingSphere(); stemMesh.computeBoundingSphere();
+  const ms = THREE.MathUtils.clamp(dist / 700, 0.7, 3.5);
+  for (const me of [fountainMesh, recycMesh, stopMesh, shareMesh]) {
+    const list = me.userData.list;
+    list.forEach((it, i) => { ptmp.set(it[0] / Q, me === stopMesh ? 0.6 : 1.4 * ms, -it[1] / Q); stmp.set(ms, ms, ms); mtmp.compose(ptmp, qtmp, stmp); me.setMatrixAt(i, mtmp); });
+    me.instanceMatrix.needsUpdate = true; me.computeBoundingSphere();
+  }
+  halo.scale.setScalar(Math.max(1, s * 0.9));
+}
+
+// ---------------------------------------------------------------- picking
+const ray = new THREE.Raycaster();
+const ndc = new THREE.Vector2();
+function pickAt(cx, cy) {
+  const rect = canvas.getBoundingClientRect();
+  ndc.set(((cx - rect.left) / rect.width) * 2 - 1, -((cy - rect.top) / rect.height) * 2 + 1);
+  ray.setFromCamera(ndc, camera);
+  const targets = [headMesh, ...groups3.koch.children.filter(o => o.userData.koch && o.visible !== false)];
+  if (state.layers.fountains) targets.push(fountainMesh);
+  if (state.layers.recycling) targets.push(recycMesh);
+  if (state.layers.stops) targets.push(stopMesh);
+  if (state.layers.sharing) targets.push(shareMesh);
+  const hits = ray.intersectObjects(targets, false);
+  for (const h of hits) {
+    const o = h.object;
+    if (o === headMesh) { const p = visPois[h.instanceId]; if (p && state.groups.has(p.g)) return { kind: 'poi', id: p.id }; continue; }
+    if (o.userData.koch) return { kind: 'koch', id: o.userData.koch };
+    if (o.userData.kind) return { kind: o.userData.kind, idx: h.instanceId };
+  }
+  return null;
+}
+function groundAt(cx, cy) {
+  const rect = canvas.getBoundingClientRect();
+  ndc.set(((cx - rect.left) / rect.width) * 2 - 1, -((cy - rect.top) / rect.height) * 2 + 1);
+  ray.setFromCamera(ndc, camera);
+  const p = new THREE.Vector3();
+  if (!ray.ray.intersectPlane(new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), p)) return null;
+  const x = p.x, y = -p.z;
+  if (Math.hypot(x - BC[0], y - BC[1]) > R) return null;
+  return [x, y];
+}
+let down = null;
+canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: performance.now() }; if (fly) fly = null; });
+canvas.addEventListener('pointerup', e => {
+  if (!down) return;
+  const moved = Math.hypot(e.clientX - down.x, e.clientY - down.y), dt = performance.now() - down.t; down = null;
+  if (moved > 6 || dt > 700) return;
+  if (state.pick) { const g = groundAt(e.clientX, e.clientY); if (g) { state.pick.point = g; renderPanel(); labelsDirty = true; needsRender = true; } return; }
+  const hit = pickAt(e.clientX, e.clientY);
+  if (!hit) { if (state.sel && !isPhone()) clearSel(); return; }
+  if (hit.kind === 'poi') selectPoi(hit.id);
+  else if (hit.kind === 'koch') selectKoch(hit.id);
+  else selectMark(hit.kind, hit.idx);
+});
+let hoverT = 0;
+canvas.addEventListener('pointermove', e => {
+  if (e.pointerType !== 'mouse' || down) return;
+  const now = performance.now(); if (now - hoverT < 60) return; hoverT = now;
+  const hit = pickAt(e.clientX, e.clientY);
+  const key = hit ? hit.kind + ':' + (hit.id ?? hit.idx) : null, prev = state.hover ? state.hover.kind + ':' + (state.hover.id ?? state.hover.idx) : null;
+  canvas.style.cursor = state.pick ? 'crosshair' : hit ? 'pointer' : '';
+  if (key !== prev) { state.hover = hit; labelsDirty = true; updatePins(true); needsRender = true; }
+});
+
+// ---------------------------------------------------------------- selection + card
+const card = $('#card');
+function openCard(html) {
+  card.innerHTML = `<button type="button" class="close" aria-label="${t('close')}">${ico('x')}</button>` + html;
+  card.hidden = false; card.scrollTop = 0;
+  card.querySelector('.close').onclick = clearSel;
+  card.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => ACTIONS[b.dataset.act]?.(b.dataset)));
+}
+function clearSel() {
+  state.sel = null; card.hidden = true; halo.visible = false; clearRoute(); labelsDirty = true; updatePins(true); needsRender = true;
+  $$('.row.sel').forEach(r => r.classList.remove('sel'));
+}
+function setHalo(x, y) { halo.position.copy(W(x, y, 0.6)); halo.visible = true; }
+const fmtWalk = p => p.out ? `${t('outside')}` : (p.w != null ? `${p.w} ${t('walkMin')}` : '');
+function compass(dx, dy) {
+  const a = (Math.atan2(dx, dy) * 180 / Math.PI + 360) % 360;
+  const de = ['Norden', 'Nordosten', 'Osten', 'Südosten', 'Süden', 'Südwesten', 'Westen', 'Nordwesten'], en = ['north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west'];
+  return (lang === 'en' ? en : de)[Math.round(a / 45) % 8];
+}
+function selectPoi(id, opts = {}) {
+  const p = POI[id]; if (!p) return;
+  if (!state.groups.has(p.g)) { /* still allow from list */ }
+  stopTour();
+  state.sel = { kind: 'poi', id };
+  const [x, y] = poiPos(p);
+  setHalo(x, y);
+  const km = (Math.hypot(p.x - HOME.x, p.y - HOME.y) / 1000);
+  const det = p.d ? Object.entries(p.d).filter(([k, v]) => ['ages', 'hours', 'opening_hours', 'price_day', 'price', 'subsidised', 'subsidized', 'operator'].includes(k) && String(v).length <= 70)
+    .map(([k, v]) => [k, k.startsWith('price') && /^\d+(\.\d+)?$/.test(String(v)) ? `CHF ${v}` : v]).slice(0, 6) : [];
+  const phone = p.d?.phone;
+  const route = ROUTES[p.id];
+  openCard(`
+    <div class="kick"><i style="background:${groupColor(p.g)}"></i>${esc(L(GROUP[p.g]))}</div>
+    <h2>${esc(p.n)}</h2>
+    <div class="walk">
+      ${p.out ? `<span class="pill">${ico('pin')}${km.toFixed(1)} km · ${t('toward')} ${compass(p.x - HOME.x, p.y - HOME.y)}</span>` : `<span class="pill accent">${ico('walk')}${p.w ?? '–'} ${t('walkMin')}</span>${route ? `<span class="pill">${(route.d / 1000).toFixed(2)} km</span>` : ''}`}
+    </div>
+    <p class="desc">${esc(pick(p, 'dd', 'de'))}</p>
+    ${det.length ? `<dl class="kv">${det.map(([k, v]) => `<div><dt>${esc(T[lang].det[k] || k)}</dt><dd>${esc(typeof v === 'boolean' ? (v ? '✓' : '–') : v)}</dd></div>`).join('')}${phone ? `<div><dt>${t('det').phone}</dt><dd>${esc(phone)}</dd></div>` : ''}</dl>` : ''}
+    ${p.a ? `<p class="addr">${esc(p.a)}</p>` : ''}
+    <div class="btnrow">
+      ${route ? `<button type="button" class="btn primary" data-act="route" data-id="${esc(p.id)}">${ico('route')}${t('showWay')}</button>` : ''}
+      ${p.u ? `<a class="btn" href="${esc(p.u)}" target="_blank" rel="noopener">${ico('ext')}${t('website')}</a>` : ''}
+      ${p.s && p.s !== p.u ? `<a class="btn" href="${esc(p.s)}" target="_blank" rel="noopener">${t('source')}</a>` : ''}
+    </div>`);
+  clearRoute();
+  if (!opts.noFly) flyTo(W(x, y, 0), p.out ? 1300 : Math.min(camera.position.distanceTo(controls.target), 760));
+  labelsDirty = true; updatePins(true); needsRender = true;
+  $$('.row').forEach(r => r.classList.toggle('sel', r.dataset.id === id));
+}
+function selectKoch(role) {
+  stopTour();
+  const K = KOCH[role]; if (!K) return;
+  state.sel = { kind: 'koch', id: role };
+  const c = kochCentroid[role] || [0, 0];
+  halo.visible = false; clearRoute();
+  const facts = K.facts.map(([k, v]) => `<div><dt>${esc(k.split('|')[lang === 'en' ? 1 : 0])}</dt><dd>${esc(v)}</dd></div>`).join('');
+  let extra = '';
+  if (role === 'hochhaus') {
+    const total = 26;
+    extra = `<div class="sh">${t('lageTitle')}</div>
+      <div class="lagen">
+        <div class="tower" aria-hidden="true"><div style="height:6px;background:var(--line)"></div>${LAGEN.map(lg => `<div style="height:${(lg.f[1] - lg.f[0] + 1) / total * 150}px;background:${lg.c}"></div>`).join('')}</div>
+        <table><thead><tr><th>${t('lage')}</th><th>${t('floors')}</th><th style="text-align:right">${t('free')}</th><th style="text-align:right">${t('subv')}</th></tr></thead>
+        <tbody>${LAGEN.slice().reverse().map(lg => `<tr><td><span class="sw" style="background:${lg.c}"></span>${L(lg)}</td><td class="n" style="text-align:left">${lg.f[0]}–${lg.f[1]}</td><td class="n">${lg.free}</td><td class="n">${lg.sub}</td></tr>`).join('')}</tbody></table>
+      </div>
+      <p class="note">${t('lageNote')} ${t('clusterNote')}</p>
+      <div class="btnrow"><button type="button" class="btn birch" data-act="bands">${state.bands ? t('hideBands') : t('showBands')}</button>
+      ${WALKTHROUGH ? `<a class="btn" href="${WALKTHROUGH}" target="_blank" rel="noopener">${ico('ext')}${t('flatTour')}</a>` : ''}</div>`;
+  }
+  openCard(`
+    <div class="kick"><i style="background:var(--birch)"></i>Koch-Quartier · ${esc(L(K).s)}</div>
+    <h2>${esc(L(K).t)}</h2>
+    <p class="desc">${esc(L(K).b)}</p>
+    <dl class="kv">${facts}</dl>
+    ${extra}
+    ${role === 'podium' ? `<p class="note">${t('schematic')}</p>` : ''}
+    <div class="btnrow"><a class="btn" href="${esc(K.url)}" target="_blank" rel="noopener">${ico('ext')}${t('source')}</a></div>`);
+  if (role === 'hochhaus') flyTo(W(c[0], c[1], 30), 420, { polar: 1.12 });
+  else flyTo(W(c[0], c[1], 0), 520);
+  labelsDirty = true; updatePins(true); needsRender = true;
+}
+const RECYC = { glass: ['Glas', 'glass'], glass_bottles: ['Glasflaschen', 'glass bottles'], cans: ['Dosen', 'cans'], aluminium: ['Alu', 'aluminium'], scrap_metal: ['Altmetall', 'scrap metal'], metal: ['Metall', 'metal'], clothes: ['Kleider', 'clothes'], shoes: ['Schuhe', 'shoes'], paper: ['Papier', 'paper'], cardboard: ['Karton', 'cardboard'], batteries: ['Batterien', 'batteries'], cooking_oil: ['Speiseöl', 'cooking oil'], engine_oil: ['Motoröl', 'engine oil'], PET: ['PET', 'PET'], plastic_bottles: ['PET-Flaschen', 'PET bottles'], green_waste: ['Grüngut', 'green waste'], electrical_appliances: ['Elektrogeräte', 'electrical appliances'], small_appliances: ['Kleingeräte', 'small appliances'], tins: ['Konserven', 'tins'], plastic: ['Kunststoff', 'plastic'], waste: ['Abfall', 'waste'] };
+function selectMark(kind, idx) {
+  stopTour(); clearRoute();
+  let title = '', body = '', x = 0, y = 0, kick = '';
+  if (kind === 'fountain') { const f = SCENE.fountains[idx]; x = f[0] / Q; y = f[1] / Q; title = t('fountain'); body = t('fountainTxt'); kick = t('lyFountains'); }
+  if (kind === 'recycling') {
+    const r = SCENE.recycling[idx]; x = r[0] / Q; y = r[1] / Q; title = r[4] || t('recycle'); kick = t('lyRecycling');
+    const ks = (r[3] || '').split(',').filter(Boolean).map(k => (RECYC[k] || [k, k])[lang === 'en' ? 1 : 0]);
+    body = ks.length ? `${t('accepts')}: ${ks.join(', ')}.` : t('recycleTxt');
+  }
+  if (kind === 'stop') { const s = SCENE.stops[idx]; x = s[0] / Q; y = s[1] / Q; title = s[2]; kick = t('stop'); body = s[3] ? `${t('det').lines}: ${s[3]}` : ''; }
+  if (kind === 'sharing') { const s = sharingList[idx]; x = s[0] / Q; y = s[1] / Q; title = s[3] || s[2] || (s[4] === 'bike' ? t('bike') : t('car')); kick = s[4] === 'bike' ? t('bike') : t('car'); body = s[2] || ''; }
+  state.sel = { kind: 'mark', title, x, y };
+  setHalo(x, y);
+  openCard(`<div class="kick"><i style="background:var(--accent)"></i>${esc(kick)}</div><h2>${esc(title)}</h2>${body ? `<p class="desc">${esc(body)}</p>` : ''}<p class="note">OpenStreetMap</p>`);
+  flyTo(W(x, y, 0), Math.min(camera.position.distanceTo(controls.target), 600));
+  labelsDirty = true; needsRender = true;
+}
+function selectEvent(id) {
+  const e = EVENTS.find(x => x.id === id); if (!e) return;
+  stopTour(); clearRoute();
+  state.sel = { kind: 'event', id };
+  if (e.x != null) setHalo(e.x, e.y); else halo.visible = false;
+  openCard(`
+    <div class="kick"><i style="background:var(--birch)"></i>${t('event')}${e.fam ? ` · ${t('family')}` : ''}</div>
+    <h2>${esc(e.n)}</h2>
+    <dl class="kv"><div><dt>${t('when')}</dt><dd>${esc(pick(e, 'wd', 'we'))}</dd></div><div><dt>${t('where')}</dt><dd>${esc(e.v)}</dd></div></dl>
+    <p class="desc">${esc(pick(e, 'dd', 'de'))}</p>
+    <div class="btnrow">${e.u ? `<a class="btn" href="${esc(e.u)}" target="_blank" rel="noopener">${ico('ext')}${t('moreInfo')}</a>` : ''}</div>`);
+  if (e.x != null) {
+    const inBoard = Math.hypot(e.x - BC[0], e.y - BC[1]) < R;
+    const x = inBoard ? e.x : BC[0] + (e.x - BC[0]) / Math.hypot(e.x - BC[0], e.y - BC[1]) * (R - 40), y = inBoard ? e.y : BC[1] + (e.y - BC[1]) / Math.hypot(e.x - BC[0], e.y - BC[1]) * (R - 40);
+    if (!inBoard) setHalo(x, y);
+    flyTo(W(x, y, 0), inBoard ? 700 : 1500);
+  }
+  labelsDirty = true; needsRender = true;
+}
+
+// route ribbons
+function clearRoute() { if (routeMesh) { groups3.fx.remove(routeMesh); routeMesh.geometry.dispose(); routeMesh = null; } }
+function showRoute(id) {
+  clearRoute();
+  const r = ROUTES[id]; if (!r) return;
+  const acc = new Acc(); addRibbon(acc, r.p, 4.5, 1.2);
+  routeMesh = new THREE.Mesh(acc.geo(), routeMat); routeMesh.renderOrder = 4; groups3.fx.add(routeMesh);
+  let minx = 1e9, maxx = -1e9, miny = 1e9, maxy = -1e9;
+  for (const [x, y] of r.p) { minx = Math.min(minx, x); maxx = Math.max(maxx, x); miny = Math.min(miny, y); maxy = Math.max(maxy, y); }
+  const span = Math.max(maxx - minx, maxy - miny);
+  flyTo(W((minx + maxx) / 2, (miny + maxy) / 2, 0), Math.max(620, span * 2.6), { polar: 0.72 });
+  needsRender = true;
+}
+const ACTIONS = {
+  route: d => { if (routeMesh) { clearRoute(); card.querySelector('[data-act="route"]').innerHTML = ico('route') + t('showWay'); } else { showRoute(d.id); card.querySelector('[data-act="route"]').innerHTML = ico('route') + t('hideWay'); } needsRender = true; },
+  bands: () => { state.bands = !state.bands; bandGroup.visible = state.bands; selectKoch('hochhaus'); },
+};
+
+// ---------------------------------------------------------------- guide panels
+const TABS = [['explore', 'tExplore', () => POIS.length], ['walks', 'tWalks', () => TOURS.length], ['agenda', 'tAgenda', () => EVENTS.length], ['involve', 'tInvolve'], ['about', 'tAbout']];
+function renderTabs() {
+  $('#tabs').innerHTML = TABS.map(([id, k, n]) => `<button type="button" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${t(k)}${n ? `<small>${n()}</small>` : ''}</button>`).join('');
+  $$('#tabs button').forEach(b => b.onclick = () => {
+    const guide = $('#guide');
+    if (isPhone() && state.tab === b.dataset.tab) { guide.classList.toggle('min'); return; }
+    guide.classList.remove('min');
+    state.tab = b.dataset.tab; store.set('tab', state.tab); renderTabs(); renderPanel(); $('#panel').scrollTop = 0;
+  });
+}
+function renderPanel() {
+  const el = $('#panel');
+  ({ explore: renderExplore, walks: renderWalks, agenda: renderAgenda, involve: renderInvolve, about: renderAbout })[state.tab]?.(el);
+}
+function renderExplore(el) {
+  const counts = {}; POIS.forEach(p => counts[p.g] = (counts[p.g] || 0) + 1);
+  const q = state.query.trim().toLowerCase();
+  const list = POIS.filter(p => state.groups.has(p.g) && (!q || (p.n + ' ' + p.a + ' ' + (p.t || []).join(' ')).toLowerCase().includes(q)));
+  el.innerHTML = `
+    <label class="search">${ico('search')}<input id="q" type="search" placeholder="${t('search')}" value="${esc(state.query)}" autocomplete="off"></label>
+    <div class="chips" id="chips">${GROUPS.map(g => `<button type="button" class="chip" data-g="${g.id}" aria-pressed="${state.groups.has(g.id)}"><i style="background:${groupColor(g.id)}"></i>${esc(L(g))}<small>${counts[g.id] || 0}</small></button>`).join('')}</div>
+    <div style="display:flex;gap:14px"><button type="button" class="linkbtn" id="gAll">${t('all')}</button><button type="button" class="linkbtn" id="gNone">${t('none')}</button><span class="note" style="margin-left:auto">${t('fromHome')}</span></div>
+    <div class="list" id="plist">${list.length ? list.map(p => `<button type="button" class="row${state.sel?.id === p.id ? ' sel' : ''}" data-id="${esc(p.id)}"><i class="dot" style="background:${groupColor(p.g)}"></i><span style="min-width:0"><b>${esc(p.n)}</b><span class="sub">${esc(L(GROUP[p.g]))}${p.a ? ' · ' + esc(p.a.split(',')[0]) : ''}</span></span><em>${p.out ? '↗' : (p.w ?? '–') + ' ' + t('min')}</em></button>`).join('') : `<p class="note">${t('noResults')}</p>`}</div>`;
+  const qi = $('#q', el);
+  qi.oninput = () => { state.query = qi.value; const pos = qi.selectionStart; renderExplore(el); const n = $('#q', el); n.focus(); n.setSelectionRange(pos, pos); };
+  $$('#chips .chip', el).forEach(c => c.onclick = () => { const g = c.dataset.g; state.groups.has(g) ? state.groups.delete(g) : state.groups.add(g); store.set('groups', [...state.groups]); renderExplore(el); updatePins(true); labelsDirty = true; needsRender = true; });
+  $('#gAll', el).onclick = () => { GROUPS.forEach(g => state.groups.add(g.id)); store.set('groups', [...state.groups]); renderExplore(el); updatePins(true); labelsDirty = true; needsRender = true; };
+  $('#gNone', el).onclick = () => { state.groups.clear(); store.set('groups', []); renderExplore(el); updatePins(true); labelsDirty = true; needsRender = true; };
+  $$('#plist .row', el).forEach(r => r.onclick = () => selectPoi(r.dataset.id));
+}
+function renderWalks(el) {
+  el.innerHTML = `<p class="note">${t('walksIntro')}</p>` + TOURS.map(tr => `
+    <article class="tour">
+      <div class="top"><span class="ico">${ico(tr.icon)}</span><div style="min-width:0"><h3>${esc(lang === 'en' ? tr.n_en : tr.n_de)}</h3>
+        <div class="meta"><span>${(tr.dist / 1000).toFixed(1)} ${t('km')}</span><span>${tr.min} ${t('min')}${tr.id === 'arbeitsweg' ? ' ' + t('plusTrain') : ''}</span><span>${tr.legs.length} ${t('stops')}</span></div></div></div>
+      <p style="font-size:13px">${esc(lang === 'en' ? tr.sum_en : tr.sum_de)}</p>
+      <ol>${tr.legs.map(l => `<li>${esc(stopName(l.to))}</li>`).join('')}</ol>
+      <div class="btnrow"><button type="button" class="btn primary" data-tour="${tr.id}">${ico('play')}${t('start')}</button></div>
+    </article>`).join('');
+  $$('[data-tour]', el).forEach(b => b.onclick = () => startTour(b.dataset.tour));
+}
+const stopName = id => id === '@home' ? 'Koch-Hochhaus' : (POI[id]?.n || id);
+
+const MONTHS_DE = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'], MONTHS_EN = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const SPAN = (() => { const out = []; let y = 2026, m = 11; for (let i = 0; i < 12; i++) { out.push([y, m]); m++; if (m > 12) { m = 1; y++; } } return out; })();
+function evInMonth(e, y, m) {
+  if (e.ds) { const [yy, mm] = e.ds.split('-').map(Number); return yy === y && mm === m; }
+  return e.r === 'annual' && e.m === m || e.r === 'one-off' && e.m === m;
+}
+function renderAgenda(el) {
+  const today = new Date(); const iso = today.toISOString().slice(0, 10);
+  const dated = EVENTS.filter(e => e.ds && e.ds >= iso).sort((a, b) => a.ds.localeCompare(b.ds));
+  const next = dated.slice(0, 3);
+  if (!state.month) { const cur = [today.getFullYear(), today.getMonth() + 1]; state.month = SPAN.find(([y, m]) => y > cur[0] || (y === cur[0] && m >= cur[1])) || SPAN[0]; }
+  const MN = lang === 'en' ? MONTHS_EN : MONTHS_DE;
+  const regular = EVENTS.filter(e => e.r === 'weekly' || e.r === 'monthly');
+  const nextIds = new Set(next.map(e => e.id));
+  const inMonth = state.month === 'reg' ? regular : EVENTS.filter(e => e.r !== 'weekly' && e.r !== 'monthly' && !nextIds.has(e.id) && evInMonth(e, state.month[0], state.month[1])).sort((a, b) => (a.ds || '9').localeCompare(b.ds || '9'));
+  const row = (e, tag) => {
+    let dateHtml;
+    if (e.ds) { const d = new Date(e.ds + 'T12:00:00'); dateHtml = `<span class="date"><b>${d.getDate()}</b><small>${MN[d.getMonth()]}</small></span>`; }
+    else dateHtml = `<span class="date rec"><b>${e.r === 'weekly' ? (lang === 'en' ? 'wkly' : 'wöch.') : e.r === 'monthly' ? (lang === 'en' ? 'mthly' : 'monatl.') : MN[(e.m || 1) - 1]}</b><small>${e.r === 'annual' ? (lang === 'en' ? 'yearly' : 'jährl.') : ''}</small></span>`;
+    return `<button type="button" class="ev" data-ev="${esc(e.id)}">${dateHtml}<span style="min-width:0"><h4>${esc(e.n)}${tag ? `<span class="tag next">${t('nextTag')}</span>` : ''}${e.fam ? `<span class="tag">${t('family')}</span>` : ''}</h4><p>${esc(pick(e, 'wd', 'we'))}</p><p>${esc(e.v)}</p></span></button>`;
+  };
+  el.innerHTML = `
+    <p class="note">${t('agendaIntro')}</p>
+    ${next.length ? `<div class="sh">${t('upcoming')}</div><div>${next.map(e => row(e, true)).join('')}</div>` : ''}
+    <div class="months" id="months">${SPAN.map(([y, m]) => { const n = EVENTS.filter(e => e.r !== 'weekly' && e.r !== 'monthly' && evInMonth(e, y, m)).length; const on = state.month !== 'reg' && state.month[0] === y && state.month[1] === m; return `<button type="button" data-y="${y}" data-m="${m}" aria-pressed="${on}"><small>${String(y).slice(2)}</small><b>${MN[m - 1]}</b><span>${n || ''}</span></button>`; }).join('')}<button type="button" data-reg="1" aria-pressed="${state.month === 'reg'}"><small>&nbsp;</small><b>${t('regular')}</b><span>${regular.length}</span></button></div>
+    <div>${inMonth.length ? inMonth.map(e => row(e)).join('') : `<p class="note">${t('noEvents')}</p>`}</div>`;
+  $$('#months button', el).forEach(b => b.onclick = () => { state.month = b.dataset.reg ? 'reg' : [Number(b.dataset.y), Number(b.dataset.m)]; renderAgenda(el); });
+  $$('[data-ev]', el).forEach(b => b.onclick = () => selectEvent(b.dataset.ev));
+}
+function renderInvolve(el) {
+  const pk = state.pick;
+  el.innerHTML = `
+    <h3>${t('involveTitle')}</h3>
+    <p class="note">${t('involveIntro')}</p>
+    ${IDEAS.map(i => `<article class="idea"><span class="ico">${ico(i.icon)}</span><div style="min-width:0"><h4>${esc(L(i)[0])}</h4><p>${esc(L(i)[1])}</p><button type="button" class="linkbtn" data-idea="${i.id}">${t('showOnMap')} →</button></div></article>`).join('')}
+    <section class="suggest" id="suggest">
+      <h3>${t('suggestTitle')}</h3>
+      <p class="note">${t('suggestIntro')}</p>
+      ${!pk ? `<div class="btnrow"><button type="button" class="btn birch" id="sgStart">${ico('pin')}${t('suggestBtn')}</button></div>` : !pk.point ? `<p class="note"><b>${t('pickHint')}</b></p><div class="btnrow"><button type="button" class="btn" id="sgCancel">${t('cancel')}</button></div>` : `
+        <div class="field"><label for="sgName">${t('fName')}</label><input id="sgName" value="${esc(pk.name || '')}"></div>
+        <div class="field"><label for="sgCat">${t('fCat')}</label><select id="sgCat">${GROUPS.map(g => `<option value="${g.id}"${pk.g === g.id ? ' selected' : ''}>${esc(L(g))}</option>`).join('')}</select></div>
+        <div class="field"><label for="sgNote">${t('fNote')}</label><textarea id="sgNote" rows="2">${esc(pk.note || '')}</textarea></div>
+        <pre class="snip" id="sgOut"></pre>
+        <div class="btnrow"><button type="button" class="btn primary" id="sgCopy">${ico('copy')}${t('copy')}</button><button type="button" class="btn" id="sgAgain">${t('again')}</button><button type="button" class="btn" id="sgCancel">${t('cancel')}</button></div>`}
+    </section>`;
+  $$('[data-idea]', el).forEach(b => b.onclick = () => runIdea(b.dataset.idea));
+  const s = $('#sgStart', el); if (s) s.onclick = () => startPick();
+  const c = $('#sgCancel', el); if (c) c.onclick = () => endPick();
+  const again = $('#sgAgain', el); if (again) again.onclick = () => { state.pick.point = null; renderInvolve(el); showPickHint(true); labelsDirty = true; };
+  if (pk?.point) {
+    showPickHint(false);
+    const upd = () => {
+      pk.name = $('#sgName', el).value; pk.g = $('#sgCat', el).value; pk.note = $('#sgNote', el).value;
+      const lat = LAT0 + pk.point[1] / KY, lon = LON0 + pk.point[0] / KX;
+      $('#sgOut', el).textContent = JSON.stringify({ id: (pk.name || 'neuer-ort').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''), name: pk.name || '', cat: pk.g, lat: +lat.toFixed(6), lon: +lon.toFixed(6), desc_de: pk.note || '', suggested: new Date().toISOString().slice(0, 10) }, null, 2);
+      labelsDirty = true; needsRender = true;
+    };
+    ['sgName', 'sgCat', 'sgNote'].forEach(id => $('#' + id, el).addEventListener('input', upd));
+    upd();
+    $('#sgCopy', el).onclick = () => {
+      const txt = $('#sgOut', el).textContent;
+      const sel = () => { const r = document.createRange(); r.selectNodeContents($('#sgOut', el)); const s2 = getSelection(); s2.removeAllRanges(); s2.addRange(r); };
+      try { navigator.clipboard.writeText(txt).then(() => toast(t('copied')), () => { sel(); toast(t('copyFail')); }); } catch { sel(); toast(t('copyFail')); }
+    };
+  }
+}
+function renderAbout(el) {
+  el.innerHTML = `
+    <div class="prose"><h3>${t('aboutTitle')}</h3><p>${t('about1')}</p><p>${t('about2')}</p></div>
+    ${WALKTHROUGH ? `<a class="tour" href="${WALKTHROUGH}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+      <div class="top"><span class="ico" style="background:var(--birch-soft);color:var(--birch)">${ico('ext')}</span><div><h3>${t('flatTour')}</h3><p class="note">${t('flatTourSub')}</p></div></div></a>` : ''}
+    <div class="sh">${t('dataTitle')}</div>
+    <dl class="kv">
+      <div><dt>${t('dBuild')}</dt><dd>${t('dBuildV')}</dd></div>
+      <div><dt>${t('dPlaces')}</dt><dd>${t('dPlacesV')}</dd></div>
+      <div><dt>${t('dWalk')}</dt><dd>${t('dWalkV')}</dd></div>
+      <div><dt>${t('dKoch')}</dt><dd>${t('dKochV')}</dd></div>
+      <div><dt>${t('dLicense')}</dt><dd>${t('dLicenseV')}</dd></div>
+    </dl>
+    <p class="note">${t('ringNote')}</p>`;
+}
+function runIdea(id) {
+  const i = IDEAS.find(x => x.id === id); if (!i) return;
+  if (i.to.koch) selectKoch(i.to.koch);
+  else if (i.to.poi) selectPoi(i.to.poi);
+  else if (i.to.event) selectEvent(i.to.event);
+  else if (i.to.layer) { state.layers[i.to.layer] = true; store.set('layers', state.layers); applyLayers(); renderLayers(); flyTo(W(HOME.x, HOME.y, 0), 1500); }
+}
+
+// suggest-a-place
+function showPickHint(on) { const h = $('#pickhint'); h.hidden = !on; if (on) h.innerHTML = `${ico('pin')}<span>${t('pickHint')}</span><button type="button" class="btn" id="phCancel">${t('cancel')}</button>`; const c = $('#phCancel'); if (c) c.onclick = endPick; }
+function startPick() { clearSel(); state.pick = { point: null, g: 'community' }; canvas.classList.add('pick'); showPickHint(true); if (isPhone()) $('#guide').classList.add('min'); renderPanel(); }
+function endPick() { state.pick = null; canvas.classList.remove('pick'); showPickHint(false); $('#guide').classList.remove('min'); renderPanel(); labelsDirty = true; needsRender = true; }
+
+// ---------------------------------------------------------------- layers popover
+function renderLayers() {
+  const rows = [['trees', 'lyTrees', SCENE.trees.length], ['names', 'lyNames'], ['rings', 'lyRings'], ['stops', 'lyStops', SCENE.stops.length], ['lines', 'lyLines'], ['fountains', 'lyFountains', SCENE.fountains.length], ['recycling', 'lyRecycling', SCENE.recycling.length], ['sharing', 'lySharing', sharingList.length]];
+  $('#layers').innerHTML = `<div class="lgrp">${t('layers')}</div>` + rows.map(([k, lbl, n]) => `<label><input type="checkbox" id="ly-${k}" data-ly="${k}" ${state.layers[k] ? 'checked' : ''}><span>${t(lbl)}</span>${n ? `<small>${n}</small>` : ''}</label>`).join('') + `<p class="note" style="margin:6px 4px 0">${t('ringNote')}</p>`;
+  $$('#layers input').forEach(i => i.onchange = () => { state.layers[i.dataset.ly] = i.checked; store.set('layers', state.layers); applyLayers(); });
+}
+function applyLayers() {
+  trees.visible = trunks.visible = state.layers.trees;
+  fountainMesh.visible = state.layers.fountains; recycMesh.visible = state.layers.recycling; stopMesh.visible = state.layers.stops; shareMesh.visible = state.layers.sharing;
+  lineGroup.visible = state.layers.lines; ringGroup.visible = state.layers.rings;
+  labelsDirty = true; needsRender = true;
+}
+
+// ---------------------------------------------------------------- tours
+const tourbar = $('#tourbar');
+function startTour(id) {
+  const tr = TOURS.find(x => x.id === id); if (!tr) return;
+  clearSel(); stopTour();
+  // build the full path with leg boundaries
+  const pts = [], legEnd = [], stops = [];
+  for (const l of tr.legs) {
+    for (const p of l.p) if (!pts.length || Math.hypot(p[0] - pts[pts.length - 1][0], p[1] - pts[pts.length - 1][1]) > 0.5) pts.push(p);
+    legEnd.push(pts.length - 1); stops.push(l.p[l.p.length - 1]);
+  }
+  const cum = [0]; for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+  for (let li = 0; li < tr.legs.length; li++) {
+    const l = tr.legs[li]; const acc = new Acc(); addRibbon(acc, l.p, l.mode === 'bus' ? 7 : 4.5, 1.3 + li * 0.01);
+    const me = new THREE.Mesh(acc.geo(), l.mode === 'bus' ? busMat : routeMat); me.renderOrder = 4; tourGroup.add(me);
+  }
+  const total = cum[cum.length - 1];
+  const duration = THREE.MathUtils.clamp(total / 1000 * 9000, 14000, 34000);
+  state.tour = { tr, pts, cum, legEnd, stops, total, t: 0, duration, playing: true, last: performance.now(), leg: -1 };
+  walker.visible = true;
+  if (isPhone()) $('#guide').classList.add('min');
+  flyTo(W(HOME.x, HOME.y, 0), 1050, { polar: 0.85, dur: 900 });
+  renderTourbar(); labelsDirty = true; needsRender = true;
+}
+function stopTour() {
+  if (!state.tour) return;
+  state.tour = null; walker.visible = false;
+  tourGroup.children.slice().forEach(m => { tourGroup.remove(m); m.geometry.dispose(); });
+  tourbar.hidden = true; $('#guide').classList.remove('min'); labelsDirty = true; needsRender = true;
+}
+function tourPos(d) {
+  const T0 = state.tour; let i = 1; while (i < T0.cum.length && T0.cum[i] < d) i++;
+  i = Math.min(i, T0.cum.length - 1);
+  const a = T0.pts[i - 1], b = T0.pts[i], seg = (T0.cum[i] - T0.cum[i - 1]) || 1, f = (d - T0.cum[i - 1]) / seg;
+  return { x: a[0] + (b[0] - a[0]) * f, y: a[1] + (b[1] - a[1]) * f, i };
+}
+function renderTourbar() {
+  const T0 = state.tour; if (!T0) return;
+  const tr = T0.tr; const leg = Math.max(0, T0.leg);
+  const l = tr.legs[leg]; const done = T0.t >= 1;
+  const txt = done && tr.tail_de ? `<b>${t('tail')}:</b> ${esc(lang === 'en' ? tr.tail_en : tr.tail_de)}` : esc(lang === 'en' ? l.en : l.de);
+  tourbar.hidden = false;
+  tourbar.innerHTML = `
+    <div class="tb-top"><button type="button" class="play" id="tbPlay" aria-label="${T0.playing ? t('pause') : t('play')}">${ico(T0.playing ? 'pause' : 'play')}</button><b>${esc(lang === 'en' ? tr.n_en : tr.n_de)}</b><button type="button" class="x" id="tbX" aria-label="${t('exitTour')}">${ico('x')}</button></div>
+    <div class="legs">${tr.legs.map((lg, i) => `<span class="${i < leg || done ? 'done' : i === leg ? 'on' : ''}">${i + 1} · ${esc(stopName(lg.to).split(' (')[0].slice(0, 26))}</span>`).join('')}</div>
+    <div class="txt">${txt}</div>
+    <div class="prog"><i id="tbProg" style="width:${(T0.t * 100).toFixed(1)}%"></i></div>`;
+  $('#tbPlay').onclick = () => { T0.playing = !T0.playing; if (T0.t >= 1 && T0.playing) { T0.t = 0; T0.leg = -1; } T0.last = performance.now(); renderTourbar(); };
+  $('#tbX').onclick = stopTour;
+}
+const camOff = new THREE.Vector3();
+function stepTour(now) {
+  const T0 = state.tour; if (!T0 || !T0.playing) return false;
+  const dt = Math.min(64, now - T0.last); T0.last = now;
+  T0.t = Math.min(1, T0.t + dt / T0.duration);
+  const d = T0.t * T0.total, pos = tourPos(d);
+  walker.position.copy(W(pos.x, pos.y, 8));
+  let leg = 0; while (leg < T0.legEnd.length - 1 && pos.i > T0.legEnd[leg]) leg++;
+  if (leg !== T0.leg || T0.t >= 1) { const ch = leg !== T0.leg; T0.leg = leg; if (ch || T0.t >= 1) renderTourbar(); }
+  const pr = $('#tbProg'); if (pr) pr.style.width = (T0.t * 100).toFixed(1) + '%';
+  if (!fly) {   // camera follows the walker, keeping the user's angle
+    const tgt = W(pos.x, pos.y, 0);
+    camOff.copy(camera.position).sub(controls.target);
+    controls.target.lerp(tgt, 0.06); camera.position.copy(controls.target).add(camOff);
+  }
+  if (T0.t >= 1) { T0.playing = false; renderTourbar(); }
+  labelsDirty = true;
+  return true;
+}
+
+// ---------------------------------------------------------------- tools
+$('#zIn').onclick = () => { const off = camera.position.clone().sub(controls.target).multiplyScalar(0.7); flyTo(controls.target.clone(), Math.max(controls.minDistance, off.length()), { exact: true, dur: 400 }); };
+$('#zOut').onclick = () => { const off = camera.position.clone().sub(controls.target).multiplyScalar(1.4); flyTo(controls.target.clone(), Math.min(controls.maxDistance, off.length()), { exact: true, dur: 400 }); };
+$('#compass').onclick = () => flyTo(controls.target.clone(), camera.position.distanceTo(controls.target), { az: 0, exact: true, dur: 700 });
+$('#home').onclick = () => { stopTour(); const d = DEFAULT(); fly = { t0: performance.now(), dur: reduced ? 1 : 1200, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: d.target, toP: d.pos }; };
+$('#bLayers').onclick = () => { const L0 = $('#layers'); L0.hidden = !L0.hidden; $('#bLayers').setAttribute('aria-expanded', String(!L0.hidden)); if (!L0.hidden) { renderLayers(); card.hidden = true; } else if (state.sel) card.hidden = false; };
+$('#bNight').onclick = () => { state.night = !isNight(); applyPalette(); };
+$('#sheetToggle').onclick = () => $('#guide').classList.toggle('min');
+addEventListener('keydown', e => {
+  if (e.key === 'Escape') { if (state.pick) endPick(); else if (state.tour) stopTour(); else if (!$('#layers').hidden) $('#bLayers').click(); else clearSel(); }
+});
+let toastT = 0;
+function toast(msg) { const el = $('#toast'); el.textContent = msg; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => el.hidden = true, 2200); }
+
+// ---------------------------------------------------------------- language + static text
+function applyLang() {
+  document.documentElement.lang = lang;
+  $$('[data-i]').forEach(el => el.textContent = t(el.dataset.i));
+  $$('[data-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+  $$('#tools [data-t]').forEach(b => { b.title = t(b.dataset.t); b.setAttribute('aria-label', t(b.dataset.t)); });
+  $('#stats').innerHTML = `<span><b>${POIS.length}</b> ${t('places')}</span><span><b>${EVENTS.length}</b> ${t('events')}</span><span><b>${TOURS.length}</b> ${t('walks')}</span><span><b>${nBuildings.toLocaleString('de-CH')}</b> ${t('buildings')}</span>`;
+  renderTabs(); renderPanel();
+  if (!$('#layers').hidden) renderLayers();
+  if (state.sel) { const s = state.sel; if (s.kind === 'poi') selectPoi(s.id, { noFly: true }); else if (s.kind === 'koch') { const c = camera.position.clone(), tg = controls.target.clone(); selectKoch(s.id); fly = null; camera.position.copy(c); controls.target.copy(tg); } else if (s.kind === 'event') { const c = camera.position.clone(), tg = controls.target.clone(); selectEvent(s.id); fly = null; camera.position.copy(c); controls.target.copy(tg); } }
+  if (state.tour) renderTourbar();
+  labelPool.forEach(el => el.remove()); labelPool.clear(); labelsDirty = true; needsRender = true;
+}
+$$('[data-lang]').forEach(b => b.onclick = () => { lang = b.dataset.lang; store.set('lang', lang); applyLang(); });
+
+// ---------------------------------------------------------------- resize, theme
+function resize() {
+  const w = app.clientWidth, h = app.clientHeight;
+  renderer.setSize(w, h, false); camera.aspect = w / Math.max(1, h); camera.updateProjectionMatrix();
+  labelsDirty = true; needsRender = true;
+}
+new ResizeObserver(resize).observe(app);
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { applyPalette(); renderPanel(); });
+new MutationObserver(() => { applyPalette(); renderPanel(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+// ---------------------------------------------------------------- scale bar + compass
+function updateHud() {
+  const dist = camera.position.distanceTo(controls.target);
+  const mpp = 2 * dist * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) / Math.max(1, canvas.clientHeight);
+  const nice = [20, 50, 100, 200, 250, 500, 1000, 2000].find(n => n / mpp >= 60) || 2000;
+  $('#scaleBar').style.width = Math.round(nice / mpp) + 'px';
+  $('#scaleTxt').textContent = nice >= 1000 ? `${nice / 1000} km` : `${nice} m`;
+  const az = controls.getAzimuthalAngle();
+  $('#compass svg').style.transform = `rotate(${(az * 180 / Math.PI).toFixed(1)}deg)`;
+}
+
+// ---------------------------------------------------------------- loop
+let needsRender = true, lastPolar = -1;
+controls.addEventListener('change', () => { labelsDirty = true; needsRender = true; });
+const growStart = performance.now() + 250;
+function clampTarget() {
+  const tx = controls.target.x, ty = -controls.target.z, dx = tx - BC[0], dy = ty - BC[1], d = Math.hypot(dx, dy);
+  if (d > R * 0.92) { const k = R * 0.92 / d; const nx = BC[0] + dx * k, ny = BC[1] + dy * k; const off = camera.position.clone().sub(controls.target); controls.target.set(nx, 0, -ny); camera.position.copy(controls.target).add(off); }
+}
+function frame(now) {
+  requestAnimationFrame(frame);
+  let active = false;
+  if (fly) {
+    const k = Math.min(1, (now - fly.t0) / fly.dur), e = ease(k);
+    controls.target.lerpVectors(fly.fromT, fly.toT, e); camera.position.lerpVectors(fly.fromP, fly.toP, e);
+    if (k >= 1) fly = null; active = true; labelsDirty = true;
+  }
+  if (bUni.uGrow.value < 2.2) { bUni.uGrow.value = Math.max(0, (now - growStart) / 2600 * 1.6); active = true; }
+  if (stepTour(now)) active = true;
+  if (controls.update()) active = true;
+  clampTarget();
+  if (active || needsRender) {
+    camera.updateMatrixWorld(); updatePins(); if (labelsDirty) layoutLabels(); updateHud();
+    renderer.render(scene, camera); needsRender = false;
+    if (!window.__kqReady) { window.__kqReady = true; $('#loading').hidden = true; }
+  }
+}
+
+// ---------------------------------------------------------------- boot
+window.__kq = { camera, controls, state, selectPoi, selectKoch, selectEvent, startTour, stopTour, flyTo, W, applyPalette, T: () => state.tour };
+applyLang();
+applyLayers();
+applyPalette();
+resize();
+{
+  const d = DEFAULT();
+  if (reduced) { controls.target.copy(d.target); camera.position.copy(d.pos); }
+  else {
+    controls.target.copy(W(BC[0], BC[1], 0)); camera.position.copy(W(BC[0] + 300, BC[1] - 900, 5200));
+    fly = { t0: performance.now() + 300, dur: 2800, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: d.target, toP: d.pos };
+  }
+}
+controls.update();
+requestAnimationFrame(frame);
+</script>

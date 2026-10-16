@@ -1,0 +1,13 @@
+[out:json][timeout:240];
+(
+  way["leisure"~"^(park|garden|playground|pitch|sports_centre|recreation_ground|swimming_pool|stadium)$"](around:2100,47.3817,8.4941);
+  relation["leisure"~"^(park|garden|stadium|sports_centre)$"](around:2100,47.3817,8.4941);
+  way["landuse"~"^(grass|meadow|forest|allotments|recreation_ground|cemetery|village_green|orchard|farmland|railway|construction)$"](around:2100,47.3817,8.4941);
+  relation["landuse"~"^(forest|cemetery|allotments|grass|railway)$"](around:2100,47.3817,8.4941);
+  way["natural"~"^(wood|water|scrub|grassland)$"](around:2100,47.3817,8.4941);
+  relation["natural"~"^(wood|water)$"](around:2100,47.3817,8.4941);
+  way["waterway"~"^(river|stream|canal|riverbank)$"](around:2100,47.3817,8.4941);
+  way["highway"~"^(motorway|trunk|primary|secondary|tertiary|unclassified|residential|living_street|pedestrian|service|footway|cycleway|path|motorway_link|trunk_link|primary_link|secondary_link)$"](around:2100,47.3817,8.4941);
+  way["railway"~"^(rail|tram|light_rail)$"](around:2100,47.3817,8.4941);
+);
+out geom tags;

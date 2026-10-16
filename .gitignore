@@ -1,0 +1,11 @@
+# build output (the deploy builds index.html itself)
+/index.html
+/_site/
+*.local.html
+koch-quartier-atlas.html
+
+# raw OpenStreetMap downloads (about 20 MB, re-fetchable)
+/raw/
+
+.DS_Store
+__pycache__/
