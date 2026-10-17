@@ -289,6 +289,13 @@ pre.snip{margin:0;padding:10px;border-radius:10px;background:var(--paper-2);bord
 .ibubble.drop .bb::after,.ibubble.drop .ring{display:none}
 .ibubble.open .kk,.ibubble.open .more{display:block}
 .ibubble.open .acts{display:flex}
+/* the preview over a pin while the mouse points at it; it lets the pointer through, so it never takes the hover away from its pin */
+.ibubble.hcard{pointer-events:none}
+.ibubble.hcard .bb{width:260px;max-width:260px;cursor:default;animation-duration:.22s}
+.ibubble.hcard .kk,.ibubble.hcard .more{display:block}
+.ibubble .ev{display:flex;align-items:center;gap:7px;margin-top:5px;font:600 11.5px/1.3 var(--f-ui);color:var(--ink)}
+.ibubble .ev b{flex:0 0 auto;font:700 10px var(--f-num);background:var(--birch-soft);color:var(--birch);border-radius:999px;padding:2px 7px}
+.ibubble .hint{margin-top:5px;font:500 10.5px var(--f-num);color:var(--muted)}
 @keyframes bpop{from{transform:translateY(8px) scale(.86)}to{transform:none}}   /* size only: the bubble never depends on an animation to be visible */
 @keyframes bring{0%{opacity:.9;transform:translate(-50%,-50%) scale(.6)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.2)}}
 .grab{display:none}
@@ -377,6 +384,7 @@ button,a,.chip,.hl,.row,.ev{-webkit-tap-highlight-color:transparent}
   <canvas id="gl" tabindex="0" aria-label="3D-Modell von Albisrieden und Altstetten"></canvas>
   <div id="labels" aria-hidden="true"></div>
   <div class="ibubble" id="ibubble" hidden></div>
+  <div class="ibubble hcard" id="hcard" hidden aria-hidden="true"></div>
 
   <aside class="rail" id="rail">
     <header class="mast card">
@@ -483,6 +491,7 @@ const T = {
   de: {
     eyebrow: 'Quartier-Atlas · Kreis 9', indie: 'Inoffiziell · Open Source', hlTitle: 'Highlights', hlNext: 'Nächster Anlass', hlDoor: 'Gleich nebenan', hlPark: 'Park & Spielplatz', hlWalk: 'Rundgang', hlStops: 'Stationen',
     introKick: 'Rundflug ums Koch-Quartier', introSkip: 'Überspringen', details: 'Details', continue: 'Weiter',
+    hoverHint: 'Klicken für Details und Fussweg', hoverHintOut: 'Klicken für Details',
     introPaused: 'Angehalten. Klicken, um weiterzufliegen.', introPausedTouch: 'Angehalten. Tippen, um weiterzufliegen.',
     introHint: 'Auf eine Blase zeigen hält den Flug an. Ziehen oder scrollen: selbst erkunden.', introHintTouch: 'Tippen hält den Flug an und zeigt mehr. Wischen: selbst erkunden.', introTower: 'Koch-Hochhaus · Flurstrasse 71', introStart: 'Ein Rundflug durchs Quartier: Parks, Kitas, Märkte und Treffpunkte in Gehdistanz.',loading: 'Modell wird aufgebaut',
     lead: 'Ein Stadtmodell von Albisrieden und Altstetten mit allem, was Familien und Nachbarn rund um das neue Koch-Quartier entdecken können.',
@@ -529,6 +538,7 @@ const T = {
   en: {
     eyebrow: 'Neighbourhood atlas · District 9', indie: 'Unofficial · Open source', hlTitle: 'Highlights', hlNext: 'Next event', hlDoor: 'Right next door', hlPark: 'park & playground', hlWalk: 'Walk', hlStops: 'stops',
     introKick: 'Flying around the Koch quarter', introSkip: 'Skip', details: 'Details', continue: 'Continue',
+    hoverHint: 'Click for details and the walking route', hoverHintOut: 'Click for details',
     introPaused: 'Paused. Click to fly on.', introPausedTouch: 'Paused. Tap to fly on.',
     introHint: 'Point at a bubble to pause. Drag or scroll to explore yourself.', introHintTouch: 'Tap to pause and see more. Swipe to explore yourself.', introTower: 'Koch tower · Flurstrasse 71', introStart: 'A flight around the quarter: parks, Kitas, markets and meeting places within walking distance.',loading: 'Building the model',
     lead: 'A city model of Albisrieden and Altstetten with everything families and neighbours can discover around the new Koch quarter.',
@@ -1316,33 +1326,73 @@ function onScreen(p, box) {
   const sx = (v.x + 1) / 2 * box.w, sy = (1 - v.y) / 2 * box.h;
   return sx > box.left + 50 && sx < box.right - 50 && sy > box.top && sy < box.bottom;
 }
+// Sit above the point (sx, sy), or below `low` when there is no room, on screen, with the tail bent towards the point.
+function floatOver(el, sx, sy, box, behind = false, low = sy) {
+  const bb = el.firstElementChild, bh = bb?.offsetHeight || 60, hw = (bb?.offsetWidth || 180) / 2;
+  const cx = Math.max(box.left + hw, Math.min(box.right - hw, sx));
+  el.style.setProperty('--tx', (sx - cx).toFixed(1) + 'px');
+  const below = sy - 18 - bh < 8;
+  el.classList.toggle('below', below);
+  const top = below ? low + 20 : sy - 18 - bh;
+  el.style.transform = `translate(${cx.toFixed(1)}px, ${top.toFixed(1)}px) translate(-50%, 0)`;
+  el.style.opacity = behind ? '0' : '1';
+  return { cx, top };
+}
 function placeBubble() {
   if (!intro?.cur || bubble.hidden) return;
   const open = bubble.classList.contains('open');
   if (open && bubble._fixed) { bubble.style.transform = bubble._fixed; return; }   // paused and open: stay put under the pointer
-  if (!open) { bubble._fixed = null; bubble.classList.remove('drop'); }
   const box = freeBox(), v = headOnScreen(POI[intro.cur]);
+  if (!open) { bubble._fixed = null; bubble.classList.remove('drop'); bubble._last = floatOver(bubble, (v.x + 1) / 2 * box.w, (1 - v.y) / 2 * box.h, box, v.z > 1); return; }
+  // opening: grow over the spot the closed bubble covered, so the pointer stays on it
   const sx = (v.x + 1) / 2 * box.w, sy = (1 - v.y) / 2 * box.h;
   const bb = bubble.firstElementChild, bh = bb?.offsetHeight || 60, hw = (bb?.offsetWidth || 180) / 2;
-  const cx = Math.max(box.left + hw, Math.min(box.right - hw, sx));   // keep the bubble on screen, bend the tail instead
-  bubble.style.setProperty('--tx', (sx - cx).toFixed(1) + 'px');
-  if (open) {
-    // opening: grow over the spot the closed bubble covered, so the pointer stays on it
-    const last = bubble._last || { cx, top: sy - 18 - 55 };
-    let top = sy - 18 - bh, drop = false;                      // room above the pin: grow upwards, the tail stays on the pin
-    if (top < 8) { top = Math.max(8, Math.min(last.top, box.h - bh - 8)); drop = true; }   // otherwise hang down from where it was
-    bubble.classList.toggle('drop', drop); bubble.classList.remove('below');
-    const ocx = Math.max(box.left + hw, Math.min(box.right - hw, last.cx));   // the open bubble is wider: keep it on screen too
-    bubble.style.setProperty('--tx', (sx - ocx).toFixed(1) + 'px');
-    bubble._fixed = `translate(${ocx.toFixed(1)}px, ${top.toFixed(1)}px) translate(-50%, 0)`;
-    bubble.style.transform = bubble._fixed; return;
+  const last = bubble._last || { cx: sx, top: sy - 18 - 55 };
+  let top = sy - 18 - bh, drop = false;                      // room above the pin: grow upwards, the tail stays on the pin
+  if (top < 8) { top = Math.max(8, Math.min(last.top, box.h - bh - 8)); drop = true; }   // otherwise hang down from where it was
+  bubble.classList.toggle('drop', drop); bubble.classList.remove('below');
+  const ocx = Math.max(box.left + hw, Math.min(box.right - hw, last.cx));   // the open bubble is wider: keep it on screen too
+  bubble.style.setProperty('--tx', (sx - ocx).toFixed(1) + 'px');
+  bubble._fixed = `translate(${ocx.toFixed(1)}px, ${top.toFixed(1)}px) translate(-50%, 0)`;
+  bubble.style.transform = bubble._fixed;
+}
+
+// Pointing at a pin with the mouse shows a preview over it; a click still opens the full card.
+const hcard = $('#hcard');
+const EV_AT = {};   // the next event at each place: the first coming event within 60 m of its pin
+{
+  const iso = new Date().toISOString().slice(0, 10);
+  for (const e of EVENTS.filter(e => e.ds && e.ds >= iso && e.x != null).sort((a, b) => a.ds.localeCompare(b.ds))) {
+    let best = null, bd = 60;
+    for (const p of POIS) { const d = Math.hypot(p.x - e.x, p.y - e.y); if (d < bd) { bd = d; best = p; } }
+    if (best && !EV_AT[best.id]) EV_AT[best.id] = e;
   }
-  const below = sy - 18 - bh < 8;   // no room above the pin: hang the bubble below it
-  bubble.classList.toggle('below', below);
-  const top = below ? sy + 20 : sy - 18 - bh;
-  bubble._last = { cx, top };
-  bubble.style.transform = `translate(${cx.toFixed(1)}px, ${top.toFixed(1)}px) translate(-50%, 0)`;
-  bubble.style.opacity = v.z > 1 ? '0' : '1';
+}
+let hcardId = null, hcardKey = '', hcardT = 0;
+function showHcard(id) {
+  clearTimeout(hcardT);
+  if (hcardKey === id + lang && !hcard.hidden) return;
+  const p = POI[id], e = EV_AT[id];
+  const far = p.out ? `${(Math.hypot(p.x - HOME.x, p.y - HOME.y) / 1000).toFixed(1)} km` : p.w != null ? `${p.w} ${t('min')}` : '';
+  hcard.innerHTML = `<div class="bb"><div class="kk">${esc(L(GROUP[p.g]))}</div><div class="t"><i style="background:${groupColor(p.g)}"></i><span>${esc(cleanName(p.n))}</span><small>${far}</small></div><div class="more">${esc(shortText(pick(p, 'dd', 'de'), 150))}</div>${e ? `<div class="ev"><b>${esc(fmtDay(e.ds))}</b><span>${esc(shortText(e.n, 46))}</span></div>` : ''}<div class="hint">${t(ROUTES[id] ? 'hoverHint' : 'hoverHintOut')}</div></div>`;
+  hcardId = id; hcardKey = id + lang; hcard.hidden = false; placeHcard(); labelsDirty = true; needsRender = true;
+}
+function hideHcard(now) {   // a short delay, so a pointer crossing the pin's edge does not blink the preview
+  clearTimeout(hcardT);
+  const go = () => { if (!hcardId) return; hcardId = null; hcardKey = ''; hcard.hidden = true; labelsDirty = true; needsRender = true; };
+  if (now) go(); else hcardT = setTimeout(go, 120);
+}
+function placeHcard() {
+  if (!hcardId || hcard.hidden) return;
+  const cr = canvas.getBoundingClientRect(), pc = $('#card');
+  let right = $('#tools').getBoundingClientRect().left - cr.left - 10;
+  if (!pc.hidden) right = Math.min(right, pc.getBoundingClientRect().left - cr.left - 10);   // stay clear of an open place card
+  const box = { left: $('#rail').getBoundingClientRect().right - cr.left + 10, right, w: cr.width, h: cr.height };
+  const lb = labelPool.get('p:' + hcardId);
+  if (lb && lb.style.display === '') {   // the place's label sits on its pin: point at the label and leave it readable
+    const r = lb.getBoundingClientRect();
+    floatOver(hcard, r.left + r.width / 2 - cr.left, r.top - cr.top + 10, box, false, r.bottom - cr.top - 12);
+  } else { const v = headOnScreen(POI[hcardId]); floatOver(hcard, (v.x + 1) / 2 * box.w, (1 - v.y) / 2 * box.h, box, v.z > 1); }
 }
 function introPause(on) {
   if (!intro || intro.phase !== 'orbit') return;
@@ -1411,6 +1461,11 @@ function labelEl(key, cls, html, onClick) {
   if (!el) {
     el = document.createElement('div'); el.className = 'lb ' + cls; labelLayer.appendChild(el); labelPool.set(key, el);
     if (onClick) el.addEventListener('click', ev => { ev.stopPropagation(); onClick(); });
+    if (key.startsWith('p:')) {   // pointing at a place's label previews it, like pointing at its pin
+      const id = key.slice(2);
+      el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') hoverPlace(id); });
+      el.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') hoverPlace(null); });
+    }
   }
   if (el._html !== html) { el.innerHTML = html; el._html = html; el._w = 0; }
   if (el.className !== 'lb ' + cls) el.className = 'lb ' + cls;
@@ -1537,9 +1592,10 @@ function groundAt(cx, cy) {
 }
 let down = null;
 // During the intro a tap pauses (and opens the bubble), a drag or pinch hands the map over to the visitor.
-canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: e.timeStamp }; if (!intro && fly) fly = null; });
+canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: e.timeStamp }; if (!intro && fly) fly = null; hideHcard(true); });
 canvas.addEventListener('pointermove', e => { if (intro && down && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 10) { fly = null; endIntro(false); } });
-canvas.addEventListener('wheel', () => { if (intro) { fly = null; endIntro(false); } }, { passive: true });
+canvas.addEventListener('wheel', () => { hideHcard(true); if (intro) { fly = null; endIntro(false); } }, { passive: true });
+canvas.addEventListener('pointerleave', () => { clearTimeout(hoverQ); hideHcard(); if (state.hover) { state.hover = null; labelsDirty = true; updatePins(true); needsRender = true; } });
 canvas.addEventListener('pointerup', e => {
   if (!down) return;
   const moved = Math.hypot(e.clientX - down.x, e.clientY - down.y), dt = e.timeStamp - down.t; down = null;
@@ -1552,15 +1608,26 @@ canvas.addEventListener('pointerup', e => {
   else if (hit.kind === 'koch') selectKoch(hit.id);
   else selectMark(hit.kind, hit.idx);
 });
-let hoverT = 0;
+let hoverT = 0, hoverQ = 0;
 canvas.addEventListener('pointermove', e => {
   if (e.pointerType !== 'mouse' || down) return;
-  const now = performance.now(); if (now - hoverT < 60) return; hoverT = now;
-  const hit = pickAt(e.clientX, e.clientY);
-  const key = hit ? hit.kind + ':' + (hit.id ?? hit.idx) : null, prev = state.hover ? state.hover.kind + ':' + (state.hover.id ?? state.hover.idx) : null;
-  canvas.style.cursor = state.pick ? 'crosshair' : hit ? 'pointer' : '';
-  if (key !== prev) { state.hover = hit; labelsDirty = true; updatePins(true); needsRender = true; }
+  clearTimeout(hoverQ);
+  const now = performance.now(), x = e.clientX, y = e.clientY;
+  if (now - hoverT < 60) { hoverQ = setTimeout(() => { if (!down) hoverAt(x, y); }, 70); return; }   // throttled, but the last position always counts
+  hoverT = now; hoverAt(x, y);
 });
+function hoverAt(cx, cy) {
+  const hit = pickAt(cx, cy);
+  canvas.style.cursor = state.pick ? 'crosshair' : hit ? 'pointer' : '';
+  setHover(hit);
+}
+const hoverPlace = id => { if (!down) setHover(id ? { kind: 'poi', id } : null); };
+function setHover(hit) {
+  const key = hit ? hit.kind + ':' + (hit.id ?? hit.idx) : null, prev = state.hover ? state.hover.kind + ':' + (state.hover.id ?? state.hover.idx) : null;
+  if (key !== prev) { state.hover = hit; labelsDirty = true; updatePins(true); needsRender = true; }
+  const sel = state.sel?.kind === 'poi' ? state.sel.id : null;   // the selected place already has its card
+  if (!intro && !state.pick && hit?.kind === 'poi' && hit.id !== sel) showHcard(hit.id); else hideHcard();
+}
 
 // ---------------------------------------------------------------- selection + card
 const card = $('#card');
@@ -2057,7 +2124,7 @@ function frame(now) {
   if (controls.update()) active = true;
   clampTarget();
   if (active || needsRender) {
-    camera.updateMatrixWorld(); updatePins(); if (labelsDirty) layoutLabels(); updateHud(); if (intro) placeBubble();
+    camera.updateMatrixWorld(); updatePins(); if (labelsDirty) layoutLabels(); updateHud(); if (intro) placeBubble(); if (hcardId) placeHcard();
     renderer.render(scene, camera); needsRender = false;
     if (!window.__kqReady) { window.__kqReady = true; $('#loading').hidden = true; growStart = now + 120; }
     adapt(now);
