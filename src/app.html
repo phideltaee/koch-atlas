@@ -286,6 +286,7 @@ pre.snip{margin:0;padding:10px;border-radius:10px;background:var(--paper-2);bord
 .ibubble.below .bb{transform-origin:50% 0}
 .ibubble.below .bb::after{bottom:auto;top:-6px;transform:translateX(-50%) rotate(225deg)}
 .ibubble.below .ring{top:auto;bottom:100%;margin:0 0 6px}
+.ibubble.drop .bb::after,.ibubble.drop .ring{display:none}
 .ibubble.open .kk,.ibubble.open .more{display:block}
 .ibubble.open .acts{display:flex}
 @keyframes bpop{from{transform:translateY(8px) scale(.86)}to{transform:none}}   /* size only: the bubble never depends on an animation to be visible */
@@ -1055,7 +1056,9 @@ function hull(pts) {
 }
 const podiumMat = new THREE.MeshStandardMaterial({ color: P0.garden, roughness: 0.95 });
 if (kochRings.hochhaus && kochRings.zeilenbau) {
-  const hr = hull(kochRings.hochhaus.concat(kochRings.zeilenbau));
+  const h0 = hull(kochRings.hochhaus.concat(kochRings.zeilenbau));
+  const hcx = h0.reduce((s, p) => s + p[0], 0) / h0.length, hcy = h0.reduce((s, p) => s + p[1], 0) / h0.length;
+  const hr = h0.map(([x, y]) => { const d = Math.hypot(x - hcx, y - hcy) || 1; return [x - (x - hcx) / d * 0.5, y - (y - hcy) / d * 0.5]; });   // inset: no faces shared with the buildings
   kochRings.podium = hr;
   const acc = new Acc({ uv3: true, uv: true });
   addPrism(acc, hr, [], 5, 0, { uvScale: 7, windows: false });
@@ -1264,15 +1267,17 @@ function stepViewOffset() {
 // Highlights: the featured places within ~18 minutes; the caption names whichever is in the middle of the view.
 let intro = null;
 const INTRO_POIS = POIS.filter(p => p.f && !p.out && (p.w ?? 99) >= 4 && (p.w ?? 99) <= 18 && p.id !== 'bachwiesenpark');
+const NEAR_POIS = ['koch-park', 'kohlenlagerhalle'].map(id => POI[id]).filter(Boolean);   // next to the tower: shown when nothing farther is in view
 const HL_POIS = new Set(['koch-park', 'gz-bachwiesen']);   // always highlighted on the map
 function nextEvent() { const iso = new Date().toISOString().slice(0, 10); return EVENTS.filter(e => e.ds && e.ds >= iso).sort((a, b) => a.ds.localeCompare(b.ds))[0] || null; }
 const fmtDay = (ds, long) => new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'de-CH', long ? { weekday: 'short', day: 'numeric', month: 'long' } : { day: 'numeric', month: 'short' }).format(new Date(ds + 'T12:00:00'));
 function shortText(s, n = 118) { s = String(s || ''); if (s.length <= n) return s; const cut = s.slice(0, n); return cut.slice(0, Math.max(cut.lastIndexOf(' '), n - 20)).replace(/[,;:–-]\s*$/, '') + ' …'; }
 function startIntro() {
   // a low, oblique camera: the tower stands tall and places beyond it stay in the frame
-  const center = towerAt(30), D = isPhone() ? 1800 : 1400, polar = isPhone() ? 1.1 : 1.06, a0 = 0.62;
+  // 120° over the Albisrieden side (market, GZ Bachwiesen, Freilager, the old village, the station), ending close to the default view
+  const center = towerAt(30), D = isPhone() ? 1800 : 1400, polar = isPhone() ? 1.1 : 1.06, a0 = 2.79, sweep = -2 * Math.PI / 3;
   controls.target.copy(W(BC[0], BC[1], 0)); camera.position.copy(W(BC[0] + 300, BC[1] - 900, 5200));
-  intro = { phase: 'wait', center, D, polar, a0, cur: null, pickT: 0, capT: 0, paused: 0, dur: isPhone() ? 28000 : 32000 };
+  intro = { phase: 'wait', center, D, polar, a0, sweep, cur: null, seen: new Set(), pickT: 0, capT: 0, paused: 0, dur: isPhone() ? 25000 : 28000 };
   if (isPhone()) setSheet('min');
   app.dataset.intro = '1'; refreshInsets();
   renderIntroBar();
@@ -1313,27 +1318,44 @@ function onScreen(p, box) {
 }
 function placeBubble() {
   if (!intro?.cur || bubble.hidden) return;
+  const open = bubble.classList.contains('open');
+  if (open && bubble._fixed) { bubble.style.transform = bubble._fixed; return; }   // paused and open: stay put under the pointer
+  if (!open) { bubble._fixed = null; bubble.classList.remove('drop'); }
   const box = freeBox(), v = headOnScreen(POI[intro.cur]);
   const sx = (v.x + 1) / 2 * box.w, sy = (1 - v.y) / 2 * box.h;
-  const hw = (bubble.firstElementChild?.offsetWidth || 180) / 2;
+  const bb = bubble.firstElementChild, bh = bb?.offsetHeight || 60, hw = (bb?.offsetWidth || 180) / 2;
   const cx = Math.max(box.left + hw, Math.min(box.right - hw, sx));   // keep the bubble on screen, bend the tail instead
   bubble.style.setProperty('--tx', (sx - cx).toFixed(1) + 'px');
-  const below = sy - 18 - (bubble.firstElementChild?.offsetHeight || 60) < 8;   // no room above the pin: hang the bubble below it
+  if (open) {
+    // opening: grow over the spot the closed bubble covered, so the pointer stays on it
+    const last = bubble._last || { cx, top: sy - 18 - 55 };
+    let top = sy - 18 - bh, drop = false;                      // room above the pin: grow upwards, the tail stays on the pin
+    if (top < 8) { top = Math.max(8, Math.min(last.top, box.h - bh - 8)); drop = true; }   // otherwise hang down from where it was
+    bubble.classList.toggle('drop', drop); bubble.classList.remove('below');
+    const ocx = Math.max(box.left + hw, Math.min(box.right - hw, last.cx));   // the open bubble is wider: keep it on screen too
+    bubble.style.setProperty('--tx', (sx - ocx).toFixed(1) + 'px');
+    bubble._fixed = `translate(${ocx.toFixed(1)}px, ${top.toFixed(1)}px) translate(-50%, 0)`;
+    bubble.style.transform = bubble._fixed; return;
+  }
+  const below = sy - 18 - bh < 8;   // no room above the pin: hang the bubble below it
   bubble.classList.toggle('below', below);
-  bubble.style.transform = below ? `translate(${cx.toFixed(1)}px, ${(sy + 20).toFixed(1)}px) translate(-50%, 0)` : `translate(${cx.toFixed(1)}px, ${(sy - 18).toFixed(1)}px) translate(-50%, -100%)`;
+  const top = below ? sy + 20 : sy - 18 - bh;
+  bubble._last = { cx, top };
+  bubble.style.transform = `translate(${cx.toFixed(1)}px, ${top.toFixed(1)}px) translate(-50%, 0)`;
   bubble.style.opacity = v.z > 1 ? '0' : '1';
 }
 function introPause(on) {
   if (!intro || intro.phase !== 'orbit') return;
   const now = performance.now();
   if (on && !intro.paused) { intro.paused = now; bubble.classList.add('open'); }
-  else if (!on && intro.paused) { intro.t0 += now - intro.paused; intro.capT += now - intro.paused; intro.paused = 0; bubble.classList.remove('open'); }
+  else if (!on && intro.paused) { intro.t0 += now - intro.paused; intro.capT += now - intro.paused; intro.paused = 0; bubble.classList.remove('open'); bubble._fixed = null; }
   const hint = $('#introcap .hint'); if (hint) hint.textContent = intro.paused ? t(coarse ? 'introPausedTouch' : 'introPaused') : t(coarse ? 'introHintTouch' : 'introHint');
   placeBubble(); needsRender = true;
 }
 let bubblePtr = 'mouse';
-bubble.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') introPause(true); });
-bubble.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') introPause(false); });
+let leaveT = 0;   // a short grace period, so brushing the edge of the bubble does not restart the flight
+bubble.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { clearTimeout(leaveT); introPause(true); } });
+bubble.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { clearTimeout(leaveT); leaveT = setTimeout(() => introPause(false), 350); } });
 bubble.addEventListener('pointerdown', e => { bubblePtr = e.pointerType; });
 bubble.addEventListener('click', e => {
   const b = e.target.closest('[data-b]');
@@ -1342,16 +1364,17 @@ bubble.addEventListener('click', e => {
   if (bubblePtr !== 'mouse') introPause(!intro?.paused);   // touch: tap to pause and read, tap again to fly on
 });
 function pickIntroHighlight(now) {
-  // the camera turns around the tower; show the highlight that lies beyond it, in the line of sight, if it is on screen
+  // show the places in view one after another: nearest the line of sight first, places not shown yet before repeats
   const c = intro.center, look = Math.atan2(c.x - camera.position.x, c.z - camera.position.z);
   const diff = p => { const [x, y] = poiPos(p); let d = Math.atan2(x - c.x, -y - c.z) - look; d = Math.atan2(Math.sin(d), Math.cos(d)); return Math.abs(d); };
-  const box = freeBox(), cur = intro.cur ? POI[intro.cur] : null, curOn = cur && onScreen(cur, box), curD = cur ? diff(cur) : 9;
+  const box = freeBox(), cur = intro.cur ? POI[intro.cur] : null, curOn = cur && onScreen(cur, box);
   if (cur && !curOn) { intro.cur = null; hideBubble(); labelsDirty = true; }
-  if (curOn && now - intro.capT < 2400) return;   // give each bubble time to be read
-  let best = null, bd = 0.6;
-  for (const p of INTRO_POIS) { if (p.id === intro.cur) continue; const d = diff(p); if (d < bd && onScreen(p, box)) { bd = d; best = p; } }
-  if (!best) return;
-  if (!curOn || curD > 0.35 || bd < curD - 0.2) { intro.cur = best.id; intro.capT = now; showBubble(best); labelsDirty = true; }
+  if (curOn && now - intro.capT < 3400) return;   // time to read each bubble
+  let best = null, bs = 9;
+  for (const p of INTRO_POIS) { if (p.id === intro.cur || !onScreen(p, box)) continue; const sc = diff(p) + (intro.seen.has(p.id) ? 1.5 : 0); if (sc < bs) { bs = sc; best = p; } }
+  if (!best && !curOn) best = NEAR_POIS.find(p => !intro.seen.has(p.id) && p.id !== intro.cur && onScreen(p, box)) || null;   // fill a gap with the place next door
+  if (!best || (curOn && intro.seen.has(best.id))) return;   // nothing new in view: keep the current bubble rather than repeat one
+  intro.cur = best.id; intro.capT = now; intro.seen.add(best.id); showBubble(best); labelsDirty = true;
 }
 function stepIntro(now) {
   if (intro.phase === 'wait') {   // start once the first frame is on screen, so a slow start does not eat the fly-in
@@ -1363,7 +1386,7 @@ function stepIntro(now) {
   if (intro.paused) return false;   // holding still while someone reads a bubble
   const k = Math.min(1, (now - intro.t0) / intro.dur); intro.k = k;
   const e = k - 0.5 * Math.sin(2 * Math.PI * k) / (2 * Math.PI);   // near-even speed, softened at both ends
-  controls.target.copy(intro.center); camera.position.copy(intro.center).add(sphOff(intro.D, intro.polar, intro.a0 + e * Math.PI * 2));
+  controls.target.copy(intro.center); camera.position.copy(intro.center).add(sphOff(intro.D, intro.polar, intro.a0 + e * intro.sweep));
   camera.lookAt(intro.center); camera.updateMatrixWorld();
   labelsDirty = true;
   if (now - intro.pickT > 120) { intro.pickT = now; pickIntroHighlight(now); const pr = $('#introProg'); if (pr) pr.style.width = (k * 100).toFixed(1) + '%'; }
@@ -1402,7 +1425,7 @@ function layoutLabels() {
   const add = (key, cls, html, x, y, z, pri, onClick, est) => items.push({ key, cls, html, x, y, z, pri, onClick, est });
   // the Koch tower is always labelled
   if (kochCentroid.hochhaus) add('k:hochhaus', 'koch' + (state.sel?.kind === 'koch' && state.sel.id === 'hochhaus' ? ' sel' : ''), `${esc(L(KOCH.hochhaus).t)}<small>85 m · Flurstrasse 71</small>`, kochCentroid.hochhaus[0], kochCentroid.hochhaus[1], 93, 1000, () => selectKoch('hochhaus'), 130);
-  if (dist < 1400) for (const k of ['zeilenbau', 'kraftwerk1', 'mach', 'halle']) if (kochCentroid[k]) add('k:' + k, 'kochs', esc(L(KOCH[k]).t), kochCentroid[k][0], kochCentroid[k][1], (KOCH_H[k] || 9) + 6, 300, () => selectKoch(k), 90);
+  if (dist < 1600) for (const k of ['zeilenbau', 'kraftwerk1', 'mach', 'halle']) if (kochCentroid[k]) add('k:' + k, 'kochs', esc(L(KOCH[k]).t), kochCentroid[k][0], kochCentroid[k][1], (KOCH_H[k] || 9) + 6, 700, () => selectKoch(k), 90);
   for (const s of SCENE.stations) add('st:' + s[2], 'station', esc(s[2].replace('Zürich ', '')), s[0] / Q, s[1] / Q, 14, 600, null, 90);
   // tour stop numbers
   if (state.tour) state.tour.stops.forEach((s, i) => add('ts:' + i, 'num', String(i + 1), s[0], s[1], 4, 900, null, 24));
@@ -1430,6 +1453,7 @@ function layoutLabels() {
   if (state.layers.stops && dist < 900) for (const s of SCENE.stops) add('s:' + s[2], 'stop', esc(s[2]), s[0] / Q, s[1] / Q, 4, 80, null, s[2].length * 5.6 + 14);
   if (state.bands && kochCentroid.hochhaus) LAGEN.forEach(lg => { const yy = (floorY(lg.f[0]) + floorY(lg.f[1] + 1)) / 2; add('b:' + lg.id, 'band', `<i style="background:${lg.c}"></i>${L(lg)} · ${lg.f[0]}.–${lg.f[1]}.`, kochCentroid.hochhaus[0] + 16, kochCentroid.hochhaus[1], yy, 980, null, 110); });
 
+  for (const it of items) if (it.pri < 900 && labelPool.get(it.key)?.style.display === '') it.pri += 35;
   items.sort((a, b) => b.pri - a.pri);
   const placed = [], used = new Set();
   const maxN = isPhone() ? 26 : 60;
