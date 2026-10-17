@@ -20,8 +20,8 @@ TEST = '''
 // local test hooks (not part of the public build): #overview, #poi-<id>, #koch-<role>, #tour-<id>, #event-<id>, #day
 addEventListener('load', () => setTimeout(() => {
   const k = window.__kq, h = location.hash.slice(1); if (!k || !h) return;
-  if (h.includes('day')) { k.state.night = false; k.applyPalette(); }
-  if (h.includes('night')) { k.state.night = true; k.applyPalette(); }
+  if (h.includes('day')) k.setDark(false);
+  if (h.includes('night')) k.setDark(true);
   const m = h.replace(/(day|night)-?/, '');
   if (m === 'overview') k.flyTo(k.W(160, 20, 0), 4300, { polar: 0.7, exact: true, dur: 10 });
   if (m.startsWith('poi-')) { k.selectPoi(m.slice(4).replace('-route', '')); if (m.endsWith('-route')) setTimeout(() => document.querySelector('[data-act=route]')?.click(), 1400); }

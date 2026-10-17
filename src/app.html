@@ -63,6 +63,10 @@ a{color:var(--accent)}
 .lb.num{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--on-accent);font:700 11px var(--f-num);transform:translate(-50%,-50%);box-shadow:0 2px 6px rgba(0,0,0,.25)}
 .lb.band{display:flex;align-items:center;gap:6px;font:600 10.5px var(--f-ui);padding:2px 8px 2px 5px;border-radius:5px;background:var(--paper);color:var(--ink);border:1px solid var(--line);transform:translate(0,-50%)}
 .lb.band i{width:9px;height:9px;border-radius:2px}
+.lb.poi.hl{border-color:var(--birch);box-shadow:0 0 0 2px color-mix(in srgb,var(--birch) 30%,transparent),0 2px 8px rgba(30,26,20,.14)}
+.lb.poi.hl small{color:var(--birch)}
+.lb.evt{display:flex;align-items:center;gap:7px;padding:3px 10px 3px 4px;border-radius:999px;background:var(--birch);color:var(--paper);font:600 11.5px/1.2 var(--f-ui);box-shadow:0 3px 10px rgba(80,50,10,.25);pointer-events:auto;cursor:pointer;margin-top:-6px}
+.lb.evt b{font:700 10px var(--f-num);background:var(--paper);color:var(--birch);border-radius:999px;padding:2px 6px}
 
 /* ---------- left rail ---------- */
 .rail{position:absolute;z-index:4;top:calc(14px + env(safe-area-inset-top,0px));left:var(--gl);bottom:14px;width:384px;display:flex;flex-direction:column;gap:10px;pointer-events:none}
@@ -80,8 +84,8 @@ a{color:var(--accent)}
 .seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
 
 .guide{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden}
-.tabs{display:flex;gap:2px;padding:6px 8px 0;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;flex:0 0 auto}
-.tabs button{border:0;background:transparent;padding:9px 7px 10px;font:600 12.5px var(--f-ui);color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;display:flex;gap:5px;align-items:baseline}
+.tabs{display:flex;gap:0;padding:6px 6px 0;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none;flex:0 0 auto}
+.tabs button{border:0;background:transparent;padding:9px 4px 10px;font:600 12.5px var(--f-ui);color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;display:flex;gap:4px;align-items:baseline;flex:1 0 auto;justify-content:center}
 .tabs button small{font:500 10px var(--f-num);color:var(--muted)}
 .tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
 .sheet-handle{display:none}
@@ -150,6 +154,15 @@ a{color:var(--accent)}
 .ev p{margin:2px 0 0;font-size:11.5px;color:var(--muted)}
 .tag{display:inline-block;font:600 9.5px var(--f-ui);letter-spacing:.04em;text-transform:uppercase;padding:1px 6px;border-radius:5px;background:var(--birch-soft);color:var(--birch);margin-left:6px;vertical-align:1px}
 .tag.next{background:var(--accent-soft);color:var(--accent)}
+
+/* highlights (top of the explore tab) */
+.hls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.hl{display:grid;gap:4px;align-content:start;text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:12px;padding:10px 10px 9px;cursor:pointer;color:var(--ink);min-width:0}
+.hl:hover{border-color:var(--ink)}
+.hl .k{display:flex;align-items:center;gap:5px;font:600 9.5px var(--f-ui);letter-spacing:.07em;text-transform:uppercase;color:var(--birch)}
+.hl .k svg{width:13px;height:13px;flex:0 0 auto}
+.hl b{font:700 13px/1.25 var(--f-display);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.hl small{font:500 10.5px var(--f-num);color:var(--muted)}
 
 /* involve */
 .idea{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
@@ -235,35 +248,94 @@ pre.snip{margin:0;padding:10px;border-radius:10px;background:var(--paper-2);bord
 .legs span.on{background:var(--accent);color:var(--on-accent)}
 .legs span.done{background:var(--accent-soft);color:var(--accent)}
 
+/* intro flight: a caption names the highlight in view */
+.introcap{left:50%;transform:translateX(-50%);bottom:calc(28px + env(safe-area-inset-bottom,0px));margin-left:200px;width:min(520px,calc(100% - 32px - 400px));padding:12px 14px 12px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 14px;align-items:center;z-index:6}
+.introcap .k{font:600 10px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.introcap h3{margin:0;font:700 17px/1.2 var(--f-display);display:flex;align-items:baseline;gap:8px;min-width:0}
+.introcap h3 i{align-self:center}
+.introcap h3 i{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
+.introcap h3 span{overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.introcap h3 small{font:600 11.5px var(--f-num);color:var(--accent);flex:0 0 auto}
+.introcap p{margin:0;font-size:12.5px;color:var(--muted);line-height:1.45}
+.introcap .skip{grid-column:2;grid-row:1 / span 3;border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:8px 14px;font:600 12px var(--f-ui);cursor:pointer;color:var(--ink)}
+.introcap .prog{grid-column:1 / -1;margin-top:6px}
+.introcap .k,.introcap h3,.introcap p{grid-column:1}
+.grab{display:none}
+button,a,.chip,.hl,.row,.ev{-webkit-tap-highlight-color:transparent}
+
 .pickhint{left:50%;transform:translateX(-50%);top:calc(16px + env(safe-area-inset-top,0px));padding:9px 14px;font-weight:600;font-size:13px;display:flex;gap:10px;align-items:center;z-index:7;margin-left:200px}
 .toast{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(60px + env(safe-area-inset-bottom,0px));z-index:9;background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:10px;font-weight:600;font-size:13px;box-shadow:var(--shadow)}
 .loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:8;padding:14px 18px;font:600 13px var(--f-ui);display:flex;gap:10px;align-items:center;margin-left:200px}
 .loading i{width:14px;height:14px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--birch);animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ---------- phones and small tablets ---------- */
-@media (max-width:900px){
-  .rail{top:calc(10px + env(safe-area-inset-top,0px));bottom:auto;width:auto;right:calc(var(--gr) + 50px)}
-  .mast{padding:10px 12px;gap:2px}
-  .mast h1{font-size:25px}
+/* ---------- phones and small tablets, upright: the guide is a bottom sheet (min / peek / full) ---------- */
+@media (max-width:900px) and (min-height:521px){
+  .rail{top:calc(10px + env(safe-area-inset-top,0px));bottom:auto;width:auto;right:calc(var(--gr) + 52px)}
+  .mast{padding:9px 12px 10px;gap:1px;transition:opacity .45s ease,transform .45s ease}
+  #app[data-intro] .mast{opacity:0;transform:translateY(-14px);pointer-events:none}
+  .mast h1{font-size:23px}
   .lead,.stats{display:none}
-  .eyebrow{font-size:9.5px}
-  .guide{position:fixed;left:0;right:0;bottom:0;height:var(--sheetH,46%);border-radius:18px 18px 0 0;border-bottom:0;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);padding-bottom:env(safe-area-inset-bottom,0px);transition:height .25s ease}
-  .guide.min{--sheetH:calc(52px + env(safe-area-inset-bottom,0px))}
-  .sheet-handle{display:block;position:absolute;top:4px;left:50%;transform:translateX(-50%);width:44px;height:16px;border:0;background:transparent;cursor:pointer;padding:0}
-  .sheet-handle::after{content:"";display:block;width:36px;height:4px;border-radius:2px;background:var(--line);margin:6px auto 0}
-  .tabs{padding-top:14px}
-  .tabs button{padding:6px 8px 9px;font-size:12.5px}
-  .panel{padding:12px max(14px, env(safe-area-inset-left,0px)) 18px}
-  .placecard{top:auto;left:0;right:0;bottom:0;width:auto;max-height:62%;border-radius:18px 18px 0 0;padding:18px max(16px, env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px, env(safe-area-inset-left,0px));z-index:7}
+  .eyebrow{font-size:9px}
+  .seg button{padding:4px 9px}
+  .guide{position:fixed;left:0;right:0;bottom:0;height:var(--sheetH,40%);border-radius:18px 18px 0 0;border-bottom:0;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px);padding-bottom:env(safe-area-inset-bottom,0px);transition:height .28s cubic-bezier(.2,.8,.2,1);z-index:5}
+  .guide.min{--sheetH:calc(58px + env(safe-area-inset-bottom,0px))}
+  .guide.full{--sheetH:calc(100% - 96px - env(safe-area-inset-top,0px))}
+  .guide.dragging{transition:none}
+  .sheet-handle{display:block;position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:22px;border:0;background:transparent;cursor:grab;padding:0;touch-action:none;z-index:1}
+  .sheet-handle::after{content:"";display:block;width:38px;height:5px;border-radius:3px;background:var(--line);margin:7px auto 0}
+  .tabs{padding:16px 6px 0;touch-action:pan-x}
+  .tabs button{padding:7px 8px 10px;font-size:13px}
+  .panel{padding:12px max(14px, env(safe-area-inset-left,0px)) calc(18px + env(safe-area-inset-bottom,0px))}
+  .search input{font-size:16px}   /* below 16px iOS zooms the page when the field gets focus */
+  .hls{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;margin:0 -14px;padding:0 14px 2px}
+  .hls::-webkit-scrollbar{display:none}
+  .hl{flex:0 0 44%;scroll-snap-align:start}
+  .placecard{top:auto;left:0;right:0;bottom:0;width:auto;max-height:64%;border-radius:18px 18px 0 0;padding:0 max(16px, env(safe-area-inset-right,0px)) calc(18px + env(safe-area-inset-bottom,0px)) max(16px, env(safe-area-inset-left,0px));z-index:7;overscroll-behavior:contain}
+  .placecard .grab{display:block;position:sticky;top:0;height:26px;margin:0 -16px -6px;touch-action:none;cursor:grab;background:var(--paper);z-index:1}
+  .placecard .grab::after{content:"";display:block;width:38px;height:5px;border-radius:3px;background:var(--line);margin:8px auto 0}
+  .placecard .close{top:14px;right:10px;width:38px;height:38px;z-index:2}
   .tools{top:calc(10px + env(safe-area-inset-top,0px))}
-  .tools button{width:32px;height:32px}
-  .layers{right:calc(var(--gr) + 46px);top:calc(10px + env(safe-area-inset-top,0px));width:min(250px,calc(100% - 80px));max-height:60%;overflow:auto}
-  .foot{top:calc(94px + env(safe-area-inset-top,0px));bottom:auto;left:var(--gl);right:auto;font-size:9.5px;flex-wrap:wrap;gap:2px 10px;max-width:calc(100% - var(--gl) - var(--gr) - 54px)}   /* below the header card, clear of the tools */
-  .tourbar{width:auto;left:var(--gl);right:var(--gr);transform:none;margin-left:0;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+  .tools button{width:40px;height:40px}
+  .layers{right:calc(var(--gr) + 52px);top:calc(10px + env(safe-area-inset-top,0px));width:min(260px,calc(100% - 84px));max-height:60%;overflow:auto}
+  .layers label{padding:8px 4px}
+  .foot{top:auto;right:auto;left:var(--gl);bottom:calc(var(--sheetPx,40%) + 8px);font-size:9.5px;flex-wrap:wrap;gap:2px 10px;max-width:calc(100% - var(--gl) - var(--gr))}
+  #app[data-sheet="full"] .foot{display:none}
+  .tourbar{width:auto;left:var(--gl);right:var(--gr);transform:none;margin-left:0;bottom:calc(var(--sheetPx,58px) + 10px)}
+  .introcap{width:auto;left:var(--gl);right:var(--gr);transform:none;margin-left:0;bottom:calc(var(--sheetPx,58px) + 12px);padding:11px 12px 11px 14px}
+  .introcap h3{font-size:16px}
+  .introcap p{font-size:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .pickhint,.loading{margin-left:0}
-  .pickhint{top:calc(96px + env(safe-area-inset-top,0px));width:max-content;max-width:calc(100% - 32px)}
+  .pickhint{top:calc(84px + env(safe-area-inset-top,0px));width:max-content;max-width:calc(100% - 32px)}
   .lb.place{display:none}
+}
+/* ---------- phones held sideways: a compact side rail instead of a sheet ---------- */
+@media (max-height:520px){
+  .rail{top:calc(8px + env(safe-area-inset-top,0px));bottom:8px;width:min(300px,42vw);gap:6px}
+  .mast{padding:8px 12px;gap:1px}
+  .mast h1{font-size:21px}
+  .lead,.stats{display:none}
+  .eyebrow{font-size:9px}
+  .panel{padding:10px 12px 14px;gap:10px}
+  .search input{font-size:16px}
+  .hls{grid-template-columns:1fr}
+  .tabs button{padding:8px 5px 9px}
+  .tabs button small{display:none}
+  .placecard{top:calc(8px + env(safe-area-inset-top,0px));width:min(300px,40vw);max-height:calc(100% - 16px);padding:14px}
+  .placecard h2{font-size:19px}
+  .tools{top:calc(8px + env(safe-area-inset-top,0px))}
+  .tools button{width:34px;height:34px}
+  .layers{top:calc(8px + env(safe-area-inset-top,0px));max-height:calc(100% - 16px);overflow:auto}
+  .tourbar,.introcap{margin-left:0;left:calc(var(--gl) + min(300px,42vw) + 12px);right:calc(var(--gr) + 52px);width:auto;transform:none;bottom:32px;padding:9px 12px}
+  .introcap p{display:none}
+  .pickhint,.loading{margin-left:150px}
+  .foot{bottom:6px}
+  .lb.place{display:none}
+}
+@media (max-width:379px){.tabs button small{display:none}}
+/* touch screens zoom by pinching, so the zoom buttons go */
+@media (pointer:coarse){
+  #zIn,#zOut,#tools hr{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -307,6 +379,7 @@ pre.snip{margin:0;padding:10px;border-radius:10px;background:var(--paper-2);bord
   <div class="ov layers card" id="layers" hidden></div>
 
   <div class="ov tourbar card" id="tourbar" hidden></div>
+  <div class="ov introcap card" id="introcap" hidden aria-live="polite"></div>
   <div class="ov pickhint card" id="pickhint" hidden></div>
   <div class="toast" id="toast" hidden></div>
   <div class="ov loading card" id="loading"><i></i><span data-i="loading">Modell wird aufgebaut</span></div>
@@ -374,10 +447,12 @@ const GROUP = Object.fromEntries(GROUPS.map(g => [g.id, g]));
 
 const T = {
   de: {
-    eyebrow: 'Quartier-Atlas · Kreis 9', indie: 'Inoffiziell · Open Source', loading: 'Modell wird aufgebaut',
+    eyebrow: 'Quartier-Atlas · Kreis 9', indie: 'Inoffiziell · Open Source', hlTitle: 'Highlights', hlNext: 'Nächster Anlass', hlDoor: 'Gleich nebenan', hlPark: 'Park & Spielplatz', hlWalk: 'Rundgang', hlStops: 'Stationen',
+    introKick: 'Rundflug ums Koch-Quartier', introSkip: 'Überspringen', introTower: 'Koch-Hochhaus · Flurstrasse 71', introStart: 'Ein Rundflug durchs Quartier: Parks, Kitas, Märkte und Treffpunkte in Gehdistanz.',loading: 'Modell wird aufgebaut',
     lead: 'Ein Stadtmodell von Albisrieden und Altstetten mit allem, was Familien und Nachbarn rund um das neue Koch-Quartier entdecken können.',
     places: 'Orte', events: 'Anlässe', walks: 'Rundgänge', buildings: 'Gebäude',
     tExplore: 'Entdecken', tWalks: 'Rundgänge', tAgenda: 'Agenda', tInvolve: 'Mitmachen', tAbout: 'Über',
+    tExploreS: 'Orte', tWalksS: 'Wege', tAgendaS: 'Agenda', tInvolveS: 'Mitmachen', tAboutS: 'Info',
     search: 'Ort suchen', all: 'Alle', none: 'Keine', min: 'Min.', walkMin: 'Min. zu Fuss', fromHome: 'ab Flurstrasse 71',
     noResults: 'Keine Orte für diese Auswahl.', outside: 'ausserhalb des Modells', toward: 'Richtung',
     showWay: 'Weg ab Hochhaus zeigen', hideWay: 'Weg ausblenden', website: 'Website', source: 'Quelle', showOnMap: 'Auf der Karte',
@@ -416,10 +491,12 @@ const T = {
     det: { ages: 'Alter', hours: 'Öffnungszeiten', opening_hours: 'Öffnungszeiten', price_day: 'Preis pro Tag', price: 'Preis', subsidised: 'Subventionierte Plätze', subsidized: 'Subventionierte Plätze', labels: 'Labels', languages: 'Sprachen', operator: 'Trägerschaft', phone: 'Telefon', status: 'Stand', waitlist: 'Warteliste', places: 'Plätze', note: 'Hinweis', when: 'Wann', lines: 'Linien' },
   },
   en: {
-    eyebrow: 'Neighbourhood atlas · District 9', indie: 'Unofficial · Open source', loading: 'Building the model',
+    eyebrow: 'Neighbourhood atlas · District 9', indie: 'Unofficial · Open source', hlTitle: 'Highlights', hlNext: 'Next event', hlDoor: 'Right next door', hlPark: 'park & playground', hlWalk: 'Walk', hlStops: 'stops',
+    introKick: 'Flying around the Koch quarter', introSkip: 'Skip', introTower: 'Koch tower · Flurstrasse 71', introStart: 'A flight around the quarter: parks, Kitas, markets and meeting places within walking distance.',loading: 'Building the model',
     lead: 'A city model of Albisrieden and Altstetten with everything families and neighbours can discover around the new Koch quarter.',
     places: 'places', events: 'events', walks: 'walks', buildings: 'buildings',
     tExplore: 'Explore', tWalks: 'Walks', tAgenda: 'Events', tInvolve: 'Get involved', tAbout: 'About',
+    tExploreS: 'Places', tWalksS: 'Walks', tAgendaS: 'Events', tInvolveS: 'Join in', tAboutS: 'About',
     search: 'Search places', all: 'All', none: 'None', min: 'min', walkMin: 'min walk', fromHome: 'from Flurstrasse 71',
     noResults: 'No places match this selection.', outside: 'outside the model', toward: 'towards',
     showWay: 'Show the way from the tower', hideWay: 'Hide the way', website: 'Website', source: 'Source', showOnMap: 'Show on the map',
@@ -564,7 +641,8 @@ const state = {
   sel: null,            // {kind:'poi'|'koch'|'event'|'mark'|'idea', id, ...}
   hover: null,
   layers: Object.assign({ trees: true, fountains: false, recycling: false, stops: true, lines: false, sharing: false, rings: true, names: true }, store.get('layers', {})),
-  night: null,          // null = follow theme
+  dark: !!store.get('dark', false),   // light by default; the moon button switches model and interface together
+  sheet: 'peek',        // phones: bottom sheet height, 'min' | 'peek' | 'full'
   month: null,
   bands: false,
   tour: null,
@@ -573,7 +651,9 @@ const state = {
 
 // ---------------------------------------------------------------- renderer, scene, camera
 const app = $('#app'), canvas = $('#gl');
-const isPhone = () => innerWidth <= 900;
+const isPhone = () => innerWidth <= 900 && innerHeight > 520;   // upright phone: guide as bottom sheet
+const isSmall = () => innerWidth <= 900 || innerHeight <= 520;
+const shortTabs = () => innerWidth < 480 || innerHeight <= 520;
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
 renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
 renderer.shadowMap.enabled = true;
@@ -596,7 +676,7 @@ const hemi = new THREE.HemisphereLight(0xffffff, 0xd8d2c6, 1.15);
 scene.add(hemi);
 const sun = new THREE.DirectionalLight(0xfff3e2, 2.3);
 sun.castShadow = true;
-const SHADOW = isPhone() ? 2048 : 4096;
+const SHADOW = isSmall() ? 2048 : 4096;
 sun.shadow.mapSize.set(SHADOW, SHADOW);
 Object.assign(sun.shadow.camera, { left: -1950, right: 1950, top: 1950, bottom: -1950, near: 100, far: 6000 });
 sun.shadow.bias = -0.0006; sun.shadow.normalBias = 0.6;
@@ -627,12 +707,9 @@ const PAL = {
     hemi: ['#8494C4', '#121514', 1.05], sun: ['#B8C6F0', 0.95], glow: 2.4, night: 1, exposure: 1.2,
   },
 };
-const themeDark = () => {
-  const a = document.documentElement.getAttribute('data-theme');
-  if (a === 'dark') return true; if (a === 'light') return false;
-  return matchMedia('(prefers-color-scheme: dark)').matches;
-};
-const isNight = () => (state.night == null ? themeDark() : state.night);
+const isNight = () => state.dark;
+// The page sets its own theme (light unless the visitor chose night), whatever the system or host prefers.
+const applyTheme = () => document.documentElement.setAttribute('data-theme', state.dark ? 'dark' : 'light');
 
 // ---------------------------------------------------------------- geometry helpers
 function dec(a, i, n) {
@@ -1086,25 +1163,116 @@ function colorPins() {
 }
 
 // ---------------------------------------------------------------- camera helpers
-const DEFAULT = () => {
-  const target = W(120, 120, 0), dist = isPhone() ? 2300 : 1850, polar = 0.96, az = 0.62;
-  return { target, pos: target.clone().add(new THREE.Vector3(Math.sin(polar) * Math.sin(az), Math.cos(polar), Math.sin(polar) * Math.cos(az)).multiplyScalar(dist)) };
+const sphOff = (dist, polar, az) => new THREE.Vector3(Math.sin(polar) * Math.sin(az), Math.cos(polar), Math.sin(polar) * Math.cos(az)).multiplyScalar(dist);
+const towerAt = (h = 0) => { const c = kochCentroid.hochhaus || [0, 0]; return W(c[0], c[1], h); };
+const DEFAULT = () => {   // the Koch tower in the middle of the visible map
+  const target = towerAt(0), dist = isPhone() ? 2050 : 1750;
+  return { target, pos: target.clone().add(sphOff(dist, 0.96, 0.62)) };
 };
 let fly = null;
 function flyTo(target, dist, opts = {}) {
+  if (intro) endIntro(false);
   const off = camera.position.clone().sub(controls.target);
   let sph = new THREE.Spherical().setFromVector3(off);
   if (opts.polar != null) sph.phi = opts.polar; else sph.phi = Math.min(sph.phi, 1.08);
   if (opts.az != null) sph.theta = opts.az;
   sph.radius = dist ?? sph.radius;
   const endPos = target.clone().add(new THREE.Vector3().setFromSpherical(sph));
-  if (isPhone() && !opts.exact) { // keep the target above the bottom sheet
-    const shift = sph.radius * 0.22; const dir = new THREE.Vector3(-Math.sin(sph.theta), 0, -Math.cos(sph.theta));
-    target = target.clone().addScaledVector(dir, -shift); endPos.addScaledVector(dir, -shift);
-  }
   fly = { t0: performance.now(), dur: reduced ? 1 : (opts.dur ?? 1100), fromT: controls.target.clone(), fromP: camera.position.clone(), toT: target, toP: endPos };
 }
 const ease = x => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+
+// The camera aims at the middle of the part of the map that is not covered: right of the rail on wide screens,
+// above the bottom sheet (or the place card) on phones. A shifted projection centre does this, so every flyTo,
+// the labels and picking all agree without special cases. The shift eases in when panels open or close.
+const vo = { x: 0, y: 0, tx: 0, ty: 0 };
+function refreshInsets() {
+  const cr = canvas.getBoundingClientRect(), w = cr.width, h = cr.height;
+  if (!w || !h) return;
+  const rail = $('#rail').getBoundingClientRect();
+  let l = 0, r = 0, top = 0, b = 0;
+  if (isPhone()) {
+    top = app.dataset.intro ? 0 : rail.bottom - cr.top;   // the title card fades out during the intro flight
+    b = cr.bottom - $('#guide').getBoundingClientRect().top;
+    if (!card.hidden) b = Math.max(b, cr.bottom - card.getBoundingClientRect().top);
+    app.style.setProperty('--sheetPx', Math.round(cr.bottom - $('#guide').getBoundingClientRect().top) + 'px');
+  } else {
+    l = rail.right - cr.left;
+    if (!card.hidden) r = cr.right - card.getBoundingClientRect().left;
+  }
+  vo.tx = (l - r) / 2; vo.ty = (top - b) / 2;
+  needsRender = true;
+}
+function applyViewOffset() {
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  if (Math.abs(vo.x) < 0.5 && Math.abs(vo.y) < 0.5) camera.clearViewOffset();
+  else camera.setViewOffset(w, h, -vo.x, -vo.y, w, h);
+  camera.updateProjectionMatrix(); labelsDirty = true;
+}
+function stepViewOffset() {
+  const dx = vo.tx - vo.x, dy = vo.ty - vo.y;
+  if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) { if (dx || dy) { vo.x = vo.tx; vo.y = vo.ty; applyViewOffset(); return true; } return false; }
+  const k = reduced ? 1 : 0.22; vo.x += dx * k; vo.y += dy * k; applyViewOffset(); return true;
+}
+
+// ---------------------------------------------------------------- intro: fly in, then one slow turn around the tower
+// Highlights: the featured places within ~18 minutes; the caption names whichever is in the middle of the view.
+let intro = null;
+const INTRO_POIS = POIS.filter(p => p.f && !p.out && (p.w ?? 99) >= 4 && (p.w ?? 99) <= 18 && p.id !== 'bachwiesenpark');
+const HL_POIS = new Set(['koch-park', 'gz-bachwiesen']);   // always highlighted on the map
+function nextEvent() { const iso = new Date().toISOString().slice(0, 10); return EVENTS.filter(e => e.ds && e.ds >= iso).sort((a, b) => a.ds.localeCompare(b.ds))[0] || null; }
+const fmtDay = (ds, long) => new Intl.DateTimeFormat(lang === 'en' ? 'en-GB' : 'de-CH', long ? { weekday: 'short', day: 'numeric', month: 'long' } : { day: 'numeric', month: 'short' }).format(new Date(ds + 'T12:00:00'));
+function shortText(s, n = 118) { s = String(s || ''); if (s.length <= n) return s; const cut = s.slice(0, n); return cut.slice(0, Math.max(cut.lastIndexOf(' '), n - 20)).replace(/[,;:–-]\s*$/, '') + ' …'; }
+function startIntro() {
+  // a low, oblique camera: the tower stands tall and places beyond it stay in the frame
+  const center = towerAt(30), D = isPhone() ? 1800 : 1400, polar = isPhone() ? 1.1 : 1.06, a0 = 0.62;
+  controls.target.copy(W(BC[0], BC[1], 0)); camera.position.copy(W(BC[0] + 300, BC[1] - 900, 5200));
+  intro = { phase: 'wait', center, D, polar, a0, cur: null, pickT: 0, capT: 0, dur: isPhone() ? 20000 : 22000 };
+  if (isPhone()) setSheet('min');
+  app.dataset.intro = '1'; refreshInsets();
+  renderIntroCap(null);
+}
+function renderIntroCap(p) {
+  const el = $('#introcap');
+  const head = p ? `<h3><i style="background:${groupColor(p.g)}"></i><span>${esc(p.n.split(' (')[0].split(' «')[0])}</span><small>${p.w ?? ''} ${t('min')}</small></h3><p>${esc(shortText(pick(p, 'dd', 'de')))}</p>`
+    : `<h3><i style="background:var(--birch)"></i><span>${t('introTower')}</span></h3><p>${t('introStart')}</p>`;
+  el.innerHTML = `<div class="k">${t('introKick')}</div>${head}<button type="button" class="skip" id="introSkip">${t('introSkip')}</button><div class="prog"><i id="introProg" style="width:${intro?.k ? (intro.k * 100).toFixed(1) : 0}%"></i></div>`;
+  el.hidden = false;
+  $('#introSkip').onclick = () => endIntro(true);
+}
+function pickIntroHighlight(now) {
+  // the camera turns around the tower; name the highlight that lies beyond it, in the line of sight
+  const c = intro.center, look = Math.atan2(c.x - camera.position.x, c.z - camera.position.z);
+  const diff = p => { const [x, y] = poiPos(p); let d = Math.atan2(x - c.x, -y - c.z) - look; d = Math.atan2(Math.sin(d), Math.cos(d)); return Math.abs(d); };
+  let best = null, bd = 0.42;
+  for (const p of INTRO_POIS) { const d = diff(p); if (d < bd) { bd = d; best = p; } }
+  const curD = intro.cur ? diff(POI[intro.cur]) : 9;
+  if (!best || best.id === intro.cur || now - intro.capT < 1300) return;
+  if (curD > 0.3 || bd < curD - 0.2) { intro.cur = best.id; intro.capT = now; renderIntroCap(best); labelsDirty = true; }
+}
+function stepIntro(now) {
+  if (intro.phase === 'wait') {   // start once the first frame is on screen, so a slow start does not eat the fly-in
+    if (!window.__kqReady) return true;
+    fly = { t0: now + 150, dur: 2700, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: intro.center, toP: intro.center.clone().add(sphOff(intro.D, intro.polar, intro.a0)) };
+    intro.phase = 'fly'; return true;
+  }
+  if (intro.phase === 'fly') { if (!fly) { intro.phase = 'orbit'; intro.t0 = now; } return true; }
+  const k = Math.min(1, (now - intro.t0) / intro.dur); intro.k = k;
+  const e = k - 0.5 * Math.sin(2 * Math.PI * k) / (2 * Math.PI);   // near-even speed, softened at both ends
+  controls.target.copy(intro.center); camera.position.copy(intro.center).add(sphOff(intro.D, intro.polar, intro.a0 + e * Math.PI * 2));
+  labelsDirty = true;
+  if (now - intro.pickT > 120) { intro.pickT = now; pickIntroHighlight(now); const pr = $('#introProg'); if (pr) pr.style.width = (k * 100).toFixed(1) + '%'; }
+  if (k >= 1) endIntro(true);
+  return true;
+}
+function endIntro(settle) {
+  if (!intro) return;
+  intro = null; $('#introcap').hidden = true; store.set('introSeen', true);
+  delete app.dataset.intro; refreshInsets();
+  if (settle) { const d = DEFAULT(); fly = { t0: performance.now(), dur: reduced ? 1 : 1700, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: d.target, toP: d.pos }; }
+  if (isPhone() && state.sheet === 'min' && !state.tour) setSheet('peek');
+  labelsDirty = true; needsRender = true;
+}
 
 // ---------------------------------------------------------------- labels (DOM, collision-avoided)
 const labelLayer = $('#labels');
@@ -1137,20 +1305,22 @@ function layoutLabels() {
   const selId = state.sel?.kind === 'poi' ? state.sel.id : null, hovId = state.hover?.kind === 'poi' ? state.hover.id : null;
   for (const p of visPois) {
     if (!state.groups.has(p.g) && p.id !== selId) continue;
-    const isSel = p.id === selId, isHov = p.id === hovId;
-    const show = isSel || isHov || p.f || dist < 1250 || (dist < 2100 && (p.w ?? 99) <= 6);
+    if (intro && !p.f) continue;   // the intro flight shows only the featured places
+    const isSel = p.id === selId, isHov = p.id === hovId, isHl = intro ? intro.cur === p.id : HL_POIS.has(p.id);
+    const show = isSel || isHov || isHl || p.f || dist < 1250 || (dist < 2100 && (p.w ?? 99) <= 6);
     if (!show) continue;
-    const pri = isSel ? 950 : isHov ? 940 : p.f ? 400 - (p.w ?? 30) : 200 - (p.w ?? 60);
+    const pri = isSel ? 950 : isHov ? 940 : intro && isHl ? 930 : isHl ? 520 - (p.w ?? 30) : p.f ? 400 - (p.w ?? 30) : 200 - (p.w ?? 60);
     const [px, py] = poiPos(p);
     const wtxt = p.out ? '↗' : (p.w != null ? `${p.w}′` : '');
-    add('p:' + p.id, 'poi' + (isSel ? ' sel' : ''), `<i style="background:${groupColor(p.g)}"></i>${esc(p.n)}${wtxt ? `<small>${wtxt}</small>` : ''}`, px, py, pinH(p) + 2, pri, () => selectPoi(p.id), p.n.length * 6.3 + 44);
+    add('p:' + p.id, 'poi' + (isSel ? ' sel' : isHl ? ' hl' : ''), `<i style="background:${groupColor(p.g)}"></i>${esc(p.n)}${wtxt ? `<small>${wtxt}</small>` : ''}`, px, py, pinH(p) + 2, pri, () => selectPoi(p.id), p.n.length * 6.3 + 44);
   }
-  // events selected
+  // events: the selected one, otherwise the next one coming up as a dated badge
   if (state.sel?.kind === 'event') { const e = EVENTS.find(x => x.id === state.sel.id); if (e && e.x != null) add('ev', 'poi sel', `<i style="background:var(--birch)"></i>${esc(e.n)}`, e.x, e.y, 30, 960, null, e.n.length * 6.3 + 30); }
+  else if (!intro) { const ne = nextEvent(); if (ne && ne.x != null && Math.hypot(ne.x - BC[0], ne.y - BC[1]) < R - 30) add('nx', 'evt', `<b>${esc(fmtDay(ne.ds))}</b>${esc(ne.n)}`, ne.x, ne.y, 30, 560, () => selectEvent(ne.id), ne.n.length * 6.6 + 70); }
   if (state.sel?.kind === 'mark') add('mk', 'poi sel', `<i style="background:var(--accent)"></i>${esc(state.sel.title)}`, state.sel.x, state.sel.y, 16, 960, null, state.sel.title.length * 6.3 + 30);
   if (state.pick?.point) add('pk', 'poi sel', `<i style="background:var(--birch)"></i>${esc(state.pick.name || '…')}`, state.pick.point[0], state.pick.point[1], 30, 970, null, 80);
   // names of parks etc.
-  if (state.layers.names && dist < 2600) for (const n of SCENE.names) add('n:' + n[0], 'place', esc(n[0]), n[2], n[3], 2, 60, null, n[0].length * 5.8 + 6);
+  if (state.layers.names && dist < 2600 && !intro) for (const n of SCENE.names) add('n:' + n[0], 'place', esc(n[0]), n[2], n[3], 2, 60, null, n[0].length * 5.8 + 6);
   if (state.layers.rings) RINGS.forEach(([rad, m]) => add('r:' + m, 'ring', T[lang].ringLbl(m), HOME.x + rad * 0.7071, HOME.y - rad * 0.7071, 1, 120, null, 40));
   if (state.layers.stops && dist < 900) for (const s of SCENE.stops) add('s:' + s[2], 'stop', esc(s[2]), s[0] / Q, s[1] / Q, 4, 80, null, s[2].length * 5.6 + 14);
   if (state.bands && kochCentroid.hochhaus) LAGEN.forEach(lg => { const yy = (floorY(lg.f[0]) + floorY(lg.f[1] + 1)) / 2; add('b:' + lg.id, 'band', `<i style="background:${lg.c}"></i>${L(lg)} · ${lg.f[0]}.–${lg.f[1]}.`, kochCentroid.hochhaus[0] + 16, kochCentroid.hochhaus[1], yy, 980, null, 110); });
@@ -1237,7 +1407,8 @@ function groundAt(cx, cy) {
   return [x, y];
 }
 let down = null;
-canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: performance.now() }; if (fly) fly = null; });
+canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: performance.now() }; if (fly) fly = null; if (intro) endIntro(false); });
+canvas.addEventListener('wheel', () => { if (intro) { fly = null; endIntro(false); } }, { passive: true });
 canvas.addEventListener('pointerup', e => {
   if (!down) return;
   const moved = Math.hypot(e.clientX - down.x, e.clientY - down.y), dt = performance.now() - down.t; down = null;
@@ -1262,11 +1433,17 @@ canvas.addEventListener('pointermove', e => {
 // ---------------------------------------------------------------- selection + card
 const card = $('#card');
 function openCard(html) {
-  card.innerHTML = `<button type="button" class="close" aria-label="${t('close')}">${ico('x')}</button>` + html;
-  card.hidden = false; card.scrollTop = 0;
+  card.innerHTML = `<div class="grab" aria-hidden="true"></div><button type="button" class="close" aria-label="${t('close')}">${ico('x')}</button>` + html;
+  card.hidden = false; card.scrollTop = 0; card.style.transform = '';
   card.querySelector('.close').onclick = clearSel;
   card.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => ACTIONS[b.dataset.act]?.(b.dataset)));
 }
+// phones: pull the place card down by its grab bar to close it
+let cardDrag = null;
+card.addEventListener('pointerdown', e => { if (!isPhone() || !e.target.closest('.grab')) return; cardDrag = { y: e.clientY, id: e.pointerId, dy: 0 }; card.setPointerCapture(e.pointerId); });
+card.addEventListener('pointermove', e => { if (!cardDrag || e.pointerId !== cardDrag.id) return; cardDrag.dy = Math.max(0, e.clientY - cardDrag.y); card.style.transform = `translateY(${cardDrag.dy}px)`; });
+const cardUp = e => { if (!cardDrag || e.pointerId !== cardDrag.id) return; const close = cardDrag.dy > 90; cardDrag = null; card.style.transform = ''; if (close) clearSel(); };
+card.addEventListener('pointerup', cardUp); card.addEventListener('pointercancel', cardUp);
 function clearSel() {
   state.sel = null; card.hidden = true; halo.visible = false; clearRoute(); labelsDirty = true; updatePins(true); needsRender = true;
   $$('.row.sel').forEach(r => r.classList.remove('sel'));
@@ -1400,11 +1577,11 @@ const ACTIONS = {
 // ---------------------------------------------------------------- guide panels
 const TABS = [['explore', 'tExplore', () => POIS.length], ['walks', 'tWalks', () => TOURS.length], ['agenda', 'tAgenda', () => EVENTS.length], ['involve', 'tInvolve'], ['about', 'tAbout']];
 function renderTabs() {
-  $('#tabs').innerHTML = TABS.map(([id, k, n]) => `<button type="button" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${t(k)}${n ? `<small>${n()}</small>` : ''}</button>`).join('');
+  const short = shortTabs();   // narrow phones and sideways phones: short tab names so all five fit
+  $('#tabs').innerHTML = TABS.map(([id, k, n]) => `<button type="button" role="tab" data-tab="${id}" aria-selected="${state.tab === id}">${t(short ? k + 'S' : k)}${n ? `<small>${n()}</small>` : ''}</button>`).join('');
   $$('#tabs button').forEach(b => b.onclick = () => {
-    const guide = $('#guide');
-    if (isPhone() && state.tab === b.dataset.tab) { guide.classList.toggle('min'); return; }
-    guide.classList.remove('min');
+    if (isPhone() && state.tab === b.dataset.tab) { setSheet(state.sheet === 'min' ? 'peek' : 'min'); return; }
+    if (isPhone() && state.sheet === 'min') setSheet('peek');
     state.tab = b.dataset.tab; store.set('tab', state.tab); renderTabs(); renderPanel(); $('#panel').scrollTop = 0;
   });
 }
@@ -1416,8 +1593,8 @@ function renderExplore(el) {
   const counts = {}; POIS.forEach(p => counts[p.g] = (counts[p.g] || 0) + 1);
   const q = state.query.trim().toLowerCase();
   const list = POIS.filter(p => state.groups.has(p.g) && (!q || (p.n + ' ' + p.a + ' ' + (p.t || []).join(' ')).toLowerCase().includes(q)));
-  el.innerHTML = `
-    <label class="search">${ico('search')}<input id="q" type="search" placeholder="${t('search')}" value="${esc(state.query)}" autocomplete="off"></label>
+  el.innerHTML = `${q ? '' : highlightsHtml()}
+    <label class="search">${ico('search')}<input id="q" type="search" placeholder="${t('search')}" value="${esc(state.query)}" autocomplete="off" enterkeyhint="search"></label>
     <div class="chips" id="chips">${GROUPS.map(g => `<button type="button" class="chip" data-g="${g.id}" aria-pressed="${state.groups.has(g.id)}"><i style="background:${groupColor(g.id)}"></i>${esc(L(g))}<small>${counts[g.id] || 0}</small></button>`).join('')}</div>
     <div style="display:flex;gap:14px"><button type="button" class="linkbtn" id="gAll">${t('all')}</button><button type="button" class="linkbtn" id="gNone">${t('none')}</button><span class="note" style="margin-left:auto">${t('fromHome')}</span></div>
     <div class="list" id="plist">${list.length ? list.map(p => `<button type="button" class="row${state.sel?.id === p.id ? ' sel' : ''}" data-id="${esc(p.id)}"><i class="dot" style="background:${groupColor(p.g)}"></i><span style="min-width:0"><b>${esc(p.n)}</b><span class="sub">${esc(L(GROUP[p.g]))}${p.a ? ' · ' + esc(p.a.split(',')[0]) : ''}</span></span><em>${p.out ? '↗' : (p.w ?? '–') + ' ' + t('min')}</em></button>`).join('') : `<p class="note">${t('noResults')}</p>`}</div>`;
@@ -1427,6 +1604,18 @@ function renderExplore(el) {
   $('#gAll', el).onclick = () => { GROUPS.forEach(g => state.groups.add(g.id)); store.set('groups', [...state.groups]); renderExplore(el); updatePins(true); labelsDirty = true; needsRender = true; };
   $('#gNone', el).onclick = () => { state.groups.clear(); store.set('groups', []); renderExplore(el); updatePins(true); labelsDirty = true; needsRender = true; };
   $$('#plist .row', el).forEach(r => r.onclick = () => selectPoi(r.dataset.id));
+  $$('.hl', el).forEach(b => b.onclick = () => { const id = b.dataset.id; ({ event: selectEvent, poi: selectPoi, tour: startTour })[b.dataset.hl]?.(id); });
+}
+// three highlights on top of the explore tab: what's on next, the park next door, a walk
+function highlightsHtml() {
+  const e = nextEvent(), park = POI['koch-park'], tour = TOURS.find(x => x.id === 'samstag');
+  const card = (kind, id, icon, kick, title, meta) => `<button type="button" class="hl" data-hl="${kind}" data-id="${esc(id)}"><span class="k">${ico(icon)}${kick}</span><b>${esc(title)}</b><small>${meta}</small></button>`;
+  const cards = [
+    e && card('event', e.id, 'lantern', t('hlNext'), e.n, esc(fmtDay(e.ds, true))),
+    park && card('poi', park.id, 'leaf', t('hlDoor'), park.n, `${park.w} ${t('min')} · ${t('hlPark')}`),
+    tour && card('tour', tour.id, 'walk', t('hlWalk'), lang === 'en' ? tour.n_en : tour.n_de, `${tour.min} ${t('min')} · ${tour.legs.length} ${t('hlStops')}`),
+  ].filter(Boolean);
+  return cards.length ? `<div class="sh">${t('hlTitle')}</div><div class="hls">${cards.join('')}</div>` : '';
 }
 function renderWalks(el) {
   el.innerHTML = `<p class="note">${t('walksIntro')}</p>` + TOURS.map(tr => `
@@ -1532,8 +1721,8 @@ function runIdea(id) {
 
 // suggest-a-place
 function showPickHint(on) { const h = $('#pickhint'); h.hidden = !on; if (on) h.innerHTML = `${ico('pin')}<span>${t('pickHint')}</span><button type="button" class="btn" id="phCancel">${t('cancel')}</button>`; const c = $('#phCancel'); if (c) c.onclick = endPick; }
-function startPick() { clearSel(); state.pick = { point: null, g: 'community' }; canvas.classList.add('pick'); showPickHint(true); if (isPhone()) $('#guide').classList.add('min'); renderPanel(); }
-function endPick() { state.pick = null; canvas.classList.remove('pick'); showPickHint(false); $('#guide').classList.remove('min'); renderPanel(); labelsDirty = true; needsRender = true; }
+function startPick() { clearSel(); state.pick = { point: null, g: 'community' }; canvas.classList.add('pick'); showPickHint(true); if (isPhone()) setSheet('min'); renderPanel(); }
+function endPick() { state.pick = null; canvas.classList.remove('pick'); showPickHint(false); if (isPhone() && state.sheet === 'min') setSheet('peek'); renderPanel(); labelsDirty = true; needsRender = true; }
 
 // ---------------------------------------------------------------- layers popover
 function renderLayers() {
@@ -1568,7 +1757,7 @@ function startTour(id) {
   const duration = THREE.MathUtils.clamp(total / 1000 * 9000, 14000, 34000);
   state.tour = { tr, pts, cum, legEnd, stops, total, t: 0, duration, playing: true, last: performance.now(), leg: -1 };
   walker.visible = true;
-  if (isPhone()) $('#guide').classList.add('min');
+  if (isPhone()) setSheet('min');
   flyTo(W(HOME.x, HOME.y, 0), 1050, { polar: 0.85, dur: 900 });
   renderTourbar(); labelsDirty = true; needsRender = true;
 }
@@ -1576,7 +1765,7 @@ function stopTour() {
   if (!state.tour) return;
   state.tour = null; walker.visible = false;
   tourGroup.children.slice().forEach(m => { tourGroup.remove(m); m.geometry.dispose(); });
-  tourbar.hidden = true; $('#guide').classList.remove('min'); labelsDirty = true; needsRender = true;
+  tourbar.hidden = true; if (isPhone() && state.sheet === 'min') setSheet('peek'); labelsDirty = true; needsRender = true;
 }
 function tourPos(d) {
   const T0 = state.tour; let i = 1; while (i < T0.cum.length && T0.cum[i] < d) i++;
@@ -1622,11 +1811,44 @@ function stepTour(now) {
 $('#zIn').onclick = () => { const off = camera.position.clone().sub(controls.target).multiplyScalar(0.7); flyTo(controls.target.clone(), Math.max(controls.minDistance, off.length()), { exact: true, dur: 400 }); };
 $('#zOut').onclick = () => { const off = camera.position.clone().sub(controls.target).multiplyScalar(1.4); flyTo(controls.target.clone(), Math.min(controls.maxDistance, off.length()), { exact: true, dur: 400 }); };
 $('#compass').onclick = () => flyTo(controls.target.clone(), camera.position.distanceTo(controls.target), { az: 0, exact: true, dur: 700 });
-$('#home').onclick = () => { stopTour(); const d = DEFAULT(); fly = { t0: performance.now(), dur: reduced ? 1 : 1200, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: d.target, toP: d.pos }; };
+$('#home').onclick = () => { stopTour(); if (intro) endIntro(false); const d = DEFAULT(); fly = { t0: performance.now(), dur: reduced ? 1 : 1200, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: d.target, toP: d.pos }; };
 $('#bLayers').onclick = () => { const L0 = $('#layers'); L0.hidden = !L0.hidden; $('#bLayers').setAttribute('aria-expanded', String(!L0.hidden)); if (!L0.hidden) { renderLayers(); card.hidden = true; } else if (state.sel) card.hidden = false; };
-$('#bNight').onclick = () => { state.night = !isNight(); applyPalette(); };
-$('#sheetToggle').onclick = () => $('#guide').classList.toggle('min');
+function setDark(on) { state.dark = !!on; store.set('dark', state.dark); applyTheme(); applyPalette(); renderPanel(); if (state.sel?.kind === 'poi') selectPoi(state.sel.id, { noFly: true }); }
+$('#bNight').onclick = () => setDark(!state.dark);
+
+// ---------------------------------------------------------------- phones: bottom sheet with three heights, dragged by its handle or tab bar
+const guide = $('#guide');
+function setSheet(s) {
+  state.sheet = s; app.dataset.sheet = s;
+  guide.classList.toggle('min', s === 'min'); guide.classList.toggle('full', s === 'full');
+  guide.style.removeProperty('height');
+}
+$('#sheetToggle').onclick = () => { if (!sheetDrag?.moved) setSheet(state.sheet === 'peek' ? 'full' : 'peek'); };
+let sheetDrag = null, eatClick = false;
+guide.addEventListener('pointerdown', e => {
+  if (!isPhone() || !e.target.closest('.sheet-handle, .tabs')) return;
+  sheetDrag = { x: e.clientX, y: e.clientY, h: guide.getBoundingClientRect().height, id: e.pointerId, t: performance.now(), moved: false };
+});
+guide.addEventListener('pointermove', e => {
+  const d = sheetDrag; if (!d || e.pointerId !== d.id) return;
+  const dy = e.clientY - d.y, dx = e.clientX - d.x;
+  if (!d.moved) { if (Math.abs(dy) < 8 || Math.abs(dy) < Math.abs(dx)) return; d.moved = true; guide.classList.add('dragging'); guide.setPointerCapture(d.id); }
+  guide.style.height = Math.max(58, Math.min(app.clientHeight - 96, d.h - dy)) + 'px';
+});
+const sheetUp = e => {
+  const d = sheetDrag; if (!d || e.pointerId !== d.id) return;
+  sheetDrag = null; if (!d.moved) return;
+  guide.classList.remove('dragging'); eatClick = true; setTimeout(() => eatClick = false, 60);
+  const h = guide.getBoundingClientRect().height, H = app.clientHeight, v = (d.y - e.clientY) / Math.max(1, performance.now() - d.t);
+  let s = h < H * 0.24 ? 'min' : h < H * 0.64 ? 'peek' : 'full';
+  if (v > 0.5) s = s === 'min' ? 'peek' : 'full'; else if (v < -0.5) s = s === 'full' ? 'peek' : 'min';
+  setSheet(s);
+};
+guide.addEventListener('pointerup', sheetUp); guide.addEventListener('pointercancel', sheetUp);
+guide.addEventListener('click', e => { if (eatClick) { e.stopPropagation(); e.preventDefault(); } }, true);
+
 addEventListener('keydown', e => {
+  if (intro && !e.target.closest?.('input, textarea')) endIntro(false);
   if (e.key === 'Escape') { if (state.pick) endPick(); else if (state.tour) stopTour(); else if (!$('#layers').hidden) $('#bLayers').click(); else clearSel(); }
 });
 let toastT = 0;
@@ -1650,12 +1872,24 @@ $$('[data-lang]').forEach(b => b.onclick = () => { lang = b.dataset.lang; store.
 // ---------------------------------------------------------------- resize, theme
 function resize() {
   const w = app.clientWidth, h = app.clientHeight;
-  renderer.setSize(w, h, false); camera.aspect = w / Math.max(1, h); camera.updateProjectionMatrix();
+  renderer.setSize(w, h, false); camera.aspect = w / Math.max(1, h);
+  if (!isPhone() && app.dataset.sheet) { delete app.dataset.sheet; guide.classList.remove('min', 'full'); guide.style.removeProperty('height'); }
+  else if (isPhone() && !app.dataset.sheet) setSheet(state.sheet);
+  refreshInsets();
+  if (!resize.done) { vo.x = vo.tx; vo.y = vo.ty; resize.done = true; }   // first layout: no easing
+  applyViewOffset();
+  if (shortTabs() !== resize.short) { resize.short = shortTabs(); renderTabs(); }
   labelsDirty = true; needsRender = true;
 }
 new ResizeObserver(resize).observe(app);
-matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { applyPalette(); renderPanel(); });
-new MutationObserver(() => { applyPalette(); renderPanel(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+new ResizeObserver(refreshInsets).observe(guide);
+new ResizeObserver(refreshInsets).observe(card);
+new MutationObserver(refreshInsets).observe(card, { attributes: true, attributeFilter: ['hidden'] });
+// a host page may set its own data-theme; keep the visitor's choice
+new MutationObserver(() => {
+  if (document.documentElement.getAttribute('data-theme') !== (state.dark ? 'dark' : 'light')) applyTheme();
+  else { applyPalette(); renderPanel(); }
+}).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
 // ---------------------------------------------------------------- scale bar + compass
 function updateHud() {
@@ -1671,7 +1905,7 @@ function updateHud() {
 // ---------------------------------------------------------------- loop
 let needsRender = true, lastPolar = -1;
 controls.addEventListener('change', () => { labelsDirty = true; needsRender = true; });
-const growStart = performance.now() + 250;
+let growStart = Infinity;   // set on the first rendered frame
 function clampTarget() {
   const tx = controls.target.x, ty = -controls.target.z, dx = tx - BC[0], dy = ty - BC[1], d = Math.hypot(dx, dy);
   if (d > R * 0.92) { const k = R * 0.92 / d; const nx = BC[0] + dx * k, ny = BC[1] + dy * k; const off = camera.position.clone().sub(controls.target); controls.target.set(nx, 0, -ny); camera.position.copy(controls.target).add(off); }
@@ -1684,6 +1918,8 @@ function frame(now) {
     controls.target.lerpVectors(fly.fromT, fly.toT, e); camera.position.lerpVectors(fly.fromP, fly.toP, e);
     if (k >= 1) fly = null; active = true; labelsDirty = true;
   }
+  if (intro && stepIntro(now)) active = true;
+  if (stepViewOffset()) active = true;
   if (bUni.uGrow.value < 2.2) { bUni.uGrow.value = Math.max(0, (now - growStart) / 2600 * 1.6); active = true; }
   if (stepTour(now)) active = true;
   if (controls.update()) active = true;
@@ -1691,23 +1927,36 @@ function frame(now) {
   if (active || needsRender) {
     camera.updateMatrixWorld(); updatePins(); if (labelsDirty) layoutLabels(); updateHud();
     renderer.render(scene, camera); needsRender = false;
-    if (!window.__kqReady) { window.__kqReady = true; $('#loading').hidden = true; }
+    if (!window.__kqReady) { window.__kqReady = true; $('#loading').hidden = true; growStart = now + 120; }
+    adapt(now);
   }
+}
+// Slow phone? While frames render back to back, measure them; under ~28 fps first lower the resolution, then drop shadows.
+const perf = { last: 0, n: 0, sum: 0, level: 0, off: /[#&?]hq\b/.test(location.href) };
+function adapt(now) {
+  const dt = now - perf.last; perf.last = now;
+  if (perf.off || perf.level >= 2 || dt > 250 || now < growStart + 1500) return;
+  perf.sum += dt; if (++perf.n < 45) return;
+  const avg = perf.sum / perf.n; perf.n = 0; perf.sum = 0;
+  if (avg < 36) return;
+  perf.level++;
+  if (perf.level === 1) { renderer.setPixelRatio(Math.max(1, renderer.getPixelRatio() * 0.6)); resize(); }
+  else { sun.castShadow = false; renderer.shadowMap.needsUpdate = true; }
+  needsRender = true;
 }
 
 // ---------------------------------------------------------------- boot
-window.__kq = { camera, controls, state, selectPoi, selectKoch, selectEvent, startTour, stopTour, flyTo, W, applyPalette, T: () => state.tour };
+window.__kq = { camera, controls, state, selectPoi, selectKoch, selectEvent, startTour, stopTour, flyTo, W, applyPalette, setDark, setSheet, endIntro, perf, T: () => state.tour, intro: () => intro };
+applyTheme();
+if (isPhone()) setSheet('peek');
 applyLang();
 applyLayers();
 applyPalette();
 resize();
 {
   const d = DEFAULT();
-  if (reduced) { controls.target.copy(d.target); camera.position.copy(d.pos); }
-  else {
-    controls.target.copy(W(BC[0], BC[1], 0)); camera.position.copy(W(BC[0] + 300, BC[1] - 900, 5200));
-    fly = { t0: performance.now() + 300, dur: 2800, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: d.target, toP: d.pos };
-  }
+  if (reduced || /[#&?]nointro\b/.test(location.href)) { controls.target.copy(d.target); camera.position.copy(d.pos); }
+  else startIntro();
 }
 controls.update();
 requestAnimationFrame(frame);
