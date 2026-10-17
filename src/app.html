@@ -37,8 +37,11 @@ body{background:var(--table);color:var(--ink);font-family:var(--f-ui);font-size:
 button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 a{color:var(--accent)}
-#app{position:relative;height:100%;padding-left:var(--gl);padding-right:var(--gr);padding-block:0;
-  background:radial-gradient(120% 90% at 55% 45%,var(--table-2) 0%,var(--table) 70%)}
+#app{position:relative;height:100%;padding-left:var(--gl);padding-right:var(--gr);padding-block:0;--scene:#DCD8CF;--scene-2:#ECE9E2;
+  background:radial-gradient(120% 90% at 55% 45%,var(--scene-2) 0%,var(--scene) 70%)}
+#app[data-night]{--scene:#0C0F0E;--scene-2:#161B19}
+/* The interface is dark; the model and its labels stay in daylight unless the visitor switches the city to night. */
+#app:not([data-night]) #labels{--paper:#FBFAF7;--paper-2:#F1EFE9;--ink:#1B1F1D;--muted:#5C6460;--line:#DDD9D0;--birch:#B07C3F;--birch-soft:#F3E7D4;--accent:#2747A8;--on-accent:#FFFFFF}
 #gl{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none}
 #gl.pick{cursor:crosshair}
 #labels{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
@@ -260,6 +263,33 @@ pre.snip{margin:0;padding:10px;border-radius:10px;background:var(--paper-2);bord
 .introcap .skip{grid-column:2;grid-row:1 / span 3;border:1px solid var(--line);background:var(--paper-2);border-radius:999px;padding:8px 14px;font:600 12px var(--f-ui);cursor:pointer;color:var(--ink)}
 .introcap .prog{grid-column:1 / -1;margin-top:6px}
 .introcap .k,.introcap h3,.introcap p{grid-column:1}
+.introcap .hint{font-size:12px;color:var(--muted)}
+/* the bubble over the highlighted place; pointing at it (or tapping it) pauses the flight and opens details */
+.ibubble{position:absolute;left:0;top:0;z-index:4;pointer-events:auto;will-change:transform;transition:opacity .2s}
+.ibubble[hidden]{display:none}
+.ibubble .bb{position:relative;display:grid;gap:3px;width:max-content;min-width:150px;max-width:250px;padding:9px 12px 10px;border-radius:14px;
+  background:color-mix(in srgb,var(--paper) 86%,transparent);-webkit-backdrop-filter:blur(12px) saturate(1.4);backdrop-filter:blur(12px) saturate(1.4);
+  color:var(--ink);border:1px solid color-mix(in srgb,#fff 12%,transparent);box-shadow:0 12px 32px rgba(0,0,0,.32),0 1px 2px rgba(0,0,0,.25);
+  transform-origin:50% 100%;animation:bpop .34s cubic-bezier(.2,1.35,.4,1);cursor:pointer}
+.ibubble .bb::after{content:"";position:absolute;left:calc(50% + var(--tx,0px));bottom:-6px;width:12px;height:12px;transform:translateX(-50%) rotate(45deg);
+  background:color-mix(in srgb,var(--paper) 92%,transparent);border-right:1px solid color-mix(in srgb,#fff 12%,transparent);border-bottom:1px solid color-mix(in srgb,#fff 12%,transparent)}
+.ibubble .ring{position:absolute;left:calc(50% + var(--tx,0px));top:100%;margin-top:14px;width:16px;height:16px;border-radius:50%;transform:translate(-50%,-50%);border:2px solid var(--birch);animation:bring 1.6s ease-out infinite;pointer-events:none}
+.ibubble .t{display:flex;align-items:center;gap:7px;font:700 13.5px/1.25 var(--f-display)}
+.ibubble .t i{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.ibubble .t small{margin-left:auto;padding-left:10px;font:600 11px var(--f-num);color:var(--accent);white-space:nowrap}
+.ibubble .kk{display:none;font:600 9.5px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ibubble .more{display:none;font-size:12px;line-height:1.45;color:var(--muted);margin-top:2px}
+.ibubble .acts{display:none;gap:6px;margin-top:6px}
+.ibubble .acts button{border:1px solid var(--line);background:var(--paper-2);color:var(--ink);border-radius:999px;padding:6px 11px;font:600 11.5px var(--f-ui);cursor:pointer}
+.ibubble .acts button.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.ibubble.open .bb{max-width:280px;width:280px;animation:none}
+.ibubble.below .bb{transform-origin:50% 0}
+.ibubble.below .bb::after{bottom:auto;top:-6px;transform:translateX(-50%) rotate(225deg)}
+.ibubble.below .ring{top:auto;bottom:100%;margin:0 0 6px}
+.ibubble.open .kk,.ibubble.open .more{display:block}
+.ibubble.open .acts{display:flex}
+@keyframes bpop{from{transform:translateY(8px) scale(.86)}to{transform:none}}   /* size only: the bubble never depends on an animation to be visible */
+@keyframes bring{0%{opacity:.9;transform:translate(-50%,-50%) scale(.6)}100%{opacity:0;transform:translate(-50%,-50%) scale(2.2)}}
 .grab{display:none}
 button,a,.chip,.hl,.row,.ev{-webkit-tap-highlight-color:transparent}
 
@@ -305,6 +335,8 @@ button,a,.chip,.hl,.row,.ev{-webkit-tap-highlight-color:transparent}
   .introcap{width:auto;left:var(--gl);right:var(--gr);transform:none;margin-left:0;bottom:calc(var(--sheetPx,58px) + 12px);padding:11px 12px 11px 14px}
   .introcap h3{font-size:16px}
   .introcap p{font-size:12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .ibubble .bb{max-width:220px}
+  .ibubble.open .bb{width:min(280px,calc(100vw - 32px))}
   .pickhint,.loading{margin-left:0}
   .pickhint{top:calc(84px + env(safe-area-inset-top,0px));width:max-content;max-width:calc(100% - 32px)}
   .lb.place{display:none}
@@ -343,6 +375,7 @@ button,a,.chip,.hl,.row,.ev{-webkit-tap-highlight-color:transparent}
 <div id="app">
   <canvas id="gl" tabindex="0" aria-label="3D-Modell von Albisrieden und Altstetten"></canvas>
   <div id="labels" aria-hidden="true"></div>
+  <div class="ibubble" id="ibubble" hidden></div>
 
   <aside class="rail" id="rail">
     <header class="mast card">
@@ -448,7 +481,9 @@ const GROUP = Object.fromEntries(GROUPS.map(g => [g.id, g]));
 const T = {
   de: {
     eyebrow: 'Quartier-Atlas · Kreis 9', indie: 'Inoffiziell · Open Source', hlTitle: 'Highlights', hlNext: 'Nächster Anlass', hlDoor: 'Gleich nebenan', hlPark: 'Park & Spielplatz', hlWalk: 'Rundgang', hlStops: 'Stationen',
-    introKick: 'Rundflug ums Koch-Quartier', introSkip: 'Überspringen', introTower: 'Koch-Hochhaus · Flurstrasse 71', introStart: 'Ein Rundflug durchs Quartier: Parks, Kitas, Märkte und Treffpunkte in Gehdistanz.',loading: 'Modell wird aufgebaut',
+    introKick: 'Rundflug ums Koch-Quartier', introSkip: 'Überspringen', details: 'Details', continue: 'Weiter',
+    introPaused: 'Angehalten. Klicken, um weiterzufliegen.', introPausedTouch: 'Angehalten. Tippen, um weiterzufliegen.',
+    introHint: 'Auf eine Blase zeigen hält den Flug an. Ziehen oder scrollen: selbst erkunden.', introHintTouch: 'Tippen hält den Flug an und zeigt mehr. Wischen: selbst erkunden.', introTower: 'Koch-Hochhaus · Flurstrasse 71', introStart: 'Ein Rundflug durchs Quartier: Parks, Kitas, Märkte und Treffpunkte in Gehdistanz.',loading: 'Modell wird aufgebaut',
     lead: 'Ein Stadtmodell von Albisrieden und Altstetten mit allem, was Familien und Nachbarn rund um das neue Koch-Quartier entdecken können.',
     places: 'Orte', events: 'Anlässe', walks: 'Rundgänge', buildings: 'Gebäude',
     tExplore: 'Entdecken', tWalks: 'Rundgänge', tAgenda: 'Agenda', tInvolve: 'Mitmachen', tAbout: 'Über',
@@ -492,7 +527,9 @@ const T = {
   },
   en: {
     eyebrow: 'Neighbourhood atlas · District 9', indie: 'Unofficial · Open source', hlTitle: 'Highlights', hlNext: 'Next event', hlDoor: 'Right next door', hlPark: 'park & playground', hlWalk: 'Walk', hlStops: 'stops',
-    introKick: 'Flying around the Koch quarter', introSkip: 'Skip', introTower: 'Koch tower · Flurstrasse 71', introStart: 'A flight around the quarter: parks, Kitas, markets and meeting places within walking distance.',loading: 'Building the model',
+    introKick: 'Flying around the Koch quarter', introSkip: 'Skip', details: 'Details', continue: 'Continue',
+    introPaused: 'Paused. Click to fly on.', introPausedTouch: 'Paused. Tap to fly on.',
+    introHint: 'Point at a bubble to pause. Drag or scroll to explore yourself.', introHintTouch: 'Tap to pause and see more. Swipe to explore yourself.', introTower: 'Koch tower · Flurstrasse 71', introStart: 'A flight around the quarter: parks, Kitas, markets and meeting places within walking distance.',loading: 'Building the model',
     lead: 'A city model of Albisrieden and Altstetten with everything families and neighbours can discover around the new Koch quarter.',
     places: 'places', events: 'events', walks: 'walks', buildings: 'buildings',
     tExplore: 'Explore', tWalks: 'Walks', tAgenda: 'Events', tInvolve: 'Get involved', tAbout: 'About',
@@ -540,7 +577,14 @@ const t = k => (T[lang][k] ?? T.de[k] ?? k);
 const L = o => (lang === 'en' ? (o.en ?? o.de) : (o.de ?? o.en));
 const pick = (p, dk, ek) => (lang === 'en' ? (p[ek] || p[dk]) : (p[dk] || p[ek]));
 const cssVar = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const groupColor = g => cssVar(GROUP[g]?.v || '--c-mobility');
+const groupColor = g => cssVar(GROUP[g]?.v || '--c-mobility');   // interface (dark theme)
+// pins, marks and routes use the palette of the city model: daylight colours by day, the lighter set at night
+const CAT = {
+  day: { kita: '#D2456E', school: '#7E55C4', play: '#DB8E12', green: '#3C9257', sport: '#1F86C2', culture: '#C9452F', food: '#A26E1C', community: '#13948B', health: '#A9479A', mobility: '#4D5866', recycle: '#5F8127', water: '#2D8FD1', accent: '#2747A8' },
+  night: { kita: '#F06E93', school: '#A98AE6', play: '#F2B54A', green: '#62B97C', sport: '#4FB0E8', culture: '#EE6B54', food: '#D59E45', community: '#3CC2B8', health: '#D774C3', mobility: '#A6B2C2', recycle: '#93B655', water: '#62B6EE', accent: '#9DB2F6' },
+};
+const mapColor = k => CAT[state.night ? 'night' : 'day'][k];
+const pinColor = g => mapColor((GROUP[g]?.v || '--c-mobility').slice(4)) || '#555';
 
 const KOCH = {
   hochhaus: {
@@ -641,7 +685,7 @@ const state = {
   sel: null,            // {kind:'poi'|'koch'|'event'|'mark'|'idea', id, ...}
   hover: null,
   layers: Object.assign({ trees: true, fountains: false, recycling: false, stops: true, lines: false, sharing: false, rings: true, names: true }, store.get('layers', {})),
-  dark: !!store.get('dark', false),   // light by default; the moon button switches model and interface together
+  night: !!store.get('night', false),   // the city by day unless the visitor switches it to night; the interface stays dark
   sheet: 'peek',        // phones: bottom sheet height, 'min' | 'peek' | 'full'
   month: null,
   bands: false,
@@ -707,9 +751,10 @@ const PAL = {
     hemi: ['#8494C4', '#121514', 1.05], sun: ['#B8C6F0', 0.95], glow: 2.4, night: 1, exposure: 1.2,
   },
 };
-const isNight = () => state.dark;
-// The page sets its own theme (light unless the visitor chose night), whatever the system or host prefers.
-const applyTheme = () => document.documentElement.setAttribute('data-theme', state.dark ? 'dark' : 'light');
+const isNight = () => state.night;
+// The interface is always dark, whatever the system or host prefers; the city model and its surroundings
+// follow state.night (day by default).
+const applyTheme = () => { document.documentElement.setAttribute('data-theme', 'dark'); app.toggleAttribute('data-night', state.night); };
 
 // ---------------------------------------------------------------- geometry helpers
 function dec(a, i, n) {
@@ -1148,7 +1193,7 @@ function applyPalette() {
   renderer.toneMappingExposure = P.exposure;
   contact.material.opacity = night ? 0.9 : 1;
   floorLineMat.color.set(night ? '#E7B06A' : '#8E6332');
-  const acc = cssVar('--accent') || '#2747A8';
+  const acc = mapColor('accent');
   routeMat.color.set(acc); busMat.color.set(acc); halo.material.color.set(acc);
   colorPins();
   $('#bNight').setAttribute('aria-pressed', String(night));
@@ -1156,10 +1201,10 @@ function applyPalette() {
 }
 function colorPins() {
   const c = new THREE.Color();
-  visPois.forEach((p, i) => { c.set(groupColor(p.g) || '#555'); headMesh.setColorAt(i, c); });
+  visPois.forEach((p, i) => { c.set(pinColor(p.g)); headMesh.setColorAt(i, c); });
   if (headMesh.instanceColor) headMesh.instanceColor.needsUpdate = true;
-  fountainMesh.material.color.set(cssVar('--c-water')); recycMesh.material.color.set(cssVar('--c-recycle'));
-  stopMesh.material.color.set(cssVar('--accent')); shareMesh.material.color.set(cssVar('--c-mobility'));
+  fountainMesh.material.color.set(mapColor('water')); recycMesh.material.color.set(mapColor('recycle'));
+  stopMesh.material.color.set(mapColor('accent')); shareMesh.material.color.set(mapColor('mobility'));
 }
 
 // ---------------------------------------------------------------- camera helpers
@@ -1227,28 +1272,86 @@ function startIntro() {
   // a low, oblique camera: the tower stands tall and places beyond it stay in the frame
   const center = towerAt(30), D = isPhone() ? 1800 : 1400, polar = isPhone() ? 1.1 : 1.06, a0 = 0.62;
   controls.target.copy(W(BC[0], BC[1], 0)); camera.position.copy(W(BC[0] + 300, BC[1] - 900, 5200));
-  intro = { phase: 'wait', center, D, polar, a0, cur: null, pickT: 0, capT: 0, dur: isPhone() ? 20000 : 22000 };
+  intro = { phase: 'wait', center, D, polar, a0, cur: null, pickT: 0, capT: 0, paused: 0, dur: isPhone() ? 28000 : 32000 };
   if (isPhone()) setSheet('min');
   app.dataset.intro = '1'; refreshInsets();
-  renderIntroCap(null);
+  renderIntroBar();
 }
-function renderIntroCap(p) {
+const coarse = matchMedia('(pointer:coarse)').matches;
+function renderIntroBar() {
   const el = $('#introcap');
-  const head = p ? `<h3><i style="background:${groupColor(p.g)}"></i><span>${esc(p.n.split(' (')[0].split(' «')[0])}</span><small>${p.w ?? ''} ${t('min')}</small></h3><p>${esc(shortText(pick(p, 'dd', 'de')))}</p>`
-    : `<h3><i style="background:var(--birch)"></i><span>${t('introTower')}</span></h3><p>${t('introStart')}</p>`;
-  el.innerHTML = `<div class="k">${t('introKick')}</div>${head}<button type="button" class="skip" id="introSkip">${t('introSkip')}</button><div class="prog"><i id="introProg" style="width:${intro?.k ? (intro.k * 100).toFixed(1) : 0}%"></i></div>`;
+  const txt = intro?.phase === 'orbit' ? t(coarse ? 'introHintTouch' : 'introHint') : t('introStart');
+  el.innerHTML = `<div class="k">${t('introKick')}</div><p class="hint">${txt}</p><button type="button" class="skip" id="introSkip">${t('introSkip')}</button><div class="prog"><i id="introProg" style="width:${intro?.k ? (intro.k * 100).toFixed(1) : 0}%"></i></div>`;
   el.hidden = false;
   $('#introSkip').onclick = () => endIntro(true);
 }
+
+// The bubble over the highlighted place. Pointing at it (mouse) or tapping it (touch) pauses the flight and opens details.
+const bubble = $('#ibubble');
+const cleanName = n => n.split(' (')[0].split(' «')[0];
+function showBubble(p) {
+  bubble.classList.remove('open');
+  bubble.innerHTML = `<div class="bb"><div class="kk">${esc(L(GROUP[p.g]))}</div><div class="t"><i style="background:${groupColor(p.g)}"></i><span>${esc(cleanName(p.n))}</span><small>${p.w ?? ''} ${t('min')}</small></div><div class="more">${esc(shortText(pick(p, 'dd', 'de'), 190))}</div><div class="acts"><button type="button" class="pri" data-b="open">${t('details')}</button><button type="button" data-b="go">${t('continue')}</button></div></div><span class="ring"></span>`;
+  bubble.hidden = false; placeBubble();
+}
+function hideBubble() { bubble.hidden = true; bubble.classList.remove('open'); }
+function headOnScreen(p) {   // the pin head on screen; pins grow with distance, as in updatePins
+  const [x, y] = poiPos(p);
+  const s = THREE.MathUtils.clamp(camera.position.distanceTo(controls.target) / 560, 0.55, 3.6);
+  return vtmp.copy(W(x, y, pinH(p) * Math.min(s, 2.2) + 3 * s)).project(camera);
+}
+function freeBox() {   // where a bubble can sit: clear of the rail, the tools, the intro bar and the sheet
+  const cr = canvas.getBoundingClientRect(), w = cr.width, h = cr.height;
+  let bottom = $('#introcap').hidden ? h : $('#introcap').getBoundingClientRect().top - cr.top;
+  if (isPhone()) bottom = Math.min(bottom, guide.getBoundingClientRect().top - cr.top);
+  return { left: isPhone() ? 12 : $('#rail').getBoundingClientRect().right - cr.left + 12, right: w - $('#tools').getBoundingClientRect().width - 28, top: isPhone() ? 170 : 120, bottom: bottom - 18, w, h };
+}
+function onScreen(p, box) {
+  const v = headOnScreen(p); if (v.z > 1) return false;
+  const sx = (v.x + 1) / 2 * box.w, sy = (1 - v.y) / 2 * box.h;
+  return sx > box.left + 50 && sx < box.right - 50 && sy > box.top && sy < box.bottom;
+}
+function placeBubble() {
+  if (!intro?.cur || bubble.hidden) return;
+  const box = freeBox(), v = headOnScreen(POI[intro.cur]);
+  const sx = (v.x + 1) / 2 * box.w, sy = (1 - v.y) / 2 * box.h;
+  const hw = (bubble.firstElementChild?.offsetWidth || 180) / 2;
+  const cx = Math.max(box.left + hw, Math.min(box.right - hw, sx));   // keep the bubble on screen, bend the tail instead
+  bubble.style.setProperty('--tx', (sx - cx).toFixed(1) + 'px');
+  const below = sy - 18 - (bubble.firstElementChild?.offsetHeight || 60) < 8;   // no room above the pin: hang the bubble below it
+  bubble.classList.toggle('below', below);
+  bubble.style.transform = below ? `translate(${cx.toFixed(1)}px, ${(sy + 20).toFixed(1)}px) translate(-50%, 0)` : `translate(${cx.toFixed(1)}px, ${(sy - 18).toFixed(1)}px) translate(-50%, -100%)`;
+  bubble.style.opacity = v.z > 1 ? '0' : '1';
+}
+function introPause(on) {
+  if (!intro || intro.phase !== 'orbit') return;
+  const now = performance.now();
+  if (on && !intro.paused) { intro.paused = now; bubble.classList.add('open'); }
+  else if (!on && intro.paused) { intro.t0 += now - intro.paused; intro.capT += now - intro.paused; intro.paused = 0; bubble.classList.remove('open'); }
+  const hint = $('#introcap .hint'); if (hint) hint.textContent = intro.paused ? t(coarse ? 'introPausedTouch' : 'introPaused') : t(coarse ? 'introHintTouch' : 'introHint');
+  placeBubble(); needsRender = true;
+}
+let bubblePtr = 'mouse';
+bubble.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') introPause(true); });
+bubble.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') introPause(false); });
+bubble.addEventListener('pointerdown', e => { bubblePtr = e.pointerType; });
+bubble.addEventListener('click', e => {
+  const b = e.target.closest('[data-b]');
+  if (b?.dataset.b === 'open') { if (intro?.cur) selectPoi(intro.cur); return; }   // the place card; flying there ends the intro
+  if (b?.dataset.b === 'go') { introPause(false); return; }
+  if (bubblePtr !== 'mouse') introPause(!intro?.paused);   // touch: tap to pause and read, tap again to fly on
+});
 function pickIntroHighlight(now) {
-  // the camera turns around the tower; name the highlight that lies beyond it, in the line of sight
+  // the camera turns around the tower; show the highlight that lies beyond it, in the line of sight, if it is on screen
   const c = intro.center, look = Math.atan2(c.x - camera.position.x, c.z - camera.position.z);
   const diff = p => { const [x, y] = poiPos(p); let d = Math.atan2(x - c.x, -y - c.z) - look; d = Math.atan2(Math.sin(d), Math.cos(d)); return Math.abs(d); };
-  let best = null, bd = 0.42;
-  for (const p of INTRO_POIS) { const d = diff(p); if (d < bd) { bd = d; best = p; } }
-  const curD = intro.cur ? diff(POI[intro.cur]) : 9;
-  if (!best || best.id === intro.cur || now - intro.capT < 1300) return;
-  if (curD > 0.3 || bd < curD - 0.2) { intro.cur = best.id; intro.capT = now; renderIntroCap(best); labelsDirty = true; }
+  const box = freeBox(), cur = intro.cur ? POI[intro.cur] : null, curOn = cur && onScreen(cur, box), curD = cur ? diff(cur) : 9;
+  if (cur && !curOn) { intro.cur = null; hideBubble(); labelsDirty = true; }
+  if (curOn && now - intro.capT < 2400) return;   // give each bubble time to be read
+  let best = null, bd = 0.6;
+  for (const p of INTRO_POIS) { if (p.id === intro.cur) continue; const d = diff(p); if (d < bd && onScreen(p, box)) { bd = d; best = p; } }
+  if (!best) return;
+  if (!curOn || curD > 0.35 || bd < curD - 0.2) { intro.cur = best.id; intro.capT = now; showBubble(best); labelsDirty = true; }
 }
 function stepIntro(now) {
   if (intro.phase === 'wait') {   // start once the first frame is on screen, so a slow start does not eat the fly-in
@@ -1256,10 +1359,12 @@ function stepIntro(now) {
     fly = { t0: now + 150, dur: 2700, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: intro.center, toP: intro.center.clone().add(sphOff(intro.D, intro.polar, intro.a0)) };
     intro.phase = 'fly'; return true;
   }
-  if (intro.phase === 'fly') { if (!fly) { intro.phase = 'orbit'; intro.t0 = now; } return true; }
+  if (intro.phase === 'fly') { if (!fly) { intro.phase = 'orbit'; intro.t0 = now; renderIntroBar(); } return true; }
+  if (intro.paused) return false;   // holding still while someone reads a bubble
   const k = Math.min(1, (now - intro.t0) / intro.dur); intro.k = k;
   const e = k - 0.5 * Math.sin(2 * Math.PI * k) / (2 * Math.PI);   // near-even speed, softened at both ends
   controls.target.copy(intro.center); camera.position.copy(intro.center).add(sphOff(intro.D, intro.polar, intro.a0 + e * Math.PI * 2));
+  camera.lookAt(intro.center); camera.updateMatrixWorld();
   labelsDirty = true;
   if (now - intro.pickT > 120) { intro.pickT = now; pickIntroHighlight(now); const pr = $('#introProg'); if (pr) pr.style.width = (k * 100).toFixed(1) + '%'; }
   if (k >= 1) endIntro(true);
@@ -1267,7 +1372,7 @@ function stepIntro(now) {
 }
 function endIntro(settle) {
   if (!intro) return;
-  intro = null; $('#introcap').hidden = true; store.set('introSeen', true);
+  intro = null; $('#introcap').hidden = true; hideBubble(); store.set('introSeen', true);
   delete app.dataset.intro; refreshInsets();
   if (settle) { const d = DEFAULT(); fly = { t0: performance.now(), dur: reduced ? 1 : 1700, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: d.target, toP: d.pos }; }
   if (isPhone() && state.sheet === 'min' && !state.tour) setSheet('peek');
@@ -1305,14 +1410,14 @@ function layoutLabels() {
   const selId = state.sel?.kind === 'poi' ? state.sel.id : null, hovId = state.hover?.kind === 'poi' ? state.hover.id : null;
   for (const p of visPois) {
     if (!state.groups.has(p.g) && p.id !== selId) continue;
-    if (intro && !p.f) continue;   // the intro flight shows only the featured places
+    if (intro && (!p.f || p.id === intro.cur)) continue;   // intro: featured places only; the highlighted one has its bubble
     const isSel = p.id === selId, isHov = p.id === hovId, isHl = intro ? intro.cur === p.id : HL_POIS.has(p.id);
     const show = isSel || isHov || isHl || p.f || dist < 1250 || (dist < 2100 && (p.w ?? 99) <= 6);
     if (!show) continue;
     const pri = isSel ? 950 : isHov ? 940 : intro && isHl ? 930 : isHl ? 520 - (p.w ?? 30) : p.f ? 400 - (p.w ?? 30) : 200 - (p.w ?? 60);
     const [px, py] = poiPos(p);
     const wtxt = p.out ? '↗' : (p.w != null ? `${p.w}′` : '');
-    add('p:' + p.id, 'poi' + (isSel ? ' sel' : isHl ? ' hl' : ''), `<i style="background:${groupColor(p.g)}"></i>${esc(p.n)}${wtxt ? `<small>${wtxt}</small>` : ''}`, px, py, pinH(p) + 2, pri, () => selectPoi(p.id), p.n.length * 6.3 + 44);
+    add('p:' + p.id, 'poi' + (isSel ? ' sel' : isHl ? ' hl' : ''), `<i style="background:${pinColor(p.g)}"></i>${esc(p.n)}${wtxt ? `<small>${wtxt}</small>` : ''}`, px, py, pinH(p) + 2, pri, () => selectPoi(p.id), p.n.length * 6.3 + 44);
   }
   // events: the selected one, otherwise the next one coming up as a dated badge
   if (state.sel?.kind === 'event') { const e = EVENTS.find(x => x.id === state.sel.id); if (e && e.x != null) add('ev', 'poi sel', `<i style="background:var(--birch)"></i>${esc(e.n)}`, e.x, e.y, 30, 960, null, e.n.length * 6.3 + 30); }
@@ -1407,12 +1512,15 @@ function groundAt(cx, cy) {
   return [x, y];
 }
 let down = null;
-canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: performance.now() }; if (fly) fly = null; if (intro) endIntro(false); });
+// During the intro a tap pauses (and opens the bubble), a drag or pinch hands the map over to the visitor.
+canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: e.timeStamp }; if (!intro && fly) fly = null; });
+canvas.addEventListener('pointermove', e => { if (intro && down && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 10) { fly = null; endIntro(false); } });
 canvas.addEventListener('wheel', () => { if (intro) { fly = null; endIntro(false); } }, { passive: true });
 canvas.addEventListener('pointerup', e => {
   if (!down) return;
-  const moved = Math.hypot(e.clientX - down.x, e.clientY - down.y), dt = performance.now() - down.t; down = null;
+  const moved = Math.hypot(e.clientX - down.x, e.clientY - down.y), dt = e.timeStamp - down.t; down = null;
   if (moved > 6 || dt > 700) return;
+  if (intro) { if (intro.phase === 'orbit') introPause(!intro.paused); return; }
   if (state.pick) { const g = groundAt(e.clientX, e.clientY); if (g) { state.pick.point = g; renderPanel(); labelsDirty = true; needsRender = true; } return; }
   const hit = pickAt(e.clientX, e.clientY);
   if (!hit) { if (state.sel && !isPhone()) clearSel(); return; }
@@ -1813,8 +1921,8 @@ $('#zOut').onclick = () => { const off = camera.position.clone().sub(controls.ta
 $('#compass').onclick = () => flyTo(controls.target.clone(), camera.position.distanceTo(controls.target), { az: 0, exact: true, dur: 700 });
 $('#home').onclick = () => { stopTour(); if (intro) endIntro(false); const d = DEFAULT(); fly = { t0: performance.now(), dur: reduced ? 1 : 1200, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: d.target, toP: d.pos }; };
 $('#bLayers').onclick = () => { const L0 = $('#layers'); L0.hidden = !L0.hidden; $('#bLayers').setAttribute('aria-expanded', String(!L0.hidden)); if (!L0.hidden) { renderLayers(); card.hidden = true; } else if (state.sel) card.hidden = false; };
-function setDark(on) { state.dark = !!on; store.set('dark', state.dark); applyTheme(); applyPalette(); renderPanel(); if (state.sel?.kind === 'poi') selectPoi(state.sel.id, { noFly: true }); }
-$('#bNight').onclick = () => setDark(!state.dark);
+function setNight(on) { state.night = !!on; store.set('night', state.night); applyTheme(); applyPalette(); labelsDirty = true; }
+$('#bNight').onclick = () => setNight(!state.night);
 
 // ---------------------------------------------------------------- phones: bottom sheet with three heights, dragged by its handle or tab bar
 const guide = $('#guide');
@@ -1887,7 +1995,7 @@ new ResizeObserver(refreshInsets).observe(card);
 new MutationObserver(refreshInsets).observe(card, { attributes: true, attributeFilter: ['hidden'] });
 // a host page may set its own data-theme; keep the visitor's choice
 new MutationObserver(() => {
-  if (document.documentElement.getAttribute('data-theme') !== (state.dark ? 'dark' : 'light')) applyTheme();
+  if (document.documentElement.getAttribute('data-theme') !== 'dark') applyTheme();
   else { applyPalette(); renderPanel(); }
 }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
@@ -1925,7 +2033,7 @@ function frame(now) {
   if (controls.update()) active = true;
   clampTarget();
   if (active || needsRender) {
-    camera.updateMatrixWorld(); updatePins(); if (labelsDirty) layoutLabels(); updateHud();
+    camera.updateMatrixWorld(); updatePins(); if (labelsDirty) layoutLabels(); updateHud(); if (intro) placeBubble();
     renderer.render(scene, camera); needsRender = false;
     if (!window.__kqReady) { window.__kqReady = true; $('#loading').hidden = true; growStart = now + 120; }
     adapt(now);
@@ -1946,7 +2054,7 @@ function adapt(now) {
 }
 
 // ---------------------------------------------------------------- boot
-window.__kq = { camera, controls, state, selectPoi, selectKoch, selectEvent, startTour, stopTour, flyTo, W, applyPalette, setDark, setSheet, endIntro, perf, T: () => state.tour, intro: () => intro };
+window.__kq = { camera, controls, state, selectPoi, selectKoch, selectEvent, startTour, stopTour, flyTo, W, applyPalette, setNight, setDark: setNight, setSheet, endIntro, perf, T: () => state.tour, intro: () => intro };
 applyTheme();
 if (isPhone()) setSheet('peek');
 applyLang();
