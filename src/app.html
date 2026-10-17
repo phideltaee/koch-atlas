@@ -74,6 +74,14 @@ a{color:var(--accent)}
 /* ---------- left rail ---------- */
 .rail{position:absolute;z-index:4;top:calc(14px + env(safe-area-inset-top,0px));left:var(--gl);bottom:14px;width:384px;display:flex;flex-direction:column;gap:10px;pointer-events:none}
 .rail>*{pointer-events:auto}
+/* the flight around the tower starts only when asked */
+.flybtn{flex:0 0 auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;border-radius:999px;border:1px solid var(--line);
+  background:var(--paper);color:var(--ink);font:600 12.5px var(--f-ui);box-shadow:var(--shadow);cursor:pointer}
+.flybtn i{width:24px;height:24px;border-radius:50%;background:var(--birch);color:var(--paper);display:grid;place-items:center;flex:0 0 auto}
+.flybtn i svg{width:13px;height:13px}
+.flybtn small{font:500 10.5px var(--f-num);color:var(--muted)}
+.flybtn:hover{border-color:var(--birch)}
+#app[data-intro] .flybtn{display:none}
 .mast{padding:16px 18px 14px;display:grid;gap:6px;flex:0 0 auto}
 .mast-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .eyebrow{font:600 10.5px var(--f-ui);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -399,6 +407,7 @@ button,a,.chip,.hl,.row,.ev{-webkit-tap-highlight-color:transparent}
       <p class="lead" data-i="lead"></p>
       <p class="stats" id="stats"></p>
     </header>
+    <button type="button" class="flybtn" id="bFly"><i aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l10.5-6.5z"/></svg></i><span data-i="flyBtn"></span><small>30 s</small></button>
     <section class="guide card" id="guide">
       <button type="button" class="sheet-handle" id="sheetToggle" aria-label="Guide ein- oder ausklappen"></button>
       <nav class="tabs" role="tablist" id="tabs"></nav>
@@ -491,6 +500,7 @@ const T = {
   de: {
     eyebrow: 'Quartier-Atlas · Kreis 9', indie: 'Inoffiziell · Open Source', hlTitle: 'Highlights', hlNext: 'Nächster Anlass', hlDoor: 'Gleich nebenan', hlPark: 'Park & Spielplatz', hlWalk: 'Rundgang', hlStops: 'Stationen',
     introKick: 'Rundflug ums Koch-Quartier', introSkip: 'Überspringen', details: 'Details', continue: 'Weiter',
+    flyBtn: 'Rundflug ums Hochhaus', flyBtnTitle: 'Ein langsamer Flug ums Hochhaus, mit Orten in Gehdistanz',
     hoverHint: 'Klicken für Details und Fussweg', hoverHintOut: 'Klicken für Details',
     introPaused: 'Angehalten. Klicken, um weiterzufliegen.', introPausedTouch: 'Angehalten. Tippen, um weiterzufliegen.',
     introHint: 'Auf eine Blase zeigen hält den Flug an. Ziehen oder scrollen: selbst erkunden.', introHintTouch: 'Tippen hält den Flug an und zeigt mehr. Wischen: selbst erkunden.', introTower: 'Koch-Hochhaus · Flurstrasse 71', introStart: 'Ein Rundflug durchs Quartier: Parks, Kitas, Märkte und Treffpunkte in Gehdistanz.',loading: 'Modell wird aufgebaut',
@@ -538,6 +548,7 @@ const T = {
   en: {
     eyebrow: 'Neighbourhood atlas · District 9', indie: 'Unofficial · Open source', hlTitle: 'Highlights', hlNext: 'Next event', hlDoor: 'Right next door', hlPark: 'park & playground', hlWalk: 'Walk', hlStops: 'stops',
     introKick: 'Flying around the Koch quarter', introSkip: 'Skip', details: 'Details', continue: 'Continue',
+    flyBtn: 'Fly around the tower', flyBtnTitle: 'A slow flight around the tower, with places within walking distance',
     hoverHint: 'Click for details and the walking route', hoverHintOut: 'Click for details',
     introPaused: 'Paused. Click to fly on.', introPausedTouch: 'Paused. Tap to fly on.',
     introHint: 'Point at a bubble to pause. Drag or scroll to explore yourself.', introHintTouch: 'Tap to pause and see more. Swipe to explore yourself.', introTower: 'Koch tower · Flurstrasse 71', introStart: 'A flight around the quarter: parks, Kitas, markets and meeting places within walking distance.',loading: 'Building the model',
@@ -1273,8 +1284,9 @@ function stepViewOffset() {
   const k = reduced ? 1 : 0.22; vo.x += dx * k; vo.y += dy * k; applyViewOffset(); return true;
 }
 
-// ---------------------------------------------------------------- intro: fly in, then one slow turn around the tower
-// Highlights: the featured places within ~18 minutes; the caption names whichever is in the middle of the view.
+// ---------------------------------------------------------------- the flight: one slow turn around the tower, on request
+// The page itself opens with a short fly-in to the default view; the turn starts from the "Rundflug" button.
+// Highlights: the featured places within ~18 minutes; the bubble shows whichever is nearest the line of sight.
 let intro = null;
 const INTRO_POIS = POIS.filter(p => p.f && !p.out && (p.w ?? 99) >= 4 && (p.w ?? 99) <= 18 && p.id !== 'bachwiesenpark');
 const NEAR_POIS = ['koch-park', 'kohlenlagerhalle'].map(id => POI[id]).filter(Boolean);   // next to the tower: shown when nothing farther is in view
@@ -1285,8 +1297,9 @@ function shortText(s, n = 118) { s = String(s || ''); if (s.length <= n) return 
 function startIntro() {
   // a low, oblique camera: the tower stands tall and places beyond it stay in the frame
   // 120° over the Albisrieden side (market, GZ Bachwiesen, Freilager, the old village, the station), ending close to the default view
+  if (intro) return;
   const center = towerAt(30), D = isPhone() ? 1800 : 1400, polar = isPhone() ? 1.1 : 1.06, a0 = 2.79, sweep = -2 * Math.PI / 3;
-  controls.target.copy(W(BC[0], BC[1], 0)); camera.position.copy(W(BC[0] + 300, BC[1] - 900, 5200));
+  stopTour(); if (state.sel) clearSel(); bootFly = null; fly = null;
   intro = { phase: 'wait', center, D, polar, a0, sweep, cur: null, seen: new Set(), pickT: 0, capT: 0, paused: 0, dur: isPhone() ? 25000 : 28000 };
   if (isPhone()) setSheet('min');
   app.dataset.intro = '1'; refreshInsets();
@@ -1429,7 +1442,7 @@ function pickIntroHighlight(now) {
 function stepIntro(now) {
   if (intro.phase === 'wait') {   // start once the first frame is on screen, so a slow start does not eat the fly-in
     if (!window.__kqReady) return true;
-    fly = { t0: now + 150, dur: 2700, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: intro.center, toP: intro.center.clone().add(sphOff(intro.D, intro.polar, intro.a0)) };
+    fly = { t0: now + 60, dur: reduced ? 1 : 2200, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: intro.center, toP: intro.center.clone().add(sphOff(intro.D, intro.polar, intro.a0)) };
     intro.phase = 'fly'; return true;
   }
   if (intro.phase === 'fly') { if (!fly) { intro.phase = 'orbit'; intro.t0 = now; renderIntroBar(); } return true; }
@@ -1592,9 +1605,9 @@ function groundAt(cx, cy) {
 }
 let down = null;
 // During the intro a tap pauses (and opens the bubble), a drag or pinch hands the map over to the visitor.
-canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: e.timeStamp }; if (!intro && fly) fly = null; hideHcard(true); });
+canvas.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY, t: e.timeStamp }; bootFly = false; if (!intro && fly) fly = null; hideHcard(true); });
 canvas.addEventListener('pointermove', e => { if (intro && down && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 10) { fly = null; endIntro(false); } });
-canvas.addEventListener('wheel', () => { hideHcard(true); if (intro) { fly = null; endIntro(false); } }, { passive: true });
+canvas.addEventListener('wheel', () => { hideHcard(true); bootFly = false; if (intro) { fly = null; endIntro(false); } else fly = null; }, { passive: true });
 canvas.addEventListener('pointerleave', () => { clearTimeout(hoverQ); hideHcard(); if (state.hover) { state.hover = null; labelsDirty = true; updatePins(true); needsRender = true; } });
 canvas.addEventListener('pointerup', e => {
   if (!down) return;
@@ -2057,6 +2070,7 @@ function toast(msg) { const el = $('#toast'); el.textContent = msg; el.hidden = 
 function applyLang() {
   document.documentElement.lang = lang;
   $$('[data-i]').forEach(el => el.textContent = t(el.dataset.i));
+  $('#bFly').title = t('flyBtnTitle');
   $$('[data-lang]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
   $$('#tools [data-t]').forEach(b => { b.title = t(b.dataset.t); b.setAttribute('aria-label', t(b.dataset.t)); });
   $('#stats').innerHTML = `<span><b>${POIS.length}</b> ${t('places')}</span><span><b>${EVENTS.length}</b> ${t('events')}</span><span><b>${TOURS.length}</b> ${t('walks')}</span><span><b>${nBuildings.toLocaleString('de-CH')}</b> ${t('buildings')}</span>`;
@@ -2109,9 +2123,11 @@ function clampTarget() {
   const tx = controls.target.x, ty = -controls.target.z, dx = tx - BC[0], dy = ty - BC[1], d = Math.hypot(dx, dy);
   if (d > R * 0.92) { const k = R * 0.92 / d; const nx = BC[0] + dx * k, ny = BC[1] + dy * k; const off = camera.position.clone().sub(controls.target); controls.target.set(nx, 0, -ny); camera.position.copy(controls.target).add(off); }
 }
+let bootFly = false;   // the first view: drop in from above to the default view once the model is on screen
 function frame(now) {
   requestAnimationFrame(frame);
   let active = false;
+  if (bootFly && window.__kqReady) { const d = DEFAULT(); fly = { t0: now + 150, dur: 2400, fromT: controls.target.clone(), fromP: camera.position.clone(), toT: d.target, toP: d.pos }; bootFly = false; }
   if (fly) {
     const k = Math.min(1, (now - fly.t0) / fly.dur), e = ease(k);
     controls.target.lerpVectors(fly.fromT, fly.toT, e); camera.position.lerpVectors(fly.fromP, fly.toP, e);
@@ -2145,7 +2161,7 @@ function adapt(now) {
 }
 
 // ---------------------------------------------------------------- boot
-window.__kq = { camera, controls, state, selectPoi, selectKoch, selectEvent, startTour, stopTour, flyTo, W, applyPalette, setNight, setDark: setNight, setSheet, endIntro, perf, T: () => state.tour, intro: () => intro };
+window.__kq = { camera, controls, state, selectPoi, selectKoch, selectEvent, startTour, stopTour, flyTo, W, applyPalette, setNight, setDark: setNight, setSheet, endIntro, startIntro, perf, T: () => state.tour, intro: () => intro };
 applyTheme();
 if (isPhone()) setSheet('peek');
 applyLang();
@@ -2155,7 +2171,8 @@ resize();
 {
   const d = DEFAULT();
   if (reduced || /[#&?]nointro\b/.test(location.href)) { controls.target.copy(d.target); camera.position.copy(d.pos); }
-  else startIntro();
+  else { controls.target.copy(W(BC[0], BC[1], 0)); camera.position.copy(W(BC[0] + 300, BC[1] - 900, 5200)); bootFly = true; }
+  $('#bFly').onclick = startIntro;
 }
 controls.update();
 requestAnimationFrame(frame);
